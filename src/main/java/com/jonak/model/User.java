@@ -1,111 +1,59 @@
 package com.jonak.model;
 
-public class User {
-	private int id;
-	private String email;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String district;
-	private String month;
-	private String day;
-	private String year;
-	private String type;
-	private String gender;
-	private String allwo_message;
-	private int created_at;
-	private int status;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getDistrict() {
-		return district;
-	}
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-	public String getMonth() {
-		return month;
-	}
-	public void setMonth(String month) {
-		this.month = month;
-	}
-	public String getDay() {
-		return day;
-	}
-	public void setDay(String day) {
-		this.day = day;
-	}
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getAllwo_message() {
-		return allwo_message;
-	}
-	public void setAllwo_message(String allwo_message) {
-		this.allwo_message = allwo_message;
-	}
-	public int getCreated_at() {
-		return created_at;
-	}
-	public void setCreated_at(int created_at) {
-		this.created_at = created_at;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
+// import default
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+// import custom
+import com.jonak.lib.MySQLDatabase;
+import com.jonak.model.UserModel;
+
+/**
+ * Created by lenin on 11/5/14.
+ */
+public class User extends UserModel {
+
+    /**
+     * find user by id
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
+    public static User find(int id) throws SQLException
+    {
+        User user = new User();
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  _tableName = "user",
+                _fieldName = "*";
+        ArrayList   _fields = new ArrayList(),
+                    _types  = new ArrayList(),
+                    _values = new ArrayList();
+        _fields.add("id"); _types.add("int"); _values.add(id);
+
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
+
+        if( _rs.next() ) {
+            user.setId(_rs.getInt("id"));
+            user.setEmail(_rs.getString("email"));
+            user.setPassword(_rs.getString("password"));
+            user.setFirstName(_rs.getString("first_name"));
+            user.setLastName(_rs.getString("last_name"));
+            user.setAddress(_rs.getString("address"));
+            user.setDistrict(_rs.getString("district"));
+            user.setDateOfBirth(_rs.getInt("date_of_birth"));
+            user.setGender(_rs.getInt("gender"));
+            user.setType(_rs.getInt("type"));
+            user.setLastLoginAt(_rs.getInt("last_login_at"));
+            user.setAllowMessage(_rs.getInt("allow_message"));
+            user.setStatus(_rs.getInt("status"));
+            user.setCreatedAt(_rs.getInt("created_at"));
+        } else {
+            user = null;
+        }
+
+        return user;
+    }
 }

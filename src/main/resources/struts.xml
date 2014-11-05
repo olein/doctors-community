@@ -9,7 +9,7 @@
 
 	<package name="default"   extends="struts-default">
 
-        <action name="" class="com.jonak.controller.UserController" method="test">
+        <action name="test" class="com.jonak.controller.UserController" method="test">
             <result name="success">/home.jsp</result>
         </action>
 

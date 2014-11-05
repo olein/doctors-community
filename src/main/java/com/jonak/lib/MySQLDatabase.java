@@ -1,5 +1,6 @@
 package com.jonak.lib;
 
+// import default
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,201 +10,268 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class MySQLDatabase 
-{
-	String table;
-	ArrayList fields = new ArrayList();
-	ArrayList types = new ArrayList();
-	ArrayList values = new ArrayList();
-	Connection conn;
-	public Connection DBconnection() 
-	{
-		String url = "jdbc:mysql://localhost:3306/";
-		String dbName = "mydb";
-		String driver = "com.mysql.jdbc.Driver";
-		String userName = "root";
-		String password1 = "";
-		Connection conn = null;
-		try {
-			// mysql load driver
-			Class.forName(driver).newInstance();
+/**
+ * database class
+ *
+ * @author lenin
+ */
+public class MySQLDatabase {
 
-			conn = DriverManager.getConnection(url + dbName, userName,
-					password1);
-			System.out.println("Connected to the database");
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-			System.out.print("failed\n");
-		}
-		return conn;
-	}
-	
-	public void closeConnection(Connection conn) throws SQLException
-	{
-		 try {
-			 conn.close();
-			 System.out.println("closed");
-	        } catch (SQLException e) {
-	            throw new RuntimeException(e);
-	        }		
-	}
-	
-	public ResultSet executeSelectQuery(String tableName, String field,ArrayList fields,
-			ArrayList type, ArrayList values) throws SQLException 
-	{
-		conn = DBconnection();
-		
-		
-		String sql = " select " + field + " from " + tableName + " ";
-		
-		int size = fields.size();
+    //=====================
+    // variables
+    //=====================
 
-		if (size > 0) {
-			sql += " where ";
-			for (int i = 0; i < fields.size(); i++) {
-				sql += fields.get(i)+"=? ";
-				if (i < fields.size() - 1) 
-				{
-					sql += " and ";
-				}				
-			}
-		}
-		PreparedStatement preparedStatement = conn.prepareStatement(sql);
-		System.out.println(sql);
-		for (int i = 0; i < fields.size(); i++)
-		{
-			if (type.get(i).equals("String")) 
-			{
-				String result = (String) values.get(i);
-				preparedStatement.setString(i + 1, result);
-			}
-			if (type.get(i).equals("int")) 
-			{
-				int result = (Integer) values.get(i);
-				preparedStatement.setInt(i + 1, result);
-			}
-			if (type.get(i).equals("long")) 
-			{
-				long result = (Long) values.get(i);
-				preparedStatement.setLong(i + 1, result);
-			}
-		}
-		
-		ResultSet rs = preparedStatement.executeQuery();
-				
-		return rs;
-	}
-	
-	public String add(String table, ArrayList fields, ArrayList type,
-			ArrayList values) throws SQLException 
-	{
-		
-		conn = DBconnection();
-		String sql = "insert into " + table + "(";
+    // the connection instance
+    private Connection conn;
 
-		for (int i = 0; i < fields.size(); i++) 
-		{
-			sql += fields.get(i);
-			if (i < fields.size() - 1) 
-			{
-				sql += ",";
-			}
-		}
-		sql += ") values(";
+    // mysql driver url
+    private String url;
 
-		for (int i = 0; i < fields.size(); i++) 
-		{
-			sql += "?";
-			if (i < fields.size() - 1)
-			{
-				sql += ",";
-			}
-		}
-		sql += ")";
-		
-		PreparedStatement preparedStatement = conn.prepareStatement(sql);
-	
-		for (int i = 0; i < fields.size(); i++)
-		{
-			if (type.get(i).equals("String")) 
-			{
-				String result = (String) values.get(i);
-				preparedStatement.setString(i + 1, result);
-			}
-			if (type.get(i).equals("int")) 
-			{
-				int result = (Integer) values.get(i);
-				preparedStatement.setInt(i + 1, result);
-			}
-			if (type.get(i).equals("long")) 
-			{
-				long result = (Long) values.get(i);
-				preparedStatement.setLong(i + 1, result);
-			}
-		}
+    // mysql driver
+    private String driver;
 
-		preparedStatement.executeUpdate();
+    // database name
+    private String dbName;
 
-		closeConnection(conn);
-		
-		return "success";
-	}
-	
-	public String update(String table, ArrayList fields, ArrayList type,
-			ArrayList values) throws SQLException 
-	{
-		conn = DBconnection();
-		
-		String sql = "update " + table + " set ";
 
-		for (int i = 0; i < fields.size(); i++) 
-		{
-			sql += fields.get(i)+"=? ";
-			if (i < fields.size() - 1) 
-			{
-				sql += ",";
-			}
-		}
-		sql += "where id=?";
-		System.out.println(sql);
-		PreparedStatement preparedStatement = conn.prepareStatement(sql);
-	
-		for (int i = 0; i < fields.size(); i++)
-		{
-			if (type.get(i).equals("String")) 
-			{
-				String result = (String) values.get(i);
-				preparedStatement.setString(i + 1, result);
-			}
-			if (type.get(i).equals("int")) 
-			{
-				int result =(Integer) values.get(i);
-				preparedStatement.setInt(i + 1, result);
-			}
-		}
-		preparedStatement.setInt(fields.size()+1, 6);
-		preparedStatement.executeUpdate();
+    // database username
+    private String dbUser;
 
-		closeConnection(conn);
-		return "success";
-	}
-	
-	public String delete(String table, int id) throws SQLException 
-	{
-		conn = DBconnection();
-		
-		String sql = "delete from " + table+" where id=?";
-		
-		System.out.println(sql);
-		
-		PreparedStatement preparedStatement = conn.prepareStatement(sql);
-		
-		preparedStatement.setInt(1 , id);
-		preparedStatement.executeUpdate();
 
-		closeConnection(conn);
-		return "success";
-	}
+    // database password
+    private String dbPass;
 
+
+    //=====================
+    // methods
+    //=====================
+
+    // constructor
+    public MySQLDatabase()
+    {
+        this.url = "jdbc:mysql://localhost:3306/";
+        this.driver = "com.mysql.jdbc.Driver";
+
+        this.dbName = "doctors_community";
+        this.dbUser = "root";
+        this.dbPass = "rootuser";
+
+        // initialize conneciton
+        this.dbConnection();
+    }
+
+    /**
+     * initialize the database connection
+     *
+     * @param - null
+     * @return - null
+     */
+    private void dbConnection() /*throws SQLException*/
+    {
+        try {
+            // mysql load driver
+            Class.forName(this.driver).newInstance();
+
+            this.conn = DriverManager.getConnection(this.url + this.dbName, this.dbUser, this.dbPass);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * close connection
+     *
+     * @param - null
+     * @return - null
+     * @throws - SQLException
+     */
+    public void closeConnection() throws SQLException
+    {
+        try {
+            this.conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * executes select query
+     *
+     * @param - String
+     * @param - String
+     * @param - ArrayList
+     * @param - ArrayList
+     * @param - ArrayList
+     * @return - ResultSet
+     * @throws SQLException
+     */
+    public ResultSet executeSelectQuery(String tableName,
+                                        String fieldName,
+                                        ArrayList fields,
+                                        ArrayList types,
+                                        ArrayList values) throws SQLException
+    {
+        String sql = " select " + fieldName + " from " + tableName + " ";
+        int i, size = fields.size();
+        if (size > 0) {
+            sql += " where ";
+            for (i = 0; i < size; i++) {
+                if(i > 0) {
+                    sql += " and ";
+                }
+                sql += fields.get(i)+"=? ";
+            }
+        }
+
+
+//        System.out.println(sql);
+        PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
+        preparedStatement = this.setFields(preparedStatement, types, values);
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        return rs;
+    }
+
+    /**
+     * executes insert query
+     *
+     * @param - String
+     * @param - ArrayList
+     * @param - ArrayList
+     * @param - ArrayList
+     * @return - boolean
+     * @throws SQLException
+     */
+    public boolean executeInsertQuery(String tableName,
+                                      ArrayList fields,
+                                      ArrayList types,
+                                      ArrayList values) throws SQLException
+    {
+        String sql = "insert into " + tableName + "(";
+        int i, size = fields.size();
+
+        for ( i = 0; i < size; i++)
+        {
+            if( i > 0 )
+            {
+                sql += ", ";
+            }
+            sql += fields.get( i );
+        }
+
+        sql += ") values (";
+
+        for ( i = 0; i < size ; i++)
+        {
+            if( i > 0 )
+            {
+                sql += ", ";
+            }
+            sql += "?";
+        }
+        sql += " ) ";
+
+        PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
+        preparedStatement = this.setFields(preparedStatement, types, values);
+        preparedStatement.executeUpdate();
+
+        return true;
+    }
+
+    /**
+     * executes update query
+     * @param - String
+     * @param - ArrayList
+     * @param - ArrayList
+     * @param - ArrayList
+     * @param - int
+     * @return - boolean
+     * @throws SQLException
+     */
+    public boolean executeUpdateQuery(String tableName,
+                                      ArrayList fields,
+                                      ArrayList types,
+                                      ArrayList values,
+                                      int id) throws SQLException
+    {
+        String sql = "update " + tableName + " set ";
+        int i, size = fields.size();
+
+        for ( i = 0; i < size; i++ )
+        {
+            if( i > 0 )
+            {
+                sql += ", ";
+            }
+            sql += fields.get(i)+"=? ";
+        }
+
+        sql += " where id=? ";
+
+        PreparedStatement preparedStatement = this.conn.prepareStatement( sql );
+        preparedStatement = this.setFields( preparedStatement, types, values );
+
+        preparedStatement.setInt( size+1, id );
+        preparedStatement.executeUpdate();
+
+        return true;
+    }
+
+    /**
+     * executes delete query
+     *
+     * @param - String
+     * @param - int
+     * @return - boolean
+     * @throws SQLException
+     */
+    public boolean executeDeleteQuery(String tableName,
+                                      int id) throws SQLException
+    {
+        String sql = "delete from " + tableName+" where id=?";
+
+        PreparedStatement preparedStatement = this.conn.prepareStatement( sql );
+        preparedStatement.setInt( 1, id );
+        preparedStatement.executeUpdate();
+
+        return true;
+    }
+
+    /**
+     * sets the value parameter in the sql by their type
+     *
+     * @param - PreparedStatement
+     * @param - ArrayList
+     * @param - ArrayList
+     * @return - PreparedStatement
+     */
+    private PreparedStatement setFields(PreparedStatement ps,
+                                        ArrayList types,
+                                        ArrayList values) throws SQLException
+    {
+        int i, size = types.size();
+
+        for (i = 0; i < size; i++)
+        {
+            if ( types.get( i ).equals( "String" ) )
+            {
+                String value = ( String ) values.get( i );
+                ps.setString( (i+1), value );
+            }
+            else if ( types.get( i ).equals( "int" ) )
+            {
+                int value = ( Integer ) values.get( i );
+                ps.setInt( (i+1), value );
+            }
+            else if ( types.get( i ).equals( "double" ) )
+            {
+                double value = ( Double ) values.get( i );
+                ps.setDouble( (i+1), value );
+            }
+        }
+
+        return ps;
+    }
 }

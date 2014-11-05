@@ -11,6 +11,7 @@
     <title></title>
 </head>
 <body>
-    this is home page
+    <h1>See the output in Console</h1>
+    <p>Olein, MUST call me before doing anything</p>
 </body>
 </html>
