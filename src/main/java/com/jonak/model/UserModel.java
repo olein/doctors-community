@@ -28,7 +28,11 @@ public class UserModel extends BaseModel {
     private int status;
     private int createdAt;
 
-    public UserModel() { super(); }
+    public UserModel()
+    {
+        super();
+        this.tableName = "user";
+    }
 
     protected void prepareFields()
     {

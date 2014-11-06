@@ -52,9 +52,9 @@ public class MySQLDatabase {
         this.url = "jdbc:mysql://localhost:3306/";
         this.driver = "com.mysql.jdbc.Driver";
 
-        this.dbName = "doctors_community";
+        this.dbName = "doctor_community";
         this.dbUser = "root";
-        this.dbPass = "rootpass";
+        this.dbPass = "rootuser";
 
         // initialize conneciton
         this.dbConnection();
