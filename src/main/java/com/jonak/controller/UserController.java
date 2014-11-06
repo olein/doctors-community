@@ -16,19 +16,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
+
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 // import default
 
 /**
  * user controller
  */
-public class UserController extends BaseController {
-
-
-
+public class UserController extends BaseController
+{
     public Vector<User> messages = new Vector<User>();
+
+    public Map sessionValue;
+
     public UserController(){ super(); }
 
     public String test() throws SQLException
@@ -109,7 +113,35 @@ public class UserController extends BaseController {
         return this.SUCCESS;
     }
 
+    public String login() throws SQLException
+    {
+        // this is how we will be using
+        // get the user with id 1
+        User user = User.find();
 
+        if( user != null ) {
+
+            //System.out.printf( "id: %s \n", user.getId() );
+            sessionValue = ActionContext.getContext().getSession();
+            return this.SUCCESS;
+
+        } else {
+            System.out.printf( "No user found!" );
+        }
+
+        // NOW your TASK is to find a way to send this "user" object
+        // to front jsp file so we can show it
+        // instead of console out :)
+
+        return this.ERROR;
+    }
+    public Map getSessionValue() {
+        return sessionValue;
+    }
+
+    public void setSessionValue(Map sessionValue) {
+        this.sessionValue = sessionValue;
+    }
 
     public Vector<User> getMessages() {
         return messages;
