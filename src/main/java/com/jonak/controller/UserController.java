@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 // import custom
 import com.jonak.model.User;
+import com.jonak.model.UserModel;
 
 //import java.sql.SQLException;
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.Vector;
 // import default
 
 /**
@@ -20,6 +21,9 @@ import java.util.Iterator;
  */
 public class UserController extends BaseController {
 
+
+
+    public Vector<User> messages = new Vector<User>();
     public UserController(){ super(); }
 
     public String test() throws SQLException
@@ -32,6 +36,7 @@ public class UserController extends BaseController {
             System.out.printf( "Name: %s %s\n", user.getFirstName(), user.getLastName() );
             System.out.printf( "Email: %s \n", user.getEmail() );
             System.out.printf( "Address: %s \n", user.getAddress() );
+            messages.add(user);
         } else {
             System.out.printf( "No user found!" );
         }
@@ -41,6 +46,14 @@ public class UserController extends BaseController {
         // instead of console out :)
 
         return this.SUCCESS;
+    }
+
+    public Vector<User> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Vector<User> messages) {
+        this.messages = messages;
     }
 }
 
