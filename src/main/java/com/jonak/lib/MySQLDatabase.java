@@ -54,7 +54,7 @@ public class MySQLDatabase {
 
         this.dbName = "doctors_community";
         this.dbUser = "root";
-        this.dbPass = "rootuser";
+        this.dbPass = "rootpass";
 
         // initialize conneciton
         this.dbConnection();
