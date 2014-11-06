@@ -11,6 +11,7 @@
     <body>
 
         <a href="<s:url action="test" />" >Click ME</a>
+        <a href="<s:url action="register" />" >Register</a>
 
     </body>
 </html>

@@ -13,6 +13,14 @@
             <result name="success">/home.jsp</result>
         </action>
 
+        <action name="register">
+            <result>/register.jsp</result>
+        </action>
+
+        <action name="registerUser" class="com.jonak.controller.UserController" method="register">
+            <result name="success">/home.jsp</result>
+        </action>
+
 	</package>
 	
 </struts>
