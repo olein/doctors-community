@@ -45,11 +45,6 @@ public class UserController extends BaseController {
         } else {
             System.out.printf( "No user found!" );
         }
-
-        // NOW your TASK is to find a way to send this "user" object
-        // to front jsp file so we can show it
-        // instead of console out :)
-
         return this.SUCCESS;
     }
 
