@@ -34,8 +34,7 @@ public class UserController extends BaseController
 {
     public Vector<User> messages = new Vector<User>();
 
-    public Map sessionValue;
-
+    private int checkId;
     public UserController(){ super(); }
 
     public String test() throws SQLException
@@ -79,33 +78,10 @@ public class UserController extends BaseController
         int timestamp = (int)date.getTime()/1000;
         System.out.println(timestamp);
         nuser.setDateOfBirth(timestamp);
-
-        if(ServletActionContext.getRequest().getParameter("gender").equals("male"))
-        {
-            nuser.setGender(1);
-        }
-        if(ServletActionContext.getRequest().getParameter("gender").equals("female"))
-        {
-            nuser.setGender(2);
-        }
-
-        if(ServletActionContext.getRequest().getParameter("type").equals("Doctor"))
-        {
-            nuser.setType(2);
-        }
-        if(ServletActionContext.getRequest().getParameter("type").equals("Patient"))
-        {
-            nuser.setType(3);
-        }
+        nuser.setGender(Integer.parseInt(ServletActionContext.getRequest().getParameter("gender")));
+        nuser.setType(Integer.parseInt(ServletActionContext.getRequest().getParameter("type")));
         nuser.setLastLoginAt(0);
-        if(ServletActionContext.getRequest().getParameter("allow_message").equals("Yes"))
-        {
-            nuser.setAllowMessage(1);
-        }
-        if(ServletActionContext.getRequest().getParameter("allow_message").equals("No"))
-        {
-            nuser.setAllowMessage(3);
-        }
+        nuser.setAllowMessage(Integer.parseInt(ServletActionContext.getRequest().getParameter("allow_message")));
         nuser.setStatus(1);
         Date date1 = new Date();
         timestamp = (int) date.getTime()/1000;
@@ -124,8 +100,8 @@ public class UserController extends BaseController
         User user = User.find();
 
         if( user != null ) {
-
-            //System.out.printf( "id: %s \n", user.getId() );
+            SessionLib.set("id", user.getId());
+            System.out.println(SessionLib.getId());
             sessionValue = ActionContext.getContext().getSession();
             return this.SUCCESS;
 
@@ -175,13 +151,7 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
-    public Map getSessionValue() {
-        return sessionValue;
-    }
 
-    public void setSessionValue(Map sessionValue) {
-        this.sessionValue = sessionValue;
-    }
 
     public Vector<User> getMessages() {
         return messages;
@@ -190,5 +160,8 @@ public class UserController extends BaseController
     public void setMessages(Vector<User> messages) {
         this.messages = messages;
     }
+
+
+
 }
 

@@ -16,7 +16,8 @@ import com.opensymphony.xwork2.ActionContext;
 /**
  * Created by lenin on 11/5/14.
  */
-public class User extends UserModel {
+public class User extends UserModel
+{
 
     /**
      * find user by id
@@ -82,7 +83,7 @@ public class User extends UserModel {
             if(SessionLib.isLogin())
             {
                 System.out.println("user logged in");
-                System.out.println(SessionLib.getId());
+                //System.out.println(SessionLib.getId());
             }
 
         } else {

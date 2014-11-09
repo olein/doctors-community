@@ -44,6 +44,18 @@
         <action name="nopasswordreset" class="com.jonak.controller.UserController" method="noReset">
             <result name="success">/index.jsp</result>
         </action>
+
+        <action name="add_profile">
+            <result>/addprofile.jsp</result>
+        </action>
+
+        <action name="create_profile" class="com.jonak.controller.ExperienceController" method="create">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="show_experience" class="com.jonak.controller.ExperienceController" method="viewExperience">
+            <result name="success">/view_experience.jsp</result>
+        </action>
 	</package>
 	
 </struts>

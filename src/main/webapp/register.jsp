@@ -20,16 +20,16 @@
 			Date of birth: <br />
 			Month<input	type="text" name="month">Day<input type="text" name="day">Year<input	type="text" name="year"><br> 
 			Gender:<select name="gender">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
+				<option value="1">Male</option>
+				<option value="2">Female</option>
 			</select><br /> 
 			Type:<select name="type">
-				<option value="Doctor">Doctor</option>
-				<option value="Patient">Patient</option>
+				<option value="2">Doctor</option>
+				<option value="3">Patient</option>
 			</select><br /> 
 			Can others message you?<select name="allow_message">
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
+				<option value="1">Yes</option>
+				<option value="2">No</option>
 			</select><br /> <input type="submit" value="Submit">
 		</form>
 

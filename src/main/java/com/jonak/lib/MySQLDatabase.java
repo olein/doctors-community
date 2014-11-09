@@ -125,10 +125,10 @@ public class MySQLDatabase {
         }
 
 
-//        System.out.println(sql);
+       // System.out.println(sql);
         PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
         preparedStatement = this.setFields(preparedStatement, types, values);
-
+        System.out.println(preparedStatement);
         ResultSet rs = preparedStatement.executeQuery();
 
         return rs;

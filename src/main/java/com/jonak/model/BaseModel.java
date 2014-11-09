@@ -3,6 +3,7 @@ package com.jonak.model;
 // import default
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 
 // import custom
 import com.jonak.lib.MySQLDatabase;
@@ -28,7 +29,6 @@ public class BaseModel {
     protected ArrayList fields;
     protected ArrayList types;
     protected ArrayList values;
-
     //=====================
     // methods
     //=====================
