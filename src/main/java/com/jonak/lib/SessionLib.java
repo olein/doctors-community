@@ -10,26 +10,34 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class SessionLib
 {
-    Map session = ActionContext.getContext().getSession();
+    static Map session = ActionContext.getContext().getSession();
 
-    public void setString(String key, String value)
+    //set session string type value
+    public static void set(String key, String value)
     {
 
         session.put(key, value);
     }
-
-    public void setInt(String key, int value)
+    //set session int type value
+    public static void set(String key, int value)
     {
 
         session.put(key, Integer.toString(value));
     }
-
-    public String isLogin()
+    // checked for login
+    public static boolean isLogin()
     {
         String result = (String) session.get("login");
-        return result;
+        if(result.equals("true"))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
-    public int getId()
+    //get user id
+    public static int getId()
     {
         String result = (String) session.get("id");
         return Integer.parseInt(result);

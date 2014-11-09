@@ -33,10 +33,17 @@
             <result name="success">/check_email.jsp</result>
         </action>
 
-        <action name="resetpassword" class="com.jonak.controller.UserController" method="forgetPassword">
-            <result name="success">/resetpassword.jsp</result>
+        <action name="resetpassword" class="com.jonak.controller.UserController" method="findUser">
+            <result name="success">/reset_password.jsp</result>
         </action>
 
+        <action name="setnewpassword" class="com.jonak.controller.UserController" method="setPassword">
+            <result name="success">/index.jsp</result>
+        </action>
+
+        <action name="nopasswordreset" class="com.jonak.controller.UserController" method="noReset">
+            <result name="success">/index.jsp</result>
+        </action>
 	</package>
 	
 </struts>

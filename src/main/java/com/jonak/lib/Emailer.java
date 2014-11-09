@@ -49,7 +49,9 @@ public class Emailer extends ActionSupport {
 
             to = ServletActionContext.getRequest().getParameter("email");
 
-            body = "please copy paste the following link: "+ "http://localhost:8080/DoctorCommunity/resetpassword?key"+timestamp;
+            body = "please click the following link: "+ "http://localhost:8080/DoctorCommunity/resetpassword?key="+timestamp+
+                    "\n"+"If you did not request for password request then click the following link:'"+
+                    "http://localhost:8080/DoctorCommunity/nopasswordreset?key="+timestamp;
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));

@@ -3,6 +3,7 @@ package com.jonak.controller;
 // import custom
 import com.jonak.lib.Emailer;
 import com.jonak.lib.MySQLDatabase;
+import com.jonak.lib.SessionLib;
 import com.jonak.model.User;
 import com.jonak.model.UserModel;
 
@@ -109,7 +110,7 @@ public class UserController extends BaseController
         Date date1 = new Date();
         timestamp = (int) date.getTime()/1000;
         nuser.setCreatedAt(timestamp);
-        nuser.setKey(1);
+        nuser.setKey("1");
 
         nuser.save();
 
@@ -141,13 +142,39 @@ public class UserController extends BaseController
 
     public String forgetPassword() throws SQLException,ParseException
     {
-        User nuser = User.getID(); //get user id
+        User nuser = User.getUser(); //get user id
         Date date = new Date();
         int timeStamp = (int) (date.getTime() / 1000); //generate key value
-        nuser.setKeyValue(timeStamp, nuser.getId()); //set key value using user id
+        nuser.setKey(Integer.toString(timeStamp));  //set key value
+        nuser.save();
         Emailer.sendEmail(timeStamp); //send email to user
         return this.SUCCESS;
     }
+
+    public String findUser() throws SQLException
+    {
+        User nuser = User.getUserId(); //get user id
+        SessionLib.set("id", nuser.getId()); // saved id in the session
+        return this.SUCCESS;
+    }
+
+    public String setPassword() throws SQLException
+    {
+        User nuser = User.find(SessionLib.getId());
+        nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
+        nuser.setKey("1"); //reset key value
+        nuser.save();
+        return this.SUCCESS;
+    }
+
+    public String noReset() throws SQLException
+    {
+        User nuser = User.getUserId();
+        nuser.setKey("1"); //reset generated key
+        nuser.save();
+        return this.SUCCESS;
+    }
+
     public Map getSessionValue() {
         return sessionValue;
     }
