@@ -12,6 +12,7 @@ import com.jonak.lib.SessionLib;
 import com.jonak.model.UserModel;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
+
 /**
  * Created by lenin on 11/5/14.
  */
@@ -91,4 +92,45 @@ public class User extends UserModel {
 
         return user;
     }
+
+    public static User getID() throws SQLException
+    {
+        User user = new User();
+        MySQLDatabase db = new MySQLDatabase();
+
+
+        String  _tableName = "user",
+                _fieldName = "id";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+        _fields.add("email"); _types.add("String"); _values.add(ServletActionContext.getRequest().getParameter("email"));
+
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
+
+        if( _rs.next() ) {
+            user.setId(_rs.getInt("id"));
+        } else {
+            user = null;
+        }
+
+        return user;
+    }
+
+    public static String setKeyValue(int key,int id) throws SQLException
+    {
+        MySQLDatabase db = new MySQLDatabase();
+        String  _tableName = "user";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+        _fields.add("key"); _types.add("int"); _values.add(key); //set key value in the database
+
+        db.executeUpdateQuery( _tableName, _fields, _types, _values, id);
+        return "success";
+    }
+
+
+
+
 }

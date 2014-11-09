@@ -17,6 +17,6 @@
 
     <a href="<s:url action="test" />" >Click ME</a>
     <a href="<s:url action="register" />" >Register</a>
-
+    <a href="<s:url action="forgetpassword" />" >Forget Password</a>
     </body>
 </html>

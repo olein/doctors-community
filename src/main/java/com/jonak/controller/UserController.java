@@ -1,6 +1,8 @@
 package com.jonak.controller;
 
 // import custom
+import com.jonak.lib.Emailer;
+import com.jonak.lib.MySQLDatabase;
 import com.jonak.model.User;
 import com.jonak.model.UserModel;
 
@@ -107,6 +109,7 @@ public class UserController extends BaseController
         Date date1 = new Date();
         timestamp = (int) date.getTime()/1000;
         nuser.setCreatedAt(timestamp);
+        nuser.setKey(1);
 
         nuser.save();
 
@@ -134,6 +137,16 @@ public class UserController extends BaseController
         // instead of console out :)
 
         return this.ERROR;
+    }
+
+    public String forgetPassword() throws SQLException,ParseException
+    {
+        User nuser = User.getID(); //get user id
+        Date date = new Date();
+        int timeStamp = (int) (date.getTime() / 1000); //generate key value
+        nuser.setKeyValue(timeStamp, nuser.getId()); //set key value using user id
+        Emailer.sendEmail(timeStamp); //send email to user
+        return this.SUCCESS;
     }
     public Map getSessionValue() {
         return sessionValue;

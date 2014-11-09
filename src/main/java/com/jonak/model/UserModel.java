@@ -27,6 +27,7 @@ public class UserModel extends BaseModel {
 	private int allowMessage;
     private int status;
     private int createdAt;
+    private int key;
 
     public UserModel()
     {
@@ -52,6 +53,7 @@ public class UserModel extends BaseModel {
         this.fields.add( "allow_message" ); this.types.add( "int" ); this.values.add( this.getAllowMessage() );
         this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.getStatus() );
         this.fields.add( "created_at" ); this.types.add( "int" ); this.values.add( this.getCreatedAt() );
+
     }
 
     public int getId() {
@@ -165,4 +167,13 @@ public class UserModel extends BaseModel {
     public void setCreatedAt(int createdAt) {
         this.createdAt = createdAt;
     }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
 }

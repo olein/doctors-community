@@ -25,6 +25,18 @@
             <result name="success">/welcome_user.jsp</result>
         </action>
 
+        <action name="forgetpassword">
+            <result>/forgetpassword.jsp</result>
+        </action>
+
+        <action name="getmail" class="com.jonak.controller.UserController" method="forgetPassword">
+            <result name="success">/check_email.jsp</result>
+        </action>
+
+        <action name="resetpassword" class="com.jonak.controller.UserController" method="forgetPassword">
+            <result name="success">/resetpassword.jsp</result>
+        </action>
+
 	</package>
 	
 </struts>
