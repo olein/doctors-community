@@ -1,5 +1,4 @@
 package com.jonak.model;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,23 +8,19 @@ import java.util.Vector;
 // import custom
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
-import com.jonak.model.ExperienceModel;
+import com.jonak.model.EducationModel;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
-
 /**
- * Created by Fahim on 09/11/2014.
+ * Created by Fahim on 10/11/2014.
  */
-public class Experience extends ExperienceModel
+public class Education extends EducationModel
 {
-
-
     public static ResultSet find(int user_id) throws SQLException
     {
-        Experience exp = new Experience();
         MySQLDatabase db = new MySQLDatabase();
 
-        String  _tableName = "experience",
+        String  _tableName = "education",
                 _fieldName = "*";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
@@ -35,13 +30,12 @@ public class Experience extends ExperienceModel
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         return rs;
     }
-
-    public static Experience find() throws SQLException
+    public static Education find() throws SQLException
     {
-        Experience exp = new Experience();
+        Education education = new Education();
         MySQLDatabase db = new MySQLDatabase();
 
-        String  _tableName = "experience",
+        String  _tableName = "education",
                 _fieldName = "*";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
@@ -50,15 +44,14 @@ public class Experience extends ExperienceModel
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
         if( rs.next() ) {
-            exp.setId(rs.getInt(1));
-            exp.setUser_id(rs.getInt("user_id"));
-            exp.setTitle(rs.getString("title"));
-            exp.setDescription(rs.getString("description"));
-
+            education.setId(rs.getInt(1));
+            education.setUser_id(rs.getInt("user_id"));
+            education.setDegree(rs.getString("degree"));
+            education.setInstitute(rs.getString("institute"));
+            education.setResult((rs.getString("result")));
         } else {
-            exp = null;
+            education = null;
         }
-        return exp;
+        return education;
     }
-
 }

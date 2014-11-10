@@ -42,4 +42,10 @@ public class SessionLib
         String result = (String) session.get("id");
         return Integer.parseInt(result);
     }
+
+    public static int get(String value)
+    {
+        String result = (String) session.get(value);
+        return Integer.parseInt(result);
+    }
 }

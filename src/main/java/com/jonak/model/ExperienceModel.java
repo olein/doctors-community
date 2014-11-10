@@ -8,9 +8,10 @@ public class ExperienceModel extends BaseModel
     private String title;
     private String description;
     private int user_id;
-
-
+    private String update;
+    private String delete;
     private int id;
+
     public ExperienceModel()
     {
         super();
@@ -45,12 +46,29 @@ public class ExperienceModel extends BaseModel
     public void setTitle(String title) {
         this.title = title;
     }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(String update) {
+        this.update = update;
+    }
+
+    public String getDelete() {
+        return delete;
+    }
+
+    public void setDelete(String delete) {
+        this.delete = delete;
     }
 
 }

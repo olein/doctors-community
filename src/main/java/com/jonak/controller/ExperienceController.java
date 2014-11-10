@@ -39,7 +39,7 @@ public class ExperienceController extends BaseController
         exp.setUser_id(SessionLib.getId());
         exp.setTitle(ServletActionContext.getRequest().getParameter("title"));
         exp.setDescription(ServletActionContext.getRequest().getParameter("description"));
-        exp.save();
+        exp.save(); //add experience
         return this.SUCCESS;
     }
 
@@ -57,9 +57,39 @@ public class ExperienceController extends BaseController
                 exp.setUser_id(rs.getInt(2));
                 exp.setTitle(rs.getString(3));
                 exp.setDescription(rs.getString(4));
+                exp.setUpdate("update_experience.action?id=" + rs.getInt(1)); //set update link
+                exp.setDelete("delete_experience.action?id="+ rs.getInt(1)); //set delete link
                 messages.add(exp); //add result to vector
             }
         }
+        return this.SUCCESS;
+    }
+
+    public String setContentID() throws SQLException
+    {
+        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
+        return this.SUCCESS;
+    }
+
+    public String update() throws SQLException
+    {
+        Experience exp = Experience.find();
+        if(ServletActionContext.getRequest().getParameter("title").length()>0) {
+            exp.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
+        }
+
+        if(ServletActionContext.getRequest().getParameter("description").length()>0) {
+            exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
+        }
+
+        exp.update(SessionLib.get("ContentID")); //update content using content ID
+        return this.SUCCESS;
+    }
+
+    public String delete() throws SQLException
+    {
+        Experience exp = new Experience();
+        exp.delete();
         return this.SUCCESS;
     }
 
@@ -70,6 +100,8 @@ public class ExperienceController extends BaseController
     public void setMessages(Vector<Experience> messages) {
         this.messages = messages;
     }
+
+
 
 
 }

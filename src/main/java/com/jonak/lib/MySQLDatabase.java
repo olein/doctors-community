@@ -213,7 +213,7 @@ public class MySQLDatabase {
 
         PreparedStatement preparedStatement = this.conn.prepareStatement( sql );
         preparedStatement = this.setFields( preparedStatement, types, values );
-
+        System.out.println("Update:" + preparedStatement);
         preparedStatement.setInt( size+1, id );
         preparedStatement.executeUpdate();
 

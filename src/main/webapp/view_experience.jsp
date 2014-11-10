@@ -19,7 +19,8 @@
     <td>Description   </td><td><s:property value="description"/></td>
   </tr>
   <tr>
-    <td>Content Id   </td><td><s:property value="id"/></td>
+    <td><a href=<s:property value="update"/>>Update</a></td>
+    <td><a href=<s:property value="delete"/>>Delete</a></td>
   </tr>
 
 </s:iterator>

@@ -56,6 +56,54 @@
         <action name="show_experience" class="com.jonak.controller.ExperienceController" method="viewExperience">
             <result name="success">/view_experience.jsp</result>
         </action>
+
+        <action name="update_experience" class="com.jonak.controller.ExperienceController" method="setContentID">
+            <result name="success">/update_experience.jsp</result>
+        </action>
+
+        <action name="update_exp" class="com.jonak.controller.ExperienceController" method="update">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="delete_experience" class="com.jonak.controller.ExperienceController" method="delete">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="add_education">
+            <result>/addeducation.jsp</result>
+        </action>
+
+        <action name="add_edu" class="com.jonak.controller.EducationController" method="add">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="show_education" class="com.jonak.controller.EducationController" method="viewEducation">
+            <result name="success">/view_education.jsp</result>
+        </action>
+
+        <action name="update_education" class="com.jonak.controller.EducationController" method="setContentID">
+            <result name="success">/update_education.jsp</result>
+        </action>
+
+        <action name="update_edu" class="com.jonak.controller.EducationController" method="update">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="delete_education" class="com.jonak.controller.EducationController" method="delete">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="add_chamber">
+            <result>/addchamber.jsp</result>
+        </action>
+
+        <action name="add_chamber_detail" class="com.jonak.controller.ChamberController" method="add">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="show_chamber" class="com.jonak.controller.ChamberController" method="viewChamber">
+            <result name="success">/view_chamber.jsp</result>
+        </action>
 	</package>
 	
 </struts>
