@@ -44,7 +44,7 @@ public class ChamberController extends BaseController
         chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour"));
         chamber.setVisiting_days(ServletActionContext.getRequest().getParameter("visiting_days"));
         chamber.setFees(ServletActionContext.getRequest().getParameter("fees"));
-        chamber.save(); //add education
+        chamber.save(); //add chamber
         return this.SUCCESS;
     }
 
@@ -73,6 +73,45 @@ public class ChamberController extends BaseController
         return this.SUCCESS;
     }
 
+    public String setContentID() throws SQLException
+    {
+        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
+        return this.SUCCESS;
+    }
+
+    public String update() throws SQLException
+    {
+        Chamber chamber = Chamber.find();
+        if(ServletActionContext.getRequest().getParameter("address").length()>0) {
+            chamber.setAddress(ServletActionContext.getRequest().getParameter("address")); // reset title
+        }
+
+        if(ServletActionContext.getRequest().getParameter("telephone").length()>0) {
+            chamber.setTelephone(ServletActionContext.getRequest().getParameter("telephone"));  //reset description
+        }
+
+        if(ServletActionContext.getRequest().getParameter("visiting_hour").length()>0) {
+            chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour")); //reset description
+        }
+
+        if(ServletActionContext.getRequest().getParameter("visiting_days").length()>0) {
+            chamber.setVisiting_days(ServletActionContext.getRequest().getParameter("visiting_days")); //reset description
+        }
+
+        if(ServletActionContext.getRequest().getParameter("fees").length()>0) {
+            chamber.setFees(ServletActionContext.getRequest().getParameter("fees")); //reset description
+        }
+
+        chamber.update(SessionLib.get("ContentID")); //update content using content ID
+        return this.SUCCESS;
+    }
+
+    public String delete() throws SQLException
+    {
+        Chamber chamber = new Chamber();
+        chamber.delete(); //delete chamber
+        return this.SUCCESS;
+    }
     public void setMessages(Vector<Chamber> messages) {
         this.messages = messages;
     }

@@ -104,6 +104,18 @@
         <action name="show_chamber" class="com.jonak.controller.ChamberController" method="viewChamber">
             <result name="success">/view_chamber.jsp</result>
         </action>
+
+        <action name="update_chamber" class="com.jonak.controller.ChamberController" method="setContentID">
+            <result name="success">/update_chamber.jsp</result>
+        </action>
+
+        <action name="update_chamber_detail" class="com.jonak.controller.ChamberController" method="update">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="delete_chamber" class="com.jonak.controller.ChamberController" method="delete">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
 	</package>
 	
 </struts>

@@ -30,4 +30,31 @@ public class Chamber extends ChamberModel
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         return rs;
     }
+
+    public static Chamber find() throws SQLException
+    {
+        Chamber chamber = new Chamber();
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  _tableName = "chamber_detail",
+                _fieldName = "*";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+        _fields.add("id"); _types.add("int"); _values.add(SessionLib.get("ContentID")); //find using contentID
+
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        if( rs.next() ) {
+            chamber.setId(rs.getInt(1));
+            chamber.setUser_id(rs.getInt("user_id"));
+            chamber.setAddress(rs.getString(3));
+            chamber.setTelephone(rs.getString(4));
+            chamber.setVisiting_hour((rs.getString(5)));
+            chamber.setVisiting_days((rs.getString(6)));
+            chamber.setFees((rs.getString(7)));
+        } else {
+            chamber = null;
+        }
+        return chamber;
+    }
 }

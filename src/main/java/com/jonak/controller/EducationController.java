@@ -96,11 +96,11 @@ public class EducationController extends BaseController
     }
 
     public String delete() throws SQLException
-    {
-        Education education = new Education();
-        education.delete();
-        return this.SUCCESS;
-    }
+{
+    Education education = new Education();
+    education.delete(); //delete
+    return this.SUCCESS;
+}
 
     public void setMessages(Vector<Education> messages) {
         this.messages = messages;
