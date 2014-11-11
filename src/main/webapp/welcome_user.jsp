@@ -14,5 +14,7 @@
     <a href="<s:url action="show_education" />" >Show education</a>
     <a href="<s:url action="add_chamber" />" >Add Chamber</a>
     <a href="<s:url action="show_chamber" />" >Show Chamber Detail</a>
+    <a href="<s:url action="add_category" />" >Add category</a>
+    <a href="<s:url action="show_category" />" >Show category</a>
 </body>
 </html>
