@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
+import com.jonak.model.Speciality;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import java.text.SimpleDateFormat;
@@ -39,6 +40,7 @@ public class CategoryController extends BaseController
     }
 
     public Vector<Category> messages = new Vector<Category>();
+    public Vector<Speciality> specialities = new Vector<Speciality>();
 
     public String setCategory() throws SQLException
     {
@@ -146,11 +148,60 @@ public class CategoryController extends BaseController
         return this.SUCCESS;
     }
 
+    public String addSpeciality() throws SQLException, ParseException
+    {
+        String data[] = ServletActionContext.getRequest().getParameterValues("speciality[]");
+        for(int i=0;i<data.length;i++) {
+            Speciality speciality = new Speciality();
+            speciality.setUser_id(SessionLib.getId());
+            speciality.setCategory_id(Integer.parseInt(data[i]));
+            speciality.save(); //add speciality
+        }
+        return this.SUCCESS;
+    }
+
+    public String viewSpeciality() throws SQLException
+    {
+        // this is how we will be using
+        // get the user with id 1
+        SessionLib.set("ContentID",0);
+        ResultSet rs = Speciality.find(SessionLib.getId()); //get result using user id
+
+        if( rs != null ) {
+
+            while( rs.next() ) {
+                Speciality speciality = new Speciality();
+                speciality.setId(rs.getInt(1));
+                speciality.setUser_id(rs.getInt(3));
+                speciality.setCategory_id(rs.getInt(2));
+                speciality.setCategory_name(Category.find(speciality.getCategory_id()));
+                speciality.setDelete("delete_speciality?id="+ rs.getInt(1)); //set delete link
+                specialities.add(speciality); //add result to vector
+            }
+        }
+        return this.SUCCESS;
+    }
+
+    public String deleteSpeciality() throws SQLException
+    {
+        Speciality speciality = new Speciality();
+        speciality.delete(); //delete
+        return this.SUCCESS;
+    }
+
     public Vector<Category> getMessages() {
         return messages;
     }
 
     public void setMessages(Vector<Category> messages) {
         this.messages = messages;
+    }
+
+    public Vector<Speciality> getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(Vector<Speciality> specialities) {
+        this.specialities = specialities;
     }
 }

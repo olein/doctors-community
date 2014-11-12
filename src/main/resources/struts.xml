@@ -141,6 +141,22 @@
             <result name="success">/welcome_user.jsp</result>
         </action>
 
+        <action name="add_speciality" class="com.jonak.controller.CategoryController" method="setCategory">
+            <result>/addspeciality.jsp</result>
+        </action>
+
+        <action name="add_speciality_user" class="com.jonak.controller.CategoryController" method="addSpeciality">
+            <result>/welcome_user.jsp</result>
+        </action>
+
+        <action name="show_speciality" class="com.jonak.controller.CategoryController" method="viewSpeciality">
+            <result name="success">/view_speciality.jsp</result>
+        </action>
+
+        <action name="delete_speciality" class="com.jonak.controller.CategoryController" method="deleteSpeciality">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
     </package>
 	
 </struts>
