@@ -51,7 +51,7 @@ public class MessageController extends BaseController
             while( rs.next() ) {
                 Message message = new Message();
                 message.setTo_user_id(rs.getInt(1));
-                message.setUser_name(rs.getString(4) + " " + rs.getString(5)); //set parent category values
+                message.setUser_name(rs.getString(4) + " " + rs.getString(5)); //set user name values
                 messages.add(message); //add result to vector
             }
         }
@@ -67,7 +67,7 @@ public class MessageController extends BaseController
         message.setMsg(ServletActionContext.getRequest().getParameter("msg"));
         int timestamp = (int) (new Date().getTime()/1000);
         message.setCreated_at(timestamp);
-        message.save(); //add category
+        message.save(); //add message
         return this.SUCCESS;
     }
 

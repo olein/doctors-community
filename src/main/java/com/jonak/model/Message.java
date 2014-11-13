@@ -28,7 +28,7 @@ public class Message extends MessageModel
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
-            _fields.add("allow_message");            _types.add("int");            _values.add(1);
+            _fields.add("allow_message");            _types.add("int");            _values.add(1); //get user who allowed messages
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
 
@@ -46,7 +46,7 @@ public class Message extends MessageModel
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
-        _fields.add("from_user_id");            _types.add("int");            _values.add(SessionLib.getId());
+        _fields.add("from_user_id");            _types.add("int");            _values.add(SessionLib.getId()); //find current user
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
 
@@ -66,7 +66,7 @@ public class Message extends MessageModel
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         if(rs.next()) {
-            message.setUser_name(rs.getString(4) + " " + rs.getString(5));
+            message.setUser_name(rs.getString(4) + " " + rs.getString(5)); //get user name
         }
         return message.getUser_name();
     }
