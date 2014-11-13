@@ -157,6 +157,30 @@
             <result name="success">/welcome_user.jsp</result>
         </action>
 
+        <action name="add_configuration">
+            <result>/addconfiguration.jsp</result>
+        </action>
+
+        <action name="add_conf" class="com.jonak.controller.ConfigurationController" method="add">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="show_configuration" class="com.jonak.controller.ConfigurationController" method="viewConfiguration">
+            <result name="success">/viewConfiguration.jsp</result>
+        </action>
+
+        <action name="update_configuration" class="com.jonak.controller.ConfigurationController" method="setContentID">
+            <result name="success">/update_configuration.jsp</result>
+        </action>
+
+        <action name="update_conf" class="com.jonak.controller.ConfigurationController" method="update">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="delete_configuration" class="com.jonak.controller.ConfigurationController" method="delete">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
     </package>
 	
 </struts>
