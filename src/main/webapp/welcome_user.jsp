@@ -20,5 +20,7 @@
     <a href="<s:url action="show_speciality" />" >Show speciality</a>
     <a href="<s:url action="add_configuration" />" >Add configuration</a>
     <a href="<s:url action="show_configuration" />" >Show configuration</a>
+    <a href="<s:url action="send_message" />" >Send message</a>
+    <a href="<s:url action="show_message" />" >Show messages</a>
 </body>
 </html>

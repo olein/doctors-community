@@ -181,6 +181,22 @@
             <result name="success">/welcome_user.jsp</result>
         </action>
 
+        <action name="send_message" class="com.jonak.controller.MessageController" method="setToUser">
+            <result>/send_message.jsp</result>
+        </action>
+
+        <action name="send_msg" class="com.jonak.controller.MessageController" method="add">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
+        <action name="show_message" class="com.jonak.controller.MessageController" method="viewMessages">
+            <result name="success">/view_messages.jsp</result>
+        </action>
+
+        <action name="delete_message" class="com.jonak.controller.MessageController" method="delete">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
     </package>
 	
 </struts>

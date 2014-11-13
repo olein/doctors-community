@@ -46,9 +46,7 @@ public class Category extends CategoryModel
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         if(SessionLib.get("ContentID")>0) {
-            _fields.add("id");
-            _types.add("int");
-            _values.add(SessionLib.get("ContentID"));
+            _fields.add("id");            _types.add("int");            _values.add(SessionLib.get("ContentID"));
         }
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
 
