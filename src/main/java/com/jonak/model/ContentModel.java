@@ -20,7 +20,7 @@ public class ContentModel extends BaseModel
     private Date date;
     private String update;
     private String delete;
-
+    private String category_name;
     public ContentModel()
     {
         super();
@@ -144,6 +144,14 @@ public class ContentModel extends BaseModel
 
     public void setDelete(String delete) {
         this.delete = delete;
+    }
+
+    public String getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
 

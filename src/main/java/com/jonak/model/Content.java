@@ -46,9 +46,9 @@ public class Content extends ContentModel
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
-        _fields.add("id");            _types.add("int");            _values.add(id); //find current user
+        _fields.add("id");            _types.add("int");            _values.add(id); //find content using id
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using content id
         if( rs != null ) {
 
             if( rs.next() ) {

@@ -2,7 +2,8 @@ package com.jonak.controller;
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
 
-import com.jonak.model.CategoryModel;
+import com.jonak.model.*;
+
 import java.sql.*;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -23,8 +24,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-import com.jonak.model.Content;
-import com.jonak.model.Speciality;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import java.text.SimpleDateFormat;
@@ -39,6 +38,25 @@ public class ContentController extends BaseController
         super();
     }
     public Vector<Content> messages = new Vector<Content>();
+    public Vector<Category> output = new Vector<Category>();
+
+    public String setCategory() throws SQLException
+    {
+
+        SessionLib.set("ContentID",0);
+        ResultSet rs = Category.find(); //get category list
+
+        if( rs != null ) {
+
+            while( rs.next() ) {
+                Category category = new Category();
+                category.setId(rs.getInt(1));
+                category.setName(rs.getString(2)); //set parent category values
+                output.add(category); //add result to vector
+            }
+        }
+        return this.SUCCESS;
+    }
 
     public String add() throws SQLException, ParseException
     {
@@ -55,6 +73,11 @@ public class ContentController extends BaseController
         int timestamp = (int) (new Date().getTime()/1000);
         content.setCreated_at(timestamp);
         content.save(); //add content
+
+        ContentCategory contentCategory = new ContentCategory();
+        contentCategory.setContent_id(ContentCategory.getID());
+        contentCategory.setCategory_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id")));
+        contentCategory.save(); //set content category
         return this.SUCCESS;
     }
 
@@ -78,6 +101,15 @@ public class ContentController extends BaseController
                 content.setDate(date);
                 content.setUpdate("update_content?id=" + rs.getInt(1)); //set update link
                 content.setDelete("delete_content?id=" + rs.getInt(1)); //set delete link
+                ResultSet rset = ContentCategory.find(rs.getInt(1));
+                if(rset.next())
+                {
+                    content.setCategory_name(Category.find(rset.getInt(2)));
+                }
+                else
+                {
+                    content.setCategory_name("not specified");
+                }
                 messages.add(content); //add result to vector
             }
         }
@@ -86,6 +118,7 @@ public class ContentController extends BaseController
 
     public String setContentID() throws SQLException
     {
+        this.setCategory(); //set content types
         SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
@@ -113,8 +146,20 @@ public class ContentController extends BaseController
         content.setComment_counter(content.getComment_counter());
         content.setCreated_at(content.getCreated_at());
         content.setType(content.getType());
-
         content.update(SessionLib.get("ContentID")); //update content using content ID
+
+        if(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id"))>0) //check if it needs update
+        {
+            ContentCategory contentCategory = new ContentCategory();
+            ResultSet rs = ContentCategory.find(SessionLib.get("ContentID"));
+            contentCategory.setContent_id(SessionLib.get("ContentID"));
+            contentCategory.setCategory_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id")));
+            if(rs.next())
+            {
+                contentCategory.setId(rs.getInt(1));
+                contentCategory.update(rs.getInt(1)); //update content category
+            }
+        }
         return this.SUCCESS;
     }
 
@@ -133,6 +178,13 @@ public class ContentController extends BaseController
         this.messages = messages;
     }
 
+    public Vector<Category> getOutput() {
+        return output;
+    }
+
+    public void setOutput(Vector<Category> output) {
+        this.output = output;
+    }
 
 
 }

@@ -17,6 +17,12 @@
 </head>
 <body>
 <form action="add_content_detail" method="post">
+  Category:<select name="category_id">
+  <option value=0>--select option--</option>
+  <s:iterator value="output">
+    <option value=<s:property value="id"/>><s:property value="name"/></option>
+  </s:iterator>
+  </select><br />
   Title: <input type="text" name="title"><br>
   Description: <input	type="text" name="description"><br />
   Privacy:<select name="privacy">

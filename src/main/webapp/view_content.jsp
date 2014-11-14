@@ -13,6 +13,9 @@
   <s:iterator value="messages">
 
     <tr>
+      <td>Category Name   </td><td><s:property value="category_name"/></td>
+    </tr>
+    <tr>
       <td>Created date   </td><td><s:property value="date"/></td>
     </tr>
     <tr>
