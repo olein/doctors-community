@@ -22,5 +22,7 @@
     <a href="<s:url action="show_configuration" />" >Show configuration</a>
     <a href="<s:url action="send_message" />" >Send message</a>
     <a href="<s:url action="show_message" />" >Show messages</a>
+    <a href="<s:url action="create_content" />" >Create content</a>
+    <a href="<s:url action="show_content" />" >Show content</a>
 </body>
 </html>
