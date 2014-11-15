@@ -13,36 +13,30 @@
   <s:iterator value="messages">
 
     <tr>
-      <td>Category Name   </td><td><s:property value="category_name"/></td>
+      <td>User name   </td><td><s:property value="name"/></td>
     </tr>
     <tr>
       <td>Created date   </td><td><s:property value="date"/></td>
     </tr>
     <tr>
-      <td>Title   </td><td><s:property value="title"/></td>
-    </tr>
-    <tr>
-      <td>Description   </td><td><s:property value="description"/></td>
+      <td>Comment   </td><td><s:property value="content"/></td>
     </tr>
     <tr>
       <td><a href=<s:property value="update"/>>Update</a></td>
       <td><a href=<s:property value="delete"/>>Delete</a></td>
     </tr>
-    <tr>
-      <td><a href=<s:property value="add_participant"/>>Add participant</a></td>
-      <td><a href=<s:property value="show_participant"/>>Show participant</a></td>
-      <td><a href=<s:property value="comments"/>>Other Comments</a></td>
-    </tr>
-    <tr>
-      <td>
-      <form action=<s:property value="comment"/> method="post">
+
+
+
+  </s:iterator>
+  <tr>
+    <td>
+      <form action=<s:property value="add_comment"/> method="post">
         Comment<input type="text" name="content"><br/>
         <input type="submit" value="Submit">
       </form>
-      </td>
-    </tr>
-
-  </s:iterator>
+    </td>
+  </tr>
 </table>
 
 </body>

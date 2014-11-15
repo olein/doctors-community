@@ -109,6 +109,7 @@ public class ContentController extends BaseController
                 content.setDelete("delete_content?id=" + rs.getInt(1)); //set delete link
                 content.setAdd_participant("add_participant?content_id=" + rs.getInt(1));
                 content.setShow_participant("show_participant?content_id=" + rs.getInt(1));
+                content.setComments("all_comment?content_id=" + rs.getInt(1));
                 ResultSet rset = ContentCategory.find(rs.getInt(1));
                 if(rset.next())
                 {

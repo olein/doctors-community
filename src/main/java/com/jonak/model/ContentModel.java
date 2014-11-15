@@ -23,6 +23,7 @@ public class ContentModel extends BaseModel
     private String add_participant;
     private String show_participant;
     private String category_name;
+    private String comments;
     public ContentModel()
     {
         super();
@@ -45,6 +46,13 @@ public class ContentModel extends BaseModel
     }
 
 
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
     public String getShow_participant() {
         return show_participant;
     }

@@ -237,6 +237,26 @@
             <result name="success">/welcome_user.jsp</result>
         </action>
 
+        <action name="add_comment" class="com.jonak.controller.CommentController" method="add">
+            <result>/welcome_user.jsp</result>
+        </action>
+
+        <action name="all_comment" class="com.jonak.controller.CommentController" method="viewComment">
+            <result>/view_comment.jsp</result>
+        </action>
+
+        <action name="update_comment" class="com.jonak.controller.CommentController" method="setContentID">
+            <result name="success">/update_comment.jsp</result>
+        </action>
+
+        <action name="update_comment_detail" class="com.jonak.controller.CommentController" method="update">
+            <result name="success">/view_content.jsp</result>
+        </action>
+
+        <action name="delete_comment" class="com.jonak.controller.CommentController" method="delete">
+            <result name="success">/welcome_user.jsp</result>
+        </action>
+
     </package>
 	
 </struts>
