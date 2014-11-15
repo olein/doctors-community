@@ -78,6 +78,12 @@ public class ContentController extends BaseController
         contentCategory.setContent_id(ContentCategory.getID());
         contentCategory.setCategory_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id")));
         contentCategory.save(); //set content category
+
+        Participant participant = new Participant();
+        participant.setContent_id(ContentCategory.getID());
+        participant.setUser_id(SessionLib.getId());
+        participant.setActive(1);
+        participant.save();
         return this.SUCCESS;
     }
 
@@ -101,6 +107,8 @@ public class ContentController extends BaseController
                 content.setDate(date);
                 content.setUpdate("update_content?id=" + rs.getInt(1)); //set update link
                 content.setDelete("delete_content?id=" + rs.getInt(1)); //set delete link
+                content.setAdd_participant("add_participant?content_id=" + rs.getInt(1));
+                content.setShow_participant("show_participant?content_id=" + rs.getInt(1));
                 ResultSet rset = ContentCategory.find(rs.getInt(1));
                 if(rset.next())
                 {

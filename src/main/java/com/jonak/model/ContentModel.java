@@ -20,6 +20,8 @@ public class ContentModel extends BaseModel
     private Date date;
     private String update;
     private String delete;
+    private String add_participant;
+    private String show_participant;
     private String category_name;
     public ContentModel()
     {
@@ -40,6 +42,23 @@ public class ContentModel extends BaseModel
         this.fields.add("comment_counter");  this.types.add("int");        this.values.add(this.getComment_counter());
         this.fields.add("parent_id");  this.types.add("int");        this.values.add(this.getParent_id());
         this.fields.add("created_at");  this.types.add("int");        this.values.add(this.getCreated_at());
+    }
+
+
+    public String getShow_participant() {
+        return show_participant;
+    }
+
+    public void setShow_participant(String show_participant) {
+        this.show_participant = show_participant;
+    }
+
+    public String getAdd_participant() {
+        return add_participant;
+    }
+
+    public void setAdd_participant(String add_participant) {
+        this.add_participant = add_participant;
     }
 
     public int getId() {

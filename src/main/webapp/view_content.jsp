@@ -28,6 +28,10 @@
       <td><a href=<s:property value="update"/>>Update</a></td>
       <td><a href=<s:property value="delete"/>>Delete</a></td>
     </tr>
+    <tr>
+      <td><a href=<s:property value="add_participant"/>>Add participant</a></td>
+      <td><a href=<s:property value="show_participant"/>>Show participant</a></td>
+    </tr>
 
   </s:iterator>
 </table>
