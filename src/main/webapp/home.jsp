@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lenin
-  Date: 11/5/14
-  Time: 5:34 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 

@@ -52,7 +52,7 @@ public class MySQLDatabase {
         this.url = "jdbc:mysql://localhost:3306/";
         this.driver = "com.mysql.jdbc.Driver";
 
-        this.dbName = "doctor_community";
+        this.dbName = "doctors_community";
         this.dbUser = "root";
         this.dbPass = "rootuser";
 
@@ -125,10 +125,10 @@ public class MySQLDatabase {
         }
 
 
-//        System.out.println(sql);
+       // System.out.println(sql);
         PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
         preparedStatement = this.setFields(preparedStatement, types, values);
-
+        System.out.println(preparedStatement);
         ResultSet rs = preparedStatement.executeQuery();
 
         return rs;
@@ -172,9 +172,10 @@ public class MySQLDatabase {
             sql += "?";
         }
         sql += " ) ";
-
+        System.out.println(sql);
         PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
         preparedStatement = this.setFields(preparedStatement, types, values);
+        System.out.println(preparedStatement);
         preparedStatement.executeUpdate();
 
         return true;
@@ -212,7 +213,7 @@ public class MySQLDatabase {
 
         PreparedStatement preparedStatement = this.conn.prepareStatement( sql );
         preparedStatement = this.setFields( preparedStatement, types, values );
-
+        System.out.println("Update:" + preparedStatement);
         preparedStatement.setInt( size+1, id );
         preparedStatement.executeUpdate();
 

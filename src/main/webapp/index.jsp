@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -9,9 +9,14 @@
         <title>Doctor's Community</title>
     </head>
     <body>
+    <s:form action="login">
+        <s:textfield name="email" label="Email"/>
+        <s:password name="password" label="Password"/>
+        <s:submit/>
+    </s:form>
 
-        <a href="<s:url action="test" />" >Click ME</a>
-        <a href="<s:url action="register" />" >Register</a>
-
+    <a href="<s:url action="test" />" >Click ME</a>
+    <a href="<s:url action="register" />" >Register</a>
+    <a href="<s:url action="forgetpassword" />" >Forget Password</a>
     </body>
 </html>
