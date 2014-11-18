@@ -15,6 +15,14 @@
 
 	<package name="default2" namespace="/user"  extends="struts-default">
 
+        <action name="/">
+            <result>/back/index.jsp</result>
+        </action>
+
+        <action name="profile">
+            <result>/back/index.jsp</result>
+        </action>
+
         <action name="login">
             <result>/back/login.jsp</result>
         </action>
@@ -25,9 +33,6 @@
         <action name="logout" class="com.jonak.controller.UserController" method="logoutProcess">
         </action>
 
-        <action name="profile">
-            <result>/back/index.jsp</result>
-        </action>
 
         <action name="register">
             <result>/register.jsp</result>

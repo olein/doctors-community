@@ -19,7 +19,7 @@ public class SessionLib
     }
 
     //set session int type value
-    public static void set( String key, int value )
+    public static void set( String key, int value ) throws Exception
     {
         session.put( key, Integer.toString( value ) );
     }

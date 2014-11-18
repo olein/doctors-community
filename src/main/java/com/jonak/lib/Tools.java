@@ -11,10 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 public class Tools {
 
     // get the request parameter
-    public static String get(String name)
+    public static String get(String name) throws Exception
     {
         HttpServletRequest request = ServletActionContext.getRequest();
-        return request.getParameter( name );
+        if( request.getParameterMap().containsKey( name ) ) {
+            return request.getParameter(name);
+        } else {
+            return null;
+        }
     }
 
     // redirects to a location
@@ -23,7 +27,7 @@ public class Tools {
         HttpServletResponse response = ServletActionContext.getResponse();
 
         try {
-            response.sendRedirect( url );
+            response.sendRedirect(url);
         } catch (Exception ex) {
             throw new RuntimeException("error redirecting: "+ex.getMessage());
         }

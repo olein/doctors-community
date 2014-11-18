@@ -97,10 +97,16 @@ body {
   padding: 0;
   height: 250px;
 }
+/* login page */
 .login-form {
-    width: 350px;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px 1px #aaaaaa;
+  width: 450px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px 1px #aaaaaa;
+  margin-bottom: 25px;
+}
+.login-form form h2 {
+  margin: 0 auto 20px;
+  text-align: center;
 }
