@@ -1,10 +1,4 @@
-<?php 
-// ini_set('display_errors',1);
-// ini_set('display_startup_errors',1);
-// error_reporting(-1);
-?>
-<?php include "./template/_header.php" ?>
-
+<%@ include file="./template/_header.jsp" %>
 	<div class="row">
 		<div class="col-md-2">
 			<div class="panel panel-defult">
@@ -149,5 +143,4 @@
 			</div>	
 		</div>
 	</div>
-
-<?php include "template/_footer.php" ?>
+<%@include file="./template/_footer.jsp" %>

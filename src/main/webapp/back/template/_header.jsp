@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +44,8 @@
 <!-- main wrap -->
 <div class="container-fluid main-wrap">
   	<div class="row">
-  		
-  		<?php include 'sidebar.php' ?>
+
+        <%@ include file="sidebar.jsp" %>
 
 		<!-- main content area -->
 	    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

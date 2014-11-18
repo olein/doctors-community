@@ -13,39 +13,32 @@ public class SessionLib
     static Map session = ActionContext.getContext().getSession();
 
     //set session string type value
-    public static void set(String key, String value)
+    public static void set( String key, String value )
     {
-
-        session.put(key, value);
+        session.put( key, value );
     }
+
     //set session int type value
-    public static void set(String key, int value)
+    public static void set( String key, int value )
     {
-
-        session.put(key, Integer.toString(value));
+        session.put( key, Integer.toString( value ) );
     }
+
     // checked for login
     public static boolean isLogin()
     {
-        String result = (String) session.get("login");
-        if(result.equals("true"))
-        {
+        String result = (String) session.get("isLogin");
+        if( result.equals("true") ) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    //get user id
-    public static int getId()
-    {
-        String result = (String) session.get("id");
-        return Integer.parseInt(result);
-    }
 
+    // get session data
     public static int get(String value)
     {
-        String result = (String) session.get(value);
-        return Integer.parseInt(result);
+        String result = (String) session.get( value );
+        return Integer.parseInt( result );
     }
 }

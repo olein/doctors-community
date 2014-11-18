@@ -1,1 +1,2 @@
-<?php header("location: back/"); 
+<% response.sendRedirect("user/success"); %>
+

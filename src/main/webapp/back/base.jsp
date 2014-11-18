@@ -1,5 +1,10 @@
-<?php include "./template/_header.php" ?>
+<%@ include file="./template/_header.jsp" %>
 
-	add content here
+<h1>Struts 2 Hello World Example</h1>
+<s:form action="Welcome">
+    <s:textfield name="username" label="Username"/>
+    <s:password name="password" label="Password"/>
+    <s:submit/>
+</s:form>
 
-<?php include "template/_footer.php" ?>
+<%@ include file="./template/_footer.jsp" %>

@@ -88,19 +88,23 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
-    public String login() throws SQLException
+    public String loginprocess() throws SQLException
     {
-        // this is how we will be using
-        // get the user with id 1
-        User user = User.find();
+        // get params data
+        String  email = ServletActionContext.getRequest().getParameter("email"),
+                password = ServletActionContext.getRequest().getParameter("password");
 
+        // check login
+        User user = User.checkLogin( email, password );
+
+        // if user login set session
         if( user != null ) {
-            SessionLib.set("id", user.getId());
-            System.out.println(SessionLib.getId());
-            sessionValue = ActionContext.getContext().getSession();
+            SessionLib.set("user_id", user.getId() );
+            SessionLib.set("isLogin", "true" );
             return this.SUCCESS;
 
         } else {
+            // invalid email/pass
             System.out.printf( "No user found!" );
         }
 
@@ -131,7 +135,7 @@ public class UserController extends BaseController
 
     public String setPassword() throws SQLException
     {
-        User nuser = User.find(SessionLib.getId());
+        User nuser = User.find(SessionLib.get("user_id"));
         nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
         nuser.setKey("1"); //reset key value
         nuser.save();
@@ -155,8 +159,5 @@ public class UserController extends BaseController
     public void setMessages(Vector<User> messages) {
         this.messages = messages;
     }
-
-
-
 }
 

@@ -97,3 +97,10 @@ body {
   padding: 0;
   height: 250px;
 }
+.login-form {
+    width: 350px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px #aaaaaa;
+}
