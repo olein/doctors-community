@@ -34,9 +34,9 @@ public class UserController extends BaseController
 {
     public Vector<User> messages = new Vector<User>();
 
-    private int checkId;
     public UserController(){ super(); }
 
+    // test method
     public String test() throws SQLException
     {
         // this is how we will be using
@@ -54,6 +54,7 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
+    // new user register
     public String register() throws SQLException, ParseException
     {
         User nuser = new User();
@@ -88,31 +89,38 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
-    public String loginprocess() throws SQLException
+    // user login
+    public void loginprocess() throws SQLException
     {
         // get params data
-        String  email = ServletActionContext.getRequest().getParameter("email"),
-                password = ServletActionContext.getRequest().getParameter("password");
+        String  email = this.request.getParameter("email"),
+                password = this.request.getParameter("password");
 
         // check login
-        User user = User.checkLogin( email, password );
+        User user = User.checkLogin(email, password);
 
         // if user login set session
         if( user != null ) {
             SessionLib.set("user_id", user.getId() );
             SessionLib.set("isLogin", "true" );
-            return this.SUCCESS;
 
+            try {
+                this.response.sendRedirect("user/profile");
+            } catch (Exception ex) {
+                throw new RuntimeException("error redirecting: "+ex.getMessage());
+            }
+
+//            return this.SUCCESS;
         } else {
             // invalid email/pass
-            System.out.printf( "No user found!" );
+            try {
+                this.response.sendRedirect("login-error");
+            } catch (Exception ex) {
+                throw new RuntimeException("error redirecting: "+ex.getMessage());
+            }
+            System.out.printf("No user found!");
         }
-
-        // NOW your TASK is to find a way to send this "user" object
-        // to front jsp file so we can show it
-        // instead of console out :)
-
-        return this.ERROR;
+//        return this.ERROR;
     }
 
     public String forgetPassword() throws SQLException,ParseException

@@ -38,7 +38,7 @@ public class ChamberController extends BaseController
     public String add() throws SQLException, ParseException
     {
         Chamber chamber = new Chamber();
-        chamber.setUser_id(SessionLib.getId());
+        chamber.setUser_id(SessionLib.get("user_id"));
         chamber.setAddress(ServletActionContext.getRequest().getParameter("address"));
         chamber.setTelephone(ServletActionContext.getRequest().getParameter("telephone"));
         chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour"));
@@ -52,7 +52,7 @@ public class ChamberController extends BaseController
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Chamber.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Chamber.find(SessionLib.get("user_id")); //get result using user id
 
         if( rs != null ) {
 

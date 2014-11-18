@@ -39,7 +39,7 @@ public class EducationController extends BaseController
     public String add() throws SQLException, ParseException
     {
         Education education = new Education();
-        education.setUser_id(SessionLib.getId());
+        education.setUser_id(SessionLib.get("user_id"));
         education.setDegree(ServletActionContext.getRequest().getParameter("degree"));
         education.setInstitute(ServletActionContext.getRequest().getParameter("institute"));
         education.setResult(ServletActionContext.getRequest().getParameter("result"));
@@ -51,7 +51,7 @@ public class EducationController extends BaseController
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Education.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Education.find(SessionLib.get("user_id")); //get result using user id
 
         if( rs != null ) {
 

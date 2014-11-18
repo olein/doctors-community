@@ -58,7 +58,8 @@ public class User extends UserModel
         MySQLDatabase db = new MySQLDatabase();
 
         // hash the password
-        String hash_password = Hash.md5( password );
+//        String hash_password = Hash.md5( password );
+        String hash_password = password;
 
         // init default values
         String  _tableName = "user",

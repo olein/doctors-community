@@ -1,2 +1,2 @@
-<% response.sendRedirect("user/success"); %>
+<% response.sendRedirect("user/login"); %>
 

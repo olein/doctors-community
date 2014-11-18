@@ -36,7 +36,7 @@ public class ExperienceController extends BaseController
     public String create() throws SQLException, ParseException
     {
         Experience exp = new Experience();
-        exp.setUser_id(SessionLib.getId());
+        exp.setUser_id(SessionLib.get("user_id"));
         exp.setTitle(ServletActionContext.getRequest().getParameter("title"));
         exp.setDescription(ServletActionContext.getRequest().getParameter("description"));
         exp.save(); //add experience
@@ -47,7 +47,7 @@ public class ExperienceController extends BaseController
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Experience.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Experience.find(SessionLib.get("user_id")); //get result using user id
 
         if( rs != null ) {
 
