@@ -21,6 +21,10 @@
         <action name="loginprocess" class="com.jonak.controller.UserController" method="loginprocess">
         </action>
 
+        <action name="profile">
+            <result>/back/login.jsp?message=done</result>
+        </action>
+
         <action name="register">
             <result>/register.jsp</result>
         </action>

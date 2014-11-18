@@ -105,7 +105,7 @@ public class UserController extends BaseController
             SessionLib.set("isLogin", "true" );
 
             try {
-                this.response.sendRedirect("user/profile");
+                this.response.sendRedirect("profile");
             } catch (Exception ex) {
                 throw new RuntimeException("error redirecting: "+ex.getMessage());
             }
