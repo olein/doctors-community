@@ -20,7 +20,7 @@
 
     <div class="container login-form">
 
-        <form class="form-signin" role="form" action="loginprocess">
+        <form class="form-signin" role="form" action="loginprocess" method=""post>
             <h2 class="form-signin-heading">Please Login Here</h2>
             <p>
                 <label for="inputEmail" class="sr-only">Email address</label>

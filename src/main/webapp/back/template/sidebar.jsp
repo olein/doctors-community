@@ -38,6 +38,6 @@ left sidebar -->
 			</ul>
 		</li>
 		<li><a href="#settings"><i class="fa fa-cog"></i> Settings</a></li>
-		<li><a href="#logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+		<li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 	</ul>
 </div><!-- end left sidebar

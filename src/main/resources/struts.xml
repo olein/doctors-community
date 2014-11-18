@@ -18,7 +18,11 @@
         <action name="login">
             <result>/back/login.jsp</result>
         </action>
-        <action name="loginprocess" class="com.jonak.controller.UserController" method="loginprocess">
+
+        <action name="loginprocess" class="com.jonak.controller.UserController" method="loginProcess">
+        </action>
+
+        <action name="logout" class="com.jonak.controller.UserController" method="logoutProcess">
         </action>
 
         <action name="profile">

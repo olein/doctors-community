@@ -79,7 +79,7 @@ public class UserController extends BaseController
     }
 
     // user login
-    public void loginprocess() throws SQLException
+    public void loginProcess() throws Exception
     {
         // get params data
         String  email = Tools.get("email"),
@@ -93,22 +93,25 @@ public class UserController extends BaseController
             SessionLib.set("user_id", user.getId() );
             SessionLib.set("isLogin", "true" );
 
-            try {
-                Tools.redirect("profile");
-            } catch (Exception ex) {
-                throw new RuntimeException("error redirecting: "+ex.getMessage());
-            }
-//            return this.SUCCESS;
+            // redirect to profile page
+            Tools.redirect("profile");
         } else {
-            // invalid email/pass
-            try {
-                Tools.redirect("login-error");
-            } catch (Exception ex) {
-                throw new RuntimeException("error redirecting: "+ex.getMessage());
-            }
-            System.out.printf("No user found!");
+            // redirect with error
+            Tools.redirect("login?invalid=true");
         }
-//        return this.ERROR;
+    }
+
+    // logout process
+    public void logoutProcess() throws Exception
+    {
+        // if user login then unset session
+        if( SessionLib.isLogin() ) {
+            SessionLib.unset("user_id");
+            SessionLib.unset("isLogin");
+        }
+
+        // redirect user to login page
+        Tools.redirect("login?logout=true");
     }
 
     public String forgetPassword() throws SQLException,ParseException

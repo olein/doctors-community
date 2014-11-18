@@ -9,17 +9,23 @@ import javax.servlet.http.HttpServletResponse;
  * Created by lenin on 11/19/14.
  */
 public class Tools {
-    // protected ;
-    // protected ;
+
+    // get the request parameter
     public static String get(String name)
     {
         HttpServletRequest request = ServletActionContext.getRequest();
         return request.getParameter( name );
     }
 
+    // redirects to a location
     public static void redirect( String url ) throws Exception
     {
         HttpServletResponse response = ServletActionContext.getResponse();
-        response.sendRedirect( url );
+
+        try {
+            response.sendRedirect( url );
+        } catch (Exception ex) {
+            throw new RuntimeException("error redirecting: "+ex.getMessage());
+        }
     }
 }

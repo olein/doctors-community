@@ -24,21 +24,31 @@ public class SessionLib
         session.put( key, Integer.toString( value ) );
     }
 
+    //set session int type value
+    public static void unset( String key)
+    {
+        if( session.containsKey( key ) )
+            session.remove( key );
+    }
+
     // checked for login
     public static boolean isLogin() throws Exception
     {
-        String result = (String) session.get("isLogin");
-        if( result == null || result.equals("false") ) {
-            return false;
-        } else {
+        String result = SessionLib.get("isLogin");
+        if( result != null && result.equals("true") ) {
             return true;
+        } else {
+            return false;
         }
     }
 
     // get session data
-    public static int get(String value)
+    public static String get( String key ) throws Exception
     {
-        String result = (String) session.get( value );
-        return Integer.parseInt( result );
+        String result = null;
+        if( session.containsKey( key ) ) {
+            result =  (String) session.get( key );
+        }
+        return result;
     }
 }
