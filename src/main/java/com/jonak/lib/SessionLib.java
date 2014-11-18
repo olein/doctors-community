@@ -25,13 +25,13 @@ public class SessionLib
     }
 
     // checked for login
-    public static boolean isLogin()
+    public static boolean isLogin() throws Exception
     {
         String result = (String) session.get("isLogin");
-        if( result.equals("true") ) {
-            return true;
-        } else {
+        if( result == null || result.equals("false") ) {
             return false;
+        } else {
+            return true;
         }
     }
 

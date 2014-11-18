@@ -22,7 +22,7 @@
         </action>
 
         <action name="profile">
-            <result>/back/login.jsp?message=done</result>
+            <result>/back/index.jsp</result>
         </action>
 
         <action name="register">

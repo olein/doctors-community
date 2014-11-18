@@ -2,30 +2,19 @@ package com.jonak.controller;
 
 // import custom
 import com.jonak.lib.Emailer;
-import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.User;
-import com.jonak.model.UserModel;
 
-//import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+// import default
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Vector;
-
-import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-// import default
 
 /**
  * user controller
@@ -93,8 +82,8 @@ public class UserController extends BaseController
     public void loginprocess() throws SQLException
     {
         // get params data
-        String  email = this.request.getParameter("email"),
-                password = this.request.getParameter("password");
+        String  email = Tools.get("email"),
+                password = Tools.get("password");
 
         // check login
         User user = User.checkLogin(email, password);
@@ -105,16 +94,15 @@ public class UserController extends BaseController
             SessionLib.set("isLogin", "true" );
 
             try {
-                this.response.sendRedirect("profile");
+                Tools.redirect("profile");
             } catch (Exception ex) {
                 throw new RuntimeException("error redirecting: "+ex.getMessage());
             }
-
 //            return this.SUCCESS;
         } else {
             // invalid email/pass
             try {
-                this.response.sendRedirect("login-error");
+                Tools.redirect("login-error");
             } catch (Exception ex) {
                 throw new RuntimeException("error redirecting: "+ex.getMessage());
             }
