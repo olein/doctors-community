@@ -27,8 +27,9 @@ public class SessionLib
     //set session int type value
     public static void unset( String key)
     {
-        if( session.containsKey( key ) )
-            session.remove( key );
+        if( session.containsKey( key ) ) {
+            session.remove(key);
+        }
     }
 
     // checked for login
@@ -50,5 +51,15 @@ public class SessionLib
             result =  (String) session.get( key );
         }
         return result;
+    }
+
+    // get user id
+    public static int getUserID() throws Exception
+    {
+        String result = "0";
+        if( session.containsKey( "user_id" ) ) {
+            result =  (String) session.get( "user_id" );
+        }
+        return Integer.parseInt( result );
     }
 }

@@ -30,7 +30,7 @@ public class Education extends EducationModel
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         return rs;
     }
-    public static Education find() throws SQLException
+    public static Education find() throws Exception
     {
         Education education = new Education();
         MySQLDatabase db = new MySQLDatabase();
@@ -40,7 +40,8 @@ public class Education extends EducationModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        _fields.add("id"); _types.add("int"); _values.add(SessionLib.get("ContentID"));
+        int contentId = Integer.parseInt( SessionLib.get("ContentID") );
+        _fields.add("id"); _types.add("int"); _values.add( contentId );
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
         if( rs.next() ) {

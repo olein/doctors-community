@@ -31,7 +31,7 @@ public class Chamber extends ChamberModel
         return rs;
     }
 
-    public static Chamber find() throws SQLException
+    public static Chamber find() throws Exception
     {
         Chamber chamber = new Chamber();
         MySQLDatabase db = new MySQLDatabase();
@@ -41,7 +41,8 @@ public class Chamber extends ChamberModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        _fields.add("id"); _types.add("int"); _values.add(SessionLib.get("ContentID")); //find using contentID
+        int contentId = Integer.parseInt( SessionLib.get("ContentID") );
+        _fields.add("id"); _types.add("int"); _values.add( contentId ); //find using contentID
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
         if( rs.next() ) {

@@ -125,16 +125,17 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
-    public String findUser() throws SQLException
+    public String findUser() throws Exception
     {
         User nuser = User.getUserId(); //get user id
         SessionLib.set("id", nuser.getId()); // saved id in the session
         return this.SUCCESS;
     }
 
-    public String setPassword() throws SQLException
+    public String setPassword() throws Exception
     {
-        User nuser = User.find(SessionLib.get("user_id"));
+        int id = SessionLib.getUserID();
+        User nuser = User.find( id );
         nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
         nuser.setKey("1"); //reset key value
         nuser.save();
