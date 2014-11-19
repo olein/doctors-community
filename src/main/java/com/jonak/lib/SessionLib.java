@@ -13,15 +13,23 @@ public class SessionLib
     static Map session = ActionContext.getContext().getSession();
 
     //set session string type value
-    public static void set( String key, String value )
+    public static void set( String key, String value ) throws Exception
     {
-        session.put( key, value );
+        try{
+            session.put( key, value );
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
+        }
     }
 
     //set session int type value
     public static void set( String key, int value ) throws Exception
     {
-        session.put( key, Integer.toString( value ) );
+        try {
+            session.put( key, Integer.toString( value ) );
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
+        }
     }
 
     //set session int type value
@@ -61,5 +69,15 @@ public class SessionLib
             result =  (String) session.get( "user_id" );
         }
         return Integer.parseInt( result );
+    }
+
+    // get current page
+    public static String getCurrentPage() throws Exception
+    {
+        String result = "";
+        if( session.containsKey( "current_page" ) ) {
+            result =  (String) session.get( "current_page" );
+        }
+        return result;
     }
 }

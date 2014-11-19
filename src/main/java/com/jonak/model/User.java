@@ -54,7 +54,7 @@ public class User extends UserModel
     public static User checkLogin( String email, String password ) throws SQLException
     {
         // init vars
-        User user = new User();
+        User user;
         MySQLDatabase db = new MySQLDatabase();
 
         // hash the password

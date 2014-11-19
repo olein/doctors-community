@@ -92,9 +92,8 @@ public class UserController extends BaseController
         if( user != null ) {
             SessionLib.set("user_id", user.getId() );
             SessionLib.set("isLogin", "true" );
-
             // redirect to profile page
-            Tools.redirect("profile");
+            Tools.redirect("dashboard");
         } else {
             // redirect with error
             Tools.redirect("login?invalid=true");

@@ -1,6 +1,7 @@
 package com.jonak.lib;
 
 // import defaults
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,5 +32,12 @@ public class Tools {
         } catch (Exception ex) {
             throw new RuntimeException("error redirecting: "+ex.getMessage());
         }
+    }
+
+    // get current action name
+    public static String getCurrentPage() throws Exception
+    {
+        String actionName = ActionContext.getContext().getName();
+        return actionName;
     }
 }

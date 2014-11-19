@@ -72,7 +72,7 @@ public class EducationController extends BaseController
 
     public String setContentID() throws SQLException
     {
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
+        //SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 

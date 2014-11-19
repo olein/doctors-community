@@ -7,20 +7,26 @@
 
     <constant name="struts.devMode" value="false"/>
 
-    <package name="default" extends="struts-default">
+    <package name="default" namespace="/user" extends="struts-default">
+
         <action name="test" class="com.jonak.controller.UserController" method="test">
             <result name="success">/home.jsp</result>
         </action>
-    </package>
 
-	<package name="default2" namespace="/user"  extends="struts-default">
+        <action name="">
+            <result>/back/index.jsp</result>
+        </action>
 
-        <action name="/">
+        <action name="dashboard">
+            <result>/back/index.jsp</result>
+        </action>
+
+        <action name="messages">
             <result>/back/index.jsp</result>
         </action>
 
         <action name="profile">
-            <result>/back/index.jsp</result>
+            <result>/back/profile.jsp</result>
         </action>
 
         <action name="login">
