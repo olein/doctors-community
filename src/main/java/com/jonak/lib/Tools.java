@@ -5,6 +5,9 @@ import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by lenin on 11/19/14.
@@ -42,5 +45,77 @@ public class Tools {
     }
 
     // get current date in time stamp
-//    public static int getTimeStamp() throws Exception
+    public static int getTimeStamp() throws Exception
+    {
+        Date currentDate = new Date();
+        int timeStamp = (int) (currentDate.getTime() / 1000);
+
+        return timeStamp;
+    }
+
+    // get time stamp from string date
+    public static int getTimeStamp( String strDate ) throws Exception
+    {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date theDate = (Date)formatter.parse( strDate );
+        int timeStamp = (int) ( theDate.getTime() / 1000 );
+
+        return timeStamp;
+    }
+
+    // get time stamp from string date
+    public static int getTimeStamp( String strDate, String format ) throws Exception
+    {
+        DateFormat formatter = new SimpleDateFormat( format );
+        Date theDate = (Date)formatter.parse( strDate );
+        int timeStamp = (int) ( theDate.getTime() / 1000 );
+
+        return timeStamp;
+    }
+
+    // get date
+    public static String getDate( ) throws Exception
+    {
+        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
+        Date theDate = new Date();
+        String currentDate = formatter.format( theDate );
+
+        return currentDate;
+    }
+
+    // get date from a date
+    public static String getDate( Date theDate ) throws Exception
+    {
+        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
+        String currentDate = formatter.format( theDate );
+
+        return currentDate;
+    }
+
+    // get date from a date by format
+    public static String getDate( Date theDate, String format ) throws Exception
+    {
+        DateFormat formatter = new SimpleDateFormat( format );
+        String currentDate = formatter.format( theDate );
+
+        return currentDate;
+    }
+
+    // get date
+    public static String getDate( int timeStamp ) throws Exception
+    {
+        Date theDate = new Date( (long) timeStamp * 1000 );
+        String currentDate = Tools.getDate( theDate );
+
+        return currentDate;
+    }
+
+    // get date
+    public static String getDate( int timeStamp, String format ) throws Exception
+    {
+        Date theDate = new Date( (long) timeStamp * 1000 );
+        String currentDate = Tools.getDate( theDate, format );
+
+        return currentDate;
+    }
 }

@@ -131,9 +131,6 @@ public class UserController extends BaseController
     // save profile
     public void saveProfile() throws Exception
     {
-        // get the user id
-        int user_id = SessionLib.getUserID();
-
         // get the request parameters
         String  email = Tools.get("email"),
                 password = Tools.get("password"),
@@ -148,11 +145,54 @@ public class UserController extends BaseController
                 strAllowMessage = Tools.get("allowMessage"),
                 strStatus = Tools.get("status");
 
-        int     dateOfBirth = 0,
+        int     dateOfBirth = Tools.getTimeStamp( strDateOfBirth ),
                 gender = Integer.parseInt( strGender ),
                 type = ( strType != null ) ? Integer.parseInt( strType ) : -1,
                 allowMessage = Integer.parseInt( strAllowMessage ),
                 status = ( strStatus != null ) ? Integer.parseInt( strStatus ) : -1;
+
+        // get user
+        int user_id = SessionLib.getUserID();
+        User user = User.find( user_id );
+
+        // check email
+        if( ! user.getEmail().equals( email ) ) { user.setEmail( email ); }
+
+        // check password
+        if( ! password.isEmpty() ) { user.setPassword( password ); }
+
+        // check firstname
+        if( ! user.getFirstName().equals( firstName ) ) { user.setFirstName( firstName ); }
+
+        // check lastname
+        if( ! user.getLastName().equals( lastName ) ) { user.setLastName( lastName ); }
+
+        // check address
+        if( ! user.getAddress().equals( address ) ) { user.setAddress( address ); }
+
+        // check district
+        if( ! user.getDistrict().equals( district ) ) { user.setDistrict( district ); }
+
+        // check date of birth
+        if( user.getDateOfBirth() != dateOfBirth ) { user.setDateOfBirth( dateOfBirth ); }
+
+        // check gender
+        if( user.getGender() != gender ) { user.setGender( gender ); }
+
+        // check type
+        if( type >= 0 && user.getType() != type ) { user.setType( type ); }
+
+        // check allow message
+        if( user.getAllowMessage() != allowMessage ) { user.setAllowMessage( allowMessage ); }
+
+        // check status
+        if( status >= 0 && user.getStatus() != status ) { user.setStatus( status ); }
+
+        // save user
+        user.save();
+
+        // redirect to profile page with success message
+        Tools.redirect("profile?update=true");
     }
 
     public String forgetPassword() throws SQLException,ParseException
