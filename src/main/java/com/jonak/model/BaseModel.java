@@ -20,7 +20,7 @@ public class BaseModel {
 
     // id of the object
     protected int id;
-    protected int user_id;
+
     // table name
     protected String tableName;
 
@@ -40,7 +40,7 @@ public class BaseModel {
     {
         // set initial values
         this.id = 0;
-        this.user_id = 0;
+
         this.fields = new ArrayList();
         this.types  = new ArrayList();
         this.values = new ArrayList();
@@ -54,12 +54,8 @@ public class BaseModel {
      */
     public void save() throws SQLException
     {
-        // if id is given (greater than 0) that mean it is update call
-       if( this.user_id > 0 ) {
-            this.update(this.user_id);
-       }
-
-       else if( this.id > 0 ) {
+       // if id is given (greater than 0) that mean it is update call
+       if( this.id > 0 ) {
             this.update();
        }
        else{
@@ -93,20 +89,7 @@ public class BaseModel {
     {
         this.db = new MySQLDatabase();
 
-        // prepare fields (fields, types, values)
-        this.prepareFields();
-
         this.db.executeUpdateQuery( this.tableName, this.fields, this.types, this.values, this.id );
-        this.db.closeConnection();
-    }
-
-    public void update(int id) throws SQLException
-    {
-        this.db = new MySQLDatabase();
-
-        this.prepareFields();
-
-        this.db.executeUpdateQuery( this.tableName, this.fields, this.types, this.values, id );
         this.db.closeConnection();
     }
 
@@ -121,20 +104,8 @@ public class BaseModel {
     {
         this.db = new MySQLDatabase();
 
-        this.prepareFields();
-
         this.db.executeInsertQuery( this.tableName, this.fields, this.types, this.values );
         this.db.closeConnection();
     }
 
-    // MUST override this method
-
-    /**
-     * prepare methods
-     *
-     */
-    protected void prepareFields()
-    {
-        // override this from child class
-    }
 }

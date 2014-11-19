@@ -40,4 +40,7 @@ public class Tools {
         String actionName = ActionContext.getContext().getName();
         return actionName;
     }
+
+    // get current date in time stamp
+//    public static int getTimeStamp() throws Exception
 }

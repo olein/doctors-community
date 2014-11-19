@@ -21,7 +21,7 @@ import java.util.*;
  */
 public class UserController extends BaseController
 {
-    public Vector<User> messages = new Vector<User>();
+    public Vector<User> dataOut = new Vector<User>();
 
     public UserController(){ super(); }
 
@@ -36,7 +36,7 @@ public class UserController extends BaseController
             System.out.printf( "Name: %s %s\n", user.getFirstName(), user.getLastName() );
             System.out.printf( "Email: %s \n", user.getEmail() );
             System.out.printf( "Address: %s \n", user.getAddress() );
-            messages.add(user);
+            this.dataOut.add(user);
         } else {
             System.out.printf( "No user found!" );
         }
@@ -71,7 +71,7 @@ public class UserController extends BaseController
         Date date1 = new Date();
         timestamp = (int) date.getTime()/1000;
         nuser.setCreatedAt(timestamp);
-        nuser.setKey("1");
+        nuser.setToken("");
 
         nuser.save();
 
@@ -113,12 +113,54 @@ public class UserController extends BaseController
         Tools.redirect("login?logout=true");
     }
 
+    // view profile
+    public String viewProfile() throws Exception
+    {
+        // get current user
+        int user_id = SessionLib.getUserID();
+        User user = User.find( user_id );
+
+        // add the user in data out
+        this.dataOut.clear();
+        this.dataOut.add( user );
+
+        // return success
+        return this.SUCCESS;
+    }
+
+    // save profile
+    public void saveProfile() throws Exception
+    {
+        // get the user id
+        int user_id = SessionLib.getUserID();
+
+        // get the request parameters
+        String  email = Tools.get("email"),
+                password = Tools.get("password"),
+                firstName = Tools.get("firstName"),
+                lastName = Tools.get("lastName"),
+                address = Tools.get("address"),
+                district = Tools.get("district");
+
+        String  strDateOfBirth = Tools.get("dateOfBirth"),
+                strGender = Tools.get("gender"),
+                strType = Tools.get("type"),
+                strAllowMessage = Tools.get("allowMessage"),
+                strStatus = Tools.get("status");
+
+        int     dateOfBirth = 0,
+                gender = Integer.parseInt( strGender ),
+                type = ( strType != null ) ? Integer.parseInt( strType ) : -1,
+                allowMessage = Integer.parseInt( strAllowMessage ),
+                status = ( strStatus != null ) ? Integer.parseInt( strStatus ) : -1;
+    }
+
     public String forgetPassword() throws SQLException,ParseException
     {
         User nuser = User.getUser(); //get user id
         Date date = new Date();
         int timeStamp = (int) (date.getTime() / 1000); //generate key value
-        nuser.setKey(Integer.toString(timeStamp));  //set key value
+        //nuser.setKey(Integer.toString(timeStamp));  //set key value
         nuser.save();
         Emailer.sendEmail(timeStamp); //send email to user
         return this.SUCCESS;
@@ -136,7 +178,7 @@ public class UserController extends BaseController
         int id = SessionLib.getUserID();
         User nuser = User.find( id );
         nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
-        nuser.setKey("1"); //reset key value
+        //nuser.setKey("1"); //reset key value
         nuser.save();
         return this.SUCCESS;
     }
@@ -144,19 +186,19 @@ public class UserController extends BaseController
     public String noReset() throws SQLException
     {
         User nuser = User.getUserId();
-        nuser.setKey("1"); //reset generated key
+        //nuser.setKey("1"); //reset generated key
         nuser.save();
         return this.SUCCESS;
     }
 
-
-
-    public Vector<User> getMessages() {
-        return messages;
+    /// getter for data out
+    public Vector<User> getDataOut() {
+        return this.dataOut;
     }
 
-    public void setMessages(Vector<User> messages) {
-        this.messages = messages;
+    /// setter for data out
+    public void setDataOut(Vector<User> users) {
+        this.dataOut = users;
     }
 }
 

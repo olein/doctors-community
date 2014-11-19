@@ -27,7 +27,7 @@ public class UserModel extends BaseModel {
 	private int allowMessage;
     private int status;
     private int createdAt;
-    private String key;
+    private String token;
 
     public UserModel()
     {
@@ -35,10 +35,8 @@ public class UserModel extends BaseModel {
         this.tableName = "user";
     }
 
-    protected void prepareFields()
+    /*protected void prepareFields()
     {
-        // again no need for id
-
         // database field name              field type                          getter method
         this.fields.add( "email" ); this.types.add( "String" ); this.values.add( this.getEmail() );
         this.fields.add( "password" ); this.types.add( "String" ); this.values.add( this.getPassword() );
@@ -54,11 +52,11 @@ public class UserModel extends BaseModel {
         this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.getStatus() );
         this.fields.add( "created_at" ); this.types.add( "int" ); this.values.add( this.getCreatedAt() );
         this.fields.add( "keyValue" ); this.types.add( "String" ); this.values.add( this.getKey() );
-
-    }
+    }*/
 
     public int getId() {
         return this.id;
+
     }
 
     public void setId(int id) {
@@ -71,6 +69,7 @@ public class UserModel extends BaseModel {
 
     public void setEmail(String email) {
         this.email = email;
+        this.fields.add( "email" ); this.types.add( "String" ); this.values.add( this.email );
     }
 
     public String getPassword() {
@@ -79,6 +78,7 @@ public class UserModel extends BaseModel {
 
     public void setPassword(String password) {
         this.password = password;
+        this.fields.add( "password" ); this.types.add( "String" ); this.values.add( this.password );
     }
 
     public String getFirstName() {
@@ -87,6 +87,7 @@ public class UserModel extends BaseModel {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        this.fields.add( "first_name" ); this.types.add( "String" ); this.values.add( this.firstName );
     }
 
     public String getLastName() {
@@ -95,6 +96,7 @@ public class UserModel extends BaseModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        this.fields.add( "last_name" ); this.types.add( "String" ); this.values.add( this.lastName );
     }
 
     public String getAddress() {
@@ -103,6 +105,7 @@ public class UserModel extends BaseModel {
 
     public void setAddress(String address) {
         this.address = address;
+        this.fields.add( "address" ); this.types.add( "String" ); this.values.add( this.address );
     }
 
     public String getDistrict() {
@@ -111,6 +114,7 @@ public class UserModel extends BaseModel {
 
     public void setDistrict(String district) {
         this.district = district;
+        this.fields.add( "district" ); this.types.add( "String" ); this.values.add( this.district );
     }
 
     public int getDateOfBirth() {
@@ -119,6 +123,7 @@ public class UserModel extends BaseModel {
 
     public void setDateOfBirth(int dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        this.fields.add( "date_of_birth" ); this.types.add( "int" ); this.values.add( this.dateOfBirth );
     }
 
     public int getGender() {
@@ -127,6 +132,7 @@ public class UserModel extends BaseModel {
 
     public void setGender(int gender) {
         this.gender = gender;
+        this.fields.add( "gender" ); this.types.add( "int" ); this.values.add( this.gender );
     }
 
     public int getType() {
@@ -135,6 +141,7 @@ public class UserModel extends BaseModel {
 
     public void setType(int type) {
         this.type = type;
+        this.fields.add( "type" ); this.types.add( "int" ); this.values.add( this.type );
     }
 
     public int getLastLoginAt() {
@@ -143,6 +150,7 @@ public class UserModel extends BaseModel {
 
     public void setLastLoginAt(int lastLoginAt) {
         this.lastLoginAt = lastLoginAt;
+        this.fields.add( "last_login_at" ); this.types.add( "int" ); this.values.add( this.lastLoginAt );
     }
 
     public int getAllowMessage() {
@@ -151,6 +159,7 @@ public class UserModel extends BaseModel {
 
     public void setAllowMessage(int allowMessage) {
         this.allowMessage = allowMessage;
+        this.fields.add( "allow_message" ); this.types.add( "int" ); this.values.add( this.allowMessage );
     }
 
     public int getStatus() {
@@ -159,6 +168,7 @@ public class UserModel extends BaseModel {
 
     public void setStatus(int status) {
         this.status = status;
+        this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.status );
     }
 
     public int getCreatedAt() {
@@ -167,14 +177,16 @@ public class UserModel extends BaseModel {
 
     public void setCreatedAt(int createdAt) {
         this.createdAt = createdAt;
+        this.fields.add( "created_at" ); this.types.add( "int" ); this.values.add( this.createdAt );
     }
 
-    public String getKey() {
-        return key;
+    public String getToken() {
+        return token;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setToken(String token) {
+        this.token = token;
+        this.fields.add( "keyValue" ); this.types.add( "String" ); this.values.add( this.token );
     }
 
 }

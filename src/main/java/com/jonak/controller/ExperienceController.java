@@ -29,11 +29,11 @@ import java.util.*;
 public class ExperienceController extends BaseController
 {
 
-    public Vector<Experience> messages = new Vector<Experience>();
+    public Vector<Experience> dataOut = new Vector<Experience>();
 
     public ExperienceController(){ super(); }
 
-    public String create() throws Exception
+    public String creatNewEx() throws Exception
     {
         Experience exp = new Experience();
         exp.setUser_id( SessionLib.getUserID() );
@@ -59,7 +59,7 @@ public class ExperienceController extends BaseController
                 exp.setDescription(rs.getString(4));
                 exp.setUpdate("update_experience.action?id=" + rs.getInt(1)); //set update link
                 exp.setDelete("delete_experience.action?id="+ rs.getInt(1)); //set delete link
-                messages.add(exp); //add result to vector
+                //messages.add(exp); //add result to vector
             }
         }
         return this.SUCCESS;
@@ -73,13 +73,13 @@ public class ExperienceController extends BaseController
 
     public String update() throws Exception
     {
-        Experience exp = Experience.find();
+        //Experience exp = Experience.find();
         if(ServletActionContext.getRequest().getParameter("title").length()>0) {
-            exp.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
+            //exp.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
         }
 
         if(ServletActionContext.getRequest().getParameter("description").length()>0) {
-            exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
+            //exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
         }
 
         //exp.update(SessionLib.get("ContentID")); //update content using content ID
@@ -93,12 +93,13 @@ public class ExperienceController extends BaseController
         return this.SUCCESS;
     }
 
-    public Vector<Experience> getMessages() {
-        return messages;
-    }
+    /*public Vector<Experience> getMessages() {
+        //return messages;
+        return 0;
+    }*/
 
     public void setMessages(Vector<Experience> messages) {
-        this.messages = messages;
+        //this.messages = messages;
     }
 
 

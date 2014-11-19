@@ -4,6 +4,7 @@
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git",
     "jquery": "git://github.com/jquery/jquery.git",
+    "jquery-ui": "~1.10.3",
     "fontawesome": "git://github.com/FortAwesome/Font-Awesome.git"
   }
 }
