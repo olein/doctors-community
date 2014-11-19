@@ -2,30 +2,19 @@ package com.jonak.controller;
 
 // import custom
 import com.jonak.lib.Emailer;
-import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.User;
-import com.jonak.model.UserModel;
 
-//import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+// import default
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Vector;
-
-import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-// import default
 
 /**
  * user controller
@@ -34,9 +23,9 @@ public class UserController extends BaseController
 {
     public Vector<User> messages = new Vector<User>();
 
-    private int checkId;
     public UserController(){ super(); }
 
+    // test method
     public String test() throws SQLException
     {
         // this is how we will be using
@@ -51,14 +40,10 @@ public class UserController extends BaseController
         } else {
             System.out.printf( "No user found!" );
         }
-
-        // NOW your TASK is to find a way to send this "user" object
-        // to front jsp file so we can show it
-        // instead of console out :)
-
         return this.SUCCESS;
     }
 
+    // new user register
     public String register() throws SQLException, ParseException
     {
         User nuser = new User();
@@ -94,27 +79,39 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
-    public String login() throws SQLException
+    // user login
+    public void loginProcess() throws Exception
     {
-        // this is how we will be using
-        // get the user with id 1
-        User user = User.find();
+        // get params data
+        String  email = Tools.get("email"),
+                password = Tools.get("password");
 
+        // check login
+        User user = User.checkLogin(email, password);
+
+        // if user login set session
         if( user != null ) {
-            SessionLib.set("id", user.getId());
-            System.out.println(SessionLib.getId());
-            sessionValue = ActionContext.getContext().getSession();
-            return this.SUCCESS;
-
+            SessionLib.set("user_id", user.getId() );
+            SessionLib.set("isLogin", "true" );
+            // redirect to profile page
+            Tools.redirect("dashboard");
         } else {
-            System.out.printf( "No user found!" );
+            // redirect with error
+            Tools.redirect("login?invalid=true");
+        }
+    }
+
+    // logout process
+    public void logoutProcess() throws Exception
+    {
+        // if user login then unset session
+        if( SessionLib.isLogin() ) {
+            SessionLib.unset("user_id");
+            SessionLib.unset("isLogin");
         }
 
-        // NOW your TASK is to find a way to send this "user" object
-        // to front jsp file so we can show it
-        // instead of console out :)
-
-        return this.ERROR;
+        // redirect user to login page
+        Tools.redirect("login?logout=true");
     }
 
     public String forgetPassword() throws SQLException,ParseException
@@ -128,16 +125,17 @@ public class UserController extends BaseController
         return this.SUCCESS;
     }
 
-    public String findUser() throws SQLException
+    public String findUser() throws Exception
     {
         User nuser = User.getUserId(); //get user id
         SessionLib.set("id", nuser.getId()); // saved id in the session
         return this.SUCCESS;
     }
 
-    public String setPassword() throws SQLException
+    public String setPassword() throws Exception
     {
-        User nuser = User.find(SessionLib.getId());
+        int id = SessionLib.getUserID();
+        User nuser = User.find( id );
         nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
         nuser.setKey("1"); //reset key value
         nuser.save();
@@ -161,8 +159,5 @@ public class UserController extends BaseController
     public void setMessages(Vector<User> messages) {
         this.messages = messages;
     }
-
-
-
 }
 

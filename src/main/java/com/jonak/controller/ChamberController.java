@@ -35,10 +35,10 @@ public class ChamberController extends BaseController
 
     public Vector<Chamber> messages = new Vector<Chamber>();
 
-    public String add() throws SQLException, ParseException
+    public String add() throws Exception
     {
         Chamber chamber = new Chamber();
-        chamber.setUser_id(SessionLib.getId());
+        chamber.setUser_id( SessionLib.getUserID() );
         chamber.setAddress(ServletActionContext.getRequest().getParameter("address"));
         chamber.setTelephone(ServletActionContext.getRequest().getParameter("telephone"));
         chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour"));
@@ -48,11 +48,11 @@ public class ChamberController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewChamber() throws SQLException
+    public String viewChamber() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Chamber.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Chamber.find( SessionLib.getUserID() ); //get result using user id
 
         if( rs != null ) {
 
@@ -75,11 +75,11 @@ public class ChamberController extends BaseController
 
     public String setContentID() throws SQLException
     {
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
+        // SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
         Chamber chamber = Chamber.find();
         if(ServletActionContext.getRequest().getParameter("address").length()>0) {
@@ -102,7 +102,7 @@ public class ChamberController extends BaseController
             chamber.setFees(ServletActionContext.getRequest().getParameter("fees")); //reset description
         }
 
-        chamber.update(SessionLib.get("ContentID")); //update content using content ID
+        // chamber.update(SessionLib.get("ContentID")); //update content using content ID
         return this.SUCCESS;
     }
 

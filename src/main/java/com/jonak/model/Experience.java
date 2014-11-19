@@ -36,7 +36,7 @@ public class Experience extends ExperienceModel
         return rs;
     }
 
-    public static Experience find() throws SQLException
+    public static Experience find() throws Exception
     {
         Experience exp = new Experience();
         MySQLDatabase db = new MySQLDatabase();
@@ -46,7 +46,8 @@ public class Experience extends ExperienceModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        _fields.add("id"); _types.add("int"); _values.add(SessionLib.get("ContentID"));
+        int contentId = Integer.parseInt( SessionLib.get("ContentID") );
+        _fields.add("id"); _types.add("int"); _values.add( contentId );
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
         if( rs.next() ) {

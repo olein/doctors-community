@@ -33,21 +33,21 @@ public class ExperienceController extends BaseController
 
     public ExperienceController(){ super(); }
 
-    public String create() throws SQLException, ParseException
+    public String create() throws Exception
     {
         Experience exp = new Experience();
-        exp.setUser_id(SessionLib.getId());
+        exp.setUser_id( SessionLib.getUserID() );
         exp.setTitle(ServletActionContext.getRequest().getParameter("title"));
         exp.setDescription(ServletActionContext.getRequest().getParameter("description"));
         exp.save(); //add experience
         return this.SUCCESS;
     }
 
-    public String viewExperience() throws SQLException
+    public String viewExperience() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Experience.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Experience.find( SessionLib.getUserID() ); //get result using user id
 
         if( rs != null ) {
 
@@ -67,11 +67,11 @@ public class ExperienceController extends BaseController
 
     public String setContentID() throws SQLException
     {
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
+        // SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
         Experience exp = Experience.find();
         if(ServletActionContext.getRequest().getParameter("title").length()>0) {
@@ -82,7 +82,7 @@ public class ExperienceController extends BaseController
             exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
         }
 
-        exp.update(SessionLib.get("ContentID")); //update content using content ID
+        //exp.update(SessionLib.get("ContentID")); //update content using content ID
         return this.SUCCESS;
     }
 

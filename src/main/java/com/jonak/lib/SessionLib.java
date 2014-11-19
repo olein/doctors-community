@@ -13,39 +13,71 @@ public class SessionLib
     static Map session = ActionContext.getContext().getSession();
 
     //set session string type value
-    public static void set(String key, String value)
+    public static void set( String key, String value ) throws Exception
     {
-
-        session.put(key, value);
-    }
-    //set session int type value
-    public static void set(String key, int value)
-    {
-
-        session.put(key, Integer.toString(value));
-    }
-    // checked for login
-    public static boolean isLogin()
-    {
-        String result = (String) session.get("login");
-        if(result.equals("true"))
-        {
-            return true;
+        try{
+            session.put( key, value );
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
         }
-        else{
+    }
+
+    //set session int type value
+    public static void set( String key, int value ) throws Exception
+    {
+        try {
+            session.put( key, Integer.toString( value ) );
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
+        }
+    }
+
+    //set session int type value
+    public static void unset( String key)
+    {
+        if( session.containsKey( key ) ) {
+            session.remove(key);
+        }
+    }
+
+    // checked for login
+    public static boolean isLogin() throws Exception
+    {
+        String result = SessionLib.get("isLogin");
+        if( result != null && result.equals("true") ) {
+            return true;
+        } else {
             return false;
         }
     }
-    //get user id
-    public static int getId()
+
+    // get session data
+    public static String get( String key ) throws Exception
     {
-        String result = (String) session.get("id");
-        return Integer.parseInt(result);
+        String result = null;
+        if( session.containsKey( key ) ) {
+            result =  (String) session.get( key );
+        }
+        return result;
     }
 
-    public static int get(String value)
+    // get user id
+    public static int getUserID() throws Exception
     {
-        String result = (String) session.get(value);
-        return Integer.parseInt(result);
+        String result = "0";
+        if( session.containsKey( "user_id" ) ) {
+            result =  (String) session.get( "user_id" );
+        }
+        return Integer.parseInt( result );
+    }
+
+    // get current page
+    public static String getCurrentPage() throws Exception
+    {
+        String result = "";
+        if( session.containsKey( "current_page" ) ) {
+            result =  (String) session.get( "current_page" );
+        }
+        return result;
     }
 }

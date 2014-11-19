@@ -36,10 +36,10 @@ public class EducationController extends BaseController
         return messages;
     }
 
-    public String add() throws SQLException, ParseException
+    public String add() throws Exception
     {
         Education education = new Education();
-        education.setUser_id(SessionLib.getId());
+        education.setUser_id( SessionLib.getUserID() );
         education.setDegree(ServletActionContext.getRequest().getParameter("degree"));
         education.setInstitute(ServletActionContext.getRequest().getParameter("institute"));
         education.setResult(ServletActionContext.getRequest().getParameter("result"));
@@ -47,11 +47,11 @@ public class EducationController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewEducation() throws SQLException
+    public String viewEducation() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Education.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Education.find( SessionLib.getUserID() ); //get result using user id
 
         if( rs != null ) {
 
@@ -72,11 +72,11 @@ public class EducationController extends BaseController
 
     public String setContentID() throws SQLException
     {
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
+        //SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
         Education education = Education.find();
         if(ServletActionContext.getRequest().getParameter("degree").length()>0) {
@@ -91,7 +91,7 @@ public class EducationController extends BaseController
             education.setResult(ServletActionContext.getRequest().getParameter("result")); //reset description
         }
 
-        education.update(SessionLib.get("ContentID")); //update content using content ID
+        // education.update(SessionLib.get("ContentID")); //update content using content ID
         return this.SUCCESS;
     }
 

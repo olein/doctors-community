@@ -1,0 +1,9 @@
+{
+  "name": "UI for Doctors Community",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "git://github.com/twbs/bootstrap.git",
+    "jquery": "git://github.com/jquery/jquery.git",
+    "fontawesome": "git://github.com/FortAwesome/Font-Awesome.git"
+  }
+}

@@ -1,5 +1,6 @@
 package com.jonak.controller;
 
+// import default
 import java.util.Map;
 
 /**
@@ -12,6 +13,7 @@ public class BaseController {
 
     public BaseController()
     {
+        // set messages
         this.SUCCESS = "success";
         this.ERROR = "error";
     }
