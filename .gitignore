@@ -7,3 +7,4 @@ target\
 .classpath
 .project
 .gitignore
+src\main\webapp\index.jsp

@@ -9,7 +9,7 @@
   <title>Doctor's Community</title>
 </head>
 <body>
-<s:form action="create_profile">
+<s:form action="add_experience_detail">
   <s:textfield name="title" label="Title"/>
   <s:textarea name="description" label="Description"/>
   <s:submit/>

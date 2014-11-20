@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Experience;
 import com.jonak.model.ExperienceModel;
 import java.sql.*;
@@ -33,10 +34,11 @@ public class ExperienceController extends BaseController
 
     public ExperienceController(){ super(); }
 
-    public String creatNewEx() throws Exception
+    public String createNewExperience() throws Exception
     {
         Experience exp = new Experience();
-        exp.setUser_id( SessionLib.getUserID() );
+        //exp.setUser_id( SessionLib.getUserID() );
+        exp.setUser_id( 1 );
         exp.setTitle(ServletActionContext.getRequest().getParameter("title"));
         exp.setDescription(ServletActionContext.getRequest().getParameter("description"));
         exp.save(); //add experience
@@ -47,49 +49,31 @@ public class ExperienceController extends BaseController
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Experience.find( SessionLib.getUserID() ); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Experience exp = new Experience();
-                exp.setId(rs.getInt(1));
-                exp.setUser_id(rs.getInt(2));
-                exp.setTitle(rs.getString(3));
-                exp.setDescription(rs.getString(4));
-                exp.setUpdate("update_experience.action?id=" + rs.getInt(1)); //set update link
-                exp.setDelete("delete_experience.action?id="+ rs.getInt(1)); //set delete link
-                //messages.add(exp); //add result to vector
-            }
-        }
+        dataOut = Experience.findByUserID(1); //get result using user id
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
+    public String updateExperience() throws Exception
     {
-        // SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        //Experience exp = Experience.find();
+        Experience exp = Experience.findByID(1);
         if(ServletActionContext.getRequest().getParameter("title").length()>0) {
-            //exp.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
+            exp.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
         }
 
         if(ServletActionContext.getRequest().getParameter("description").length()>0) {
-            //exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
+            exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
         }
 
-        //exp.update(SessionLib.get("ContentID")); //update content using content ID
+        exp.save();
+        Tools.redirect("show_experience");
         return this.SUCCESS;
     }
 
-    public String delete() throws SQLException
+    public String deleteExperience() throws Exception
     {
         Experience exp = new Experience();
         exp.delete();
+        Tools.redirect("show_experience");
         return this.SUCCESS;
     }
 

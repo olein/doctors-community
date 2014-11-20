@@ -67,11 +67,11 @@
             <result name="success">/index.jsp</result>
         </action>
 
-        <action name="add_profile">
-            <result>/addprofile.jsp</result>
+        <action name="add_experience">
+            <result>/addexperience.jsp</result>
         </action>
 
-        <action name="create_profile" class="com.jonak.controller.ExperienceController" method="create">
+        <action name="add_experience_detail" class="com.jonak.controller.ExperienceController" method="createNewExperience">
             <result name="success">/welcome_user.jsp</result>
         </action>
 
@@ -79,16 +79,16 @@
             <result name="success">/view_experience.jsp</result>
         </action>
 
-        <action name="update_experience" class="com.jonak.controller.ExperienceController" method="setContentID">
+        <action name="update_experience">
             <result name="success">/update_experience.jsp</result>
         </action>
 
-        <action name="update_exp" class="com.jonak.controller.ExperienceController" method="update">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="update_experience_detail" class="com.jonak.controller.ExperienceController" method="updateExperience">
+            <result name="success">/view_experience.jsp</result>
         </action>
 
-        <action name="delete_experience" class="com.jonak.controller.ExperienceController" method="delete">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="delete_experience" class="com.jonak.controller.ExperienceController" method="deleteExperience">
+            <result name="success">/view_experience.jsp</result>
         </action>
 
         <action name="add_education">

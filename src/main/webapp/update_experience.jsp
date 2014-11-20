@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<s:form action="update_exp">
+<s:form action="update_experience_detail">
   <s:textfield name="title" label="Title"/>
   <s:textarea name="description" label="Description"/>
   <s:submit/>

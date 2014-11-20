@@ -18,9 +18,11 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Experience extends ExperienceModel
 {
-    public static ResultSet find(int user_id) throws SQLException
+    private static Vector<Experience> dataOut = new Vector<Experience>();
+
+    public static Vector findByUserID(int user_id) throws SQLException
     {
-        Experience exp = new Experience();
+
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "experience",
@@ -31,10 +33,19 @@ public class Experience extends ExperienceModel
         _fields.add("user_id"); _types.add("int"); _values.add(user_id);
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
-        return rs;
+
+        while ( rs.next() ) {
+            Experience exp = new Experience();
+            exp.setId(rs.getInt(1));
+            exp.setUser_id(rs.getInt("user_id"));
+            exp.setTitle(rs.getString("title"));
+            exp.setDescription(rs.getString("description"));
+            dataOut.add(exp);
+        }
+        return dataOut;
     }
 
-    public static Experience findByEmail( String email) throws Exception
+    public static Experience findByID( int id) throws Exception
     {
         Experience exp = new Experience();
         MySQLDatabase db = new MySQLDatabase();
@@ -44,8 +55,8 @@ public class Experience extends ExperienceModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        int contentId = Integer.parseInt( SessionLib.get("ContentID") );
-        _fields.add("id"); _types.add("int"); _values.add( contentId );
+
+        _fields.add("id"); _types.add("int"); _values.add( id );
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
         if( rs.next() ) {
@@ -58,6 +69,13 @@ public class Experience extends ExperienceModel
             exp = null;
         }
         return exp;
+    }
+    public static Vector<Experience> getDataOut() {
+        return dataOut;
+    }
+
+    public static void setDataOut(Vector<Experience> dataOut) {
+        Experience.dataOut = dataOut;
     }
 
 }
