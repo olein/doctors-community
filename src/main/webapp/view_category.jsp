@@ -10,9 +10,9 @@
 <h1>See the output in Console</h1>
 <p></p>
 <table>
-  <s:iterator value="messages">
+  <s:iterator value="dataOut">
     <tr>
-      <td>Parent   </td><td><s:property value="category_name"/></td>
+      <td>Parent   </td><td><s:property value="parent_name"/></td>
     </tr>
     <tr>
       <td>Name   </td><td><s:property value="name"/></td>
@@ -22,10 +22,6 @@
     </tr>
     <tr>
       <td>Created at   </td><td><s:property value="date"/></td>
-    </tr>
-    <tr>
-      <td><a href=<s:property value="update"/>>Update</a></td>
-      <td><a href=<s:property value="delete"/>>Delete</a></td>
     </tr>
 
   </s:iterator>

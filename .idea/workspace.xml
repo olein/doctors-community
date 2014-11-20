@@ -1,7 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c2303ff-41ba-4b10-95cb-a700446d661c" name="Default" comment="" />
+    <list default="true" id="4c2303ff-41ba-4b10-95cb-a700446d661c" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community.war" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\.bowerrc" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\01index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\META-INF\MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\BaseController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\CategoryController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\ChamberController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\CommentController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\ConfigurationController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\ContentController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\EducationController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\ExperienceController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\MessageController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\ParticipantController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\UserController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\controller\WelcomeUserAction.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\lib\Emailer$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\lib\Emailer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\lib\Hash.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\lib\MySQLDatabase.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\lib\SessionLib.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\lib\Tools.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\BaseModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Category.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\CategoryModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Chamber.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ChamberModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Comment.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\CommentModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Configuration.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ConfigurationModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Content.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ContentCategory.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ContentCategoryModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ContentModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Education.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\EducationModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Experience.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ExperienceModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Message.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\MessageModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Participant.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\ParticipantModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\Speciality.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\SpecialityModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\User.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\com\jonak\model\UserModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\classes\struts.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\activation-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\asm-3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\asm-commons-3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\asm-tree-3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\commons-collections-3.2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\commons-fileupload-1.3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\commons-io-2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\commons-lang-2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\commons-lang3-3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\commons-logging-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\freemarker-2.3.19.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\geronimo-activation_1.1_spec-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\javassist-3.11.0.GA.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\javax.mail-1.5.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\javax.servlet-api-3.0.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\json-simple-1.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\mysql-connector-java-5.1.32.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\ognl-3.0.6.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\oro-2.0.8.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\struts2-core-2.3.16.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\struts2-jquery-plugin-3.7.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\velocity-1.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\lib\xwork-core-2.3.16.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\WEB-INF\web.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\add_content.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addcategory.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addchamber.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addconfiguration.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addeducation.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addexperience.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addparticipant.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addspeciality.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\assets\css\back\main.css" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\assets\css\back\main.less" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\assets\css\front\main.css" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\assets\js\back\app.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\assets\js\front\app.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\base.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\forget_password.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\login.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\profile.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\template\_footer.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\template\_header.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\back\template\sidebar.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\bower.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\check_email.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\forgetpassword.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\front\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\front\template\_footer.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\front\template\_header.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\gulpfile.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\home.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\login.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\01index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\addchamber.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\addeducation.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\addprofile.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\check_email.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\forgetpassword.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\home.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\login.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\register.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\reset_password.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\update_chamber.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\update_education.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\update_experience.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\view_chamber.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\view_education.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\view_experience.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\old files\welcome_user.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\register.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\reset_password.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\send_message.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_category.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_comment.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_configuration.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_content.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_education.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_experience.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\update_user_chamber.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\viewConfiguration.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_category.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_comment.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_content.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_education.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_experience.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_messages.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_participant.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_speciality.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\view_user_chamber.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\welcome_user.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\BaseController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\CategoryController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\ChamberController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\CommentController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\ConfigurationController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\ContentController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\EducationController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\ExperienceController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\MessageController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\ParticipantController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\UserController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\controller\WelcomeUserAction.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\lib\Emailer$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\lib\Emailer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\lib\Hash.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\lib\MySQLDatabase.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\lib\SessionLib.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\lib\Tools.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\BaseModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Category.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\CategoryModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Chamber.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ChamberModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Comment.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\CommentModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Configuration.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ConfigurationModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Content.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ContentCategory.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ContentCategoryModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ContentModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Education.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\EducationModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Experience.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ExperienceModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Message.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\MessageModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Participant.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\ParticipantModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\Speciality.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\SpecialityModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\User.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\com\jonak\model\UserModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\classes\struts.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/model/Category.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/model/Category.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/controller/ContentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/controller/ContentController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/addcategory.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/addcategory.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/addspeciality.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/addspeciality.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/update_category.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/update_category.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view_category.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view_category.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="DoctorCommunity.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,18 +229,18 @@
       <file leaf-file-name="struts.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6479663" vertical-offset="1449" max-vertical-offset="7035">
-              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.14442916" vertical-offset="0" max-vertical-offset="727">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update_experience.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/update_experience.jsp">
+      <file leaf-file-name="addspeciality.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/addspeciality.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.5" vertical-offset="0" max-vertical-offset="609">
-              <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+            <state vertical-scroll-proportion="-14.7" vertical-offset="63" max-vertical-offset="861">
+              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -49,44 +249,61 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="126">
-              <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
+              <caret line="0" column="46" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExperienceController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/ExperienceController.java">
+      <file leaf-file-name="Category.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="588" max-vertical-offset="1596">
-              <caret line="71" column="34" selection-start-line="71" selection-start-column="34" selection-end-line="71" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Experience.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/Experience.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="756" max-vertical-offset="1596">
-              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1197" max-vertical-offset="1911">
+              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
               <folding>
-                <element signature="e#2349#2350#0" expanded="true" />
-                <element signature="e#2379#2380#0" expanded="true" />
-                <element signature="e#2444#2445#0" expanded="true" />
-                <element signature="e#2488#2489#0" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExperienceModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/ExperienceModel.java">
+      <file leaf-file-name="CategoryModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="966">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="1680">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#421#422#0" expanded="false" />
+                <element signature="e#451#452#0" expanded="false" />
+                <element signature="e#543#544#0" expanded="false" />
+                <element signature="e#570#571#0" expanded="false" />
+                <element signature="e#778#779#0" expanded="false" />
+                <element signature="e#807#808#0" expanded="false" />
+                <element signature="e#1025#1026#0" expanded="false" />
+                <element signature="e#1057#1058#0" expanded="false" />
+                <element signature="e#1288#1289#0" expanded="false" />
+                <element signature="e#1321#1322#0" expanded="false" />
+                <element signature="e#1553#1554#0" expanded="false" />
+                <element signature="e#1580#1581#0" expanded="false" />
+                <element signature="e#1618#1619#0" expanded="false" />
+                <element signature="e#1650#1651#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoryController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="519" max-vertical-offset="1953">
+              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+              <folding>
+                <element signature="method#addCategory#0;class#CategoryController#0" expanded="false" />
+                <element signature="method#viewAllCategory#0;class#CategoryController#0" expanded="false" />
+                <element signature="method#updateCategory#0;class#CategoryController#0" expanded="false" />
+                <element signature="method#deleteCategory#0;class#CategoryController#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,13 +316,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Category.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Content.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/MessageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Configuration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/lib/MySQLDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/CommentModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/ConfigurationModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/ContentCategoryModel.java" />
@@ -121,8 +336,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/CommentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/ParticipantController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/ConfigurationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/ContentController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/addchamber.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/ChamberController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Chamber.java" />
@@ -138,9 +351,17 @@
         <option value="$PROJECT_DIR$/src/main/webapp/welcome_user.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/update_experience.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Experience.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/struts.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/ExperienceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/ContentController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/addcategory.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/view_category.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/update_category.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jonak/model/Category.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/addspeciality.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/struts.xml" />
       </list>
     </option>
   </component>
@@ -186,7 +407,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,39 +494,10 @@
               <option name="myItemId" value="jonak" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoctorCommunity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doctors-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jonak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -685,21 +876,21 @@
       <workItem from="1416451856025" duration="7919000" />
       <workItem from="1416464757020" duration="855000" />
       <workItem from="1416466377550" duration="5668000" />
-      <workItem from="1416486282542" duration="3813000" />
+      <workItem from="1416486282542" duration="7553000" />
+      <workItem from="1416500601523" duration="980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26291000" />
+    <option name="totallyTimeSpent" value="31011000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.088541664" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -708,7 +899,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294271" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.018229166" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -719,11 +909,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.088541664" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.045572918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -752,35 +944,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/MessageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20212767" vertical-offset="77" max-vertical-offset="1806">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3255814" vertical-offset="315" max-vertical-offset="1407">
-          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/lib/MySQLDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57831323" vertical-offset="693" max-vertical-offset="5817">
-          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28803545" vertical-offset="393" max-vertical-offset="1092">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/WelcomeUserAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.060869563" vertical-offset="0" max-vertical-offset="690">
@@ -806,20 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24347825" vertical-offset="0" max-vertical-offset="693">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view_category.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44545454" vertical-offset="63" max-vertical-offset="840">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6956522" vertical-offset="297" max-vertical-offset="1638">
-          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -891,15 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1932" max-vertical-offset="2100">
           <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/lib/Tools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.26756757" vertical-offset="681" max-vertical-offset="1932">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,20 +1055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="295" max-vertical-offset="1869">
           <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/ContentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031866465" vertical-offset="2625" max-vertical-offset="3486">
-          <caret line="157" column="9" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36722305" vertical-offset="2026" max-vertical-offset="3654">
-          <caret line="139" column="10" selection-start-line="139" selection-start-column="10" selection-end-line="139" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -957,7 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="903">
           <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,9 +1104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15955983" vertical-offset="220" max-vertical-offset="2058">
           <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -996,9 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3645117" vertical-offset="470" max-vertical-offset="1806">
           <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-          <folding>
-            <element signature="e#923#932#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,7 +1132,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.2063274" vertical-offset="4788" max-vertical-offset="5544">
           <caret line="130" column="5" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,7 +1139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.744154" vertical-offset="2646" max-vertical-offset="3507">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1036,7 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31216216" vertical-offset="0" max-vertical-offset="1323">
           <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1044,14 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51994497" vertical-offset="945" max-vertical-offset="1722">
           <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#348#359#0" expanded="true" />
-            <element signature="e#2467#2468#0" expanded="true" />
-            <element signature="e#2497#2498#0" expanded="true" />
-            <element signature="e#2554#2555#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,10 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40440166" vertical-offset="714" max-vertical-offset="1659">
           <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#383#394#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1070,7 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.0" vertical-offset="0" max-vertical-offset="672">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1078,7 +1181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.7" vertical-offset="0" max-vertical-offset="693">
           <caret line="11" column="74" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,7 +1188,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.6" vertical-offset="0" max-vertical-offset="504">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1094,7 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="966">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1102,20 +1202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1596">
           <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding>
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#2379#2380#0" expanded="true" />
-            <element signature="e#2444#2445#0" expanded="true" />
-            <element signature="e#2488#2489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/ExperienceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="588" max-vertical-offset="1596">
-          <caret line="71" column="34" selection-start-line="71" selection-start-column="34" selection-end-line="71" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,7 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.5" vertical-offset="0" max-vertical-offset="609">
           <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,22 +1216,118 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14600551" vertical-offset="1364" max-vertical-offset="2352">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/lib/Tools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36363637" vertical-offset="765" max-vertical-offset="1932">
+          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/ContentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7784522" vertical-offset="1545" max-vertical-offset="3654">
+          <caret line="129" column="10" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/ExperienceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2851064" vertical-offset="891" max-vertical-offset="1596">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/addcategory.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.1" vertical-offset="0" max-vertical-offset="672">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view_category.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6844444" vertical-offset="63" max-vertical-offset="756">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="126">
-          <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+          <caret line="0" column="46" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/CategoryModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1680">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#421#422#0" expanded="false" />
+            <element signature="e#451#452#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
+            <element signature="e#570#571#0" expanded="false" />
+            <element signature="e#778#779#0" expanded="false" />
+            <element signature="e#807#808#0" expanded="false" />
+            <element signature="e#1025#1026#0" expanded="false" />
+            <element signature="e#1057#1058#0" expanded="false" />
+            <element signature="e#1288#1289#0" expanded="false" />
+            <element signature="e#1321#1322#0" expanded="false" />
+            <element signature="e#1553#1554#0" expanded="false" />
+            <element signature="e#1580#1581#0" expanded="false" />
+            <element signature="e#1618#1619#0" expanded="false" />
+            <element signature="e#1650#1651#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/update_category.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.8" vertical-offset="63" max-vertical-offset="840">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/model/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1197" max-vertical-offset="1911">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonak/controller/CategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="519" max-vertical-offset="1953">
+          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding>
+            <element signature="method#addCategory#0;class#CategoryController#0" expanded="false" />
+            <element signature="method#viewAllCategory#0;class#CategoryController#0" expanded="false" />
+            <element signature="method#updateCategory#0;class#CategoryController#0" expanded="false" />
+            <element signature="method#deleteCategory#0;class#CategoryController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/addspeciality.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.7" vertical-offset="63" max-vertical-offset="861">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/struts.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6479663" vertical-offset="1449" max-vertical-offset="7035">
-          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.14442916" vertical-offset="0" max-vertical-offset="727">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>

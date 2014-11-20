@@ -22,7 +22,7 @@
   Select your specialities :
   <select name="speciality[]" multiple="multiple">
 
-    <s:iterator value="messages">
+    <s:iterator value="dataOut">
       <option value=<s:property value="id"/>><s:property value="name"/></option>
     </s:iterator>
   </select>

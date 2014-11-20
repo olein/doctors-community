@@ -1,1 +1,0 @@
-<% response.sendRedirect("user/delete_experience"); %>

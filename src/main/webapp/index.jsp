@@ -1,1 +1,1 @@
-<% response.sendRedirect("user/delete_experience"); %>
+<% response.sendRedirect("user/update_category"); %>

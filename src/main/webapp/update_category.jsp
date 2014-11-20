@@ -22,7 +22,7 @@
   Detail: <input type="text" name="detail"><br>
   Parent:<select name="parent_id">
   <option value=0>--select option--</option>
-    <s:iterator value="messages">
+    <s:iterator value="dataOut">
       <option value=<s:property value="id"/>><s:property value="name"/></option>
     </s:iterator>
   </select><br />
