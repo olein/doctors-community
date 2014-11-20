@@ -1,10 +1,10 @@
-src\main\java\com\jonak\lib\MySQLDatabase.java
-src\main\resources\struts.xml
-target\
-.idea\
-.settings\
+src/main/java/com/jonak/lib/MySQLDatabase.java
+src/main/resources/struts.xml
+target/
+.idea/
+.settings/
 *.iml
 .classpath
 .project
 .gitignore
-src\main\webapp\index.jsp
+src/main/webapp/index.jsp

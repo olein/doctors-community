@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c2303ff-41ba-4b10-95cb-a700446d661c" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\target\Doctor's Community\addprofile.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Doctor's Community.war" afterPath="$PROJECT_DIR$/target/Doctor's Community.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Doctor's Community/WEB-INF/classes/com/jonak/controller/ExperienceController.class" afterPath="$PROJECT_DIR$/target/Doctor's Community/WEB-INF/classes/com/jonak/controller/ExperienceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jonak/controller/ExperienceController.class" afterPath="$PROJECT_DIR$/target/classes/com/jonak/controller/ExperienceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Doctor's Community/WEB-INF/classes/com/jonak/model/ExperienceModel.class" afterPath="$PROJECT_DIR$/target/Doctor's Community/WEB-INF/classes/com/jonak/model/ExperienceModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jonak/model/ExperienceModel.class" afterPath="$PROJECT_DIR$/target/classes/com/jonak/model/ExperienceModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/model/Experience.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/model/Experience.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/controller/ExperienceController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/controller/ExperienceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jonak/model/ExperienceModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/jonak/model/ExperienceModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Doctor's Community/index.jsp" afterPath="$PROJECT_DIR$/target/Doctor's Community/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Doctor's Community/WEB-INF/classes/struts.xml" afterPath="$PROJECT_DIR$/target/Doctor's Community/WEB-INF/classes/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/struts.xml" afterPath="$PROJECT_DIR$/target/classes/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/update_experience.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/update_experience.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view_experience.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view_experience.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/welcome_user.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/welcome_user.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Study_soft\ALL-BOOKS\JAVA\JEE projects\Doctor's Community\doctors-community\src\main\webapp\addprofile.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/addexperience.jsp" />
-    </list>
+    <list default="true" id="4c2303ff-41ba-4b10-95cb-a700446d661c" name="Default" comment="" />
     <ignored path="DoctorCommunity.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -706,12 +685,12 @@
       <workItem from="1416451856025" duration="7919000" />
       <workItem from="1416464757020" duration="855000" />
       <workItem from="1416466377550" duration="5668000" />
-      <workItem from="1416486282542" duration="3398000" />
+      <workItem from="1416486282542" duration="3709000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25876000" />
+    <option name="totallyTimeSpent" value="26187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
