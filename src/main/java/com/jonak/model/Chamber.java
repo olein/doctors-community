@@ -33,17 +33,16 @@ public class Chamber extends ChamberModel
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         if( rs != null ) {
-
+            Chamber chamber = new Chamber();
             while (rs.next()) {
-                Chamber chamber = new Chamber();
-                chamber.setId(rs.getInt(1));
-                chamber.setUser_id(rs.getInt(2));
-                chamber.setAddress(rs.getString(3));
-                chamber.setTelephone(rs.getString(4));
-                chamber.setVisiting_hour(rs.getString(5));
-                chamber.setVisiting_days(rs.getString(6));
-                chamber.setFees(rs.getString(7));
-
+                chamber.setId(rs.getInt("id"));
+                chamber.setUser_id(rs.getInt("user_id"));
+                chamber.setAddress(rs.getString("address"));
+                chamber.setTelephone(rs.getString("telephone"));
+                chamber.setVisiting_hour(rs.getString("visiting_hour"));
+                chamber.setVisiting_days(rs.getString("visiting_days"));
+                chamber.setFees(rs.getString("fees"));
+                chamber.clear();
                 //add result to vector
                 dataOut.add(chamber);
             }
@@ -77,13 +76,14 @@ public class Chamber extends ChamberModel
     private static Chamber setData( ResultSet rs ) throws SQLException
     {
         Chamber chamber = new Chamber();
-        chamber.setId(rs.getInt(1));
-        chamber.setUser_id(rs.getInt(2));
-        chamber.setAddress(rs.getString(3));
-        chamber.setTelephone(rs.getString(4));
-        chamber.setVisiting_hour(rs.getString(5));
-        chamber.setVisiting_days(rs.getString(6));
-        chamber.setFees(rs.getString(7));
+        chamber.setId(rs.getInt("id"));
+        chamber.setUser_id(rs.getInt("user_id"));
+        chamber.setAddress(rs.getString("address"));
+        chamber.setTelephone(rs.getString("telephone"));
+        chamber.setVisiting_hour(rs.getString("visiting_hour"));
+        chamber.setVisiting_days(rs.getString("visiting_days"));
+        chamber.setFees(rs.getString("fees"));
+        chamber.clear();
         return chamber;
     }
 

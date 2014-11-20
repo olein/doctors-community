@@ -1,1 +1,1 @@
-<% response.sendRedirect("user/show_user_education"); %>
+<% response.sendRedirect("user/show_user_chamber"); %>

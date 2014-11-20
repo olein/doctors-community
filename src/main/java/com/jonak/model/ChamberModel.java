@@ -91,4 +91,10 @@ public class ChamberModel extends BaseModel
         this.fees = fees;
         this.fields.add("fees");         this.types.add("String");     this.values.add(this.getFees());
     }
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
+    }
 }
