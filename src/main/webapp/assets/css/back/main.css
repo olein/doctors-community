@@ -89,13 +89,15 @@ body {
 .sidebar ul ul.sub-nav li a {
   padding-left: 40px;
 }
+.main {
+  padding-top: 15px;
+}
 .main .row > div {
   margin-right: -20px;
 }
 .main .panel {
   margin: 5px 5px 15px;
   padding: 0;
-  height: 250px;
 }
 /* login page */
 .login-form {

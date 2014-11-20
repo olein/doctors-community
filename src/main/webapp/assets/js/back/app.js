@@ -1,5 +1,5 @@
 $(function(){
-
+    // sidebar menu toggle
 	$('ul.nav li.hasSub').on('click', function(e){
 		// e.preventDefault();
 		if(!$(this).hasClass('active')) {
@@ -9,4 +9,7 @@ $(function(){
 			$(this).children('ul.sub-nav').slideDown();
 		}
 	});
+
+    // profile page datepickter
+    $('input#inputDateOfBirth').datepicker({dateFormat: 'dd-mm-yy'});
 });

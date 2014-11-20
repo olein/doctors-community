@@ -18,8 +18,6 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Experience extends ExperienceModel
 {
-
-
     public static ResultSet find(int user_id) throws SQLException
     {
         Experience exp = new Experience();
@@ -36,7 +34,7 @@ public class Experience extends ExperienceModel
         return rs;
     }
 
-    public static Experience find() throws Exception
+    public static Experience findByEmail( String email) throws Exception
     {
         Experience exp = new Experience();
         MySQLDatabase db = new MySQLDatabase();

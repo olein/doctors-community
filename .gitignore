@@ -1,9 +1,15 @@
+src/main/java/com/jonak/lib/MySQLDatabase.java
+src/main/resources/struts.xml
 target/
 .idea/
 .settings/
 *.iml
 .classpath
 .project
+<<<<<<< HEAD
 src/main/java/com/jonak/lib/MySQLDatabase.java
 *~
 src/main/resources/struts.xml
+=======
+*~
+>>>>>>> upstream/master

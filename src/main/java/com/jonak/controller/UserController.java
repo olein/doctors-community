@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 // import custom
 import com.jonak.lib.Emailer;
+import com.jonak.lib.Hash;
 import com.jonak.lib.SessionLib;
 import com.jonak.lib.Tools;
 import com.jonak.model.User;
@@ -21,7 +22,7 @@ import java.util.*;
  */
 public class UserController extends BaseController
 {
-    public Vector<User> messages = new Vector<User>();
+    public Vector<User> dataOut = new Vector<User>();
 
     public UserController(){ super(); }
 
@@ -36,7 +37,7 @@ public class UserController extends BaseController
             System.out.printf( "Name: %s %s\n", user.getFirstName(), user.getLastName() );
             System.out.printf( "Email: %s \n", user.getEmail() );
             System.out.printf( "Address: %s \n", user.getAddress() );
-            messages.add(user);
+            this.dataOut.add(user);
         } else {
             System.out.printf( "No user found!" );
         }
@@ -72,7 +73,7 @@ public class UserController extends BaseController
         Date date1 = new Date();
         timestamp = (int) (new Date().getTime()/1000);
         nuser.setCreatedAt(timestamp);
-        nuser.setKey("1");
+        nuser.setToken("");
 
         nuser.save();
 
@@ -91,7 +92,7 @@ public class UserController extends BaseController
 
         // if user login set session
         if( user != null ) {
-            SessionLib.set("user_id", user.getId() );
+            SessionLib.set("user_id", Integer.toString( user.getId() ) );
             SessionLib.set("isLogin", "true" );
             // redirect to profile page
             Tools.redirect("dashboard");
@@ -114,21 +115,132 @@ public class UserController extends BaseController
         Tools.redirect("login?logout=true");
     }
 
-    public String forgetPassword() throws SQLException,ParseException
+    // view profile
+    public String viewProfile() throws Exception
     {
-        User nuser = User.getUser(); //get user id
-        Date date = new Date();
-        int timeStamp = (int) (date.getTime() / 1000); //generate key value
-        nuser.setKey(Integer.toString(timeStamp));  //set key value
-        nuser.save();
-        Emailer.sendEmail(timeStamp); //send email to user
+        // get current user
+        int user_id = SessionLib.getUserID();
+        User user = User.find( user_id );
+
+        // add the user in data out
+        this.dataOut.clear();
+        this.dataOut.add( user );
+
+        // return success
         return this.SUCCESS;
+    }
+
+    // save profile
+    public void saveProfile() throws Exception
+    {
+        // get the request parameters
+        String  email = Tools.get("email"),
+                password = Tools.get("password"),
+                firstName = Tools.get("firstName"),
+                lastName = Tools.get("lastName"),
+                address = Tools.get("address"),
+                district = Tools.get("district");
+
+        String  strDateOfBirth = Tools.get("dateOfBirth"),
+                strGender = Tools.get("gender"),
+                strType = Tools.get("type"),
+                strAllowMessage = Tools.get("allowMessage"),
+                strStatus = Tools.get("status");
+
+        int     dateOfBirth = Tools.getTimeStamp( strDateOfBirth ),
+                gender = Integer.parseInt(strGender),
+                type = ( strType != null ) ? Integer.parseInt( strType ) : -1,
+                allowMessage = (strAllowMessage!= null && strAllowMessage.equals("allow")) ? 1 : 0,
+                status = ( strStatus != null ) ? Integer.parseInt( strStatus ) : -1;
+
+        // get user
+        int user_id = SessionLib.getUserID();
+        User user = User.find( user_id );
+
+        // check email
+        if( ! user.getEmail().equals( email ) ) { user.setEmail( email ); }
+
+        // check password
+        if( ! password.isEmpty() ) { user.setPassword( password ); }
+
+        // check firstname
+        if( ! user.getFirstName().equals( firstName ) ) { user.setFirstName( firstName ); }
+
+        // check lastname
+        if( ! user.getLastName().equals( lastName ) ) { user.setLastName( lastName ); }
+
+        // check address
+        if( ! user.getAddress().equals( address ) ) { user.setAddress( address ); }
+
+        // check district
+        if( ! user.getDistrict().equals( district ) ) { user.setDistrict( district ); }
+
+        // check date of birth
+        if( user.getDateOfBirth(true) != dateOfBirth ) { user.setDateOfBirth( dateOfBirth ); }
+
+        // check gender
+        if( user.getGender() != gender ) { user.setGender( gender ); }
+
+        // check type
+        if( type >= 0 && user.getType() != type ) { user.setType( type ); }
+
+        // check allow message
+        if( user.getAllowMessage() != allowMessage ) { user.setAllowMessage( allowMessage ); }
+
+        // check status
+        if( status >= 0 && user.getStatus() != status ) { user.setStatus( status ); }
+
+        // save user
+        user.save();
+
+        // redirect to profile page with success message
+        Tools.redirect("profile?update=true");
+    }
+
+    public void processForgetPassword() throws Exception
+    {
+        // get params
+        String email = Tools.get("email");
+        // get user
+        User user = User.findByEmail(email);
+//        User user = User.find(1);
+
+        // valid email
+        if( user != null) {
+            // generate token
+            int timeStamp = Tools.getTimeStamp();
+            String token = Hash.md5( Integer.toString( timeStamp ) );
+
+            // set token
+            user.setToken( token.substring(0, 7) );
+            user.save();
+
+            // make mail tempalte
+            String msg = "<p>Hello <b>"+user.getFirstName()+" "+user.getLastName()+"</b><p>";
+            msg += "<p>Someone requested to change your password. Please click the following link to reset your password<p>";
+            msg += "<div><a href=\"http://localhost:7005/DoctorCommunity/user/resetpassword?token=\""+user.getToken()+">Reset Password</a></div>";
+            msg += "<p>If this wasn't you <a href=\"http://localhost:7005/DoctorCommunity/user/cancelreset?token\">Click Here</a> to cancel reset request.</p>";
+            msg += "<hr>";
+            msg += "<p>Regards<br><b>Doctor's Community Team</b></p>";
+
+            // send token to user
+            Emailer mail = new Emailer();
+            mail.setTo( user.getEmail() );
+            mail.setSubject( "No-Reply! Password Reset Request." );
+            mail.setBody( msg );
+            mail.send();
+
+            Tools.redirect("forgetpassword?confirm=true");
+        } else { // invalid email
+            Tools.redirect("forgetpassword?confirm=false");
+        }
+
     }
 
     public String findUser() throws Exception
     {
         User nuser = User.getUserId(); //get user id
-        SessionLib.set("id", nuser.getId()); // saved id in the session
+        //SessionLib.set("id", nuser.getId()); // saved id in the session
         return this.SUCCESS;
     }
 
@@ -137,7 +249,7 @@ public class UserController extends BaseController
         int id = SessionLib.getUserID();
         User nuser = User.find( id );
         nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
-        nuser.setKey("1"); //reset key value
+        //nuser.setKey("1"); //reset key value
         nuser.save();
         return this.SUCCESS;
     }
@@ -145,19 +257,19 @@ public class UserController extends BaseController
     public String noReset() throws SQLException
     {
         User nuser = User.getUserId();
-        nuser.setKey("1"); //reset generated key
+        //nuser.setKey("1"); //reset generated key
         nuser.save();
         return this.SUCCESS;
     }
 
-
-
-    public Vector<User> getMessages() {
-        return messages;
+    /// getter for data out
+    public Vector<User> getDataOut() {
+        return this.dataOut;
     }
 
-    public void setMessages(Vector<User> messages) {
-        this.messages = messages;
+    /// setter for data out
+    public void setDataOut(Vector<User> users) {
+        this.dataOut = users;
     }
 }
 

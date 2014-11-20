@@ -1,22 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page import="com.jonak.lib.*" %>
+<%@ page import="java.util.*" %>
+<%
+    int t;
+    String s;
+    Date d;
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Doctor's Community</title>
-    </head>
-    <body>
+    t = Tools.getTimeStamp();
+    out.println("get time stamp: " + t);
 
-        <s:form action="login">
-            <s:textfield name="email" label="Email"/>
-            <s:password name="password" label="Password"/>
-            <s:submit/>
-        </s:form>
+    t = Tools.getTimeStamp("29/11/2014");
+    out.println("get time stamp(str): " + t);
 
-        <a href="<s:url action="register" />" >Register</a>
+    t = Tools.getTimeStamp("29-11-2014", "dd-MM-yyy");
+    out.println("get time stamp(str): " + t);
 
-    </body>
-</html>
+    s = Tools.getDate();
+    out.println("get date: " + s);
+
+    d = new Date();
+    s = Tools.getDate(d);
+    out.println("get date: " + s);
+
+    s = Tools.getDate(d, "MMM dd yyy");
+    out.println("get date: " + s);
+%>
