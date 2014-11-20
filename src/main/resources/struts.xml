@@ -5,18 +5,15 @@
  
 <struts>
 
-    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.devMode" value="true"/>
 
     <package name="default" namespace="/user" extends="struts-default">
 
-        <action name="test" class="com.jonak.controller.UserController" method="test">
-            <result name="success">/home.jsp</result>
-        </action>
-
+        <!--done-->
         <action name="">
             <result>/back/index.jsp</result>
         </action>
-
+        <!--done-->
         <action name="dashboard">
             <result>/back/index.jsp</result>
         </action>
@@ -24,24 +21,34 @@
         <action name="messages">
             <result>/back/index.jsp</result>
         </action>
-
+        <!--done-->
         <action name="profile" class="com.jonak.controller.UserController" method="viewProfile">
             <result name="success">/back/profile.jsp</result>
         </action>
-
+        <!--done-->
         <action name="saveprofile" class="com.jonak.controller.UserController" method="saveProfile">
         </action>
-
+        <!--done-->
         <action name="login">
             <result>/back/login.jsp</result>
         </action>
-
+        <!--done-->
         <action name="loginprocess" class="com.jonak.controller.UserController" method="loginProcess">
         </action>
-
+        <!--done-->
         <action name="logout" class="com.jonak.controller.UserController" method="logoutProcess">
         </action>
+        <!--done-->
+        <action name="forgetpassword">
+            <result>/back/forget_password.jsp</result>
+        </action>
+        <!--done-->
+        <action name="processforgetpassword" class="com.jonak.controller.UserController" method="processForgetPassword">
+        </action>
 
+        <action name="getmail" class="com.jonak.controller.UserController" method="forgetPassword">
+            <result name="success">/check_email.jsp</result>
+        </action>
 
         <action name="register">
             <result>/register.jsp</result>
@@ -52,13 +59,7 @@
         </action>
 
 
-        <action name="forgetpassword">
-            <result>/forgetpassword.jsp</result>
-        </action>
 
-        <action name="getmail" class="com.jonak.controller.UserController" method="forgetPassword">
-            <result name="success">/check_email.jsp</result>
-        </action>
 
         <action name="resetpassword" class="com.jonak.controller.UserController" method="findUser">
             <result name="success">/reset_password.jsp</result>

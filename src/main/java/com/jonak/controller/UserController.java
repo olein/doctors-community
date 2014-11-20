@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 // import custom
 import com.jonak.lib.Emailer;
+import com.jonak.lib.Hash;
 import com.jonak.lib.SessionLib;
 import com.jonak.lib.Tools;
 import com.jonak.model.User;
@@ -146,7 +147,7 @@ public class UserController extends BaseController
                 strStatus = Tools.get("status");
 
         int     dateOfBirth = Tools.getTimeStamp( strDateOfBirth ),
-                gender = Integer.parseInt( strGender ),
+                gender = Integer.parseInt(strGender),
                 type = ( strType != null ) ? Integer.parseInt( strType ) : -1,
                 allowMessage = (strAllowMessage!= null && strAllowMessage.equals("allow")) ? 1 : 0,
                 status = ( strStatus != null ) ? Integer.parseInt( strStatus ) : -1;
@@ -195,15 +196,44 @@ public class UserController extends BaseController
         Tools.redirect("profile?update=true");
     }
 
-    public String forgetPassword() throws SQLException,ParseException
+    public void processForgetPassword() throws Exception
     {
-        User nuser = User.getUser(); //get user id
-        Date date = new Date();
-        int timeStamp = (int) (date.getTime() / 1000); //generate key value
-        //nuser.setKey(Integer.toString(timeStamp));  //set key value
-        nuser.save();
-        Emailer.sendEmail(timeStamp); //send email to user
-        return this.SUCCESS;
+        // get params
+        String email = Tools.get("email");
+        // get user
+        User user = User.findByEmail(email);
+//        User user = User.find(1);
+
+        // valid email
+        if( user != null) {
+            // generate token
+            int timeStamp = Tools.getTimeStamp();
+            String token = Hash.md5( Integer.toString( timeStamp ) );
+
+            // set token
+            user.setToken( token.substring(0, 7) );
+            user.save();
+
+            // make mail tempalte
+            String msg = "<p>Hello <b>"+user.getFirstName()+" "+user.getLastName()+"</b><p>";
+            msg += "<p>Someone requested to change your password. Please click the following link to reset your password<p>";
+            msg += "<div><a href=\"http://localhost:7005/DoctorCommunity/user/resetpassword?token=\""+user.getToken()+">Reset Password</a></div>";
+            msg += "<p>If this wasn't you <a href=\"http://localhost:7005/DoctorCommunity/user/cancelreset?token\">Click Here</a> to cancel reset request.</p>";
+            msg += "<hr>";
+            msg += "<p>Regards<br><b>Doctor's Community Team</b></p>";
+
+            // send token to user
+            Emailer mail = new Emailer();
+            mail.setTo( user.getEmail() );
+            mail.setSubject( "No-Reply! Password Reset Request." );
+            mail.setBody( msg );
+            mail.send();
+
+            Tools.redirect("forgetpassword?confirm=true");
+        } else { // invalid email
+            Tools.redirect("forgetpassword?confirm=false");
+        }
+
     }
 
     public String findUser() throws Exception

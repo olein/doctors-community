@@ -174,12 +174,12 @@ public class UserModel extends BaseModel {
     }
 
     public String getToken() {
-        return token;
+        return this.token;
     }
 
     public void setToken(String token) {
         this.token = token;
-        this.fields.add( "keyValue" ); this.types.add( "String" ); this.values.add( this.token );
+        this.fields.add( "token" ); this.types.add( "String" ); this.values.add( this.token );
     }
 
     // very important
