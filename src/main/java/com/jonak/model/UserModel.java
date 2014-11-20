@@ -1,9 +1,13 @@
 package com.jonak.model;
 
-// import default
 
 // import custom
+import com.jonak.lib.Hash;
+import com.jonak.lib.Tools;
 import com.jonak.model.BaseModel;
+
+// import default
+import java.util.Date;
 
 /**
  * user model class
@@ -26,33 +30,14 @@ public class UserModel extends BaseModel {
     private int lastLoginAt;
 	private int allowMessage;
     private int status;
-    private int createdAt;
     private String token;
+    private int createdAt;
 
     public UserModel()
     {
         super();
         this.tableName = "user";
     }
-
-    /*protected void prepareFields()
-    {
-        // database field name              field type                          getter method
-        this.fields.add( "email" ); this.types.add( "String" ); this.values.add( this.getEmail() );
-        this.fields.add( "password" ); this.types.add( "String" ); this.values.add( this.getPassword() );
-        this.fields.add( "first_name" ); this.types.add( "String" ); this.values.add( this.getFirstName() );
-        this.fields.add( "last_name" ); this.types.add( "String" ); this.values.add( this.getLastName() );
-        this.fields.add( "address" ); this.types.add( "String" ); this.values.add( this.getAddress() );
-        this.fields.add( "district" ); this.types.add( "String" ); this.values.add( this.getDistrict() );
-        this.fields.add( "date_of_birth" ); this.types.add( "int" ); this.values.add( this.getDateOfBirth() );
-        this.fields.add( "gender" ); this.types.add( "int" ); this.values.add( this.getGender() );
-        this.fields.add( "type" ); this.types.add( "int" ); this.values.add( this.getType() );
-        this.fields.add( "last_login_at" ); this.types.add( "int" ); this.values.add( this.getLastLoginAt() );
-        this.fields.add( "allow_message" ); this.types.add( "int" ); this.values.add( this.getAllowMessage() );
-        this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.getStatus() );
-        this.fields.add( "created_at" ); this.types.add( "int" ); this.values.add( this.getCreatedAt() );
-        this.fields.add( "keyValue" ); this.types.add( "String" ); this.values.add( this.getKey() );
-    }*/
 
     public int getId() {
         return this.id;
@@ -78,7 +63,7 @@ public class UserModel extends BaseModel {
 
     public void setPassword(String password) {
         this.password = password;
-        this.fields.add( "password" ); this.types.add( "String" ); this.values.add( this.password );
+        this.fields.add( "password" ); this.types.add( "String" ); this.values.add( Hash.md5( this.password ) );
     }
 
     public String getFirstName() {
@@ -117,7 +102,13 @@ public class UserModel extends BaseModel {
         this.fields.add( "district" ); this.types.add( "String" ); this.values.add( this.district );
     }
 
-    public int getDateOfBirth() {
+    public Date getDateOfBirth() throws Exception
+    {
+        return Tools.getDate( this.dateOfBirth );
+    }
+
+    public int getDateOfBirth( boolean b)
+    {
         return this.dateOfBirth;
     }
 
@@ -144,8 +135,9 @@ public class UserModel extends BaseModel {
         this.fields.add( "type" ); this.types.add( "int" ); this.values.add( this.type );
     }
 
-    public int getLastLoginAt() {
-        return this.lastLoginAt;
+    public Date getLastLoginAt() throws Exception
+    {
+        return Tools.getDate( this.lastLoginAt );
     }
 
     public void setLastLoginAt(int lastLoginAt) {
@@ -171,8 +163,9 @@ public class UserModel extends BaseModel {
         this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.status );
     }
 
-    public int getCreatedAt() {
-        return this.createdAt;
+    public Date getCreatedAt() throws Exception
+    {
+        return Tools.getDate( this.createdAt );
     }
 
     public void setCreatedAt(int createdAt) {
@@ -189,4 +182,11 @@ public class UserModel extends BaseModel {
         this.fields.add( "keyValue" ); this.types.add( "String" ); this.values.add( this.token );
     }
 
+    // very important
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
+    }
 }

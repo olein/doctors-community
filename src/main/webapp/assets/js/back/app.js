@@ -11,5 +11,5 @@ $(function(){
 	});
 
     // profile page datepickter
-    $('input#inputDateOfBirth').datepicker();
+    $('input#inputDateOfBirth').datepicker({dateFormat: 'dd-mm-yy'});
 });

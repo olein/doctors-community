@@ -55,6 +55,8 @@ public class BaseModel {
     public void save() throws SQLException
     {
        // if id is given (greater than 0) that mean it is update call
+        System.out.println("size: "+this.values.size());
+        System.out.println(this.fields.toString());
        if( this.id > 0 ) {
             this.update();
        }

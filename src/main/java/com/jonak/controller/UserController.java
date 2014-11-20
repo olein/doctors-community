@@ -90,7 +90,7 @@ public class UserController extends BaseController
 
         // if user login set session
         if( user != null ) {
-            SessionLib.set("user_id", user.getId() );
+            SessionLib.set("user_id", Integer.toString( user.getId() ) );
             SessionLib.set("isLogin", "true" );
             // redirect to profile page
             Tools.redirect("dashboard");
@@ -148,7 +148,7 @@ public class UserController extends BaseController
         int     dateOfBirth = Tools.getTimeStamp( strDateOfBirth ),
                 gender = Integer.parseInt( strGender ),
                 type = ( strType != null ) ? Integer.parseInt( strType ) : -1,
-                allowMessage = Integer.parseInt( strAllowMessage ),
+                allowMessage = (strAllowMessage!= null && strAllowMessage.equals("allow")) ? 1 : 0,
                 status = ( strStatus != null ) ? Integer.parseInt( strStatus ) : -1;
 
         // get user
@@ -174,7 +174,7 @@ public class UserController extends BaseController
         if( ! user.getDistrict().equals( district ) ) { user.setDistrict( district ); }
 
         // check date of birth
-        if( user.getDateOfBirth() != dateOfBirth ) { user.setDateOfBirth( dateOfBirth ); }
+        if( user.getDateOfBirth(true) != dateOfBirth ) { user.setDateOfBirth( dateOfBirth ); }
 
         // check gender
         if( user.getGender() != gender ) { user.setGender( gender ); }
@@ -209,7 +209,7 @@ public class UserController extends BaseController
     public String findUser() throws Exception
     {
         User nuser = User.getUserId(); //get user id
-        SessionLib.set("id", nuser.getId()); // saved id in the session
+        //SessionLib.set("id", nuser.getId()); // saved id in the session
         return this.SUCCESS;
     }
 

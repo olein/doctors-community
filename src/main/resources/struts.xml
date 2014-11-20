@@ -29,6 +29,9 @@
             <result name="success">/back/profile.jsp</result>
         </action>
 
+        <action name="saveprofile" class="com.jonak.controller.UserController" method="saveProfile">
+        </action>
+
         <action name="login">
             <result>/back/login.jsp</result>
         </action>

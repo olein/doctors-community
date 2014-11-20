@@ -181,7 +181,7 @@ public class User extends UserModel
         user.setAllowMessage(_rs.getInt("allow_message"));
         user.setStatus(_rs.getInt("status"));
         user.setCreatedAt(_rs.getInt("created_at"));
-
+        user.clear();
         return user;
     }
 }

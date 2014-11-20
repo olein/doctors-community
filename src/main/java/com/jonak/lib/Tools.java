@@ -56,7 +56,7 @@ public class Tools {
     // get time stamp from string date
     public static int getTimeStamp( String strDate ) throws Exception
     {
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date theDate = (Date)formatter.parse( strDate );
         int timeStamp = (int) ( theDate.getTime() / 1000 );
 
@@ -74,47 +74,18 @@ public class Tools {
     }
 
     // get date
-    public static String getDate( ) throws Exception
+    public static Date getDate( ) throws Exception
     {
-        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-        Date theDate = new Date();
-        String currentDate = formatter.format( theDate );
+        Date currentDate = new Date();
 
         return currentDate;
     }
 
-    // get date from a date
-    public static String getDate( Date theDate ) throws Exception
-    {
-        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-        String currentDate = formatter.format( theDate );
-
-        return currentDate;
-    }
-
-    // get date from a date by format
-    public static String getDate( Date theDate, String format ) throws Exception
-    {
-        DateFormat formatter = new SimpleDateFormat( format );
-        String currentDate = formatter.format( theDate );
-
-        return currentDate;
-    }
 
     // get date
-    public static String getDate( int timeStamp ) throws Exception
+    public static Date getDate( int timeStamp ) throws Exception
     {
-        Date theDate = new Date( (long) timeStamp * 1000 );
-        String currentDate = Tools.getDate( theDate );
-
-        return currentDate;
-    }
-
-    // get date
-    public static String getDate( int timeStamp, String format ) throws Exception
-    {
-        Date theDate = new Date( (long) timeStamp * 1000 );
-        String currentDate = Tools.getDate( theDate, format );
+        Date currentDate = new Date( (long) timeStamp * 1000 );
 
         return currentDate;
     }
