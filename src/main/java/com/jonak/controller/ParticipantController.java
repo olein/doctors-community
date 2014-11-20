@@ -27,7 +27,7 @@ public class ParticipantController extends BaseController
                     user.setId(rs.getInt(1));
                     user.setFirstName(rs.getString(4)); //set parent category values
                     user.setLastName(rs.getString(5));
-                    user.setKey(rs.getString(4)+" "+rs.getString(5));
+                    user.setToken(rs.getString(4)+" "+rs.getString(5));
                     messages.add(user); //add result to vector
                 }
             }

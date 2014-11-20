@@ -76,7 +76,7 @@ public class ConfigurationController extends BaseController
             configuration.setValue(ServletActionContext.getRequest().getParameter("value")); //reset description
         }
 
-        configuration.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
+        //configuration.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
         return this.SUCCESS;
     }
 

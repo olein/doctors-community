@@ -137,7 +137,7 @@ public class CategoryController extends BaseController
             category.setId(rs.getInt(1));
         }
 
-        category.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
+        //category.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
         return this.SUCCESS;
     }
 

@@ -39,31 +39,6 @@ public class UserModel extends BaseModel {
         this.tableName = "user";
     }
 
-<<<<<<< HEAD
-    protected void prepareFields()
-    {
-        // again no need for id
-
-        // database field name              field type                          getter method
-        this.fields.add( "email" ); this.types.add( "String" ); this.values.add( this.getEmail() );
-        this.fields.add( "password" ); this.types.add( "String" ); this.values.add( this.getPassword() );
-        this.fields.add( "first_name" ); this.types.add( "String" ); this.values.add( this.getFirstName() );
-        this.fields.add( "last_name" ); this.types.add( "String" ); this.values.add( this.getLastName() );
-        this.fields.add( "address" ); this.types.add( "String" ); this.values.add( this.getAddress() );
-        this.fields.add( "district" ); this.types.add( "String" ); this.values.add( this.getDistrict() );
-        this.fields.add( "date_of_birth" ); this.types.add( "int" ); this.values.add( this.getDateOfBirth() );
-        this.fields.add( "gender" ); this.types.add( "int" ); this.values.add( this.getGender() );
-        this.fields.add( "type" ); this.types.add( "int" ); this.values.add( this.getType() );
-        this.fields.add( "last_login_at" ); this.types.add( "int" ); this.values.add( this.getLastLoginAt() );
-        this.fields.add( "allow_message" ); this.types.add( "int" ); this.values.add( this.getAllowMessage() );
-        this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.getStatus() );
-        this.fields.add( "created_at" ); this.types.add( "int" ); this.values.add( this.getCreatedAt() );
-        this.fields.add( "token" ); this.types.add( "String" ); this.values.add( this.getKey() );
-
-    }
-
-=======
->>>>>>> upstream/master
     public int getId() {
         return this.id;
 

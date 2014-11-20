@@ -85,7 +85,7 @@ public class CommentController extends BaseController
             comment.setContent_id(comment.getContent_id());
             comment.setParent_id(comment.getParent_id());
             comment.setCreated_at(comment.getCreated_at());
-            comment.update(comment.getId());
+            //comment.update(comment.getId());
             return this.SUCCESS;
         }
         return this.ERROR;

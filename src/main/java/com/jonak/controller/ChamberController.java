@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Chamber;
 import com.jonak.model.ChamberModel;
 import java.sql.*;
@@ -39,8 +40,8 @@ public class ChamberController extends BaseController
     public String addNewChamber() throws Exception
     {
         Chamber chamber = new Chamber();
-        chamber.setUser_id( SessionLib.getUserID() );
-
+        //chamber.setUser_id( SessionLib.getUserID() );
+        chamber.setUser_id( 1 );
         chamber.setAddress(ServletActionContext.getRequest().getParameter("address"));
         chamber.setTelephone(ServletActionContext.getRequest().getParameter("telephone"));
         chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour"));
@@ -51,8 +52,8 @@ public class ChamberController extends BaseController
         chamber.save();
         return this.SUCCESS;
     }
-
-    public String viewChamber() throws Exception
+    //view user chambers
+    public String viewUserChamber() throws Exception
     {
         //get result using user id
         //dataOut = Chamber.findByUserID(SessionLib.getUserID());
@@ -62,15 +63,11 @@ public class ChamberController extends BaseController
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
+    //update chamber details
+    public String updateUserChamber() throws Exception
     {
-        // SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        Chamber chamber = Chamber.find();
+        //find chamber by id
+        Chamber chamber = Chamber.findByID(1);
         if(ServletActionContext.getRequest().getParameter("address").length()>0) {
             chamber.setAddress(ServletActionContext.getRequest().getParameter("address")); // reset title
         }
@@ -90,15 +87,17 @@ public class ChamberController extends BaseController
         if(ServletActionContext.getRequest().getParameter("fees").length()>0) {
             chamber.setFees(ServletActionContext.getRequest().getParameter("fees")); //reset description
         }
+        //update chamber
         chamber.save();
-        // chamber.update(SessionLib.get("ContentID")); //update content using content ID
+        Tools.redirect("show_user_chamber");
         return this.SUCCESS;
     }
-
+    //delete chamber
     public String delete() throws SQLException
     {
         Chamber chamber = new Chamber();
-        chamber.delete(); //delete chamber
+        //delete chamber
+        chamber.delete();
         return this.SUCCESS;
     }
     public void setdataOut(Vector<Chamber> dataOut) {

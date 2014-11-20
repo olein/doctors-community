@@ -155,7 +155,7 @@ public class ContentController extends BaseController
         content.setComment_counter(content.getComment_counter());
         content.setCreated_at(content.getCreated_at());
         content.setType(content.getType());
-        content.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
+       // content.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
 
         if(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id"))>0) //check if it needs update
         {
@@ -166,7 +166,7 @@ public class ContentController extends BaseController
             if(rs.next())
             {
                 contentCategory.setId(rs.getInt(1));
-                contentCategory.update(rs.getInt(1)); //update content category
+                //contentCategory.update(rs.getInt(1)); //update content category
             }
         }
         return this.SUCCESS;
