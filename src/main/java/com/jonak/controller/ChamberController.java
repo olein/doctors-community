@@ -41,12 +41,12 @@ public class ChamberController extends BaseController
     {
         Chamber chamber = new Chamber();
         //chamber.setUser_id( SessionLib.getUserID() );
-        chamber.setUser_id( 1 );
-        chamber.setAddress(ServletActionContext.getRequest().getParameter("address"));
-        chamber.setTelephone(ServletActionContext.getRequest().getParameter("telephone"));
-        chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour"));
-        chamber.setVisiting_days(ServletActionContext.getRequest().getParameter("visiting_days"));
-        chamber.setFees(ServletActionContext.getRequest().getParameter("fees"));
+        chamber.setUserId(1);
+        chamber.setAddress(Tools.get("address"));
+        chamber.setTelephone(Tools.get("telephone"));
+        chamber.setVisitingHour(Tools.get("visiting_hour"));
+        chamber.setVisitingDays(Tools.get("visiting_days"));
+        chamber.setFees(Tools.get("fees"));
 
         //add chamber
         chamber.save();
@@ -64,35 +64,29 @@ public class ChamberController extends BaseController
     }
 
     //update chamber details
-    public String updateUserChamber() throws Exception
+    public void updateUserChamber() throws Exception
     {
         //find chamber by id
+        String address = Tools.get("address"),
+               telephone = Tools.get("telephone"),
+               visitingHour = Tools.get("visiting_hour"),
+               visitingDays = Tools.get("visiting_days"),
+               fees = Tools.get("fees");
+
+        //chamber id needs to be put in the session
         Chamber chamber = Chamber.findByID(1);
-        if(ServletActionContext.getRequest().getParameter("address").length()>0) {
-            chamber.setAddress(ServletActionContext.getRequest().getParameter("address")); // reset title
-        }
+        //update values
+        if( ! chamber.getAddress().equals( address ) ) { chamber.setAddress(address); }
+        if( ! chamber.getTelephone().equals( telephone ) ) { chamber.setTelephone(telephone); }
+        if( ! chamber.getVisitingHour().equals( visitingHour ) ) { chamber.setVisitingHour(visitingHour); }
+        if( ! chamber.getVisitingDays().equals( visitingDays ) ) { chamber.setVisitingDays(visitingDays); }
+        if( ! chamber.getFees().equals( fees ) ) { chamber.setFees( fees ); }
 
-        if(ServletActionContext.getRequest().getParameter("telephone").length()>0) {
-            chamber.setTelephone(ServletActionContext.getRequest().getParameter("telephone"));  //reset description
-        }
-
-        if(ServletActionContext.getRequest().getParameter("visiting_hour").length()>0) {
-            chamber.setVisiting_hour(ServletActionContext.getRequest().getParameter("visiting_hour")); //reset description
-        }
-
-        if(ServletActionContext.getRequest().getParameter("visiting_days").length()>0) {
-            chamber.setVisiting_days(ServletActionContext.getRequest().getParameter("visiting_days")); //reset description
-        }
-
-        if(ServletActionContext.getRequest().getParameter("fees").length()>0) {
-            chamber.setFees(ServletActionContext.getRequest().getParameter("fees")); //reset description
-        }
         //update chamber
         chamber.save();
         Tools.redirect("show_user_chamber");
-        return this.SUCCESS;
     }
-    //delete chamber
+    //fix delete chamber, id needed
     public String delete() throws SQLException
     {
         Chamber chamber = new Chamber();

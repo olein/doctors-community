@@ -36,11 +36,11 @@ public class Chamber extends ChamberModel
             Chamber chamber = new Chamber();
             while (rs.next()) {
                 chamber.setId(rs.getInt("id"));
-                chamber.setUser_id(rs.getInt("user_id"));
+                chamber.setUserId(rs.getInt("user_id"));
                 chamber.setAddress(rs.getString("address"));
                 chamber.setTelephone(rs.getString("telephone"));
-                chamber.setVisiting_hour(rs.getString("visiting_hour"));
-                chamber.setVisiting_days(rs.getString("visiting_days"));
+                chamber.setVisitingHour(rs.getString("visiting_hour"));
+                chamber.setVisitingDays(rs.getString("visiting_days"));
                 chamber.setFees(rs.getString("fees"));
                 chamber.clear();
                 //add result to vector
@@ -77,11 +77,11 @@ public class Chamber extends ChamberModel
     {
         Chamber chamber = new Chamber();
         chamber.setId(rs.getInt("id"));
-        chamber.setUser_id(rs.getInt("user_id"));
+        chamber.setUserId(rs.getInt("user_id"));
         chamber.setAddress(rs.getString("address"));
         chamber.setTelephone(rs.getString("telephone"));
-        chamber.setVisiting_hour(rs.getString("visiting_hour"));
-        chamber.setVisiting_days(rs.getString("visiting_days"));
+        chamber.setVisitingHour(rs.getString("visiting_hour"));
+        chamber.setVisitingDays(rs.getString("visiting_days"));
         chamber.setFees(rs.getString("fees"));
         chamber.clear();
         return chamber;
