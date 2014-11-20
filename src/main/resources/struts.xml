@@ -95,24 +95,24 @@
             <result>/addeducation.jsp</result>
         </action>
 
-        <action name="add_edu" class="com.jonak.controller.EducationController" method="add">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="add_education_detail" class="com.jonak.controller.EducationController" method="addEducation">
+            <result name="success">/addeducation.jsp</result>
         </action>
 
-        <action name="show_education" class="com.jonak.controller.EducationController" method="viewEducation">
+        <action name="show_user_education" class="com.jonak.controller.EducationController" method="viewEducation">
             <result name="success">/view_education.jsp</result>
         </action>
 
-        <action name="update_education" class="com.jonak.controller.EducationController" method="setContentID">
-            <result name="success">/update_education.jsp</result>
+        <action name="update_education">
+            <result>/update_education.jsp</result>
         </action>
 
-        <action name="update_edu" class="com.jonak.controller.EducationController" method="update">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="update_education_detail" class="com.jonak.controller.EducationController" method="updateEducation">
+            <result name="success">/view_education.jsp</result>
         </action>
 
-        <action name="delete_education" class="com.jonak.controller.EducationController" method="delete">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="delete_education" class="com.jonak.controller.EducationController" method="deleteEducation">
+            <result name="success">/view_education.jsp</result>
         </action>
 
         <action name="add_user_chamber">

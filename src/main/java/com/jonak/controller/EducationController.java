@@ -1,84 +1,50 @@
 package com.jonak.controller;
 
-import com.jonak.lib.MySQLDatabase;
-import com.jonak.lib.SessionLib;
-import com.jonak.model.Education;
-import com.jonak.model.EducationModel;
-import java.sql.*;
 import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Vector;
 
-import com.opensymphony.xwork2.ActionContext;
+import com.jonak.lib.Tools;
+import com.jonak.model.Education;
 import org.apache.struts2.ServletActionContext;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
 /**
  * Created by Fahim on 10/11/2014.
  */
 public class EducationController extends BaseController
 {
+    public Vector<Education> dateOut = new Vector<Education>();
     public EducationController()
     {
         super();
     }
 
-    public Vector<Education> getMessages() {
-        return messages;
-    }
-
-    public String add() throws Exception
+    //add user education
+    public String addEducation() throws Exception
     {
         Education education = new Education();
-        education.setUser_id( SessionLib.getUserID() );
+        //education.setUser_id( SessionLib.getUserID() );
+        education.setUser_id( 1 );
         education.setDegree(ServletActionContext.getRequest().getParameter("degree"));
         education.setInstitute(ServletActionContext.getRequest().getParameter("institute"));
         education.setResult(ServletActionContext.getRequest().getParameter("result"));
-        education.save(); //add education
+        //save education
+        education.save();
         return this.SUCCESS;
     }
-
+    //view education by user id
     public String viewEducation() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-        ResultSet rs = Education.find( SessionLib.getUserID() ); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Education education = new Education();
-                education.setId(rs.getInt(1));
-                education.setUser_id(rs.getInt(2));
-                education.setDegree(rs.getString(3));
-                education.setInstitute(rs.getString(4));
-                education.setResult(rs.getString(5));
-                education.setUpdate("update_education?id=" + rs.getInt(1)); //set update link
-                education.setDelete("delete_education?id="+ rs.getInt(1)); //set delete link
-                messages.add(education); //add result to vector
-            }
-        }
+        this.dateOut.clear();
+        dateOut = Education.findByUserID(1);
         return this.SUCCESS;
     }
-
-    public String setContentID() throws SQLException
+    //update education
+    public String updateEducation() throws Exception
     {
-        //SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        Education education = Education.find();
+        //find by using content id
+        Education education = Education.findByID( 1 );
         if(ServletActionContext.getRequest().getParameter("degree").length()>0) {
             education.setDegree(ServletActionContext.getRequest().getParameter("degree")); // reset title
         }
@@ -90,24 +56,24 @@ public class EducationController extends BaseController
         if(ServletActionContext.getRequest().getParameter("result").length()>0) {
             education.setResult(ServletActionContext.getRequest().getParameter("result")); //reset description
         }
-
-        // education.update(SessionLib.get("ContentID")); //update content using content ID
+        education.save();
+        Tools.redirect("show_user_education");
         return this.SUCCESS;
     }
-
-    public String delete() throws SQLException
+    //delete education
+    public String deleteEducation() throws Exception
     {
         Education education = new Education();
-        education.delete(); //delete
+        //delete
+        education.delete();
+        Tools.redirect("show_user_education");
         return this.SUCCESS;
     }
-
-    public void setMessages(Vector<Education> messages) {
-        this.messages = messages;
+    public Vector<Education> getDateOut() {
+        return dateOut;
     }
 
-    public Vector<Education> messages = new Vector<Education>();
-
-
-
+    public void setDateOut(Vector<Education> dateOut) {
+        this.dateOut = dateOut;
+    }
 }

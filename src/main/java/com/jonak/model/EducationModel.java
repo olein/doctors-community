@@ -10,24 +10,11 @@ public class EducationModel extends BaseModel
     private String degree;
     private String institute;
     private String result;
-    private String update;
-    private String delete;
-
 
     public EducationModel()
     {
         super();
         this.tableName = "education";
-    }
-    protected void prepareFields()
-    {
-        // again no need for id
-
-        // database field name              field type                          getter method
-        this.fields.add("user_id");     this.types.add("int");        this.values.add(this.getUser_id());
-        this.fields.add("degree");       this.types.add("String");     this.values.add(this.getDegree());
-        this.fields.add("institute"); this.types.add("String");     this.values.add(this.getInstitute());
-        this.fields.add("result"); this.types.add("String");     this.values.add(this.getResult());
     }
 
     public int getId() {
@@ -44,6 +31,7 @@ public class EducationModel extends BaseModel
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+        this.fields.add("user_id");     this.types.add("int");        this.values.add(this.getUser_id());
     }
 
     public String getDegree() {
@@ -52,6 +40,7 @@ public class EducationModel extends BaseModel
 
     public void setDegree(String degree) {
         this.degree = degree;
+        this.fields.add("degree");       this.types.add("String");     this.values.add(this.getDegree());
     }
 
     public String getInstitute() {
@@ -60,6 +49,7 @@ public class EducationModel extends BaseModel
 
     public void setInstitute(String institute) {
         this.institute = institute;
+        this.fields.add("institute"); this.types.add("String");     this.values.add(this.getInstitute());
     }
 
     public String getResult() {
@@ -68,23 +58,12 @@ public class EducationModel extends BaseModel
 
     public void setResult(String result) {
         this.result = result;
+        this.fields.add("result"); this.types.add("String");     this.values.add(this.getResult());
     }
-
-    public String getUpdate() {
-        return update;
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
     }
-
-    public void setUpdate(String update) {
-        this.update = update;
-    }
-
-    public String getDelete() {
-        return delete;
-    }
-
-    public void setDelete(String delete) {
-        this.delete = delete;
-    }
-
-
 }

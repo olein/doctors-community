@@ -9,7 +9,7 @@
   <title>Doctor's Community</title>
 </head>
 <body>
-<s:form action="add_edu">
+<s:form action="add_education_detail">
   <s:textfield name="degree" label="Degree"/>
   <s:textfield name="institute" label="Institute"/>
   <s:textfield name="result" label="Result"/>
