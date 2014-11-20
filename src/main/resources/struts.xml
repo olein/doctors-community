@@ -5,7 +5,7 @@
 
 <struts>
 
-   <package name="default" namespace="/user" extends="struts-default">
+    <package name="default" namespace="/user" extends="struts-default">
 
         <action name="test" class="com.jonak.controller.UserController" method="test">
             <result name="success">/home.jsp</result>
@@ -67,11 +67,11 @@
             <result name="success">/index.jsp</result>
         </action>
 
-        <action name="add_profile">
-            <result>/addprofile.jsp</result>
+        <action name="add_experience">
+            <result>/addexperience.jsp</result>
         </action>
 
-        <action name="create_profile" class="com.jonak.controller.ExperienceController" method="create">
+        <action name="add_experience_detail" class="com.jonak.controller.ExperienceController" method="createNewExperience">
             <result name="success">/welcome_user.jsp</result>
         </action>
 
@@ -79,40 +79,40 @@
             <result name="success">/view_experience.jsp</result>
         </action>
 
-        <action name="update_experience" class="com.jonak.controller.ExperienceController" method="setContentID">
+        <action name="update_experience">
             <result name="success">/update_experience.jsp</result>
         </action>
 
-        <action name="update_exp" class="com.jonak.controller.ExperienceController" method="update">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="update_experience_detail" class="com.jonak.controller.ExperienceController" method="updateExperience">
+            <result name="success">/view_experience.jsp</result>
         </action>
 
-        <action name="delete_experience" class="com.jonak.controller.ExperienceController" method="delete">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="delete_experience" class="com.jonak.controller.ExperienceController" method="deleteExperience">
+            <result name="success">/view_experience.jsp</result>
         </action>
 
         <action name="add_education">
             <result>/addeducation.jsp</result>
         </action>
 
-        <action name="add_edu" class="com.jonak.controller.EducationController" method="add">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="add_education_detail" class="com.jonak.controller.EducationController" method="addEducation">
+            <result name="success">/addeducation.jsp</result>
         </action>
 
-        <action name="show_education" class="com.jonak.controller.EducationController" method="viewEducation">
+        <action name="show_user_education" class="com.jonak.controller.EducationController" method="viewEducation">
             <result name="success">/view_education.jsp</result>
         </action>
 
-        <action name="update_education" class="com.jonak.controller.EducationController" method="setContentID">
-            <result name="success">/update_education.jsp</result>
+        <action name="update_education">
+            <result>/update_education.jsp</result>
         </action>
 
-        <action name="update_edu" class="com.jonak.controller.EducationController" method="update">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="update_education_detail" class="com.jonak.controller.EducationController" method="updateEducation">
+            <result name="success">/view_education.jsp</result>
         </action>
 
-        <action name="delete_education" class="com.jonak.controller.EducationController" method="delete">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="delete_education" class="com.jonak.controller.EducationController" method="deleteEducation">
+            <result name="success">/view_education.jsp</result>
         </action>
 
         <action name="add_user_chamber">
@@ -144,25 +144,25 @@
         </action>
 
 
-        <action name="add_catg" class="com.jonak.controller.CategoryController" method="add">
+        <action name="add_category_detail" class="com.jonak.controller.CategoryController" method="addCategory">
             <result name="success">/welcome_user.jsp</result>
         </action>
 
 
-        <action name="show_category" class="com.jonak.controller.CategoryController" method="viewCategory">
+        <action name="show_category" class="com.jonak.controller.CategoryController" method="viewAllCategory">
             <result name="success">/view_category.jsp</result>
         </action>
 
-        <action name="update_category" class="com.jonak.controller.CategoryController" method="setContentID">
+        <action name="update_category" class="com.jonak.controller.CategoryController" method="setCategory">
             <result name="success">/update_category.jsp</result>
         </action>
 
-        <action name="update_category_detail" class="com.jonak.controller.CategoryController" method="update">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="update_category_detail" class="com.jonak.controller.CategoryController" method="updateCategory">
+            <result name="success">/view_category.jsp</result>
         </action>
 
-        <action name="delete_category" class="com.jonak.controller.CategoryController" method="delete">
-            <result name="success">/welcome_user.jsp</result>
+        <action name="delete_category" class="com.jonak.controller.CategoryController" method="deleteCategory">
+            <result name="success">/view_category.jsp</result>
         </action>
 
         <action name="add_speciality" class="com.jonak.controller.CategoryController" method="setCategory">
