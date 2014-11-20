@@ -18,7 +18,7 @@ public class ParticipantController extends BaseController
 {
     public Vector<User> messages = new Vector<User>();
     public Vector<Participant> output = new Vector<Participant>();
-    public String setUserList() throws SQLException
+    public String setUserList() throws Exception
     {
         ResultSet rs = Participant.find(); //get user list
             if( rs != null ) {
@@ -35,12 +35,12 @@ public class ParticipantController extends BaseController
         return this.SUCCESS;
     }
 
-    public String add() throws SQLException
+    public String add() throws Exception
     {
         String data[] = ServletActionContext.getRequest().getParameterValues("participants[]");
         for(int i=0;i<data.length;i++) {
             Participant participant = new Participant();
-            participant.setContent_id(SessionLib.get("ContentID"));
+            participant.setContent_id(Integer.parseInt(SessionLib.get("ContentID")));
             participant.setUser_id(Integer.parseInt(data[i]));
             participant.setActive(0);
             participant.save(); //add speciality
@@ -49,7 +49,7 @@ public class ParticipantController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewParticipant() throws SQLException
+    public String viewParticipant() throws Exception
     {
         // this is how we will be using
         // get the user with id 1

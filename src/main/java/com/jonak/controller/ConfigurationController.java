@@ -38,7 +38,7 @@ public class ConfigurationController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewConfiguration() throws SQLException
+    public String viewConfiguration() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
@@ -59,13 +59,13 @@ public class ConfigurationController extends BaseController
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
+    public String setContentID() throws Exception
     {
         SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
         Configuration configuration = Configuration.find();
         if(ServletActionContext.getRequest().getParameter("key").length()>0) {
@@ -76,7 +76,7 @@ public class ConfigurationController extends BaseController
             configuration.setValue(ServletActionContext.getRequest().getParameter("value")); //reset description
         }
 
-        configuration.update(SessionLib.get("ContentID")); //update content using content ID
+        configuration.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
         return this.SUCCESS;
     }
 

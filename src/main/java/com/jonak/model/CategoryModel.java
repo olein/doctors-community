@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class CategoryModel extends BaseModel
 {
-    private int id;
+
     private String name;
     private String detail;
     private int parent_id;
@@ -34,7 +34,7 @@ public class CategoryModel extends BaseModel
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {

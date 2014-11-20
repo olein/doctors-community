@@ -17,7 +17,7 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Content extends ContentModel
 {
-    public static ResultSet find() throws SQLException
+    public static ResultSet find() throws Exception
     {
 
         MySQLDatabase db = new MySQLDatabase();
@@ -28,7 +28,7 @@ public class Content extends ContentModel
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
-        _fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getId()); //find current user
+        _fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
 

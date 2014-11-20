@@ -7,7 +7,6 @@ import java.util.Date;
  */
 public class MessageModel extends BaseModel
 {
-    private int id;
     private int from_user_id;
     private int to_user_id;
     private String user_name;

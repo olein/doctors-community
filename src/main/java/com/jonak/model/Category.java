@@ -35,7 +35,7 @@ public class Category extends CategoryModel
         return category.getName();
     }
 
-    public static ResultSet find() throws SQLException
+    public static ResultSet find() throws Exception
     {
 
         MySQLDatabase db = new MySQLDatabase();
@@ -45,7 +45,8 @@ public class Category extends CategoryModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        if(SessionLib.get("ContentID")>0) {
+        if(Integer.parseInt(SessionLib.get("ContentID"))>0)
+        {
             _fields.add("id");            _types.add("int");            _values.add(SessionLib.get("ContentID"));
         }
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id

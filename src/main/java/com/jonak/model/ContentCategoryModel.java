@@ -5,7 +5,6 @@ package com.jonak.model;
  */
 public class ContentCategoryModel extends BaseModel
 {
-    private int id;
     private int category_id;
     private int content_id;
 

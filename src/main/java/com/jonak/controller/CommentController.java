@@ -23,11 +23,11 @@ public class CommentController extends BaseController
         super();
     }
 
-    public String add() throws SQLException
+    public String add() throws Exception
     {
         Comment comment = new Comment();
         comment.setContent_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("content_id")));
-        comment.setUser_id(SessionLib.getId());
+        comment.setUser_id(SessionLib.getUserID());
         comment.setContent(ServletActionContext.getRequest().getParameter("content"));
         comment.setParent_id(0);
         int timestamp = (int) (new Date().getTime()/1000);
@@ -36,7 +36,7 @@ public class CommentController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewComment() throws SQLException
+    public String viewComment() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
@@ -67,16 +67,16 @@ public class CommentController extends BaseController
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
+    public String setContentID() throws Exception
     {
         SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
-        Comment comment = Comment.find(SessionLib.get("ContentID"));
-        if((comment.getUser_id())==SessionLib.getId()) {
+        Comment comment = Comment.find(Integer.parseInt(SessionLib.get("ContentID")));
+        if((comment.getUser_id())==SessionLib.getUserID()) {
             if (ServletActionContext.getRequest().getParameter("content").length() > 0) {
                 comment.setContent(ServletActionContext.getRequest().getParameter("content")); // reset title
             }
@@ -91,10 +91,10 @@ public class CommentController extends BaseController
         return this.ERROR;
     }
 
-    public String delete() throws SQLException
+    public String delete() throws Exception
     {
         Comment comment = Comment.find(Integer.parseInt(ServletActionContext.getRequest().getParameter("id")));
-        if((comment.getUser_id())==SessionLib.getId()) {
+        if((comment.getUser_id())==SessionLib.getUserID()) {
             comment.delete(); //delete
             return this.SUCCESS;
         }

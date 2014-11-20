@@ -5,7 +5,6 @@ package com.jonak.model;
  */
 public class ParticipantModel extends BaseModel
 {
-    private int id;
     private int content_id;
     private int user_id;
     private int active;

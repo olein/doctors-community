@@ -53,7 +53,7 @@ public class UserModel extends BaseModel {
         this.fields.add( "allow_message" ); this.types.add( "int" ); this.values.add( this.getAllowMessage() );
         this.fields.add( "status" ); this.types.add( "int" ); this.values.add( this.getStatus() );
         this.fields.add( "created_at" ); this.types.add( "int" ); this.values.add( this.getCreatedAt() );
-        this.fields.add( "keyValue" ); this.types.add( "String" ); this.values.add( this.getKey() );
+        this.fields.add( "token" ); this.types.add( "String" ); this.values.add( this.getKey() );
 
     }
 

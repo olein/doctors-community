@@ -31,7 +31,7 @@ public class Configuration extends ConfigurationModel
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         return rs;
     }
-    public static Configuration find() throws SQLException
+    public static Configuration find() throws Exception
     {
         Configuration configuration = new Configuration();
         MySQLDatabase db = new MySQLDatabase();

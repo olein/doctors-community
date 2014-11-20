@@ -10,7 +10,7 @@
 <h1>See the output in Console</h1>
 <p></p>
 <table>
-  <s:iterator value="messages">
+  <s:iterator value="dataOut">
 
     <tr>
       <td>Address   </td><td><s:property value="address"/></td>
@@ -28,8 +28,7 @@
       <td>Fees   </td><td><s:property value="fees"/></td>
     </tr>
     <tr>
-      <td><a href=<s:property value="update"/>>Update</a></td>
-      <td><a href=<s:property value="delete"/>>Delete</a></td>
+
     </tr>
 
   </s:iterator>

@@ -7,7 +7,6 @@ import java.util.Date;
  */
 public class CommentModel  extends BaseModel
 {
-    private int id;
     private int content_id;
     private int user_id;
     private String content;
@@ -36,6 +35,14 @@ public class CommentModel  extends BaseModel
         this.fields.add("created_at");  this.types.add("int");        this.values.add(this.getCreated_at());
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getAddcomment() {
         return addcomment;
     }
@@ -50,15 +57,6 @@ public class CommentModel  extends BaseModel
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getContent_id() {

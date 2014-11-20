@@ -40,7 +40,7 @@ public class MessageController extends BaseController
     }
     public Vector<Message> messages = new Vector<Message>();
 
-    public String setToUser() throws SQLException
+    public String setToUser() throws Exception
     {
 
         //SessionLib.set("ContentID",0);
@@ -58,12 +58,12 @@ public class MessageController extends BaseController
         return this.SUCCESS;
     }
 
-    public String add() throws SQLException, ParseException
+    public String add() throws Exception, ParseException
     {
         Message message = new Message();
 
         message.setTo_user_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("to_user_id")));
-        message.setFrom_user_id(SessionLib.getId());
+        message.setFrom_user_id(SessionLib.getUserID());
         message.setMsg(ServletActionContext.getRequest().getParameter("msg"));
         int timestamp = (int) (new Date().getTime()/1000);
         message.setCreated_at(timestamp);
@@ -71,7 +71,7 @@ public class MessageController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewMessages() throws SQLException
+    public String viewMessages() throws Exception
     {
         // this is how we will be using
         // get the user with id 1

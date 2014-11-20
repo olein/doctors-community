@@ -5,7 +5,7 @@ package com.jonak.model;
  */
 public class EducationModel extends BaseModel
 {
-    private int id;
+
     private int user_id;
     private String degree;
     private String institute;

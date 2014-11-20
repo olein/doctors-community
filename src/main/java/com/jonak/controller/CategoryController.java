@@ -42,7 +42,7 @@ public class CategoryController extends BaseController
     public Vector<Category> messages = new Vector<Category>();
     public Vector<Speciality> specialities = new Vector<Speciality>();
 
-    public String setCategory() throws SQLException
+    public String setCategory() throws Exception
     {
 
         SessionLib.set("ContentID",0);
@@ -73,7 +73,7 @@ public class CategoryController extends BaseController
         return this.SUCCESS;
     }
 
-    public String viewCategory() throws SQLException
+    public String viewCategory() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
@@ -101,14 +101,14 @@ public class CategoryController extends BaseController
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
+    public String setContentID() throws Exception
     {
         setCategory();
         SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
         ResultSet rs = Category.find();
         Category category = new Category();
@@ -137,35 +137,35 @@ public class CategoryController extends BaseController
             category.setId(rs.getInt(1));
         }
 
-        category.update(SessionLib.get("ContentID")); //update content using content ID
+        category.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
         return this.SUCCESS;
     }
 
-    public String delete() throws SQLException
+    public String delete() throws Exception
     {
         Category category = new Category();
         category.delete(); //delete
         return this.SUCCESS;
     }
 
-    public String addSpeciality() throws SQLException, ParseException
+    public String addSpeciality() throws Exception, ParseException
     {
         String data[] = ServletActionContext.getRequest().getParameterValues("speciality[]");
         for(int i=0;i<data.length;i++) {
             Speciality speciality = new Speciality();
-            speciality.setUser_id(SessionLib.getId());
+            speciality.setUser_id(SessionLib.getUserID());
             speciality.setCategory_id(Integer.parseInt(data[i]));
             speciality.save(); //add speciality
         }
         return this.SUCCESS;
     }
 
-    public String viewSpeciality() throws SQLException
+    public String viewSpeciality() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
         SessionLib.set("ContentID",0);
-        ResultSet rs = Speciality.find(SessionLib.getId()); //get result using user id
+        ResultSet rs = Speciality.find(SessionLib.getUserID()); //get result using user id
 
         if( rs != null ) {
 
@@ -182,7 +182,7 @@ public class CategoryController extends BaseController
         return this.SUCCESS;
     }
 
-    public String deleteSpeciality() throws SQLException
+    public String deleteSpeciality() throws Exception
     {
         Speciality speciality = new Speciality();
         speciality.delete(); //delete

@@ -4,4 +4,6 @@ target/
 *.iml
 .classpath
 .project
+src/main/java/com/jonak/lib/MySQLDatabase.java
 *~
+src/main/resources/struts.xml

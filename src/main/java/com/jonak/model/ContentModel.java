@@ -7,7 +7,6 @@ import java.util.Date;
  */
 public class ContentModel extends BaseModel
 {
-    private int id;
     private int user_id;
     private String title;
     private String description;

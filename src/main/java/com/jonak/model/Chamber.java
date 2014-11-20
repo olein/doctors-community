@@ -16,7 +16,9 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Chamber extends ChamberModel
 {
-    public static ResultSet find(int user_id) throws SQLException
+    public static Vector<Chamber> dataOut = new Vector<Chamber>();
+
+    public static Vector findByUserID(int user_id) throws SQLException
     {
         MySQLDatabase db = new MySQLDatabase();
 
@@ -28,8 +30,19 @@ public class Chamber extends ChamberModel
         _fields.add("user_id"); _types.add("int"); _values.add(user_id);
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
-        return rs;
+        if( rs != null ) {
+
+            while (rs.next()) {
+                Chamber chamber = Chamber.setData(rs);
+                //add result to vector
+                dataOut.add(chamber);
+            }
+
+        }
+        return dataOut;
     }
+
+
 
     public static Chamber find() throws Exception
     {
@@ -57,5 +70,27 @@ public class Chamber extends ChamberModel
             chamber = null;
         }
         return chamber;
+    }
+
+    private static Chamber setData( ResultSet rs ) throws SQLException
+    {
+
+            Chamber chamber = new Chamber();
+            chamber.setId(rs.getInt(1));
+            chamber.setUser_id(rs.getInt(2));
+            chamber.setAddress(rs.getString(3));
+            chamber.setTelephone(rs.getString(4));
+            chamber.setVisiting_hour(rs.getString(5));
+            chamber.setVisiting_days(rs.getString(6));
+            chamber.setFees(rs.getString(7));
+            return chamber;
+
+    }
+
+    public void setdataOut(Vector<Chamber> dataOut) {
+        this.dataOut = dataOut;
+    }
+    public Vector<Chamber> getdataOut() {
+        return dataOut;
     }
 }

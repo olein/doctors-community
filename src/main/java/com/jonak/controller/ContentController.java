@@ -40,7 +40,7 @@ public class ContentController extends BaseController
     public Vector<Content> messages = new Vector<Content>();
     public Vector<Category> output = new Vector<Category>();
 
-    public String setCategory() throws SQLException
+    public String setCategory() throws Exception
     {
 
         SessionLib.set("ContentID",0);
@@ -58,11 +58,11 @@ public class ContentController extends BaseController
         return this.SUCCESS;
     }
 
-    public String add() throws SQLException, ParseException
+    public String add() throws Exception, ParseException
     {
         Content content = new Content();
 
-        content.setUser_id(SessionLib.getId());
+        content.setUser_id(SessionLib.getUserID());
         content.setTitle(ServletActionContext.getRequest().getParameter("title"));
         content.setDescription(ServletActionContext.getRequest().getParameter("description"));
         content.setType(1);
@@ -81,13 +81,13 @@ public class ContentController extends BaseController
 
         Participant participant = new Participant();
         participant.setContent_id(ContentCategory.getID());
-        participant.setUser_id(SessionLib.getId());
+        participant.setUser_id(SessionLib.getUserID());
         participant.setActive(1);
         participant.save();
         return this.SUCCESS;
     }
 
-    public String viewContent() throws SQLException
+    public String viewContent() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
@@ -125,16 +125,16 @@ public class ContentController extends BaseController
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
+    public String setContentID() throws Exception
     {
         this.setCategory(); //set content types
         SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }
 
-    public String update() throws SQLException
+    public String update() throws Exception
     {
-        Content content = Content.find(SessionLib.get("ContentID"));
+        Content content = Content.find(Integer.parseInt(SessionLib.get("ContentID")));
         if(ServletActionContext.getRequest().getParameter("title").length()>0) {
             content.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
         }
@@ -155,13 +155,13 @@ public class ContentController extends BaseController
         content.setComment_counter(content.getComment_counter());
         content.setCreated_at(content.getCreated_at());
         content.setType(content.getType());
-        content.update(SessionLib.get("ContentID")); //update content using content ID
+        content.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
 
         if(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id"))>0) //check if it needs update
         {
             ContentCategory contentCategory = new ContentCategory();
-            ResultSet rs = ContentCategory.find(SessionLib.get("ContentID"));
-            contentCategory.setContent_id(SessionLib.get("ContentID"));
+            ResultSet rs = ContentCategory.find(Integer.parseInt(SessionLib.get("ContentID")));
+            contentCategory.setContent_id(Integer.parseInt(SessionLib.get("ContentID")));
             contentCategory.setCategory_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id")));
             if(rs.next())
             {
