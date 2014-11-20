@@ -1,0 +1,1 @@
+<% response.sendRedirect("user/show_user_education"); %>
