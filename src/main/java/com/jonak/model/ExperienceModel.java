@@ -10,7 +10,7 @@ public class ExperienceModel extends BaseModel
     private int user_id;
     private String update;
     private String delete;
-    private int id;
+
 
     public ExperienceModel()
     {

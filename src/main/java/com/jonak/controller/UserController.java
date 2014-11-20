@@ -62,6 +62,7 @@ public class UserController extends BaseController
         DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         Date date = (Date)formatter.parse(date_of_birth);
         int timestamp = (int)date.getTime()/1000;
+
         System.out.println(timestamp);
         nuser.setDateOfBirth(timestamp);
         nuser.setGender(Integer.parseInt(ServletActionContext.getRequest().getParameter("gender")));
@@ -70,7 +71,7 @@ public class UserController extends BaseController
         nuser.setAllowMessage(Integer.parseInt(ServletActionContext.getRequest().getParameter("allow_message")));
         nuser.setStatus(1);
         Date date1 = new Date();
-        timestamp = (int) date.getTime()/1000;
+        timestamp = (int) (new Date().getTime()/1000);
         nuser.setCreatedAt(timestamp);
         nuser.setToken("");
 

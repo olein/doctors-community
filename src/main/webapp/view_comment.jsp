@@ -13,26 +13,31 @@
   <s:iterator value="messages">
 
     <tr>
-      <td>Address   </td><td><s:property value="address"/></td>
+      <td>User name   </td><td><s:property value="name"/></td>
     </tr>
     <tr>
-      <td>Telephone   </td><td><s:property value="telephone"/></td>
+      <td>Created date   </td><td><s:property value="date"/></td>
     </tr>
     <tr>
-      <td>Visiting Hour   </td><td><s:property value="visiting_hour"/></td>
-    </tr>
-    <tr>
-      <td>Visiting Days   </td><td><s:property value="visiting_days"/></td>
-    </tr>
-    <tr>
-      <td>Fees   </td><td><s:property value="fees"/></td>
+      <td>Comment   </td><td><s:property value="content"/></td>
     </tr>
     <tr>
       <td><a href=<s:property value="update"/>>Update</a></td>
       <td><a href=<s:property value="delete"/>>Delete</a></td>
     </tr>
 
+
+
   </s:iterator>
+  <tr>
+    <td>
+      <form action=<s:property value="add_comment"/> method="post">
+        Comment<input type="text" name="content"><br/>
+        <input type="submit" value="Submit">
+      </form>
+    </td>
+  </tr>
 </table>
+
 </body>
 </html>

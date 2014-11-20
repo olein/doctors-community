@@ -19,7 +19,7 @@
     <td>Description   </td><td><s:property value="description"/></td>
   </tr>
   <tr>
-    <td><a href="update_chamber.jsp?id=<s:property value="id"/>">Update</a></td>
+    <td><a href="update_user_chamber.jsp?id=<s:property value="id"/>">Update</a></td>
     <td><a href=<s:property value="delete"/>>Delete</a></td>
   </tr>
 
