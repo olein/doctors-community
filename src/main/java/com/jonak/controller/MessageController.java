@@ -100,7 +100,7 @@ public class MessageController extends BaseController
     public String delete() throws SQLException
     {
         Message message = new Message();
-        message.delete(); //delete
+        //message.delete(); //delete
         return this.SUCCESS;
     }
 

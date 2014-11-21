@@ -86,7 +86,7 @@ public class ExperienceController extends BaseController
         return this.SUCCESS;
     }
 
-    public String delete() throws SQLException
+    public String delete() throws Exception
     {
         Experience exp = new Experience();
         exp.delete();

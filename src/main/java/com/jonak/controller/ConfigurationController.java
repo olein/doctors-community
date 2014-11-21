@@ -83,7 +83,7 @@ public class ConfigurationController extends BaseController
     public String delete() throws SQLException
     {
         Configuration configuration = new Configuration();
-        configuration.delete();
+        //configuration.delete();
         return this.SUCCESS;
     }
 

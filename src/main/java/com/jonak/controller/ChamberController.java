@@ -37,20 +37,41 @@ public class ChamberController extends BaseController
     public Vector<Chamber> dataOut = new Vector<Chamber>();
 
     //add new user
-    public String addNewChamber() throws Exception
+    public void saveChamber() throws Exception
     {
         Chamber chamber = new Chamber();
-        //chamber.setUser_id( SessionLib.getUserID() );
-        chamber.setUserId(1);
-        chamber.setAddress(Tools.get("address"));
-        chamber.setTelephone(Tools.get("telephone"));
-        chamber.setVisitingHour(Tools.get("visitingHour"));
-        chamber.setVisitingDays(Tools.get("visitingDays"));
-        chamber.setFees(Tools.get("fees"));
+        chamber.setUserId(SessionLib.getUserID());
+        //get parameter values
+        String  name = Tools.get("name"),
+                address = Tools.get("address"),
+                telephone = Tools.get("telephone"),
+                visitingHour = Tools.get("visitingHour"),
+                visitingDays = Tools.get("visitingDays"),
+                fees = Tools.get("fees");
+
+        //chamber id needs to be put in the session
+        if(SessionLib.get("id")!=null)
+        {
+            chamber = Chamber.findChamberByID(Integer.parseInt(SessionLib.get("id")));
+            if( ! chamber.getName().equals( name ) ) { chamber.setName(name); }
+            if( ! chamber.getAddress().equals( address ) ) { chamber.setAddress(address); }
+            if( ! chamber.getTelephone().equals( telephone ) ) { chamber.setTelephone(telephone); }
+            if( ! chamber.getVisitingHour().equals( visitingHour ) ) { chamber.setVisitingHour(visitingHour); }
+            if( ! chamber.getVisitingDays().equals( visitingDays ) ) { chamber.setVisitingDays(visitingDays); }
+            if( ! chamber.getFees().equals( fees ) ) { chamber.setFees( fees ); }
+        }
+        else{
+            chamber.setName(name);
+            chamber.setAddress(address);
+            chamber.setTelephone(telephone);
+            chamber.setVisitingHour(visitingHour);
+            chamber.setVisitingDays(visitingDays);
+            chamber.setFees( fees );
+        }
 
         //add chamber
         chamber.save();
-        return this.SUCCESS;
+        Tools.redirect("chambers");
     }
 
 
@@ -58,7 +79,9 @@ public class ChamberController extends BaseController
     {
         // get all chamber
         // add them in vector
-
+        dataOut.clear();
+        dataOut = Chamber.findAllChamber();
+        System.out.println(dataOut.size());
         return this.SUCCESS;
     }
 
@@ -66,42 +89,22 @@ public class ChamberController extends BaseController
     {
         //get result using user id
         //dataOut = Chamber.findByUserID(SessionLib.getUserID());
-
-        dataOut = Chamber.findByUserID(1);
-
+        Chamber chamber;
+        int id = Integer.parseInt(Tools.get("id"));
+        chamber = Chamber.findChamberByID(id);
+        dataOut.add(chamber);
+        SessionLib.set("id",id);
         return this.SUCCESS;
     }
 
-    //update chamber details
-    public void updateUserChamber() throws Exception
-    {
-        //find chamber by id
-        String address = Tools.get("address"),
-               telephone = Tools.get("telephone"),
-               visitingHour = Tools.get("visitingHour"),
-               visitingDays = Tools.get("visitingDays"),
-               fees = Tools.get("fees");
 
-        //chamber id needs to be put in the session
-        Chamber chamber = Chamber.findByID( 1 );
-        //update values
-        if( ! chamber.getAddress().equals( address ) ) { chamber.setAddress(address); }
-        if( ! chamber.getTelephone().equals( telephone ) ) { chamber.setTelephone(telephone); }
-        if( ! chamber.getVisitingHour().equals( visitingHour ) ) { chamber.setVisitingHour(visitingHour); }
-        if( ! chamber.getVisitingDays().equals( visitingDays ) ) { chamber.setVisitingDays(visitingDays); }
-        if( ! chamber.getFees().equals( fees ) ) { chamber.setFees( fees ); }
-
-        //update chamber
-        chamber.save();
-        Tools.redirect("show_user_chamber");
-    }
     //fix delete chamber, id needed
-    public String deleteChamber() throws SQLException
+    public void deleteChamber() throws Exception
     {
         Chamber chamber = new Chamber();
         //delete chamber
         chamber.delete();
-        return this.SUCCESS;
+        Tools.redirect("chambers");
     }
     public void setdataOut(Vector<Chamber> dataOut) {
         this.dataOut = dataOut;

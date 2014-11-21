@@ -11,6 +11,7 @@ public class ChamberModel extends BaseModel
     private String visitingHour;
     private String visitingDays;
     private String fees;
+    private String name;
 
     public ChamberModel()
     {
@@ -71,8 +72,14 @@ public class ChamberModel extends BaseModel
         this.fields.add("visiting_hour");    this.types.add("String");     this.values.add(this.getVisitingHour());
     }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public void setName(String name) {
+        this.name = name;
+        this.fields.add("name");    this.types.add("String");     this.values.add(this.getName());
+    }
 
     public String getFees() {
         return fees;

@@ -139,6 +139,9 @@
             <result name="success">/welcome_user.jsp</result>
         </action>
 
+
+
+
         <action name="add_category" class="com.jonak.controller.CategoryController" method="setCategory">
             <result>/addcategory.jsp</result>
         </action>
@@ -245,6 +248,8 @@
         </action>
         <action name="edit-chamber" class="com.jonak.controller.ChamberController" method="viewChamber">
             <result name="success">/back/edit-chamber.jsp</result>
+        </action>
+        <action name="delete-chamber" class="com.jonak.controller.ChamberController" method="deleteChamber">
         </action>
         <action name="new-chamber">
             <result>/back/new-chamber.jsp</result>

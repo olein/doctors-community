@@ -175,7 +175,7 @@ public class ContentController extends BaseController
     public String delete() throws SQLException
     {
         Content content = new Content();
-        content.delete(); //delete
+        //content.delete(); //delete
         return this.SUCCESS;
     }
 

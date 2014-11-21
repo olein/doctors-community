@@ -77,7 +77,7 @@ public class ParticipantController extends BaseController
     public String delete() throws SQLException
     {
         Participant participant = new Participant();
-        participant.delete(); //delete
+        //participant.delete(); //delete
         return this.SUCCESS;
     }
 

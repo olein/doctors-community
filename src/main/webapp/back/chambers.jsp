@@ -31,32 +31,28 @@
                             <th>Address</th>
                             <th>Telephone</th>
                             <th>Fees</th>
+                            <th>Visiting Hours</th>
+                            <th>Visiting Days</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbod>
+                        <s:iterator value="dataOut">
                         <tr>
-                            <td>1</td>
-                            <td>The Madan Tech Chamber</td>
-                            <td>Pabna, Chipagoli, Bangladesh</td>
-                            <td>+321456987</td>
-                            <td>-500=/</td>
+                            <td><s:property value="id"/></td>
+                            <td><s:property value="name"/></td>
+                            <td><s:property value="address"/></td>
+                            <td><s:property value="telephone"/></td>
+                            <td><s:property value="fees"/></td>
+                            <td><s:property value="visitingHour"/></td>
+                            <td><s:property value="visitingDays"/></td>
                             <td>
-                                <a href="edit-chamber?id=1" class="btn btn-default">Edit</a>
-                                <a href="delete-chamber?id=1"class="btn btn-default">Delete</a>
+                                <a href="edit-chamber?id=<s:property value="id"/>" class="btn btn-default">Edit</a>
+                                <a href="delete-chamber?id=<s:property value="id"/>"class="btn btn-default">Delete</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>The New Madan Tech Chamber</td>
-                            <td>Pabna, Chipagoli, Bangladesh</td>
-                            <td>+3214569878</td>
-                            <td>-200=/</td>
-                            <td>
-                                <a href="edit-chamber?id=2" class="btn btn-default">Edit</a>
-                                <a href="delete-chamber?id=2"class="btn btn-default">Delete</a>
-                            </td>
-                        </tr>
+                        </s:iterator>
+
                     </tbod>
                 </table>
 
