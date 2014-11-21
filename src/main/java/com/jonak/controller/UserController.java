@@ -261,6 +261,19 @@ public class UserController extends BaseController
                 // save
                 user.save();
 
+                // make mail tempalte
+                String msg = "<p>Hello <b>"+user.getFirstName()+" "+user.getLastName()+"</b><p>";
+                msg += "<p>Your password has been reset successfully!<p>";
+                msg += "<hr>";
+                msg += "<p>Regards<br><b>Doctor's Community Team</b></p>";
+
+                // send password reset confirmation to user
+                Emailer mail = new Emailer();
+                mail.setTo( user.getEmail() );
+                mail.setSubject( "No-Reply! Password Reset Confirmation." );
+                mail.setBody( msg );
+                mail.send();
+
                 // redirect to confirm page
                 Tools.redirect("confirm-reset?confirm=true");
             } else {
