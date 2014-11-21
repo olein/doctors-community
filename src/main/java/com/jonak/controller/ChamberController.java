@@ -44,8 +44,8 @@ public class ChamberController extends BaseController
         chamber.setUserId(1);
         chamber.setAddress(Tools.get("address"));
         chamber.setTelephone(Tools.get("telephone"));
-        chamber.setVisitingHour(Tools.get("visiting_hour"));
-        chamber.setVisitingDays(Tools.get("visiting_days"));
+        chamber.setVisitingHour(Tools.get("visitingHour"));
+        chamber.setVisitingDays(Tools.get("visitingDays"));
         chamber.setFees(Tools.get("fees"));
 
         //add chamber
@@ -69,12 +69,12 @@ public class ChamberController extends BaseController
         //find chamber by id
         String address = Tools.get("address"),
                telephone = Tools.get("telephone"),
-               visitingHour = Tools.get("visiting_hour"),
-               visitingDays = Tools.get("visiting_days"),
+               visitingHour = Tools.get("visitingHour"),
+               visitingDays = Tools.get("visitingDays"),
                fees = Tools.get("fees");
 
         //chamber id needs to be put in the session
-        Chamber chamber = Chamber.findByID(1);
+        Chamber chamber = Chamber.findByID( 1 );
         //update values
         if( ! chamber.getAddress().equals( address ) ) { chamber.setAddress(address); }
         if( ! chamber.getTelephone().equals( telephone ) ) { chamber.setTelephone(telephone); }
@@ -87,7 +87,7 @@ public class ChamberController extends BaseController
         Tools.redirect("show_user_chamber");
     }
     //fix delete chamber, id needed
-    public String delete() throws SQLException
+    public String deleteChamber() throws SQLException
     {
         Chamber chamber = new Chamber();
         //delete chamber

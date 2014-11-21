@@ -33,8 +33,9 @@ public class Chamber extends ChamberModel
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
         if( rs != null ) {
-            Chamber chamber = new Chamber();
+
             while (rs.next()) {
+                Chamber chamber = new Chamber();
                 chamber.setId(rs.getInt("id"));
                 chamber.setUserId(rs.getInt("user_id"));
                 chamber.setAddress(rs.getString("address"));

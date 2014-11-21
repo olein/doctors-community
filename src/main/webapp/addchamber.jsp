@@ -12,8 +12,8 @@
 <s:form action="add_chamber_detail">
   <s:textfield name="address" label="Address"/>
   <s:textfield name="telephone" label="Telephone"/>
-  <s:textfield name="visiting_hour" label="Visiting hour"/>
-  <s:textfield name="visiting_days" label="Visiting days"/>
+  <s:textfield name="visitingHour" label="Visiting hour"/>
+  <s:textfield name="visitingDays" label="Visiting days"/>
   <s:textfield name="fees" label="Fees"/>
   <s:submit/>
 </s:form>

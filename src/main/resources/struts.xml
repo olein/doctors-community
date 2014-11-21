@@ -135,7 +135,7 @@
             <result name="success">/view_user_chamber.jsp</result>
         </action>
 
-        <action name="delete_chamber" class="com.jonak.controller.ChamberController" method="delete">
+        <action name="delete_chamber" class="com.jonak.controller.ChamberController" method="deleteChamber">
             <result name="success">/welcome_user.jsp</result>
         </action>
 
