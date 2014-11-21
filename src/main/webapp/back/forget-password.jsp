@@ -3,8 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
-    String  logout = Tools.get("logout"),
-            invalid = Tools.get("invalid");
+    String  confirm = Tools.get("confirm");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,28 +24,28 @@
 
     <div class="container login-form">
 
-        <form class="form-signin" role="form" action="process-login" method="post">
-            <h2 class="form-signin-heading">Please Login Here</h2>
+        <form class="form-signin" role="form" action="process-forget-password" method="post">
+            <h2 class="form-signin-heading">Forget password?</h2>
 
-            <% if( logout != null && logout.equals("true") ) { %>
-            <p class="alert alert-info">Successfully Logout!</p>
-            <% } %>
-            <% if( invalid != null && invalid.equals("true") ) { %>
-            <p class="alert alert-danger">Invalid email/password!</p>
-            <% } %>
-
+            <% if( confirm != null && confirm.equals("true") ) { %>
+            <p class="alert alert-success">Email Confirmed!</p>
+            <p>An email with detail instructions has been sent to your address successfully! Follow the instructions to reset your password.</p>
+            <p class="text-center">Thank You!</p>
+            <p class="forget-link text-center"><a href="login">Back to Login</a></p>
+            <% } else  { %>
+                <% if( confirm != null && confirm.equals("false") ) { %>
+                <p class="alert alert-danger">Invalid email!</p>
+                <% } %>
             <p>
-                <label for="inputEmail" class="sr-only">Email address</label>
+                <label for="inputEmail" >Enter your email address</label>
                 <input type="email" id="inputEmail" class="form-control input-lg" placeholder="Email address" required autofocus name="email">
             </p>
-            <p>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control input-lg" placeholder="Password" required name="password">
-            </p>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit Email</button>
 
-            <p class="forget-link text-center"><a href="forget-password">Forget password ?</a></p>
+            <p class="forget-link text-center"><a href="login">Back to Login</a></p>
+            <% } %>
+
         </form>
 
     </div> <!-- /container -->

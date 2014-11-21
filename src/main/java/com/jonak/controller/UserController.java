@@ -26,24 +26,6 @@ public class UserController extends BaseController
 
     public UserController(){ super(); }
 
-    // test method
-    public String test() throws SQLException
-    {
-        // this is how we will be using
-        // get the user with id 1
-        User user = User.find( 1 );
-
-        if( user != null ) {
-            System.out.printf( "Name: %s %s\n", user.getFirstName(), user.getLastName() );
-            System.out.printf( "Email: %s \n", user.getEmail() );
-            System.out.printf( "Address: %s \n", user.getAddress() );
-            this.dataOut.add(user);
-        } else {
-            System.out.printf( "No user found!" );
-        }
-        return this.SUCCESS;
-    }
-
     // new user register
     public String register() throws SQLException, ParseException
     {
@@ -81,7 +63,7 @@ public class UserController extends BaseController
     }
 
     // user login
-    public void loginProcess() throws Exception
+    public void processLogin() throws Exception
     {
         // get params data
         String  email = Tools.get("email"),
@@ -103,7 +85,7 @@ public class UserController extends BaseController
     }
 
     // logout process
-    public void logoutProcess() throws Exception
+    public void processLogout() throws Exception
     {
         // if user login then unset session
         if( SessionLib.isLogin() ) {
@@ -120,7 +102,7 @@ public class UserController extends BaseController
     {
         // get current user
         int user_id = SessionLib.getUserID();
-        User user = User.find( user_id );
+        User user = User.findById(user_id);
 
         // add the user in data out
         this.dataOut.clear();
@@ -155,7 +137,7 @@ public class UserController extends BaseController
 
         // get user
         int user_id = SessionLib.getUserID();
-        User user = User.find( user_id );
+        User user = User.findById(user_id);
 
         // check email
         if( ! user.getEmail().equals( email ) ) { user.setEmail( email ); }
@@ -197,6 +179,7 @@ public class UserController extends BaseController
         Tools.redirect("profile?update=true");
     }
 
+    // process forget password
     public void processForgetPassword() throws Exception
     {
         // get params
@@ -209,17 +192,17 @@ public class UserController extends BaseController
         if( user != null) {
             // generate token
             int timeStamp = Tools.getTimeStamp();
-            String token = Hash.md5( Integer.toString( timeStamp ) );
+            String token = Hash.md5( Integer.toString( timeStamp ) ).substring(0, 7);
 
             // set token
-            user.setToken( token.substring(0, 7) );
+            user.setToken( token );
             user.save();
 
             // make mail tempalte
             String msg = "<p>Hello <b>"+user.getFirstName()+" "+user.getLastName()+"</b><p>";
             msg += "<p>Someone requested to change your password. Please click the following link to reset your password<p>";
-            msg += "<div><a href=\"http://localhost:7005/DoctorCommunity/user/resetpassword?token=\""+user.getToken()+">Reset Password</a></div>";
-            msg += "<p>If this wasn't you <a href=\"http://localhost:7005/DoctorCommunity/user/cancelreset?token\">Click Here</a> to cancel reset request.</p>";
+            msg += "<div><a href=\"http://localhost:7005/DoctorCommunity/user/reset-password?token="+user.getToken()+"&email="+user.getEmail()+"\">Reset Password</a></div>";
+            msg += "<p>If this wasn't you <a href=\"http://localhost:7005/DoctorCommunity/user/cancel-reset?token="+user.getToken()+"&email="+user.getEmail()+"\">Click Here</a> to cancel reset request.</p>";
             msg += "<hr>";
             msg += "<p>Regards<br><b>Doctor's Community Team</b></p>";
 
@@ -230,36 +213,86 @@ public class UserController extends BaseController
             mail.setBody( msg );
             mail.send();
 
-            Tools.redirect("forgetpassword?confirm=true");
+            Tools.redirect("forget-password?confirm=true");
         } else { // invalid email
-            Tools.redirect("forgetpassword?confirm=false");
+            Tools.redirect("forget-password?confirm=false");
         }
 
     }
 
-    public String findUser() throws Exception
+    // check reset token & email
+    public String resetPassword() throws Exception
     {
-        User nuser = User.getUserId(); //get user id
-        //SessionLib.set("id", nuser.getId()); // saved id in the session
-        return this.SUCCESS;
+        // get params
+        String  token = Tools.get("token"),
+                email = Tools.get("email");
+
+        // verify token
+        User user = User.findByEmail( email );
+
+        if( user != null && user.getToken().equals( token ) ) {
+            return this.SUCCESS;
+        } else {
+            // invalid request
+            return  this.ERROR;
+        }
     }
 
-    public String setPassword() throws Exception
+    // process reset password
+    public void processResetPassword() throws Exception
     {
-        int id = SessionLib.getUserID();
-        User nuser = User.find( id );
-        nuser.setPassword(ServletActionContext.getRequest().getParameter("password")); // reset password
-        //nuser.setKey("1"); //reset key value
-        nuser.save();
-        return this.SUCCESS;
+        // get params
+        String  token = Tools.get("token"),
+                email = Tools.get("email"),
+                password = Tools.get("password"),
+                confpassword = Tools.get("confpassword");
+
+        // check password vs confpassword
+        if( password.equals( confpassword ) && ! token.isEmpty() && ! email.isEmpty() ) {
+            // get user
+            User user = User.findByEmail( email );
+
+            // again varify token
+            if( user != null && user.getToken().equals( token ) ) {
+                // reset the password
+                user.setPassword( password );
+                // remove token
+                user.setToken("");
+                // save
+                user.save();
+
+                // redirect to confirm page
+                Tools.redirect("confirm-reset?confirm=true");
+            } else {
+                // redirect to invalid page
+                Tools.redirect("reset-password?confirm=false");
+            }
+        } else {
+            // redirect to error page
+            Tools.redirect("confirm-reset?confirm=false");
+        }
     }
 
-    public String noReset() throws SQLException
+    public String processCancelReset() throws Exception
     {
-        User nuser = User.getUserId();
-        //nuser.setKey("1"); //reset generated key
-        nuser.save();
-        return this.SUCCESS;
+        // get params
+        String token = Tools.get("token"),
+                email = Tools.get("email");
+
+        // get user
+        User user = User.findByEmail(email);
+
+        // verify token
+        if( user != null && user.getToken().equals(token) ) {
+            // remove token
+            user.setToken("");
+            user.save();
+
+            return this.SUCCESS;
+        } else {
+            // invalid token
+            return this.ERROR;
+        }
     }
 
     /// getter for data out

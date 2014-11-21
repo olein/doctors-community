@@ -19,7 +19,7 @@
                 <p class="alert alert-success">Updated successfully!</p>
                 <% } %>
 
-                <form class="form-horizontal" role="form" method="post" action="saveprofile">
+                <form class="form-horizontal" role="form" method="post" action="save-profile">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-4">

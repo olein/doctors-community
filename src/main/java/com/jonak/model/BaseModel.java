@@ -90,7 +90,7 @@ public class BaseModel {
     private void update() throws SQLException
     {
         this.db = new MySQLDatabase();
-
+        System.out.println("id: "+this.id);
         this.db.executeUpdateQuery( this.tableName, this.fields, this.types, this.values, this.id );
         this.db.closeConnection();
     }

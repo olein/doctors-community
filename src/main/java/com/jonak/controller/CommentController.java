@@ -49,7 +49,7 @@ public class CommentController extends BaseController
                 Comment comment = new Comment();
                 comment.setId(rs.getInt(1));
                 comment.setUser_id(rs.getInt(3));
-                User user = User.find(rs.getInt(3));
+                User user = User.findById(rs.getInt(3));
                 comment.setName(user.getFirstName()+" "+user.getLastName());
                 comment.setContent_id(rs.getInt(2));
                 comment.setContent(rs.getString(4));

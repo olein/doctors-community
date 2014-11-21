@@ -112,3 +112,6 @@ body {
   margin: 0 auto 20px;
   text-align: center;
 }
+.login-form .forget-link {
+  margin-top: 10px;
+}

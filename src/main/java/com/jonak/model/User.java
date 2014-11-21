@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Vector;
+
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -20,14 +22,8 @@ import com.jonak.model.UserModel;
 public class User extends UserModel
 {
 
-    /**
-     * find user by id
-     *
-     * @param id
-     * @return
-     * @throws SQLException
-     */
-    public static User find(int id) throws SQLException
+    // find user by id
+    public static User findById(int id) throws Exception
     {
         User user = new User();
         MySQLDatabase db = new MySQLDatabase();
@@ -51,7 +47,7 @@ public class User extends UserModel
     }
 
     // login a user
-    public static User checkLogin( String email, String password ) throws SQLException
+    public static User checkLogin( String email, String password ) throws Exception
     {
         // init vars
         User user;
@@ -86,7 +82,8 @@ public class User extends UserModel
         return user;
     }
 
-    public static User findByEmail( String email ) throws SQLException
+    // find user by email
+    public static User findByEmail( String email ) throws Exception
     {
         User user = new User();
         MySQLDatabase db = new MySQLDatabase();
@@ -109,7 +106,7 @@ public class User extends UserModel
         return user;
     }
 
-    public static User getUserId() throws SQLException
+    public static User getUserId() throws Exception
     {
         User user = new User();
         MySQLDatabase db = new MySQLDatabase();
@@ -147,9 +144,8 @@ public class User extends UserModel
         return user;
     }
 
-
     // sets user data
-    private static User setData( ResultSet _rs ) throws SQLException
+    private static User setData( ResultSet _rs ) throws Exception
     {
         User user = new User();
         user.setId(_rs.getInt("id"));
@@ -165,6 +161,7 @@ public class User extends UserModel
         user.setLastLoginAt(_rs.getInt("last_login_at"));
         user.setAllowMessage(_rs.getInt("allow_message"));
         user.setStatus(_rs.getInt("status"));
+        user.setToken(_rs.getString("token"));
         user.setCreatedAt(_rs.getInt("created_at"));
         user.clear();
         return user;
