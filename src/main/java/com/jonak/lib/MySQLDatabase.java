@@ -54,7 +54,7 @@ public class MySQLDatabase {
 
         this.dbName = "doctors_community";
         this.dbUser = "root";
-        this.dbPass = "";
+        this.dbPass = "rootuser";
 
         // initialize conneciton
         this.dbConnection();
@@ -125,7 +125,7 @@ public class MySQLDatabase {
         }
 
 
-       // System.out.println(sql);
+        System.out.println(sql);
         PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
         preparedStatement = this.setFields(preparedStatement, types, values);
         System.out.println(preparedStatement);
