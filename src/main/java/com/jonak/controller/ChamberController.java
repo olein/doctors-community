@@ -48,6 +48,14 @@ public class ChamberController extends BaseController
         return this.SUCCESS;
     }
 
+    public String viewAllChambers() throws Exception
+    {
+        // get all chamber
+        // add them in vector
+
+        return this.SUCCESS;
+    }
+
     public String viewChamber() throws Exception
     {
         // this is how we will be using

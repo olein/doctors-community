@@ -28,13 +28,13 @@
 		</li>
 	</ul>
 	<ul class="nav nav-sidebar">
-		<li class="hasSub <% if( currentPage.equals("profile") ) { out.print("active"); } %>"><a href="#profile"><i class="fa fa-user"></i> Profile</a>
-			<ul class="nav nav-sidebar sub-nav" <% if( currentPage.equals("profile") ) { %>style="display: block"<% } %>>
+		<li class="hasSub <% if( currentPage.equals("profile") || currentPage.equals("chambers") || currentPage.equals("new-chamber") || currentPage.equals("edit-chamber") ) { out.print("active"); } %>"><a href="#profile"><i class="fa fa-user"></i> Profile</a>
+			<ul class="nav nav-sidebar sub-nav" <% if( currentPage.equals("profile") || currentPage.equals("chambers") || currentPage.equals("new-chamber") || currentPage.equals("edit-chamber") ) { %>style="display: block"<% } %>>
 				<li><a href="profile">About &amp; Bio</a></li>
 				<li><a href="#interest-area">Interst Area</a></li>
 				<li><a href="#experience">Experience</a></li>
 				<li><a href="#education">Education</a></li>
-				<li><a href="#chambers">Chambers</a></li>
+				<li><a href="chambers">Chambers</a></li>
 			</ul>
 		</li>
 		<li><a href="#settings"><i class="fa fa-cog"></i> Settings</a></li>

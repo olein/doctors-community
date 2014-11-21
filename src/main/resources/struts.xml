@@ -59,6 +59,20 @@
         </action>
 
 
+        <!--chamber start-->
+        <action name="chambers" class="com.jonak.controller.ChamberController" method="viewAllChambers">
+            <result>/back/chambers.jsp</result>
+        </action>
+        <action name="edit-chamber" class="com.jonak.controller.ChamberController" method="viewChamber">
+            <result name="success">/back/edit-chamber.jsp</result>
+        </action>
+        <action name="new-chamber">
+            <result>/back/new-chamber.jsp</result>
+        </action>
+        <action name="processchamber" class="com.jonak.controller.ChamberController" method="saveChamber">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <!--chamber end-->
 
 
         <action name="resetpassword" class="com.jonak.controller.UserController" method="findUser">
