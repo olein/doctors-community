@@ -109,5 +109,4 @@ public class BaseModel {
         this.db.executeInsertQuery( this.tableName, this.fields, this.types, this.values );
         this.db.closeConnection();
     }
-
 }
