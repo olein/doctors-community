@@ -52,8 +52,17 @@ public class ChamberController extends BaseController
         chamber.save();
         return this.SUCCESS;
     }
-    //view user chambers
-    public String viewUserChamber() throws Exception
+
+
+    public String viewAllChambers() throws Exception
+    {
+        // get all chamber
+        // add them in vector
+
+        return this.SUCCESS;
+    }
+
+    public String viewChamber() throws Exception
     {
         //get result using user id
         //dataOut = Chamber.findByUserID(SessionLib.getUserID());

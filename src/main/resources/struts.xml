@@ -239,6 +239,20 @@
             <result name="success">/update_configuration.jsp</result>
         </action>
 
+        <!--chamber start-->
+        <action name="chambers" class="com.jonak.controller.ChamberController" method="viewAllChambers">
+            <result>/back/chambers.jsp</result>
+        </action>
+        <action name="edit-chamber" class="com.jonak.controller.ChamberController" method="viewChamber">
+            <result name="success">/back/edit-chamber.jsp</result>
+        </action>
+        <action name="new-chamber">
+            <result>/back/new-chamber.jsp</result>
+        </action>
+        <action name="processchamber" class="com.jonak.controller.ChamberController" method="saveChamber">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <!--chamber end-->
 
         <action name="update_conf" class="com.jonak.controller.ConfigurationController" method="update">
             <result name="success">/welcome_user.jsp</result>
