@@ -75,6 +75,12 @@
         </action>
         <!--chamber end-->
 
+        <!--messages start-->
+        <action name="messages">
+            <result>/back/messages.jsp</result>
+        </action>
+        <!--messages end-->
+
     </package>
 
 </struts>

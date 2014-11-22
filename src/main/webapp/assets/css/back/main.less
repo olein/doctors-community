@@ -30,6 +30,17 @@ body {
 	color: #666;
 }
 
+.panel {
+  .panel-heading {
+    .panel-title {
+      font-size: 18px;
+      &.pull-left {
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
 /* top fixed bar */
 .navbar-fixed-top {
   	border: 0;
@@ -152,5 +163,50 @@ body {
   }
   .forget-link {
     margin-top: 10px;
+  }
+}
+
+/* messages */
+.messages {
+  h5 {
+    font-weight: bold;
+  }
+  .inbox {
+    li {
+      background-color: #f9f9f9;
+      max-height: 87px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+      &.active {
+        background-color: #ffffff;
+      }
+      a {
+        display: block;
+        color: #666666;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      div {
+        margin-right: 10px;
+      }
+      p {
+        margin: 0 0 3px;
+      }
+    }
+  }
+
+  .message-list {
+    form {
+      margin: 7px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 15px;
+    }
+  }
+  table.no-border tr td {
+    border: 0 !important;
   }
 }

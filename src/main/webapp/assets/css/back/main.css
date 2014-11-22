@@ -10,6 +10,12 @@ body {
   background-color: #eeeeee;
   color: #666;
 }
+.panel .panel-heading .panel-title {
+  font-size: 18px;
+}
+.panel .panel-heading .panel-title.pull-left {
+  margin-top: 8px;
+}
 /* top fixed bar */
 .navbar-fixed-top {
   border: 0;
@@ -114,4 +120,41 @@ body {
 }
 .login-form .forget-link {
   margin-top: 10px;
+}
+/* messages */
+.messages h5 {
+  font-weight: bold;
+}
+.messages .inbox li {
+  background-color: #f9f9f9;
+  max-height: 87px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.messages .inbox li:hover {
+  background-color: #f0f0f0;
+}
+.messages .inbox li.active {
+  background-color: #ffffff;
+}
+.messages .inbox li a {
+  display: block;
+  color: #666666;
+}
+.messages .inbox li a:hover {
+  text-decoration: none;
+}
+.messages .inbox li div {
+  margin-right: 10px;
+}
+.messages .inbox li p {
+  margin: 0 0 3px;
+}
+.messages .message-list form {
+  margin: 7px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.messages table.no-border tr td {
+  border: 0 !important;
 }

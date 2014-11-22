@@ -22,8 +22,6 @@ import java.util.*;
  */
 public class UserController extends BaseController
 {
-    public Vector<User> dataOut = new Vector<User>();
-
     public UserController(){ super(); }
 
     // new user register
@@ -306,16 +304,6 @@ public class UserController extends BaseController
             // invalid token
             return this.ERROR;
         }
-    }
-
-    /// getter for data out
-    public Vector<User> getDataOut() {
-        return this.dataOut;
-    }
-
-    /// setter for data out
-    public void setDataOut(Vector<User> users) {
-        this.dataOut = users;
     }
 }
 

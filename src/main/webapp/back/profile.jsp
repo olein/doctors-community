@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Profile <s:property value="firstName" /> <s:property value="lastName" />
+                <h3 class="panel-title">Profile <s:property value="firstName" /> <s:property value="lastName" /></h3>
             </div>
             <div class="panel-body">
 

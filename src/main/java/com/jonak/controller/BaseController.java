@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 // import default
 import java.util.Map;
+import java.util.Vector;
 
 /**
  * Created by lenin on 11/5/14.
@@ -9,7 +10,8 @@ import java.util.Map;
 public class BaseController {
     protected String SUCCESS;
     protected String ERROR;
-    public Map sessionValue;
+
+    public Vector dataOut = new Vector();
 
     public BaseController()
     {
@@ -18,12 +20,11 @@ public class BaseController {
         this.ERROR = "error";
     }
 
-    public Map getSessionValue() {
-        return sessionValue;
+    public Vector getDataOut() {
+        return dataOut;
     }
 
-    public void setSessionValue(Map sessionValue) {
-        this.sessionValue = sessionValue;
+    public void setDataOut(Vector dataOut) {
+        this.dataOut = dataOut;
     }
-
 }

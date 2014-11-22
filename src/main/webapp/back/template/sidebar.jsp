@@ -20,12 +20,7 @@
 	</ul>
 	<ul class="nav nav-sidebar">
 		<li><a href="#notification"><i class="fa fa-bell"></i> Notifications</a></li>
-		<li class="hasSub"><a href="messages"><i class="fa fa-comments"></i> Messages</a>
-			<ul class="nav nav-sidebar sub-nav">
-				<li><a href="#inbox">Inbox</a></li>
-				<li><a href="#new-message">New Message</a></li>
-			</ul>
-		</li>
+		<li class="hasSub <% if( currentPage.equals("messages") ) { out.print("active"); } %>"><a href="messages"><i class="fa fa-comments"></i> Messages</a></li>
 	</ul>
 	<ul class="nav nav-sidebar">
 		<li class="hasSub <% if( currentPage.equals("profile") || currentPage.equals("chambers") || currentPage.equals("new-chamber") || currentPage.equals("edit-chamber") ) { out.print("active"); } %>"><a href="#profile"><i class="fa fa-user"></i> Profile</a>
