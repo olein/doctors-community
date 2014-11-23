@@ -110,7 +110,8 @@ public class MySQLDatabase {
                                         String fieldName,
                                         ArrayList fields,
                                         ArrayList types,
-                                        ArrayList values) throws SQLException
+                                        ArrayList values,
+                                        String filter) throws SQLException
     {
         String sql = " select " + fieldName + " from " + tableName + " ";
         int i, size = fields.size();
@@ -124,8 +125,11 @@ public class MySQLDatabase {
             }
         }
 
+        if( ! filter.isEmpty() ) {
+            sql += filter;
+        }
 
-        System.out.println(sql);
+//        System.out.println(sql);
         PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
         preparedStatement = this.setFields(preparedStatement, types, values);
         System.out.println(preparedStatement);

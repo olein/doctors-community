@@ -5,6 +5,8 @@
 
 <struts>
 
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+
     <package name="default" namespace="/user" extends="struts-default">
 
         <!--home page start-->
@@ -76,8 +78,8 @@
         <!--chamber end-->
 
         <!--messages start-->
-        <action name="messages">
-            <result>/back/messages.jsp</result>
+        <action name="messages" class="com.jonak.controller.MessageController" method="viewMessages">
+            <result name="success">/back/messages.jsp</result>
         </action>
         <!--messages end-->
 

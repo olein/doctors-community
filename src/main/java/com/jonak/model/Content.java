@@ -23,14 +23,15 @@ public class Content extends ContentModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "content",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         _fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search experience using content id
 
         return rs;
     }
@@ -41,14 +42,15 @@ public class Content extends ContentModel
         MySQLDatabase db = new MySQLDatabase();
         Content content = new Content();
         String  _tableName = "content",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         _fields.add("id");            _types.add("int");            _values.add(id); //find content using id
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search using content id
         if( rs != null ) {
 
             if( rs.next() ) {

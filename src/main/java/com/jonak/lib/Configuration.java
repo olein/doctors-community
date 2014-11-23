@@ -47,13 +47,13 @@ public class Configuration {
         MySQLDatabase db = new MySQLDatabase();
 
         // prepare fields
-        String value = "";
+        String value = "", _filter = "";
         ArrayList _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("name"); _types.add("String"); _values.add( name );
 
-        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
 
         if( _rs.next() ) {
             value = _rs.getString("value");
@@ -70,12 +70,13 @@ public class Configuration {
         MySQLDatabase db = new MySQLDatabase();
 
         int id = 0;
+        String _filter = "";
         ArrayList _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("name"); _types.add("String"); _values.add( name );
 
-        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
 
         if( _rs.next() ) {
             id = _rs.getInt("id");

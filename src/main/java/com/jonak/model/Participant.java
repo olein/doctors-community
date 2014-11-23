@@ -18,13 +18,14 @@ public class Participant extends ParticipantModel
         MySQLDatabase db = new MySQLDatabase();
 
         String _tableName = "user",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList _fields = new ArrayList(),
                 _types = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("type");        _types.add("int");        _values.add(2);
 
-        ResultSet rs = db.executeSelectQuery(_tableName, _fieldName, _fields, _types, _values);
+        ResultSet rs = db.executeSelectQuery(_tableName, _fieldName, _fields, _types, _values, _filter );
         return rs;
     }
 
@@ -34,14 +35,15 @@ public class Participant extends ParticipantModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "participant",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         _fields.add("content_id");_types.add("int");_values.add(Integer.parseInt(ServletActionContext.getRequest().getParameter("content_id"))); //find current user
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search experience using content id
 
         return rs;
     }

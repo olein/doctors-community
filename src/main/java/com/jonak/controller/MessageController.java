@@ -40,7 +40,7 @@ public class MessageController extends BaseController
     }
     public Vector<Message> messages = new Vector<Message>();
 
-    public String setToUser() throws Exception
+    /*public String setToUser() throws Exception
     {
 
         //SessionLib.set("ContentID",0);
@@ -56,9 +56,9 @@ public class MessageController extends BaseController
             }
         }
         return this.SUCCESS;
-    }
+    }*/
 
-    public String add() throws Exception, ParseException
+    /*public String add() throws Exception, ParseException
     {
         Message message = new Message();
 
@@ -69,31 +69,28 @@ public class MessageController extends BaseController
         message.setCreated_at(timestamp);
         message.save(); //add message
         return this.SUCCESS;
-    }
+    }*/
 
     public String viewMessages() throws Exception
     {
-        // this is how we will be using
-        // get the user with id 1
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Message.find(); //get result using user id
+        // prepare params
+        int id = SessionLib.getUserID();
+        String _filter = " group by from_user_id order by created_at asc ";
+        ArrayList   _fields = new ArrayList(),
+                    _types  = new ArrayList(),
+                    _values = new ArrayList();
 
-        if( rs != null ) {
+        _fields.add("to_user_id"); _types.add("int"); _values.add( id );
 
-            while( rs.next() ) {
-                Message message = new Message();
-                message.setId(rs.getInt(1));
-                message.setTo_user_id(rs.getInt(3));
-                message.setUser_name(Message.getUserName(rs.getInt(3)));
-                message.setMsg(rs.getString(4));
-                int d = (rs.getInt(5));
-                Date date = new Date(((long)d)*1000L);
-                message.setDate(date);
-                message.setUpdate("update_message?id=" + rs.getInt(1)); //set update link
-                message.setDelete("delete_message?id=" + rs.getInt(1)); //set delete link
-                messages.add(message); //add result to vector
-            }
+        Vector msgs = Message.find( _fields, _types, _values, _filter );
+
+        if ( msgs != null) {
+            System.out.println("total: "+msgs.size());
+
+            this.dataOut.clear();
+            this.setDataOut(msgs);
         }
+
         return this.SUCCESS;
     }
 

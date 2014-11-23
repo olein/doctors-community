@@ -19,14 +19,15 @@ public class Comment extends CommentModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "comment",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         _fields.add("content_id");_types.add("int");_values.add(Integer.parseInt(ServletActionContext.getRequest().getParameter("content_id"))); //find current user
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search experience using content id
 
         return rs;
     }
@@ -37,14 +38,15 @@ public class Comment extends CommentModel
         MySQLDatabase db = new MySQLDatabase();
         Comment comment = new Comment();
         String  _tableName = "comment",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         _fields.add("id");            _types.add("int");            _values.add(id); //find content using id
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search using content id
         if( rs != null ) {
 
             if( rs.next() ) {

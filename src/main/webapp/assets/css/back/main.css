@@ -127,7 +127,8 @@ body {
 }
 .messages .inbox li {
   background-color: #f9f9f9;
-  max-height: 87px;
+  /*max-height: 87px;
+      min-height: 87px;*/
   overflow: hidden;
   text-overflow: ellipsis;
 }

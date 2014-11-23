@@ -17,57 +17,72 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Message extends MessageModel
 {
-    public static ResultSet getUser() throws Exception
+    public static Vector find(ArrayList fields, ArrayList types, ArrayList values, String filter) throws Exception
     {
-
+        Vector messages = new Vector();
         MySQLDatabase db = new MySQLDatabase();
 
-        String  _tableName = "user",
-                _fieldName = "*";
-        ArrayList   _fields = new ArrayList(),
-                _types  = new ArrayList(),
-                _values = new ArrayList();
+        int i, size = fields.size();
+        String  _tableName = "message", _fieldName = "*";
 
-            _fields.add("allow_message");            _types.add("int");            _values.add(1); //get user who allowed messages
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, fields, types, values, filter);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        if( rs.next() ) {
+            do {
+                Message msg = new Message();
+                msg.setId( rs.getInt("id") );
+                msg.setFromUserId( rs.getInt("from_user_id") );
+                msg.setToUserId( rs.getInt("to_user_id") );
+                msg.setMsg( rs.getString("msg") );
+                msg.setCreated_at( rs.getInt("created_at") );
+                msg.clear();
+                messages.add( msg );
+            } while( rs.next() );
+        } else {
+            messages = null;
+        }
 
-        return rs;
+        return messages;
     }
 
-    public static ResultSet find() throws Exception
+    // get single message by id
+    public static Message findById( int id ) throws Exception
     {
-
+        Message message = new Message();
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "message",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
-                _types  = new ArrayList(),
-                _values = new ArrayList();
+                    _types  = new ArrayList(),
+                    _values = new ArrayList();
 
-        _fields.add("from_user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
+        _fields.add("id");            _types.add("int");            _values.add( id ); //find current user
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter); //search experience using content id
 
-        return rs;
+        if( rs.next() ) {
+            message = Message.setData( rs );
+        } else {
+            message = null;
+        }
+
+        return message;
     }
 
-    public static String getUserName(int user_id) throws SQLException
-    {
-        MySQLDatabase db = new MySQLDatabase();
-        Message message = new Message();
-        String  _tableName = "user",
-                _fieldName = "*";
-        ArrayList   _fields = new ArrayList(),
-                _types  = new ArrayList(),
-                _values = new ArrayList();
-        _fields.add("id"); _types.add("int"); _values.add(user_id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
-        if(rs.next()) {
-            message.setUser_name(rs.getString(4) + " " + rs.getString(5)); //get user name
-        }
-        return message.getUser_name();
+
+    // sets message data
+    private static Message setData( ResultSet rs ) throws Exception
+    {
+        Message message = new Message();
+        message.setId( rs.getInt("id") );
+        message.setFromUserId(rs.getInt("from_user_id"));
+        message.setToUserId(rs.getInt("to_user_id"));
+        message.setMsg(rs.getString("msg"));
+        message.setCreated_at(rs.getInt("created_at"));
+        message.clear();
+        return message;
     }
 }

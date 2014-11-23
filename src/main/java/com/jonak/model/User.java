@@ -22,6 +22,15 @@ import com.jonak.model.UserModel;
 public class User extends UserModel
 {
 
+    // returns user display name by id
+    public static String getDisplayName( int id ) throws Exception
+    {
+        User user = User.findById( id );
+        String displayName = (user.getFirstName()+" "+user.getLastName());
+        System.out.println(id+": "+displayName);
+        return displayName;
+    }
+
     // find user by id
     public static User findById(int id) throws Exception
     {
@@ -29,13 +38,14 @@ public class User extends UserModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "user",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                     _types  = new ArrayList(),
                     _values = new ArrayList();
         _fields.add("id"); _types.add("int"); _values.add(id);
 
-        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
 
         if( _rs.next() ) {
             user = User.setData( _rs );
@@ -59,7 +69,8 @@ public class User extends UserModel
 
         // init default values
         String  _tableName = "user",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -69,7 +80,7 @@ public class User extends UserModel
         _fields.add("password");    _types.add("String");   _values.add( hash_password ); // ??
 
         // get result
-        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values );
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter );
 
         // check result
         if( _rs.next() ) {
@@ -89,54 +100,17 @@ public class User extends UserModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "user",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("email"); _types.add("String"); _values.add( email );
 
-        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
+        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter );
 
         if( _rs.next() ) {
             user = User.setData( _rs );
-        } else {
-            user = null;
-        }
-
-        return user;
-    }
-
-    public static User getUserId() throws Exception
-    {
-        User user = new User();
-        MySQLDatabase db = new MySQLDatabase();
-
-
-        String  _tableName = "user",
-                _fieldName = "*";
-        ArrayList   _fields = new ArrayList(),
-                _types  = new ArrayList(),
-                _values = new ArrayList();
-        _fields.add("keyValue"); _types.add("String"); _values.add(ServletActionContext.getRequest().getParameter("key"));
-
-        ResultSet _rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
-
-        if( _rs.next() ) {
-            user.setId(_rs.getInt("id"));
-            user.setEmail(_rs.getString("email"));
-            user.setPassword(_rs.getString("password"));
-            user.setFirstName(_rs.getString("first_name"));
-            user.setLastName(_rs.getString("last_name"));
-            user.setAddress(_rs.getString("address"));
-            user.setDistrict(_rs.getString("district"));
-            user.setDateOfBirth(_rs.getInt("date_of_birth"));
-            user.setGender(_rs.getInt("gender"));
-            user.setType(_rs.getInt("type"));
-            user.setLastLoginAt(_rs.getInt("last_login_at"));
-            user.setAllowMessage(_rs.getInt("allow_message"));
-            user.setStatus(_rs.getInt("status"));
-            user.setCreatedAt(_rs.getInt("created_at"));
-            System.out.println(user.getId());
         } else {
             user = null;
         }

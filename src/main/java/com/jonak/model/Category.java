@@ -22,13 +22,14 @@ public class Category extends CategoryModel
         MySQLDatabase db = new MySQLDatabase();
         Category category = new Category();
         String  _tableName = "category",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("id"); _types.add("int"); _values.add(id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter );
         while( rs.next() ) {
             category.setName(rs.getString(2));
         }
@@ -37,11 +38,11 @@ public class Category extends CategoryModel
 
     public static ResultSet find() throws Exception
     {
-
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "category",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -49,7 +50,7 @@ public class Category extends CategoryModel
         {
             _fields.add("id");            _types.add("int");            _values.add(SessionLib.get("ContentID"));
         }
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
 
         return rs;
     }

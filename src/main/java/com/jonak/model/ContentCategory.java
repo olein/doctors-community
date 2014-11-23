@@ -23,14 +23,15 @@ public class ContentCategory extends ContentCategoryModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "content",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         //_fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getId()); //find current user
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search experience using content id
         rs.afterLast();
         while (rs.previous()) {
             int id = rs.getInt("id");
@@ -44,13 +45,14 @@ public class ContentCategory extends ContentCategoryModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "category_content_relation",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("content_id"); _types.add("int"); _values.add(content_id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search using user id
 
         return rs;
     }

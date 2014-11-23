@@ -22,13 +22,14 @@ public class Speciality extends SpecialityModel
         MySQLDatabase db = new MySQLDatabase();
         Category category = new Category();
         String  _tableName = "category_user_relation",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("user_id"); _types.add("int"); _values.add(user_id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
 
         return rs;
     }

@@ -39,15 +39,6 @@ public class UserModel extends BaseModel {
         this.tableName = "user";
     }
 
-    public int getId() {
-        return this.id;
-
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getEmail() {
         return this.email;
     }
@@ -180,13 +171,5 @@ public class UserModel extends BaseModel {
     public void setToken(String token) {
         this.token = token;
         this.fields.add( "token" ); this.types.add( "String" ); this.values.add( this.token );
-    }
-
-    // very important
-    public void clear()
-    {
-        this.fields.clear();
-        this.types.clear();
-        this.values.clear();
     }
 }

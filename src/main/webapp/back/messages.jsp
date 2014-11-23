@@ -7,16 +7,18 @@
     <!--inbox start-->
     <div class="col-md-4">
         <ul class="list-group inbox">
+        <s:iterator value="dataOut">
             <li class="list-group-item">
                 <a href="">
                     <div class="pull-left">
                         <img src="http://placehold.it/64" alt="..." class="img-rounded">
                     </div>
-                    <h5>Name Here</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                    <h5><s:property value="fromUserId" />:<s:property value="@com.jonak.model.User@getDisplayName(fromUserId)" /></h5>
+                    <%--<h5><s:property value="fromUserId" />:<s:property value="@com.demo.bean.ContactsBean@getCount()" /></h5>--%>
+                    <p><s:property value="msg" /></p>
                 </a>
             </li>
-            <li class="list-group-item">
+            <%--<li class="list-group-item">
                 <a href="">
                     <div class="pull-left">
                         <img src="http://placehold.it/64" alt="..." class="img-rounded">
@@ -52,7 +54,8 @@
                     <h5>Name Here</h5>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
                 </a>
-            </li>
+            </li>--%>
+        </s:iterator>
         </ul>
     </div>
     <!--inbox end-->

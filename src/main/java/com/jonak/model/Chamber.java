@@ -25,13 +25,14 @@ public class Chamber extends ChamberModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "chamber_detail",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("user_id"); _types.add("int"); _values.add(user_id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
         if( rs != null ) {
 
             while (rs.next()) {
@@ -57,14 +58,15 @@ public class Chamber extends ChamberModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "chamber_detail",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
         _fields.add("id"); _types.add("int"); _values.add( id ); //find using ID
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter );
         if( rs.next() ) {
             chamber = Chamber.setData(rs);
             return chamber;

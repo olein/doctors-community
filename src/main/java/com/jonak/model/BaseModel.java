@@ -109,4 +109,20 @@ public class BaseModel {
         this.db.executeInsertQuery( this.tableName, this.fields, this.types, this.values );
         this.db.closeConnection();
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    // very important
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
+    }
 }

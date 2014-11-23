@@ -62,7 +62,7 @@ public class ParticipantController extends BaseController
                 Participant participant = new Participant();
                 participant.setId(rs.getInt(1));
                 participant.setContent_id(rs.getInt(2));
-                participant.setUser_name(Message.getUserName(rs.getInt(3)));
+                // participant.setUser_name(Message.getUserName(rs.getInt(3)));
                 if(rs.getInt(4)==1) {
                     participant.setStatus("Active");
                 }

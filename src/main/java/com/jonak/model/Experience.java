@@ -24,13 +24,14 @@ public class Experience extends ExperienceModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "experience",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("user_id"); _types.add("int"); _values.add(user_id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter); //search using user id
         return rs;
     }
 
@@ -40,14 +41,15 @@ public class Experience extends ExperienceModel
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "experience",
-                _fieldName = "*";
+                _fieldName = "*",
+                _filter = " limit 1 ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         int contentId = Integer.parseInt( SessionLib.get("ContentID") );
         _fields.add("id"); _types.add("int"); _values.add( contentId );
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter); //search experience using content id
         if( rs.next() ) {
             exp.setId(rs.getInt(1));
             exp.setUser_id(rs.getInt("user_id"));
