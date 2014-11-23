@@ -40,11 +40,11 @@ public class ContentController extends BaseController
     public Vector<Content> messages = new Vector<Content>();
     public Vector<Category> output = new Vector<Category>();
 
-    public String setCategory() throws Exception
+   /* public String setCategory() throws Exception
     {
 
         SessionLib.set("ContentID",0);
-        ResultSet rs = Category.find(); //get category list
+        ResultSet rs = Category.findCategory(); //get category list
 
         if( rs != null ) {
 
@@ -56,7 +56,7 @@ public class ContentController extends BaseController
             }
         }
         return this.SUCCESS;
-    }
+    } */
 
     public String add() throws Exception, ParseException
     {
@@ -113,7 +113,7 @@ public class ContentController extends BaseController
                 ResultSet rset = ContentCategory.find(rs.getInt(1));
                 if(rset.next())
                 {
-                    content.setCategory_name(Category.find(rset.getInt(2)));
+                    //content.setCategory_name(Category.find(rset.getInt(2)));
                 }
                 else
                 {
@@ -127,7 +127,7 @@ public class ContentController extends BaseController
 
     public String setContentID() throws Exception
     {
-        this.setCategory(); //set content types
+        //this.setCategory(); //set content types
         SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
         return this.SUCCESS;
     }

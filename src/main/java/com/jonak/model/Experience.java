@@ -18,9 +18,10 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Experience extends ExperienceModel
 {
-    public static ResultSet find(int user_id) throws SQLException
+    public static Vector<Experience> dataOut = new Vector<Experience>();
+
+    public static Vector findByUserID(int userId) throws SQLException
     {
-        Experience exp = new Experience();
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "experience",
@@ -28,13 +29,24 @@ public class Experience extends ExperienceModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        _fields.add("user_id"); _types.add("int"); _values.add(user_id);
+        _fields.add("user_id"); _types.add("int"); _values.add(userId);
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
-        return rs;
+        if( rs != null ) {
+            dataOut.clear();
+            while( rs.next() ) {
+                Experience exp = new Experience();
+                exp.setId(rs.getInt("id"));
+                exp.setUserId(rs.getInt("user_id"));
+                exp.setTitle(rs.getString("title"));
+                exp.setDescription(rs.getString("description"));
+                dataOut.add(exp);
+            }
+        }
+        return dataOut;
     }
 
-    public static Experience findByEmail( String email) throws Exception
+    public static Experience findExperienceByID( int id ) throws Exception
     {
         Experience exp = new Experience();
         MySQLDatabase db = new MySQLDatabase();
@@ -44,13 +56,13 @@ public class Experience extends ExperienceModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        int contentId = Integer.parseInt( SessionLib.get("ContentID") );
-        _fields.add("id"); _types.add("int"); _values.add( contentId );
+
+        _fields.add("id"); _types.add("int"); _values.add( id );
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
         if( rs.next() ) {
             exp.setId(rs.getInt(1));
-            exp.setUser_id(rs.getInt("user_id"));
+            exp.setUserId(rs.getInt("user_id"));
             exp.setTitle(rs.getString("title"));
             exp.setDescription(rs.getString("description"));
 
@@ -59,5 +71,4 @@ public class Experience extends ExperienceModel
         }
         return exp;
     }
-
 }

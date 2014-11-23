@@ -259,6 +259,71 @@
         </action>
         <!--chamber end-->
 
+        <!--education start-->
+        <action name="education" class="com.jonak.controller.EducationController" method="viewAllEducation">
+            <result>/back/education.jsp</result>
+        </action>
+        <action name="new-education">
+            <result>/back/new-education.jsp</result>
+        </action>
+        <action name="processeducation" class="com.jonak.controller.EducationController" method="saveEducation">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-education" class="com.jonak.controller.EducationController" method="viewEducation">
+            <result name="success">/back/edit-education.jsp</result>
+        </action>
+        <action name="delete-education" class="com.jonak.controller.EducationController" method="deleteEducation">
+        </action>
+        <!--education end-->
+
+        <!--experience start-->
+        <action name="experience" class="com.jonak.controller.ExperienceController" method="viewAllExperience">
+            <result>/back/experience.jsp</result>
+        </action>
+        <action name="new-experience">
+            <result>/back/new-experience.jsp</result>
+        </action>
+        <action name="processexperience" class="com.jonak.controller.ExperienceController" method="saveExperience">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-experience" class="com.jonak.controller.ExperienceController" method="viewExperience">
+            <result name="success">/back/edit-experience.jsp</result>
+        </action>
+        <action name="delete-experience" class="com.jonak.controller.ExperienceController" method="deleteExperience">
+        </action>
+        <!--experience end-->
+
+        <!--category start-->
+        <action name="category" class="com.jonak.controller.CategoryController" method="viewAllCategory">
+            <result>/back/category.jsp</result>
+        </action>
+        <action name="new-category" class="com.jonak.controller.CategoryController" method="setCategory">
+            <result>/back/new-category.jsp</result>
+        </action>
+        <action name="processcategory" class="com.jonak.controller.CategoryController" method="saveCategory">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-category" class="com.jonak.controller.CategoryController" method="viewCategory">
+            <result name="success">/back/edit-category.jsp</result>
+        </action>
+        <action name="delete-category" class="com.jonak.controller.CategoryController" method="deleteCategory">
+        </action>
+        <!--category end-->
+
+        <!--interest-area start-->
+        <action name="interest-area" class="com.jonak.controller.CategoryController" method="viewSpeciality">
+            <result>/back/interest-areas.jsp</result>
+        </action>
+        <action name="new-interest-area" class="com.jonak.controller.CategoryController" method="setCategory">
+            <result>/back/new-interest-area.jsp</result>
+        </action>
+        <action name="processspeciality" class="com.jonak.controller.CategoryController" method="saveSpeciality">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="delete-interest-area" class="com.jonak.controller.CategoryController" method="deleteSpeciality">
+        </action>
+        <!--interest-area end-->
+
         <action name="update_conf" class="com.jonak.controller.ConfigurationController" method="update">
             <result name="success">/welcome_user.jsp</result>
         </action>
