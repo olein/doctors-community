@@ -17,8 +17,7 @@ public class ContentModel extends BaseModel
     private int parent_id;
     private int created_at;
     private Date date;
-    private String update;
-    private String delete;
+
     private String add_participant;
     private String show_participant;
     private String category_name;
@@ -28,22 +27,6 @@ public class ContentModel extends BaseModel
         super();
         this.tableName = "content";
     }
-
-    protected void prepareFields() {
-        // again no need for id
-
-        // database field name              field type                          getter method
-        this.fields.add("user_id");        this.types.add("int");     this.values.add(this.getUser_id());
-        this.fields.add("title");      this.types.add("String");     this.values.add(this.getTitle());
-        this.fields.add("description");   this.types.add("String");        this.values.add(this.getDescription());
-        this.fields.add("type");  this.types.add("int");        this.values.add(this.getType());
-        this.fields.add("privacy");  this.types.add("int");        this.values.add(this.getPrivacy());
-        this.fields.add("allow_comment");  this.types.add("int");        this.values.add(this.getAllow_comment());
-        this.fields.add("comment_counter");  this.types.add("int");        this.values.add(this.getComment_counter());
-        this.fields.add("parent_id");  this.types.add("int");        this.values.add(this.getParent_id());
-        this.fields.add("created_at");  this.types.add("int");        this.values.add(this.getCreated_at());
-    }
-
 
     public String getComments() {
         return comments;
@@ -82,6 +65,7 @@ public class ContentModel extends BaseModel
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+        this.fields.add("user_id");        this.types.add("int");     this.values.add(this.getUser_id());
     }
 
     public String getTitle() {
@@ -90,6 +74,7 @@ public class ContentModel extends BaseModel
 
     public void setTitle(String title) {
         this.title = title;
+        this.fields.add("title");      this.types.add("String");     this.values.add(this.getTitle());
     }
 
     public String getDescription() {
@@ -98,6 +83,7 @@ public class ContentModel extends BaseModel
 
     public void setDescription(String description) {
         this.description = description;
+        this.fields.add("description");   this.types.add("String");        this.values.add(this.getDescription());
     }
 
     public int getType() {
@@ -106,6 +92,7 @@ public class ContentModel extends BaseModel
 
     public void setType(int type) {
         this.type = type;
+        this.fields.add("type");  this.types.add("int");        this.values.add(this.getType());
     }
 
     public int getPrivacy() {
@@ -114,6 +101,7 @@ public class ContentModel extends BaseModel
 
     public void setPrivacy(int privacy) {
         this.privacy = privacy;
+        this.fields.add("privacy");  this.types.add("int");        this.values.add(this.getPrivacy());
     }
 
     public int getAllow_comment() {
@@ -122,6 +110,7 @@ public class ContentModel extends BaseModel
 
     public void setAllow_comment(int allow_comment) {
         this.allow_comment = allow_comment;
+        this.fields.add("allow_comment");  this.types.add("int");        this.values.add(this.getAllow_comment());
     }
 
     public int getComment_counter() {
@@ -130,6 +119,7 @@ public class ContentModel extends BaseModel
 
     public void setComment_counter(int comment_counter) {
         this.comment_counter = comment_counter;
+        this.fields.add("comment_counter");  this.types.add("int");        this.values.add(this.getComment_counter());
     }
 
     public int getParent_id() {
@@ -138,6 +128,8 @@ public class ContentModel extends BaseModel
 
     public void setParent_id(int parent_id) {
         this.parent_id = parent_id;
+        this.fields.add("parent_id");  this.types.add("int");        this.values.add(this.getParent_id());
+
     }
 
     public int getCreated_at() {
@@ -146,6 +138,7 @@ public class ContentModel extends BaseModel
 
     public void setCreated_at(int created_at) {
         this.created_at = created_at;
+        this.fields.add("created_at");  this.types.add("int");        this.values.add(this.getCreated_at());
     }
 
     public Date getDate() {
@@ -156,21 +149,6 @@ public class ContentModel extends BaseModel
         this.date = date;
     }
 
-    public String getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(String update) {
-        this.update = update;
-    }
-
-    public String getDelete() {
-        return delete;
-    }
-
-    public void setDelete(String delete) {
-        this.delete = delete;
-    }
 
     public String getCategory_name() {
         return category_name;

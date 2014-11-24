@@ -2,6 +2,7 @@ package com.jonak.controller;
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
 
+import com.jonak.lib.Tools;
 import com.jonak.model.*;
 
 import java.sql.*;
@@ -37,53 +38,83 @@ public class ContentController extends BaseController
     {
         super();
     }
-    public Vector<Content> messages = new Vector<Content>();
+    public Vector<Content> dataOut = new Vector<Content>();
     public Vector<Category> output = new Vector<Category>();
 
-   /* public String setCategory() throws Exception
+    public String setCategory() throws Exception
     {
 
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Category.findCategory(); //get category list
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Category category = new Category();
-                category.setId(rs.getInt(1));
-                category.setName(rs.getString(2)); //set parent category values
-                output.add(category); //add result to vector
-            }
-        }
+        SessionLib.set("id",0);
+        output = Category.findCategory(); //get category list
         return this.SUCCESS;
-    } */
+    }
 
-    public String add() throws Exception, ParseException
-    {
+    public void saveContent() throws Exception, ParseException {
         Content content = new Content();
-
-        content.setUser_id(SessionLib.getUserID());
-        content.setTitle(ServletActionContext.getRequest().getParameter("title"));
-        content.setDescription(ServletActionContext.getRequest().getParameter("description"));
-        content.setType(1);
-        content.setPrivacy(Integer.parseInt(ServletActionContext.getRequest().getParameter("privacy")));
-        content.setAllow_comment(Integer.parseInt(ServletActionContext.getRequest().getParameter("allow_comment")));
-        content.setComment_counter(0);
-        content.setParent_id(0);
-        int timestamp = (int) (new Date().getTime()/1000);
-        content.setCreated_at(timestamp);
-        content.save(); //add content
-
         ContentCategory contentCategory = new ContentCategory();
-        contentCategory.setContent_id(ContentCategory.getID());
-        contentCategory.setCategory_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id")));
-        contentCategory.save(); //set content category
 
-        Participant participant = new Participant();
-        participant.setContent_id(ContentCategory.getID());
-        participant.setUser_id(SessionLib.getUserID());
-        participant.setActive(1);
-        participant.save();
+        String  title = Tools.get("title"),
+                description = Tools.get("description"),
+                privacy = Tools.get("privacy"),
+                type = Tools.get("type"),
+                allowComment = Tools.get("allow_comment"),
+                categoryId = Tools.get("categoryId");
+
+
+        if(Integer.parseInt(SessionLib.get("id"))>0)
+        {
+            content = Content.findContentByID(Integer.parseInt(SessionLib.get("id")));
+            if( ! content.getTitle().equals( title ) ) { content.setTitle(title); }
+            if( ! content.getDescription().equals(description) ) { content.setDescription(description); }
+            if(  content.getType()!=( Integer.parseInt(type) ) ) { content.setType( Integer.parseInt(type )); }
+            if(  content.getPrivacy()!=( Integer.parseInt(privacy) ) ) { content.setPrivacy(Integer.parseInt(privacy)); }
+            if(  content.getAllow_comment()!=( Integer.parseInt(allowComment) ) ) { content.setAllow_comment(Integer.parseInt(allowComment)); }
+            content.save();
+
+            contentCategory = ContentCategory.findByContentID(Integer.parseInt(SessionLib.get("id")));
+            contentCategory.setContent_id(contentCategory.getContent_id());
+            contentCategory.setCategory_id(Integer.parseInt(categoryId ));
+            contentCategory.save();
+            SessionLib.unset("id");
+        }
+        else{
+            content.setUser_id(SessionLib.getUserID());
+            content.setTitle(title);
+            content.setDescription(description);
+            content.setType(Integer.parseInt(type));
+            content.setPrivacy(Integer.parseInt(privacy));
+            content.setAllow_comment(Integer.parseInt(allowComment));
+            content.setComment_counter(0);
+            content.setParent_id(0);
+            content.setCreated_at(Tools.getTimeStamp());
+            content.save();
+
+            contentCategory.setContent_id(ContentCategory.getID());
+            contentCategory.setCategory_id(Integer.parseInt( categoryId ));
+            contentCategory.save();
+
+            Participant participant = new Participant();
+            participant.setContent_id(ContentCategory.getID());
+            participant.setUser_id(SessionLib.getUserID());
+            participant.setActive(1);
+            participant.save();
+        }
+
+
+        if(Integer.parseInt(type)==1)
+        {
+            Tools.redirect("my-board?type=1");
+        }
+
+
+    }
+
+    public String viewAllContent() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+
+        dataOut = Content.findAllContent(); //get result using user id
         return this.SUCCESS;
     }
 
@@ -91,100 +122,32 @@ public class ContentController extends BaseController
     {
         // this is how we will be using
         // get the user with id 1
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Content.find(); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Content content = new Content();
-                content.setId(rs.getInt(1));
-                content.setUser_id(rs.getInt(2));
-                content.setTitle(rs.getString(3));
-                content.setDescription(rs.getString(4));
-                int d = (rs.getInt(10));
-                Date date = new Date(((long)d)*1000L);
-                content.setDate(date);
-                content.setUpdate("update_content?id=" + rs.getInt(1)); //set update link
-                content.setDelete("delete_content?id=" + rs.getInt(1)); //set delete link
-                content.setAdd_participant("add_participant?content_id=" + rs.getInt(1));
-                content.setShow_participant("show_participant?content_id=" + rs.getInt(1));
-                content.setComments("all_comment?content_id=" + rs.getInt(1));
-                ResultSet rset = ContentCategory.find(rs.getInt(1));
-                if(rset.next())
-                {
-                    //content.setCategory_name(Category.find(rset.getInt(2)));
-                }
-                else
-                {
-                    content.setCategory_name("not specified");
-                }
-                messages.add(content); //add result to vector
-            }
-        }
+        SessionLib.set("id",0);
+        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id"))); //get result using user id
+        dataOut.add(content);
+        output = Category.findCategory();
+        SessionLib.set("id", content.getId());
         return this.SUCCESS;
     }
 
-    public String setContentID() throws Exception
-    {
-        //this.setCategory(); //set content types
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        Content content = Content.find(Integer.parseInt(SessionLib.get("ContentID")));
-        if(ServletActionContext.getRequest().getParameter("title").length()>0) {
-            content.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
-        }
-
-        if(ServletActionContext.getRequest().getParameter("description").length()>0) {
-            content.setDescription(ServletActionContext.getRequest().getParameter("description"));  //reset description
-        }
-
-        if(ServletActionContext.getRequest().getParameter("privacy").length()>0) {
-            content.setPrivacy(Integer.parseInt(ServletActionContext.getRequest().getParameter("privacy"))); //reset description
-        }
-
-        if(ServletActionContext.getRequest().getParameter("allow_comment").length()>0) {
-            content.setPrivacy(Integer.parseInt(ServletActionContext.getRequest().getParameter("allow_comment"))); //reset description
-        }
-        content.setUser_id(content.getUser_id());
-        content.setParent_id(content.getParent_id());
-        content.setComment_counter(content.getComment_counter());
-        content.setCreated_at(content.getCreated_at());
-        content.setType(content.getType());
-       // content.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
-
-        if(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id"))>0) //check if it needs update
-        {
-            ContentCategory contentCategory = new ContentCategory();
-            ResultSet rs = ContentCategory.find(Integer.parseInt(SessionLib.get("ContentID")));
-            contentCategory.setContent_id(Integer.parseInt(SessionLib.get("ContentID")));
-            contentCategory.setCategory_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("category_id")));
-            if(rs.next())
-            {
-                contentCategory.setId(rs.getInt(1));
-                //contentCategory.update(rs.getInt(1)); //update content category
-            }
-        }
-        return this.SUCCESS;
-    }
-
-    public String delete() throws SQLException
+    public void deleteContent() throws Exception
     {
         Content content = new Content();
-        //content.delete(); //delete
-        return this.SUCCESS;
+        content.delete(); //delete
+        SessionLib.unset("id");
+        int type = Integer.parseInt(Tools.get("type"));
+        if(type==1)
+        {
+            Tools.redirect("my-board?type=1");
+        }
     }
 
     public Vector<Content> getcontents() {
-        return messages;
+        return dataOut;
     }
 
-    public void setcontents(Vector<Content> messages) {
-        this.messages = messages;
+    public void setcontents(Vector<Content> dataOut) {
+        this.dataOut = dataOut;
     }
 
     public Vector<Category> getOutput() {

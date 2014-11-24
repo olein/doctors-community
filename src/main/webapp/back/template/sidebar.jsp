@@ -6,8 +6,8 @@
 	<ul class="nav nav-sidebar">
 		<li class="hasSub"><a href="#boards"><i class="fa fa-th-large"></i> Boards</a>
 			<ul class="nav nav-sidebar sub-nav">
-				<li><a href="#all-boards">All Boards</a></li>
-				<li><a href="#add-new-board">Add New</a></li>
+				<li><a href="all-boards?type=1">All Boards</a></li>
+				<li><a href="my-board?type=1">My Boards</a></li>
 			</ul>
 		</li>
 		<li class="hasSub"><a href="#articles"><i class="fa fa-file-text"></i> Articles</a>

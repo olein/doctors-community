@@ -324,6 +324,40 @@
         </action>
         <!--interest-area end-->
 
+        <!--board start-->
+        <action name="all-boards" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/board.jsp</result>
+        </action>
+        <action name="my-board" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-board.jsp</result>
+        </action>
+        <action name="new-board" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-board.jsp</result>
+        </action>
+        <action name="processboard" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-board" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-board.jsp</result>
+        </action>
+        <action name="delete-board" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+        <!--board end-->
+
+        <!--participant start-->
+        <action name="participants" class="com.jonak.controller.ParticipantController" method="viewParticipant">
+            <result>/back/participant.jsp</result>
+        </action>
+        <action name="new-participant" class="com.jonak.controller.ParticipantController" method="setUserList">
+            <result>/back/new-participant.jsp</result>
+        </action>
+        <action name="processparticipant" class="com.jonak.controller.ParticipantController" method="saveParticipant">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="delete-participant" class="com.jonak.controller.ParticipantController" method="deleteParticipant">
+        </action>
+        <!--participant end-->
+
         <action name="update_conf" class="com.jonak.controller.ConfigurationController" method="update">
             <result name="success">/welcome_user.jsp</result>
         </action>

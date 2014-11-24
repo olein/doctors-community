@@ -39,21 +39,27 @@ public class ContentCategory extends ContentCategoryModel
         return 0;
     }
     //find using content_id
-    public static ResultSet find(int content_id) throws SQLException
+    public static ContentCategory findByContentID(int content_id) throws Exception
     {
         MySQLDatabase db = new MySQLDatabase();
 
-        String  _tableName = "category_content_relation",
+        String  _tableName = "category_contetn_relation",
                 _fieldName = "*";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
         _fields.add("content_id"); _types.add("int"); _values.add(content_id);
 
-        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search using user id
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values);
 
-        return rs;
+        ContentCategory contentCategory = new ContentCategory();
+        while(rs.next()) {
+            contentCategory.setContent_id(rs.getInt(3));
+            contentCategory.setCategory_id(rs.getInt(2));
+            contentCategory.setId(rs.getInt(1));
+            contentCategory.clear();
+            return contentCategory;
+        }
+        return contentCategory;
     }
-
-
 }

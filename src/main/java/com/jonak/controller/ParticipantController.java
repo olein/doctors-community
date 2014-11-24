@@ -1,6 +1,7 @@
 package com.jonak.controller;
 
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Participant;
 import com.jonak.model.User;
 import org.apache.struts2.ServletActionContext;
@@ -16,77 +17,44 @@ import com.jonak.model.Message;
  */
 public class ParticipantController extends BaseController
 {
-    public Vector<User> messages = new Vector<User>();
+    public Vector<User> dataOut = new Vector<User>();
     public Vector<Participant> output = new Vector<Participant>();
+
     public String setUserList() throws Exception
     {
-        ResultSet rs = Participant.find(); //get user list
-            if( rs != null ) {
-                while( rs.next() ) {
-                    User user = new User();
-                    user.setId(rs.getInt(1));
-                    user.setFirstName(rs.getString(4)); //set parent category values
-                    user.setLastName(rs.getString(5));
-                    user.setToken(rs.getString(4)+" "+rs.getString(5));
-                    messages.add(user); //add result to vector
-                }
-            }
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("content_id")); //set content ID
+        dataOut = Participant.find(); //get user list
         return this.SUCCESS;
     }
 
-    public String add() throws Exception
+    public void saveParticipant() throws Exception
     {
         String data[] = ServletActionContext.getRequest().getParameterValues("participants[]");
         for(int i=0;i<data.length;i++) {
             Participant participant = new Participant();
-            participant.setContent_id(Integer.parseInt(SessionLib.get("ContentID")));
+            participant.setContent_id(Integer.parseInt(SessionLib.get("ContentId")));
             participant.setUser_id(Integer.parseInt(data[i]));
-            participant.setActive(0);
+            participant.setActive(1);
             participant.save(); //add speciality
+            String red = "participants?id="+SessionLib.get("ContentId");
+            Tools.redirect(red);
         }
-
-        return this.SUCCESS;
     }
 
     public String viewParticipant() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Participant.findParticipants(); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Participant participant = new Participant();
-                participant.setId(rs.getInt(1));
-                participant.setContent_id(rs.getInt(2));
-                participant.setUser_name(Message.getUserName(rs.getInt(3)));
-                if(rs.getInt(4)==1) {
-                    participant.setStatus("Active");
-                }
-                else{participant.setStatus("Request pending");}
-                participant.setDelete("delete_participant?id=" + rs.getInt(1)); //set delete link
-                output.add(participant); //add result to vector
-            }
-        }
+        //SessionLib.set("ContentID",0);
+        output = Participant.findParticipants();
+        SessionLib.set("ContentId",Tools.get("id"));
         return this.SUCCESS;
     }
 
-    public String delete() throws SQLException
+    public void deleteParticipant() throws Exception
     {
         Participant participant = new Participant();
-        //participant.delete(); //delete
-        return this.SUCCESS;
-    }
-
-    public Vector<User> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Vector<User> messages) {
-        this.messages = messages;
+        participant.delete(); //delete
+        Tools.redirect("participants?id="+SessionLib.get("ContentId"));
     }
 
     public Vector<Participant> getOutput() {
