@@ -325,7 +325,7 @@
         <!--interest-area end-->
 
         <!--board start-->
-        <action name="all-boards" class="com.jonak.controller.ContentController" method="viewAllContent">
+        <action name="all-boards" class="com.jonak.controller.ContentController" method="viewAllParticipatedContent">
             <result>/back/board.jsp</result>
         </action>
         <action name="my-board" class="com.jonak.controller.ContentController" method="viewAllContent">
@@ -342,6 +342,9 @@
         </action>
         <action name="delete-board" class="com.jonak.controller.ContentController" method="deleteContent">
         </action>
+        <action name="board-detail" class="com.jonak.controller.ContentController" method="viewDetail">
+            <result name="success">/back/board-detail.jsp</result>
+        </action>
         <!--board end-->
 
         <!--participant start-->
@@ -357,6 +360,61 @@
         <action name="delete-participant" class="com.jonak.controller.ParticipantController" method="deleteParticipant">
         </action>
         <!--participant end-->
+
+        <!--comment start-->
+        <action name="add-comment" class="com.jonak.controller.CommentController" method="saveComment">
+        </action>
+        <action name="delete-comment" class="com.jonak.controller.CommentController" method="deleteComment">
+        </action>
+        <!--comment end-->
+
+        <!--patient-case start-->
+        <action name="all-patient-case" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/patient-case.jsp</result>
+        </action>
+        <action name="my-patient-case" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-patient-case.jsp</result>
+        </action>
+        <action name="new-patient-case" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-patient-case.jsp</result>
+        </action>
+        <action name="processpatientcase" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+         </action>
+        <action name="edit-patient-case" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-patient-case.jsp</result>
+        </action>
+        <action name="delete-patient-case" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+        <action name="patient-case-detail" class="com.jonak.controller.ContentController" method="viewDetail">
+            <result name="success">/back/patient-case-detail.jsp</result>
+        </action>
+        <!--patient-case end-->
+
+        <!--discussion start-->
+        <action name="all-discussion" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/discussion.jsp</result>
+        </action>
+        <action name="my-discussion" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-discussion.jsp</result>
+        </action>
+        <action name="new-discussion" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-discussion.jsp</result>
+        </action>
+        <action name="processdiscussion" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-discussion" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-discussion.jsp</result>
+        </action>
+        <action name="delete-discussion" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+        <action name="discussion-detail" class="com.jonak.controller.ContentController" method="viewDetail">
+            <result name="success">/back/discussion-detail.jsp</result>
+        </action>
+        <!--discussion end-->
+
+
 
         <action name="update_conf" class="com.jonak.controller.ConfigurationController" method="update">
             <result name="success">/welcome_user.jsp</result>

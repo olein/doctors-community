@@ -40,6 +40,7 @@ public class ContentController extends BaseController
     }
     public Vector<Content> dataOut = new Vector<Content>();
     public Vector<Category> output = new Vector<Category>();
+    public Vector<Comment> comment = new Vector<Comment>();
 
     public String setCategory() throws Exception
     {
@@ -92,29 +93,48 @@ public class ContentController extends BaseController
             contentCategory.setContent_id(ContentCategory.getID());
             contentCategory.setCategory_id(Integer.parseInt( categoryId ));
             contentCategory.save();
+        }
 
+        if(Integer.parseInt(type)==1)
+        {
             Participant participant = new Participant();
             participant.setContent_id(ContentCategory.getID());
             participant.setUser_id(SessionLib.getUserID());
             participant.setActive(1);
             participant.save();
-        }
-
-
-        if(Integer.parseInt(type)==1)
-        {
             Tools.redirect("my-board?type=1");
         }
-
-
+        if(Integer.parseInt(type)==2)
+        {
+            Tools.redirect("my-patient-case?type=2");
+        }
+        if(Integer.parseInt(type)==3)
+        {
+            Tools.redirect("my-discussion?type=3");
+        }
     }
 
     public String viewAllContent() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-
         dataOut = Content.findAllContent(); //get result using user id
+        return this.SUCCESS;
+    }
+    public String viewAllParticipatedContent() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+        dataOut = Content.findAllParticipatedContent(); //get result using user id
+        return this.SUCCESS;
+    }
+
+    public String viewAllPublicContent() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+
+        dataOut = Content.findAllPublicContent(); //get result using user id
         return this.SUCCESS;
     }
 
@@ -130,6 +150,18 @@ public class ContentController extends BaseController
         return this.SUCCESS;
     }
 
+    public String viewDetail() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+        SessionLib.set("id",0);
+        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id"))); //get result using user id
+        dataOut.add(content);
+        comment = Comment.find();
+        SessionLib.set("id", content.getId());
+        return this.SUCCESS;
+    }
+
     public void deleteContent() throws Exception
     {
         Content content = new Content();
@@ -139,6 +171,14 @@ public class ContentController extends BaseController
         if(type==1)
         {
             Tools.redirect("my-board?type=1");
+        }
+        if(type==2)
+        {
+            Tools.redirect("my-patient-case?type=2");
+        }
+        if(type==3)
+        {
+            Tools.redirect("my-discussion?type=3");
         }
     }
 

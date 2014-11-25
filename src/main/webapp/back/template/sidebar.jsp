@@ -10,6 +10,18 @@
 				<li><a href="my-board?type=1">My Boards</a></li>
 			</ul>
 		</li>
+		<li class="hasSub"><a href="#patient-case"><i class="fa fa-th-large"></i> Patient Cases</a>
+			<ul class="nav nav-sidebar sub-nav">
+				<li><a href="all-patient-case?type=2">All patient-case</a></li>
+				<li><a href="my-patient-case?type=2">My patient-case</a></li>
+			</ul>
+		</li>
+		<li class="hasSub"><a href="#discussion"><i class="fa fa-th-large"></i> Discussion</a>
+			<ul class="nav nav-sidebar sub-nav">
+				<li><a href="all-discussion?type=3">All discussion</a></li>
+				<li><a href="my-discussion?type=3">My discussion</a></li>
+			</ul>
+		</li>
 		<li class="hasSub"><a href="#articles"><i class="fa fa-file-text"></i> Articles</a>
 			<ul class="nav nav-sidebar sub-nav">
 				<li><a href="#all-articles">All Articles</a></li>

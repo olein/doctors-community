@@ -21,11 +21,26 @@ public class ContentModel extends BaseModel
     private String add_participant;
     private String show_participant;
     private String category_name;
+    private int categoryId;
     private String comments;
     public ContentModel()
     {
         super();
         this.tableName = "content";
+    }
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getComments() {

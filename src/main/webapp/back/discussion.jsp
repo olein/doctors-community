@@ -11,8 +11,8 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        All Boards
-        <a href="new-board" class="btn btn-default pull-right">Add New</a>
+        All discussion
+        <a href="new-discussion" class="btn btn-default pull-right">Add New</a>
       </div>
       <div class="panel-body">
 
@@ -41,7 +41,7 @@
                 <td><s:property value="description"/></td>
                 <td><s:property value="date"/></td>
                 <td>
-                  <a href="board-detail?type=1&id=<s:property value="id"/>" class="btn btn-default">more</a>
+                  <a href="discussion-detail?type=3&id=<s:property value="id"/>" class="btn btn-default">more</a>
                 </td>
               </tr>
             </s:iterator>

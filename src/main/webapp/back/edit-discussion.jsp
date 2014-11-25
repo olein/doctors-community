@@ -11,7 +11,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Edit Board
+        Edit discussion
       </div>
       <div class="panel-body">
 
@@ -22,7 +22,7 @@
         <p class="alert alert-danger">Error Updating!</p>
         <% } %>
         <s:iterator value="dataOut">
-          <form class="form-horizontal" role="form" method="post" action="processboard?type=1&allow_comment=1">
+          <form class="form-horizontal" role="form" method="post" action="processdiscussion?type=3&allow_comment=1">
 
             <div class="form-group">
               <label for="inputCategory" class="col-sm-2 control-label">Category</label>
@@ -49,8 +49,8 @@
               <label for="inputTelephone" class="col-sm-2 control-label">Privacy</label>
               <div class="col-sm-4">
                 <select class="form-control" id="inputTelephone" placeholder="Privacy" name="privacy">
-                  <option value="1">Private</option>
                   <option value="2">Public</option>
+                  <option value="1">Private</option>
                 </select>
               </div>
             </div>
