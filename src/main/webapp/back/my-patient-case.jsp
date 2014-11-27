@@ -11,8 +11,8 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        All Boards
-        <a href="new-board" class="btn btn-default pull-right">Add New</a>
+        My patient-case
+        <a href="new-patient-case" class="btn btn-default pull-right">Add New</a>
       </div>
       <div class="panel-body">
 
@@ -27,21 +27,25 @@
           <thead>
           <tr>
             <th>ID</th>
+            <th>Category</th>
             <th>Title</th>
             <th>Description</th>
             <th>Creation Date</th>
-            <th></th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbod>
             <s:iterator value="dataOut">
               <tr>
                 <td><s:property value="id"/></td>
+                <td><s:property value="category_name"/></td>
                 <td><s:property value="title"/></td>
                 <td><s:property value="description"/></td>
                 <td><s:property value="date"/></td>
                 <td>
-                  <a href="board-detail?type=1&id=<s:property value="id"/>" class="btn btn-default">more</a>
+                  <a href="edit-patient-case?id=<s:property value="id"/>" class="btn btn-default">Edit</a>
+                  <a href="delete-patient-case?type=2&id=<s:property value="id"/>"class="btn btn-default">Delete</a>
+                  <a href="patient-case-detail?type=2&id=<s:property value="id"/>" class="btn btn-default">more</a>
                 </td>
               </tr>
             </s:iterator>

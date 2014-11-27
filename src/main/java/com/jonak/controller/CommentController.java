@@ -1,6 +1,7 @@
 package com.jonak.controller;
 
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Comment;
 import com.jonak.model.User;
 import org.apache.struts2.ServletActionContext;
@@ -15,7 +16,7 @@ import java.util.Vector;
  */
 public class CommentController extends BaseController
 {
-    public Vector<Comment> messages = new Vector<Comment>();
+    public Vector<Comment> comments = new Vector<Comment>();
     public String add_comment;
 
     public CommentController()
@@ -23,91 +24,69 @@ public class CommentController extends BaseController
         super();
     }
 
-    public String add() throws Exception
+    public void saveComment() throws Exception
     {
         Comment comment = new Comment();
-        comment.setContent_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("content_id")));
+        comment.setContent_id(Integer.parseInt(Tools.get("id")));
         comment.setUser_id(SessionLib.getUserID());
-        comment.setContent(ServletActionContext.getRequest().getParameter("content"));
+        comment.setContent(Tools.get("content"));
         comment.setParent_id(0);
-        int timestamp = (int) (new Date().getTime()/1000);
-        comment.setCreated_at(timestamp);
+        comment.setCreated_at(Tools.getTimeStamp());
         comment.save(); //add content
-        return this.SUCCESS;
+        if(Integer.parseInt(Tools.get("type"))==1)
+        {
+            String red = "board-detail?type=1&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==2)
+        {
+            String red = "patient-case-detail?type=2&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==3)
+        {
+            String red = "discussion-detail?type=3&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
     }
 
     public String viewComment() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-
-        ResultSet rs = Comment.find(); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Comment comment = new Comment();
-                comment.setId(rs.getInt(1));
-                comment.setUser_id(rs.getInt(3));
-                User user = User.find(rs.getInt(3));
-                comment.setName(user.getFirstName()+" "+user.getLastName());
-                comment.setContent_id(rs.getInt(2));
-                comment.setContent(rs.getString(4));
-                comment.setParent_id(rs.getInt(5));
-                int d = (rs.getInt(6));
-                Date date = new Date(((long)d)*1000L);
-                comment.setDate(date);
-                comment.setUpdate("update_comment?id=" + rs.getInt(1)); //set update link
-                comment.setDelete("delete_comment?id=" + rs.getInt(1)); //set delete link
-                //comment.setAddcomment("add_comment?content_id=" + rs.getInt(2));
-                setadd_Comment("add_comment?content_id=" + rs.getInt(2));
-                messages.add(comment); //add result to vector
-            }
-        }
+        comments = Comment.find(); //get result using user id
         return this.SUCCESS;
     }
 
-    public String setContentID() throws Exception
+    public void deleteComment() throws Exception
     {
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        Comment comment = Comment.find(Integer.parseInt(SessionLib.get("ContentID")));
-        if((comment.getUser_id())==SessionLib.getUserID()) {
-            if (ServletActionContext.getRequest().getParameter("content").length() > 0) {
-                comment.setContent(ServletActionContext.getRequest().getParameter("content")); // reset title
-            }
-            comment.setId(comment.getId());
-            comment.setUser_id(comment.getUser_id());
-            comment.setContent_id(comment.getContent_id());
-            comment.setParent_id(comment.getParent_id());
-            comment.setCreated_at(comment.getCreated_at());
-            //comment.update(comment.getId());
-            return this.SUCCESS;
-        }
-        return this.ERROR;
-    }
-
-    public String delete() throws Exception
-    {
-        Comment comment = Comment.find(Integer.parseInt(ServletActionContext.getRequest().getParameter("id")));
+        Comment comment = Comment.find(Integer.parseInt(Tools.get("id")));
         if((comment.getUser_id())==SessionLib.getUserID()) {
             comment.delete(); //delete
-            return this.SUCCESS;
         }
-        return this.ERROR;
+        if(Integer.parseInt(Tools.get("type"))==1)
+        {
+            String red = "board-detail?type=1&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==2)
+        {
+            String red = "patient-case-detail?type=2&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==3)
+        {
+            String red = "discussion-detail?type=3&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
     }
 
-
-    public Vector<Comment> getMessages() {
-        return messages;
+    public Vector<Comment> getComments() {
+        return comments;
     }
 
-    public void setMessages(Vector<Comment> messages) {
-        this.messages = messages;
+    public void setComments(Vector<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getadd_Comment() {
