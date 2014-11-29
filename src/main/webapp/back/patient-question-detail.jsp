@@ -7,36 +7,12 @@
           addnew = Tools.get("addnew");
 %>
 
-<form class="navbar-form pull-left" method="post" action="searchByKeyWord?type=3">
-  Search: <input type="text" class="form-control" name="searchWord" placeholder="Search...">
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-4">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-</form>
-  <form class="navbar-form pull-left" method="post" action="searchByCategory?type=3">
-  <div class="form-group">
-    <label for="inputCAtegory" class="col-sm-2 control-label">Search By Category</label><br/>
-    <select class="form-control" id="inputCategory" placeholder="Category" name="categoryId">
-      <option value=0>--select option--</option>
-      <s:iterator value="output">
-        <option value=<s:property value="id"/>><s:property value="name"/></option>
-      </s:iterator>
-    </select>
-  </div>
-    <div class="col-sm-offset-2 col-sm-4">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</form>
-
-
 <div class="row chambers">
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        All discussion
-        <a href="new-discussion" class="btn btn-default pull-right">Add New</a>
+        Discussion Detail
+        <a href="new-patient-question" class="btn btn-default pull-right">Add New</a>
       </div>
       <div class="panel-body">
 
@@ -54,7 +30,6 @@
             <th>Title</th>
             <th>Description</th>
             <th>Creation Date</th>
-            <th></th>
           </tr>
           </thead>
           <tbod>
@@ -64,14 +39,45 @@
                 <td><s:property value="title"/></td>
                 <td><s:property value="description"/></td>
                 <td><s:property value="date"/></td>
-                <td>
-                  <a href="discussion-detail?type=3&id=<s:property value="id"/>" class="btn btn-default">more</a>
-                </td>
               </tr>
             </s:iterator>
-
           </tbod>
         </table>
+        All Comments
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Comment Date</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbod>
+            <s:iterator value="comment">
+              <tr>
+                <td><s:property value="name"/></td>
+                <td><s:property value="content"/></td>
+                <td><s:property value="date"/></td>
+                <td><a href="delete-comment?type=4&id=<s:property value="id"/>" class="btn btn-default">Delete</a></td>
+              </tr>
+            </s:iterator>
+          </tbod>
+        </table>
+
+        <s:iterator value="dataOut">
+          <form class="form-horizontal" role="form" method="post" action="add-comment?type=4&id=<s:property value="id"/>">
+          <label for="inputName" class="col-sm-2 control-label">Comment</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="inputName" placeholder="Comment" name="content" >
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+          </form>
+        </s:iterator>
 
       </div>
     </div>

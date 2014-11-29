@@ -116,7 +116,7 @@ public class Content extends ContentModel
                 _types  = new ArrayList(),
                 _values = new ArrayList();
 
-        _fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
+        //_fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
         _fields.add("type");            _types.add("int");            _values.add(Integer.parseInt(Tools.get("type")));
         _fields.add("privacy");            _types.add("int");            _values.add(2);
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
@@ -186,6 +186,81 @@ public class Content extends ContentModel
             }
         }
         return content;
+    }
+
+    public static Vector findByKeyWord() throws Exception
+    {
+
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  _tableName = "content",
+                _fieldName = "*";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+
+        //_fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
+        _fields.add("type");            _types.add("int");            _values.add(Integer.parseInt(Tools.get("type")));
+        _fields.add("privacy");            _types.add("int");            _values.add(2);
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        if( rs != null ) {
+            dataOut.clear();
+            while( rs.next() ) {
+                Content content = new Content();
+                content.setId(rs.getInt(1));
+                content.setUser_id(rs.getInt(2));
+                content.setTitle(rs.getString(3));
+                content.setDescription(rs.getString(4));
+                content.setDate(Tools.getDate(rs.getInt(10)));
+                if(content.getTitle().contains(Tools.get("searchWord")) | content.getDescription().contains(Tools.get("searchWord"))) {
+                    ContentCategory contentCategory  = ContentCategory.findByContentID(rs.getInt(1));
+                    if(contentCategory!=null)
+                    {
+                        content.setCategory_name(Category.getCategoryName(contentCategory.getCategory_id()));
+                    }
+                    else
+                    {
+                        content.setCategory_name("not specified");
+                    }
+                    dataOut.add(content); //add result to vector
+                }
+            }
+        }
+        return dataOut;
+    }
+
+    public static Vector findByCategory() throws Exception
+    {
+
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  _tableName = "content",
+                _fieldName = "*";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+
+        _fields.add("type");            _types.add("int");            _values.add(Integer.parseInt(Tools.get("type")));
+        _fields.add("privacy");            _types.add("int");            _values.add(2);
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        if( rs != null ) {
+            dataOut.clear();
+            while( rs.next() ) {
+                Content content = new Content();
+                content.setId(rs.getInt(1));
+                content.setUser_id(rs.getInt(2));
+                content.setTitle(rs.getString(3));
+                content.setDescription(rs.getString(4));
+                content.setDate(Tools.getDate(rs.getInt(10)));
+                ContentCategory contentCategory  = ContentCategory.findByContentID(rs.getInt(1));
+                if(contentCategory!=null && contentCategory.getCategory_id()==Integer.parseInt(Tools.get("categoryId")))
+                {
+                    content.setCategory_name(Category.getCategoryName(contentCategory.getCategory_id()));
+                    dataOut.add(content); //add result to vector
+                }
+            }
+        }
+        return dataOut;
     }
     public Vector<Content> getDataOut() {
         return dataOut;
