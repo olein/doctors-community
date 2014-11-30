@@ -1,4 +1,5 @@
 package com.jonak.model;
+import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Message extends MessageModel
 {
+    public static String tableName = "message";
+
+    // find messages
     public static Vector find(ArrayList fields, ArrayList types, ArrayList values, String filter) throws Exception
     {
         Vector messages = new Vector();
@@ -26,6 +30,42 @@ public class Message extends MessageModel
         String  _tableName = "message", _fieldName = "*";
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, fields, types, values, filter);
+
+        if( rs.next() ) {
+            do {
+                Message msg = new Message();
+                msg.setId( rs.getInt("id") );
+                msg.setFromUserId( rs.getInt("from_user_id") );
+                msg.setToUserId( rs.getInt("to_user_id") );
+                msg.setMsg( rs.getString("msg") );
+                msg.setCreated_at( rs.getInt("created_at") );
+                msg.clear();
+                messages.add( msg );
+            } while( rs.next() );
+        } else {
+            messages = null;
+        }
+
+        return messages;
+    }
+
+    // find all with custom where & filters
+    public static Vector findAll( String where, ArrayList values, String filter ) throws Exception
+    {
+        Vector messages = new Vector();
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  sql = " select * from " + Message.tableName + " ";
+
+        if( ! where.isEmpty() ) {
+            sql += where;
+        }
+
+        if( ! filter.isEmpty() ) {
+            sql += filter;
+        }
+
+        ResultSet rs = db.executeSelectQuery( sql, values );
 
         if( rs.next() ) {
             do {

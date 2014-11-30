@@ -139,6 +139,46 @@ public class MySQLDatabase {
     }
 
     /**
+     * executes select query
+     *
+     * @param - String
+     * @param - String
+     * @param - ArrayList
+     * @param - ArrayList
+     * @param - ArrayList
+     * @return - ResultSet
+     * @throws SQLException
+     */
+    public ResultSet executeSelectQuery(String sql,
+                                        ArrayList values) throws SQLException
+    {
+        int i=1, size = values.size();
+
+//        System.out.println(sql);
+        PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
+
+        for(Object value : values) {
+            if (value instanceof String) {
+                preparedStatement.setString(i, (String) value);
+            } else if (value instanceof Integer) {
+                preparedStatement.setInt(i, (Integer) value);
+            } else if (value instanceof Long) {
+                preparedStatement.setLong(i, (Long) value);
+            } else if (value instanceof Float) {
+                preparedStatement.setFloat(i, (Float) value);
+            } else if (value instanceof Double) {
+                preparedStatement.setDouble(i, (Double) value);
+            }
+            i++;
+        }
+
+        System.out.println(preparedStatement);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        return rs;
+    }
+
+    /**
      * executes insert query
      *
      * @param - String

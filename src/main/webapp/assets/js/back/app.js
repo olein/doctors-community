@@ -12,4 +12,23 @@ $(function(){
 
     // profile page datepickter
     $('input#inputDateOfBirth').datepicker({dateFormat: 'dd-mm-yy'});
+
+    // ajax on message
+   /* $('.inbox li.list-group-item a').on('click', function(e){
+        e.preventDefault();
+
+        var ajaxURL = $(this).attr('href');
+
+        $.ajax({
+            type: 'POST',
+            url: ajaxURL+"&ajax=true",
+            dataType: 'json',
+            success: function(data){
+//                $('.panel-body').text(data);
+                console.log("hey lenin");
+                console.log(data);
+
+            }
+        });
+    });*/
 });

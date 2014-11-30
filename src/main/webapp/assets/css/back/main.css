@@ -124,6 +124,7 @@ body {
 /* messages */
 .messages h5 {
   font-weight: bold;
+  margin-top: 0px;
 }
 .messages .inbox li {
   background-color: #f9f9f9;

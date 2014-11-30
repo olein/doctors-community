@@ -1,8 +1,14 @@
 package com.jonak.controller;
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.model.User;
+import org.json.simple.*;
 
+import com.jonak.lib.Tools;
 import com.jonak.model.CategoryModel;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.*;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -38,41 +44,15 @@ public class MessageController extends BaseController
     {
         super();
     }
-    public Vector<Message> messages = new Vector<Message>();
 
-    /*public String setToUser() throws Exception
-    {
-
-        //SessionLib.set("ContentID",0);
-        ResultSet rs = Message.getUser(); //get category list
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Message message = new Message();
-                message.setTo_user_id(rs.getInt(1));
-                message.setUser_name(rs.getString(4) + " " + rs.getString(5)); //set user name values
-                messages.add(message); //add result to vector
-            }
-        }
-        return this.SUCCESS;
-    }*/
-
-    /*public String add() throws Exception, ParseException
-    {
-        Message message = new Message();
-
-        message.setTo_user_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("to_user_id")));
-        message.setFrom_user_id(SessionLib.getUserID());
-        message.setMsg(ServletActionContext.getRequest().getParameter("msg"));
-        int timestamp = (int) (new Date().getTime()/1000);
-        message.setCreated_at(timestamp);
-        message.save(); //add message
-        return this.SUCCESS;
-    }*/
-
+    // view message
     public String viewMessages() throws Exception
     {
+        // get params
+        String  action = Tools.get("action"),
+                strFuid = Tools.get("fuid");
+        int fuid = (strFuid == null) ? 0 : Integer.parseInt(strFuid);
+
         // prepare params
         int id = SessionLib.getUserID();
         String _filter = " group by from_user_id order by created_at asc ";
@@ -80,34 +60,63 @@ public class MessageController extends BaseController
                     _types  = new ArrayList(),
                     _values = new ArrayList();
 
-        _fields.add("to_user_id"); _types.add("int"); _values.add( id );
+        _fields.add("to_user_id");
+        _types.add("int");
+        _values.add(id);
 
-        Vector msgs = Message.find( _fields, _types, _values, _filter );
+        // get all inbox msg
+        Vector inboxMsg = Message.find(_fields, _types, _values, _filter);
+        this.dataOut.clear();
+        this.dataOut.add(inboxMsg);
 
-        if ( msgs != null) {
-            System.out.println("total: "+msgs.size());
-
-            this.dataOut.clear();
-            this.setDataOut(msgs);
+        // if not selected current user
+        // make the first inbox msg selected
+        if( fuid <= 0) {
+            Message msg = Message.class.cast(inboxMsg.get(0));
+            fuid = msg.getFromUserId();
         }
 
+        // prepare params
+        _fields.clear();
+        _types.clear();
+        _values.clear();
+
+        String  where = " where ( from_user_id=? and to_user_id=? ) or ( from_user_id=? and to_user_id=? ) ",
+                filter = " order by created_at asc ";
+        _values.add(fuid);
+        _values.add(id);
+        _values.add(id);
+        _values.add(fuid);
+
+        // get msg history of current user
+        Vector allMsg = Message.findAll( where, _values, filter );
+
+        this.dataOut.add( allMsg );
+        this.dataOut.add( fuid );
+
         return this.SUCCESS;
     }
 
-    public String delete() throws SQLException
+    // delete a single msg
+    public String delete() throws Exception
     {
-        Message message = new Message();
-        message.delete(); //delete
+        // get params
+        String  action = Tools.get("action"),
+                strFuid = Tools.get("fuid"),
+                strMid = Tools.get("mid");
+
+        int mid = ( strMid != null ) ? Integer.parseInt( strMid ) : 0;
+
+        // if action is delete & given a valid id
+        // delete it
+        if( action.equals("delete") && mid > 0 ) {
+            Message message = Message.findById( mid );
+            message.delete(); //delete
+        }
+
+        // redirect to view page
+        Tools.redirect("messages?action=view&fuid="+strFuid);
+
         return this.SUCCESS;
     }
-
-    public Vector<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Vector<Message> messages) {
-        this.messages = messages;
-    }
-
-
 }

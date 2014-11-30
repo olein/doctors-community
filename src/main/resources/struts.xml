@@ -79,6 +79,7 @@
 
         <!--messages start-->
         <action name="messages" class="com.jonak.controller.MessageController" method="viewMessages">
+            <!--<result type="json"></result>-->
             <result name="success">/back/messages.jsp</result>
         </action>
         <!--messages end-->

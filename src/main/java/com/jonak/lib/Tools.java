@@ -14,6 +14,9 @@ import java.util.Date;
  */
 public class Tools {
 
+    public static HttpServletRequest request = ServletActionContext.getRequest();
+    public static HttpServletResponse response = ServletActionContext.getResponse();
+
     // get the request parameter
     public static String get(String name) throws Exception
     {

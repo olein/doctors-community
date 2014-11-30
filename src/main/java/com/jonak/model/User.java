@@ -27,7 +27,7 @@ public class User extends UserModel
     {
         User user = User.findById( id );
         String displayName = (user.getFirstName()+" "+user.getLastName());
-        System.out.println(id+": "+displayName);
+//        System.out.println(id+": "+displayName);
         return displayName;
     }
 
