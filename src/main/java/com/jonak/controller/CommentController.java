@@ -48,6 +48,11 @@ public class CommentController extends BaseController
             String red = "discussion-detail?type=3&id="+comment.getContent_id();
             Tools.redirect( red );
         }
+        if(Integer.parseInt(Tools.get("type"))==4)
+        {
+            String red = "patient-question-detail?type=4&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
     }
 
     public String viewComment() throws Exception
@@ -77,6 +82,11 @@ public class CommentController extends BaseController
         if(Integer.parseInt(Tools.get("type"))==3)
         {
             String red = "discussion-detail?type=3&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==4)
+        {
+            String red = "patient-question-detail?type=4&id="+comment.getContent_id();
             Tools.redirect( red );
         }
     }

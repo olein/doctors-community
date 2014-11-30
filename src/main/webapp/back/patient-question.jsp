@@ -7,7 +7,7 @@
           addnew = Tools.get("addnew");
 %>
 
-<form class="navbar-form pull-left" method="post" action="searchByKeyWord?type=3">
+<form class="navbar-form pull-left" method="post" action="searchByKeyWord?type=4">
   Search: <input type="text" class="form-control" name="searchWord" placeholder="Search...">
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-4">
@@ -15,28 +15,15 @@
     </div>
   </div>
 </form>
-  <form class="navbar-form pull-left" method="post" action="searchByCategory?type=3">
-  <div class="form-group">
-    <label for="inputCAtegory" class="col-sm-2 control-label">Search By Category</label><br/>
-    <select class="form-control" id="inputCategory" placeholder="Category" name="categoryId">
-      <option value=0>--select option--</option>
-      <s:iterator value="output">
-        <option value=<s:property value="id"/>><s:property value="name"/></option>
-      </s:iterator>
-    </select>
-  </div>
-    <div class="col-sm-offset-2 col-sm-4">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</form>
+
 
 
 <div class="row chambers">
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        All discussion
-        <a href="new-discussion" class="btn btn-default pull-right">Add New</a>
+        All patient-question
+        <a href="new-patient-question" class="btn btn-default pull-right">Add New</a>
       </div>
       <div class="panel-body">
 
@@ -65,7 +52,7 @@
                 <td><s:property value="description"/></td>
                 <td><s:property value="date"/></td>
                 <td>
-                  <a href="discussion-detail?type=3&id=<s:property value="id"/>" class="btn btn-default">more</a>
+                  <a href="patient-question-detail?type=4&id=<s:property value="id"/>" class="btn btn-default">more</a>
                 </td>
               </tr>
             </s:iterator>

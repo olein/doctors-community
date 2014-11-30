@@ -112,6 +112,10 @@ public class ContentController extends BaseController
         {
             Tools.redirect("my-discussion?type=3");
         }
+        if(Integer.parseInt(type)==4)
+        {
+            Tools.redirect("my-patient-question?type=4");
+        }
     }
 
     public String viewAllContent() throws Exception
@@ -132,8 +136,9 @@ public class ContentController extends BaseController
     public String viewAllPublicContent() throws Exception
     {
         // this is how we will be using
-        // get the user with id 1
-
+        // get the user with id
+        SessionLib.set("id",0);
+        output = Category.findCategory();
         dataOut = Content.findAllPublicContent(); //get result using user id
         return this.SUCCESS;
     }
@@ -180,6 +185,28 @@ public class ContentController extends BaseController
         {
             Tools.redirect("my-discussion?type=3");
         }
+        if(type==4)
+        {
+            Tools.redirect("my-patient-question?type=4");
+        }
+    }
+
+    public String searchByCategory() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+
+        dataOut = Content.findByCategory(); //get result using user id
+        return this.SUCCESS;
+    }
+
+    public String searchByKeyWord() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+
+        dataOut = Content.findByKeyWord(); //get result using user id
+        return this.SUCCESS;
     }
 
     public Vector<Content> getcontents() {
