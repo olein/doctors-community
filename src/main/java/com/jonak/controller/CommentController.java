@@ -3,6 +3,7 @@ package com.jonak.controller;
 import com.jonak.lib.SessionLib;
 import com.jonak.lib.Tools;
 import com.jonak.model.Comment;
+import com.jonak.model.Content;
 import com.jonak.model.User;
 import org.apache.struts2.ServletActionContext;
 
@@ -33,6 +34,11 @@ public class CommentController extends BaseController
         comment.setParent_id(0);
         comment.setCreated_at(Tools.getTimeStamp());
         comment.save(); //add content
+
+        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id")));
+        content.setComment_counter(content.getComment_counter()+1);
+        content.save();
+
         if(Integer.parseInt(Tools.get("type"))==1)
         {
             String red = "board-detail?type=1&id="+comment.getContent_id();
@@ -67,7 +73,12 @@ public class CommentController extends BaseController
     {
         Comment comment = Comment.find(Integer.parseInt(Tools.get("id")));
         if((comment.getUser_id())==SessionLib.getUserID()) {
+            int contentId = comment.getContent_id();
             comment.delete(); //delete
+
+            Content content = Content.findContentByID(contentId);
+            content.setComment_counter(content.getComment_counter()-1);
+            content.save();
         }
         if(Integer.parseInt(Tools.get("type"))==1)
         {

@@ -167,6 +167,14 @@ public class ContentController extends BaseController
         return this.SUCCESS;
     }
 
+    public String viewAllUndiscussedContent() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+        dataOut = Content.findAllUndiscussedContent(); //get result using user id
+        return this.SUCCESS;
+    }
+
     public void deleteContent() throws Exception
     {
         Content content = new Content();

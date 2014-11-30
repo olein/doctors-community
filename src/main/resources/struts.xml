@@ -435,6 +435,9 @@
         <action name="patient-question-detail" class="com.jonak.controller.ContentController" method="viewDetail">
             <result name="success">/back/patient-question-detail.jsp</result>
         </action>
+        <action name="patient-question-unanswered" class="com.jonak.controller.ContentController" method="viewAllUndiscussedContent">
+            <result name="success">/back/patient-question-unanswered.jsp</result>
+        </action>
         <!--patient-question end-->
 
         <!--search start-->

@@ -188,6 +188,41 @@ public class Content extends ContentModel
         return content;
     }
 
+    public static Vector findAllUndiscussedContent() throws Exception
+    {
+
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  _tableName = "content",
+                _fieldName = "*";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+        _fields.add("comment_counter");            _types.add("int");            _values.add(0);
+        _fields.add("type");            _types.add("int");            _values.add(Integer.parseInt(Tools.get("type")));
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values); //search experience using content id
+        if( rs != null ) {
+            dataOut.clear();
+            while( rs.next() ) {
+                Content content = new Content();
+                content.setId(rs.getInt(1));
+                content.setUser_id(rs.getInt(2));
+                content.setTitle(rs.getString(3));
+                content.setDescription(rs.getString(4));
+                content.setDate(Tools.getDate(rs.getInt(10)));
+
+                ContentCategory contentCategory = ContentCategory.findByContentID(rs.getInt(1));
+                if (contentCategory != null) {
+                    content.setCategory_name(Category.getCategoryName(contentCategory.getCategory_id()));
+                } else {
+                    content.setCategory_name("not specified");
+                }
+                dataOut.add(content); //add result to vector
+            }
+        }
+        return dataOut;
+    }
+
     public static Vector findByKeyWord() throws Exception
     {
 

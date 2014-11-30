@@ -26,6 +26,7 @@
 			<ul class="nav nav-sidebar sub-nav">
 				<li><a href="all-patient-question?type=4">All patient questions</a></li>
 				<li><a href="my-patient-question?type=4">My questions</a></li>
+				<li><a href="patient-question-unanswered?type=4">patient-question-unanswered</a></li>
 			</ul>
 		</li>
 		<li class="hasSub"><a href="#articles"><i class="fa fa-file-text"></i> Articles</a>
