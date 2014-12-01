@@ -31,7 +31,8 @@ public class SessionLib
     public static void set( String key, int value ) throws Exception
     {
         try {
-            session.setAttribute( key, value );
+            String valueNew = Integer.toString(value);
+            session.setAttribute( key, valueNew );
         } catch (Exception ex) {
             throw new RuntimeException("error setting session: "+ ex.getMessage());
         }

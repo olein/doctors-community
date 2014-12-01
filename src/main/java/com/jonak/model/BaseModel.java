@@ -8,6 +8,7 @@ import java.util.Map;
 // import custom
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import org.apache.struts2.ServletActionContext;
 
 /**
@@ -72,10 +73,10 @@ public class BaseModel {
      * @param - null
      * @return - null
      */
-    public void delete() throws SQLException
+    public void delete() throws Exception
     {
         this.db = new MySQLDatabase();
-        id = Integer.parseInt(ServletActionContext.getRequest().getParameter("id"));
+        id = Integer.parseInt(Tools.get("id"));
         this.db.executeDeleteQuery( this.tableName, this.id );
         this.db.closeConnection();
     }

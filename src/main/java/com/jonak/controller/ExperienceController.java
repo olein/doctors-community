@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Experience;
 import com.jonak.model.ExperienceModel;
 import java.sql.*;
@@ -28,81 +29,65 @@ import java.util.*;
  */
 public class ExperienceController extends BaseController
 {
-
     public Vector<Experience> dataOut = new Vector<Experience>();
 
     public ExperienceController(){ super(); }
 
-    public String creatNewEx() throws Exception
+    public void saveExperience() throws Exception
     {
         Experience exp = new Experience();
-        exp.setUser_id( SessionLib.getUserID() );
-        exp.setTitle(ServletActionContext.getRequest().getParameter("title"));
-        exp.setDescription(ServletActionContext.getRequest().getParameter("description"));
+        exp.setUserId(SessionLib.getUserID());
+
+        String  title = Tools.get("title"),
+                description = Tools.get("description");
+
+        if(SessionLib.get("id")!=null) {
+            exp = Experience.findExperienceByID(Integer.parseInt(SessionLib.get("id")));
+
+            if (!exp.getTitle().equals(title)) { exp.setTitle(title);  }
+            if (!exp.getTitle().equals(title)) { exp.setTitle(title);  }
+            SessionLib.unset("id");
+        }
+        else {
+            exp.setTitle(title);
+            exp.setDescription(description);
+        }
+
         exp.save(); //add experience
+        Tools.redirect("experience");
+    }
+
+    public String viewAllExperience() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id
+        dataOut.clear();
+        dataOut = Experience.findByUserID(SessionLib.getUserID());
         return this.SUCCESS;
     }
 
     public String viewExperience() throws Exception
     {
         // this is how we will be using
-        // get the user with id 1
-        ResultSet rs = Experience.find( SessionLib.getUserID() ); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Experience exp = new Experience();
-                exp.setId(rs.getInt(1));
-                exp.setUser_id(rs.getInt(2));
-                exp.setTitle(rs.getString(3));
-                exp.setDescription(rs.getString(4));
-                exp.setUpdate("update_experience.action?id=" + rs.getInt(1)); //set update link
-                exp.setDelete("delete_experience.action?id="+ rs.getInt(1)); //set delete link
-                //messages.add(exp); //add result to vector
-            }
-        }
+        // get the experience with id
+        int id = Integer.parseInt(Tools.get("id"));
+        Experience exp = Experience.findExperienceByID( id );
+        dataOut.add(exp);
+        SessionLib.set("id",id);
         return this.SUCCESS;
     }
 
-    public String setContentID() throws SQLException
-    {
-        // SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        //Experience exp = Experience.find();
-        if(ServletActionContext.getRequest().getParameter("title").length()>0) {
-            //exp.setTitle(ServletActionContext.getRequest().getParameter("title")); // reset title
-        }
-
-        if(ServletActionContext.getRequest().getParameter("description").length()>0) {
-            //exp.setDescription(ServletActionContext.getRequest().getParameter("description")); //reset description
-        }
-
-        //exp.update(SessionLib.get("ContentID")); //update content using content ID
-        return this.SUCCESS;
-    }
-
-    public String delete() throws SQLException
+    public void deleteExperience() throws Exception
     {
         Experience exp = new Experience();
         exp.delete();
-        return this.SUCCESS;
+        SessionLib.unset("id");
+        Tools.redirect("experience");
     }
 
-    /*public Vector<Experience> getMessages() {
-        //return messages;
-        return 0;
-    }*/
-
-    public void setMessages(Vector<Experience> messages) {
-        //this.messages = messages;
+    public Vector<Experience> getDataOut() {
+        return dataOut;
     }
-
-
 
 
 }

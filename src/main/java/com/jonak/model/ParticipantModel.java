@@ -18,16 +18,6 @@ public class ParticipantModel extends BaseModel
         this.tableName = "participant";
     }
 
-    protected void prepareFields() {
-        // again no need for id
-
-        // database field name              field type                          getter method
-        this.fields.add("content_id");    this.types.add("int");     this.values.add(this.getContent_id());
-        this.fields.add("user_id");       this.types.add("int");     this.values.add(this.getUser_id());
-        this.fields.add("active");        this.types.add("int");     this.values.add(this.getActive());
-    }
-
-
     public String getStatus() {
         return status;
     }
@@ -65,6 +55,7 @@ public class ParticipantModel extends BaseModel
 
     public void setContent_id(int content_id) {
         this.content_id = content_id;
+        this.fields.add("content_id");    this.types.add("int");     this.values.add(this.getContent_id());
     }
 
     public int getUser_id() {
@@ -73,6 +64,7 @@ public class ParticipantModel extends BaseModel
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+        this.fields.add("user_id");       this.types.add("int");     this.values.add(this.getUser_id());
     }
 
     public int getActive() {
@@ -81,6 +73,6 @@ public class ParticipantModel extends BaseModel
 
     public void setActive(int active) {
         this.active = active;
+        this.fields.add("active");        this.types.add("int");     this.values.add(this.getActive());
     }
-
 }

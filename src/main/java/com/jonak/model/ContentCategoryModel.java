@@ -11,15 +11,7 @@ public class ContentCategoryModel extends BaseModel
     public ContentCategoryModel()
     {
         super();
-        this.tableName = "category_content_relation";
-    }
-
-    protected void prepareFields() {
-        // again no need for id
-
-        // database field name              field type                          getter method
-        this.fields.add("category_id");        this.types.add("int");     this.values.add(this.getCategory_id());
-        this.fields.add("content_id");      this.types.add("int");     this.values.add(this.getContent_id());
+        this.tableName = "category_contetn_relation";
     }
 
     public int getId() {
@@ -36,6 +28,7 @@ public class ContentCategoryModel extends BaseModel
 
     public void setCategory_id(int category_id) {
         this.category_id = category_id;
+        this.fields.add("category_id");        this.types.add("int");     this.values.add(this.getCategory_id());
     }
 
     public int getContent_id() {
@@ -44,5 +37,12 @@ public class ContentCategoryModel extends BaseModel
 
     public void setContent_id(int content_id) {
         this.content_id = content_id;
+        this.fields.add("content_id");      this.types.add("int");     this.values.add(this.getContent_id());
+    }
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
     }
 }

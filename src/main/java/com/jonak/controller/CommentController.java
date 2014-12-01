@@ -1,7 +1,9 @@
 package com.jonak.controller;
 
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Comment;
+import com.jonak.model.Content;
 import com.jonak.model.User;
 import org.apache.struts2.ServletActionContext;
 
@@ -15,7 +17,7 @@ import java.util.Vector;
  */
 public class CommentController extends BaseController
 {
-    public Vector<Comment> messages = new Vector<Comment>();
+    public Vector<Comment> comments = new Vector<Comment>();
     public String add_comment;
 
     public CommentController()
@@ -23,27 +25,22 @@ public class CommentController extends BaseController
         super();
     }
 
-    public String add() throws Exception
+    public void saveComment() throws Exception
     {
         Comment comment = new Comment();
-        comment.setContent_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("content_id")));
+        comment.setContent_id(Integer.parseInt(Tools.get("id")));
         comment.setUser_id(SessionLib.getUserID());
-        comment.setContent(ServletActionContext.getRequest().getParameter("content"));
+        comment.setContent(Tools.get("content"));
         comment.setParent_id(0);
-        int timestamp = (int) (new Date().getTime()/1000);
-        comment.setCreated_at(timestamp);
+        comment.setCreated_at(Tools.getTimeStamp());
         comment.save(); //add content
-        return this.SUCCESS;
-    }
 
-    public String viewComment() throws Exception
-    {
-        // this is how we will be using
-        // get the user with id 1
+        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id")));
+        content.setComment_counter(content.getComment_counter()+1);
+        content.save();
 
-        ResultSet rs = Comment.find(); //get result using user id
-
-        if( rs != null ) {
+//<<<<<<< HEAD
+/*        if( rs != null ) {
 
             while( rs.next() ) {
                 Comment comment = new Comment();
@@ -62,52 +59,78 @@ public class CommentController extends BaseController
                 //comment.setAddcomment("add_comment?content_id=" + rs.getInt(2));
                 setadd_Comment("add_comment?content_id=" + rs.getInt(2));
                 messages.add(comment); //add result to vector
-            }
+            }*/
+//=======
+        if(Integer.parseInt(Tools.get("type"))==1)
+        {
+            String red = "board-detail?type=1&id="+comment.getContent_id();
+            Tools.redirect( red );
         }
+        if(Integer.parseInt(Tools.get("type"))==2)
+        {
+            String red = "patient-case-detail?type=2&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==3)
+        {
+            String red = "discussion-detail?type=3&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==4)
+        {
+            String red = "patient-question-detail?type=4&id="+comment.getContent_id();
+            Tools.redirect( red );
+//>>>>>>> 1c4e3715bf6984c542f54554dc677532e1c85099
+        }
+    }
+
+    public String viewComment() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id 1
+        comments = Comment.find(); //get result using user id
         return this.SUCCESS;
     }
 
-    public String setContentID() throws Exception
+    public void deleteComment() throws Exception
     {
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        Comment comment = Comment.find(Integer.parseInt(SessionLib.get("ContentID")));
+        Comment comment = Comment.find(Integer.parseInt(Tools.get("id")));
         if((comment.getUser_id())==SessionLib.getUserID()) {
-            if (ServletActionContext.getRequest().getParameter("content").length() > 0) {
-                comment.setContent(ServletActionContext.getRequest().getParameter("content")); // reset title
-            }
-            comment.setId(comment.getId());
-            comment.setUser_id(comment.getUser_id());
-            comment.setContent_id(comment.getContent_id());
-            comment.setParent_id(comment.getParent_id());
-            comment.setCreated_at(comment.getCreated_at());
-            //comment.update(comment.getId());
-            return this.SUCCESS;
-        }
-        return this.ERROR;
-    }
-
-    public String delete() throws Exception
-    {
-        Comment comment = Comment.find(Integer.parseInt(ServletActionContext.getRequest().getParameter("id")));
-        if((comment.getUser_id())==SessionLib.getUserID()) {
+            int contentId = comment.getContent_id();
             comment.delete(); //delete
-            return this.SUCCESS;
+
+            Content content = Content.findContentByID(contentId);
+            content.setComment_counter(content.getComment_counter()-1);
+            content.save();
         }
-        return this.ERROR;
+        if(Integer.parseInt(Tools.get("type"))==1)
+        {
+            String red = "board-detail?type=1&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==2)
+        {
+            String red = "patient-case-detail?type=2&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==3)
+        {
+            String red = "discussion-detail?type=3&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==4)
+        {
+            String red = "patient-question-detail?type=4&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
     }
 
-
-    public Vector<Comment> getMessages() {
-        return messages;
+    public Vector<Comment> getComments() {
+        return comments;
     }
 
-    public void setMessages(Vector<Comment> messages) {
-        this.messages = messages;
+    public void setComments(Vector<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getadd_Comment() {

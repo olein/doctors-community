@@ -40,13 +40,14 @@ public class ContentCategory extends ContentCategoryModel
         return 0;
     }
     //find using content_id
-    public static ResultSet find(int content_id) throws SQLException
+    public static ContentCategory findByContentID(int content_id) throws Exception
     {
         MySQLDatabase db = new MySQLDatabase();
 
         String  _tableName = "category_content_relation",
                 _fieldName = "*",
                 _filter = " limit 1 ";
+
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -54,8 +55,14 @@ public class ContentCategory extends ContentCategoryModel
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search using user id
 
-        return rs;
+        ContentCategory contentCategory = new ContentCategory();
+        while(rs.next()) {
+            contentCategory.setContent_id(rs.getInt(3));
+            contentCategory.setCategory_id(rs.getInt(2));
+            contentCategory.setId(rs.getInt(1));
+            contentCategory.clear();
+            return contentCategory;
+        }
+        return contentCategory;
     }
-
-
 }

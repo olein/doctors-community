@@ -17,7 +17,9 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class Speciality extends SpecialityModel
 {
-    public static ResultSet find(int user_id) throws SQLException
+    public static Vector<Speciality> specialities = new Vector<Speciality>();
+
+    public static Vector findSpeciality(int userId) throws Exception
     {
         MySQLDatabase db = new MySQLDatabase();
         Category category = new Category();
@@ -27,10 +29,21 @@ public class Speciality extends SpecialityModel
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
-        _fields.add("user_id"); _types.add("int"); _values.add(user_id);
+        _fields.add("user_id"); _types.add("int"); _values.add(userId);
+
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
-
-        return rs;
+        if( rs != null ) {
+            specialities.clear();
+            while( rs.next() ) {
+                Speciality speciality = new Speciality();
+                speciality.setId(rs.getInt("id"));
+                speciality.setUserId(rs.getInt("user_id"));
+                speciality.setCategoryId(rs.getInt("category_id"));
+                speciality.setCategoryName(Category.getCategoryName(speciality.getCategoryId()));
+                specialities.add(speciality); //add result to vector
+            }
+        }
+        return specialities;
     }
 }

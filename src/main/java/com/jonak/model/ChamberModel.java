@@ -5,12 +5,13 @@ package com.jonak.model;
  */
 public class ChamberModel extends BaseModel
 {
-    private int user_id;
+    private int userId;
     private String address;
     private String telephone;
-    private String visiting_hour;
-    private String visiting_days;
+    private String visitingHour;
+    private String visitingDays;
     private String fees;
+    private String name;
 
     public ChamberModel()
     {
@@ -18,17 +19,6 @@ public class ChamberModel extends BaseModel
         this.tableName = "chamber_detail";
     }
 
-   /* protected void prepareFields() {
-        // again no need for id
-
-        // database field name              field type                          getter method
-        this.fields.add("user_id");      this.types.add("int");        this.values.add(this.getUser_id());
-        this.fields.add("address");      this.types.add("String");     this.values.add(this.getAddress());
-        this.fields.add("telephone");    this.types.add("String");     this.values.add(this.getTelephone());
-        this.fields.add("visiting_hour");this.types.add("String");     this.values.add(this.getVisiting_hour());
-        this.fields.add("visiting_days");this.types.add("String");     this.values.add(this.getVisiting_days());
-        this.fields.add("fees");         this.types.add("String");     this.values.add(this.getFees());
-    } */
 
     public int getId() {
         return this.id;
@@ -38,13 +28,13 @@ public class ChamberModel extends BaseModel
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-        this.fields.add("user_id");      this.types.add("int");        this.values.add(this.getUser_id());
+    public void setUserId(int userId) {
+        this.userId = userId;
+        this.fields.add("user_id");      this.types.add("int");        this.values.add(this.getUserId());
     }
 
     public String getAddress() {
@@ -64,23 +54,31 @@ public class ChamberModel extends BaseModel
         this.telephone = telephone;
         this.fields.add("telephone");    this.types.add("String");     this.values.add(this.getTelephone());
     }
-
-    public String getVisiting_hour() {
-        return visiting_hour;
+    public String getVisitingDays() {
+        return visitingDays;
     }
 
-    public void setVisiting_hour(String visiting_hour) {
-        this.visiting_hour = visiting_hour;
-        this.fields.add("visiting_hour");this.types.add("String");     this.values.add(this.getVisiting_hour());
+    public void setVisitingDays(String visitingDays) {
+        this.visitingDays = visitingDays;
+        this.fields.add("visiting_days");    this.types.add("String");     this.values.add(this.getVisitingDays());
     }
 
-    public String getVisiting_days() {
-        return visiting_days;
+    public String getVisitingHour() {
+        return visitingHour;
     }
 
-    public void setVisiting_days(String visiting_days) {
-        this.visiting_days = visiting_days;
-        this.fields.add("visiting_days");this.types.add("String");     this.values.add(this.getVisiting_days());
+    public void setVisitingHour(String visitingHour) {
+        this.visitingHour = visitingHour;
+        this.fields.add("visiting_hour");    this.types.add("String");     this.values.add(this.getVisitingHour());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        this.fields.add("name");    this.types.add("String");     this.values.add(this.getName());
     }
 
     public String getFees() {
@@ -90,5 +88,11 @@ public class ChamberModel extends BaseModel
     public void setFees(String fees) {
         this.fees = fees;
         this.fields.add("fees");         this.types.add("String");     this.values.add(this.getFees());
+    }
+    public void clear()
+    {
+        this.fields.clear();
+        this.types.clear();
+        this.values.clear();
     }
 }

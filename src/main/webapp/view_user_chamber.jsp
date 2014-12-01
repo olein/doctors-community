@@ -19,10 +19,10 @@
       <td>Telephone   </td><td><s:property value="telephone"/></td>
     </tr>
     <tr>
-      <td>Visiting Hour   </td><td><s:property value="visiting_hour"/></td>
+      <td>Visiting Hour   </td><td><s:property value="visitingHour"/></td>
     </tr>
     <tr>
-      <td>Visiting Days   </td><td><s:property value="visiting_days"/></td>
+      <td>Visiting Days   </td><td><s:property value="visitingDays"/></td>
     </tr>
     <tr>
       <td>Fees   </td><td><s:property value="fees"/></td>

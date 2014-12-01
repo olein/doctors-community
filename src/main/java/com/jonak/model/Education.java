@@ -27,10 +27,14 @@ public class Education extends EducationModel
                 _values = new ArrayList();
         _fields.add("user_id"); _types.add("int"); _values.add(user_id);
 
+
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search using user id
+
+        dateOutToController.clear();
+
         while ( rs.next() ) {
             Education education = new Education();
-            education.setId(rs.getInt( 1 ));
+            education.setId(rs.getInt( "id" ));
             education.setUser_id(rs.getInt("user_id"));
             education.setDegree(rs.getString("degree"));
             education.setInstitute(rs.getString("institute"));
@@ -40,7 +44,7 @@ public class Education extends EducationModel
         }
         return dateOutToController;
     }
-    public static Education findByID(int id) throws Exception
+    public static Education findEducationByID(int id) throws Exception
     {
         Education education = new Education();
         MySQLDatabase db = new MySQLDatabase();
@@ -56,7 +60,7 @@ public class Education extends EducationModel
 
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search experience using content id
         if( rs.next() ) {
-            education.setId(rs.getInt(1));
+            education.setId(rs.getInt("id"));
             education.setUser_id(rs.getInt("user_id"));
             education.setDegree(rs.getString("degree"));
             education.setInstitute(rs.getString("institute"));

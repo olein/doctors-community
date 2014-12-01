@@ -2,6 +2,7 @@ package com.jonak.controller;
 
 import com.jonak.lib.MySQLDatabase;
 import com.jonak.lib.SessionLib;
+import com.jonak.lib.Tools;
 import com.jonak.model.Category;
 import com.jonak.model.CategoryModel;
 import java.sql.*;
@@ -39,37 +40,52 @@ public class CategoryController extends BaseController
         super();
     }
 
-    public Vector<Category> messages = new Vector<Category>();
+    public Vector<Category> dataOut = new Vector<Category>();
+    public Vector<Category> categoryList = new Vector<Category>();
     public Vector<Speciality> specialities = new Vector<Speciality>();
 
     public String setCategory() throws Exception
     {
-
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Category.find(); //get category list
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Category category = new Category();
-                category.setId(rs.getInt(1));
-                category.setName(rs.getString(2)); //set parent category values
-                messages.add(category); //add result to vector
-            }
-        }
+        SessionLib.set("id",0);
+        categoryList = Category.findCategory(); //get category list
         return this.SUCCESS;
     }
 
-    public String add() throws SQLException, ParseException
+    public void saveCategory() throws Exception, ParseException
     {
         Category category = new Category();
 
-        category.setName(ServletActionContext.getRequest().getParameter("name"));
-        category.setDetail(ServletActionContext.getRequest().getParameter("detail"));
-        category.setParent_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("parent_id")));
-        int timestamp = (int) (new Date().getTime()/1000);
-        category.setCreated_at(timestamp);
+        String  name = Tools.get("name"),
+                detail = Tools.get("detail");
+        int     parentId = Integer.parseInt(Tools.get("parentId"));
+
+        if(Integer.parseInt(SessionLib.get("id"))>0) {
+            category = Category.findCategoryByID(Integer.parseInt(SessionLib.get("id")));
+
+            if (!category.getName().equals(name)) {  category.setName(name); }
+            if( ! category.getDetail().equals(detail) ) { category.setDetail(detail); }
+            if(  category.getParentId()!=( parentId ) ) { category.setParentId(parentId); }
+            category.setCreatedAt(category.getCreatedAt());
+            SessionLib.unset("id");
+        }
+        else{
+            category.setName( name );
+            category.setDetail( detail );
+            category.setParentId( parentId );
+            category.setCreatedAt( Tools.getTimeStamp());
+        }
+
         category.save(); //add category
+        Tools.redirect("category");
+    }
+
+    public String viewAllCategory() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id
+        this.dataOut.clear();
+        SessionLib.set("id",0);
+        dataOut = Category.findCategory();
         return this.SUCCESS;
     }
 
@@ -77,125 +93,53 @@ public class CategoryController extends BaseController
     {
         // this is how we will be using
         // get the user with id 1
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Category.find(); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Category category = new Category();
-                category.setId(rs.getInt(1));
-                category.setName(rs.getString(2));
-                category.setDetail(rs.getString(3));
-                category.setParent_id(rs.getInt(4));
-                category.setCategory_name(Category.find(rs.getInt(4)));
-                category.setCreated_at(rs.getInt(5));
-                int d = (rs.getInt(5));
-                Date date = new Date(((long)d)*1000L);
-                category.setDate(date);
-                category.setUpdate("update_category?id=" + rs.getInt(1)); //set update link
-                category.setDelete("delete_category?id="+ rs.getInt(1)); //set delete link
-                messages.add(category); //add result to vector
-            }
-        }
+        dataOut.clear();
+        int id = Integer.parseInt(Tools.get("id"));
+        Category category = Category.findCategoryByID(id);
+        dataOut.add(category);
+        categoryList = Category.findCategory();
+        SessionLib.set("id",id);
         return this.SUCCESS;
     }
 
-    public String setContentID() throws Exception
-    {
-        setCategory();
-        SessionLib.set("ContentID", ServletActionContext.getRequest().getParameter("id")); //set content ID
-        return this.SUCCESS;
-    }
-
-    public String update() throws Exception
-    {
-        ResultSet rs = Category.find();
-        Category category = new Category();
-        if(rs.next()) {
-            if (ServletActionContext.getRequest().getParameter("parent_id").length() > 0) {
-                category.setParent_id(Integer.parseInt(ServletActionContext.getRequest().getParameter("parent_id"))); // reset title
-            }
-            else{
-                category.setParent_id(rs.getInt(4));
-            }
-
-            if (ServletActionContext.getRequest().getParameter("namenew").length() > 0) {
-                category.setName(ServletActionContext.getRequest().getParameter("namenew"));  //reset description
-            }
-            else{
-                category.setName(rs.getString(2));
-            }
-
-            if (ServletActionContext.getRequest().getParameter("detail").length() > 0) {
-                category.setDetail(ServletActionContext.getRequest().getParameter("detail")); //reset description
-            }
-            else{
-                category.setDetail(rs.getString(3));
-            }
-            category.setCreated_at(rs.getInt(5));
-            category.setId(rs.getInt(1));
-        }
-
-        //category.update(Integer.parseInt(SessionLib.get("ContentID"))); //update content using content ID
-        return this.SUCCESS;
-    }
-
-    public String delete() throws Exception
+    public void deleteCategory() throws Exception
     {
         Category category = new Category();
         category.delete(); //delete
-        return this.SUCCESS;
+        SessionLib.unset("id");
+        Tools.redirect("category");
     }
 
-    public String addSpeciality() throws Exception, ParseException
+    public void saveSpeciality() throws Exception, ParseException
     {
         String data[] = ServletActionContext.getRequest().getParameterValues("speciality[]");
         for(int i=0;i<data.length;i++) {
             Speciality speciality = new Speciality();
-            speciality.setUser_id(SessionLib.getUserID());
-            speciality.setCategory_id(Integer.parseInt(data[i]));
+            speciality.setUserId(SessionLib.getUserID());
+            speciality.setCategoryId(Integer.parseInt(data[i]));
             speciality.save(); //add speciality
         }
-        return this.SUCCESS;
+        Tools.redirect("interest-area");
     }
 
     public String viewSpeciality() throws Exception
     {
         // this is how we will be using
         // get the user with id 1
-        SessionLib.set("ContentID",0);
-        ResultSet rs = Speciality.find(SessionLib.getUserID()); //get result using user id
-
-        if( rs != null ) {
-
-            while( rs.next() ) {
-                Speciality speciality = new Speciality();
-                speciality.setId(rs.getInt(1));
-                speciality.setUser_id(rs.getInt(3));
-                speciality.setCategory_id(rs.getInt(2));
-                speciality.setCategory_name(Category.find(speciality.getCategory_id()));
-                speciality.setDelete("delete_speciality?id="+ rs.getInt(1)); //set delete link
-                specialities.add(speciality); //add result to vector
-            }
-        }
+        specialities = Speciality.findSpeciality(SessionLib.getUserID()); //get result using user id
         return this.SUCCESS;
     }
 
-    public String deleteSpeciality() throws Exception
+    public void deleteSpeciality() throws Exception
     {
         Speciality speciality = new Speciality();
         speciality.delete(); //delete
-        return this.SUCCESS;
+        Tools.redirect("interest-area");
+    }
+    public Vector<Category> getDataOut() {
+        return dataOut;
     }
 
-    public Vector<Category> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Vector<Category> messages) {
-        this.messages = messages;
-    }
 
     public Vector<Speciality> getSpecialities() {
         return specialities;
