@@ -84,6 +84,12 @@
         </action>
         <!--messages end-->
 
+        <!--ajax test-->
+        <action name="ajaxTest" class="com.jonak.AjaxTest" method="loadData">
+            <result name="success">/index.jsp</result>
+            <result name="ajax"></result>
+        </action>
+
     </package>
 
 </struts>
