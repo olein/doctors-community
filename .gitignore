@@ -6,6 +6,5 @@ target/
 *.iml
 .classpath
 .project
-src/main/webapp/assets/
 .*~
 *.*~
