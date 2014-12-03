@@ -31,8 +31,9 @@
 		</li>
 		<li class="hasSub"><a href="#articles"><i class="fa fa-file-text"></i> Articles</a>
 			<ul class="nav nav-sidebar sub-nav">
-				<li><a href="#all-articles">All Articles</a></li>
-				<li><a href="#add-new-article">Add New</a></li>
+				<li><a href="all-article?type=5">All Articles</a></li>
+				<li><a href="my-article?type=5">My Articles</a></li>
+				<li><a href="new-article?type=5">Add New</a></li>
 			</ul>
 		</li>
 		<!-- <li><a href="#export">Export</a></li> -->

@@ -38,7 +38,7 @@ public class ContentController extends BaseController
     {
         super();
     }
-    public Vector<Content> dataOut = new Vector<Content>();
+
     public Vector<Category> output = new Vector<Category>();
     public Vector<Comment> comment = new Vector<Comment>();
 
@@ -116,6 +116,10 @@ public class ContentController extends BaseController
         {
             Tools.redirect("my-patient-question?type=4");
         }
+        if(Integer.parseInt(type)==5)
+        {
+            Tools.redirect("my-article?type=5");
+        }
     }
 
     public String viewAllContent() throws Exception
@@ -123,6 +127,7 @@ public class ContentController extends BaseController
         // this is how we will be using
         // get the user with id 1
         dataOut = Content.findAllContent(); //get result using user id
+        System.out.println("size is: "+dataOut.size());
         return this.SUCCESS;
     }
     public String viewAllParticipatedContent() throws Exception
@@ -130,6 +135,7 @@ public class ContentController extends BaseController
         // this is how we will be using
         // get the user with id 1
         dataOut = Content.findAllParticipatedContent(); //get result using user id
+        System.out.println("size is: "+dataOut.size());
         return this.SUCCESS;
     }
 
@@ -140,6 +146,7 @@ public class ContentController extends BaseController
         SessionLib.set("id",0);
         output = Category.findCategory();
         dataOut = Content.findAllPublicContent(); //get result using user id
+        System.out.println("size is: "+dataOut.size());
         return this.SUCCESS;
     }
 
@@ -196,6 +203,10 @@ public class ContentController extends BaseController
         if(type==4)
         {
             Tools.redirect("my-patient-question?type=4");
+        }
+        if(type==5)
+        {
+            Tools.redirect("my-article?type=5");
         }
     }
 

@@ -1,1 +1,1 @@
-<% response.sendRedirect("dashboard"); %>
+<% response.sendRedirect("user/login"); %>

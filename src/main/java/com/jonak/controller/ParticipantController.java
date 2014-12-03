@@ -17,7 +17,7 @@ import com.jonak.model.Message;
  */
 public class ParticipantController extends BaseController
 {
-    public Vector<User> dataOut = new Vector<User>();
+    //public Vector<User> dataOut = new Vector<User>();
     public Vector<Participant> output = new Vector<Participant>();
 
     public String setUserList() throws Exception

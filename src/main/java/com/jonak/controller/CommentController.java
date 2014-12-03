@@ -39,28 +39,6 @@ public class CommentController extends BaseController
         content.setComment_counter(content.getComment_counter()+1);
         content.save();
 
-//<<<<<<< HEAD
-/*        if( rs != null ) {
-
-            while( rs.next() ) {
-                Comment comment = new Comment();
-                comment.setId(rs.getInt(1));
-                comment.setUser_id(rs.getInt(3));
-                User user = User.findById(rs.getInt(3));
-                comment.setName(user.getFirstName()+" "+user.getLastName());
-                comment.setContent_id(rs.getInt(2));
-                comment.setContent(rs.getString(4));
-                comment.setParent_id(rs.getInt(5));
-                int d = (rs.getInt(6));
-                Date date = new Date(((long)d)*1000L);
-                comment.setDate(date);
-                comment.setUpdate("update_comment?id=" + rs.getInt(1)); //set update link
-                comment.setDelete("delete_comment?id=" + rs.getInt(1)); //set delete link
-                //comment.setAddcomment("add_comment?content_id=" + rs.getInt(2));
-                setadd_Comment("add_comment?content_id=" + rs.getInt(2));
-                messages.add(comment); //add result to vector
-            }*/
-//=======
         if(Integer.parseInt(Tools.get("type"))==1)
         {
             String red = "board-detail?type=1&id="+comment.getContent_id();
@@ -80,7 +58,11 @@ public class CommentController extends BaseController
         {
             String red = "patient-question-detail?type=4&id="+comment.getContent_id();
             Tools.redirect( red );
-//>>>>>>> 1c4e3715bf6984c542f54554dc677532e1c85099
+        }
+        if(Integer.parseInt(Tools.get("type"))==5)
+        {
+            String red = "article-detail?type=5&id="+comment.getContent_id();
+            Tools.redirect( red );
         }
     }
 
@@ -121,6 +103,11 @@ public class CommentController extends BaseController
         if(Integer.parseInt(Tools.get("type"))==4)
         {
             String red = "patient-question-detail?type=4&id="+comment.getContent_id();
+            Tools.redirect( red );
+        }
+        if(Integer.parseInt(Tools.get("type"))==5)
+        {
+            String red = "article-detail?type=5&id="+comment.getContent_id();
             Tools.redirect( red );
         }
     }
