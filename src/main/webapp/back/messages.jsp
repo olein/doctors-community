@@ -55,7 +55,7 @@
                         <tr>
                             <td width="64px"><img src="http://placehold.it/64" alt="..." class="img-rounded"></td>
                             <td>
-                                <a href="delete link here" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
+                                <a href="delete-message?action=delete&id=<s:property value="id"/>" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
                                 <h5><s:property value="@com.jonak.model.User@getDisplayName(fromUserId)" /></h5>
                                 <p><s:property value="msg" /></p>
                             </td>

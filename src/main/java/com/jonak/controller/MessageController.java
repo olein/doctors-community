@@ -137,12 +137,14 @@ public class MessageController extends BaseController
     }
 
     // delete a single msg
-    public String delete() throws Exception
+    public void delete() throws Exception
     {
         // get params
         String  action = Tools.get("action"),
-                strFuid = Tools.get("fuid"),
-                strMid = Tools.get("mid");
+                //strFuid = Tools.get("fuid"),
+                strMid = Tools.get("id");
+
+        int strFuid=0;
 
         int mid = ( strMid != null ) ? Integer.parseInt( strMid ) : 0;
 
@@ -150,12 +152,13 @@ public class MessageController extends BaseController
         // delete it
         if( action.equals("delete") && mid > 0 ) {
             Message message = Message.findById( mid );
+            strFuid = message.getToUserId();
             message.delete(); //delete
         }
 
         // redirect to view page
         Tools.redirect("messages?action=view&fuid="+strFuid);
 
-        return this.SUCCESS;
+        //return this.SUCCESS;
     }
 }
