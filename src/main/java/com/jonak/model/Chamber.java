@@ -18,7 +18,7 @@ public class Chamber extends ChamberModel
 {
     private static Vector<Chamber> dataOut = new Vector<Chamber>();
 
-    public static Vector findAllChamber() throws SQLException
+    public static Vector findAllChamber() throws Exception
     {
         MySQLDatabase db = new MySQLDatabase();
 
@@ -42,7 +42,7 @@ public class Chamber extends ChamberModel
                 chamber.setVisitingHour(rs.getString("visiting_hour"));
                 chamber.setVisitingDays(rs.getString("visiting_days"));
                 chamber.setFees(rs.getString("fees"));
-                chamber.clear();
+                //chamber.clear();
                 //add result to vector
                 dataOut.add(chamber);
             }
@@ -81,7 +81,7 @@ public class Chamber extends ChamberModel
 
         String  _tableName = "chamber_detail",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -115,7 +115,7 @@ public class Chamber extends ChamberModel
 
         String  _tableName = "chamber_detail",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();

@@ -29,7 +29,7 @@ import java.util.*;
  */
 public class ExperienceController extends BaseController
 {
-    public Vector<Experience> dataOut = new Vector<Experience>();
+    //public Vector<Experience> dataOut = new Vector<Experience>();
 
     public ExperienceController(){ super(); }
 
@@ -42,10 +42,11 @@ public class ExperienceController extends BaseController
                 description = Tools.get("description");
 
         if(SessionLib.get("id")!=null) {
+            System.out.println("id new:"+SessionLib.get("id"));
             exp = Experience.findExperienceByID(Integer.parseInt(SessionLib.get("id")));
 
             if (!exp.getTitle().equals(title)) { exp.setTitle(title);  }
-            if (!exp.getTitle().equals(title)) { exp.setTitle(title);  }
+            if (!exp.getDescription().equals(description)) { exp.setDescription(description);  }
             SessionLib.unset("id");
         }
         else {
@@ -74,6 +75,7 @@ public class ExperienceController extends BaseController
         Experience exp = Experience.findExperienceByID( id );
         dataOut.add(exp);
         SessionLib.set("id",id);
+        System.out.println(id);
         return this.SUCCESS;
     }
 

@@ -34,8 +34,6 @@ public class ChamberController extends BaseController
         super();
     }
 
-    public Vector<Chamber> dataOut = new Vector<Chamber>();
-
     //add new user
     public void saveChamber() throws Exception
     {
@@ -59,6 +57,7 @@ public class ChamberController extends BaseController
             if( ! chamber.getVisitingHour().equals( visitingHour ) ) { chamber.setVisitingHour(visitingHour); }
             if( ! chamber.getVisitingDays().equals( visitingDays ) ) { chamber.setVisitingDays(visitingDays); }
             if( ! chamber.getFees().equals( fees ) ) { chamber.setFees( fees ); }
+            SessionLib.unset("id");
         }
         else{
             chamber.setName(name);
@@ -74,14 +73,13 @@ public class ChamberController extends BaseController
         Tools.redirect("chambers");
     }
 
-
     public String viewAllChambers() throws Exception
     {
         // get all chamber
         // add them in vector
         dataOut.clear();
         dataOut = Chamber.findAllChamber();
-        System.out.println(dataOut.size());
+        System.out.println("size is "+dataOut.size());
         return this.SUCCESS;
     }
 
@@ -93,7 +91,8 @@ public class ChamberController extends BaseController
         int id = Integer.parseInt(Tools.get("id"));
         chamber = Chamber.findChamberByID(id);
         dataOut.add(chamber);
-        SessionLib.set("id",id);
+
+        SessionLib.set("id", id);
         return this.SUCCESS;
     }
 
@@ -104,6 +103,7 @@ public class ChamberController extends BaseController
         Chamber chamber = new Chamber();
         //delete chamber
         chamber.delete();
+        SessionLib.unset("id");
         Tools.redirect("chambers");
     }
     public void setdataOut(Vector<Chamber> dataOut) {

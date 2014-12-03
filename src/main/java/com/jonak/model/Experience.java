@@ -26,7 +26,7 @@ public class Experience extends ExperienceModel
 
         String  _tableName = "experience",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -56,7 +56,7 @@ public class Experience extends ExperienceModel
 
         String  _tableName = "experience",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -66,6 +66,7 @@ public class Experience extends ExperienceModel
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter); //search experience using content id
         if( rs.next() ) {
             exp.setId(rs.getInt(1));
+            System.out.println("Content id: " + exp.getId());
             exp.setUserId(rs.getInt("user_id"));
             exp.setTitle(rs.getString("title"));
             exp.setDescription(rs.getString("description"));

@@ -21,7 +21,7 @@ public class Education extends EducationModel
 
         String  _tableName = "education",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();

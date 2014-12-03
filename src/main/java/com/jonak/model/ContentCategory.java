@@ -24,7 +24,7 @@ public class ContentCategory extends ContentCategoryModel
 
         String  _tableName = "content",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -46,7 +46,7 @@ public class ContentCategory extends ContentCategoryModel
 
         String  _tableName = "category_content_relation",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
 
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
