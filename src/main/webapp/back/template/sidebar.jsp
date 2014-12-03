@@ -36,6 +36,13 @@
 				<li><a href="new-article?type=5">Add New</a></li>
 			</ul>
 		</li>
+		<li class="hasSub"><a href="#health-tips"><i class="fa fa-file-text"></i>Health Tips</a>
+			<ul class="nav nav-sidebar sub-nav">
+				<li><a href="all-health-tips?type=6">All Health Tips</a></li>
+				<li><a href="my-health-tips?type=6">My Health Tips</a></li>
+				<li><a href="new-health-tips?type=6">Add New</a></li>
+			</ul>
+		</li>
 		<!-- <li><a href="#export">Export</a></li> -->
 	<%--</ul>--%>
 	<%--<ul class="nav nav-sidebar">--%>

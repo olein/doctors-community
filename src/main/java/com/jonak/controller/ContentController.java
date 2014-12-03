@@ -120,6 +120,10 @@ public class ContentController extends BaseController
         {
             Tools.redirect("my-article?type=5");
         }
+        if(Integer.parseInt(type)==6)
+        {
+            Tools.redirect("my-health-tips?type=6");
+        }
     }
 
     public String viewAllContent() throws Exception
@@ -207,6 +211,10 @@ public class ContentController extends BaseController
         if(type==5)
         {
             Tools.redirect("my-article?type=5");
+        }
+        if(type==6)
+        {
+            Tools.redirect("my-health-tips?type=6");
         }
     }
 
