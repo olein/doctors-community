@@ -11,7 +11,7 @@ public class ContentCategoryModel extends BaseModel
     public ContentCategoryModel()
     {
         super();
-        this.tableName = "category_contetn_relation";
+        this.tableName = "category_content_relation";
     }
 
     public int getId() {

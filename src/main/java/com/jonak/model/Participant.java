@@ -23,7 +23,7 @@ public class Participant extends ParticipantModel
 
         String _tableName = "user",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList _fields = new ArrayList(),
                 _types = new ArrayList(),
                 _values = new ArrayList();

@@ -58,7 +58,7 @@ public class Category extends CategoryModel
 
         String  _tableName = "category",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();

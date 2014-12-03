@@ -27,7 +27,7 @@ public class Content extends ContentModel
 
         String  _tableName = "content",
                 _fieldName = "*",
-                _filter = " limit 1 ";
+                _filter = "";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -73,7 +73,8 @@ public class Content extends ContentModel
                 _values = new ArrayList();
 
         String  tableName = "content",
-                fieldName = "*";
+                fieldName = "*",
+                filter = "";
         ArrayList   fields = new ArrayList(),
                 types  = new ArrayList(),
                 values = new ArrayList();
@@ -84,7 +85,7 @@ public class Content extends ContentModel
             dataOut.clear();
             while( rs.next() ) {
                 fields.add("id");            types.add("int");            values.add(rs.getInt(2));
-                ResultSet rs2 = db.executeSelectQuery( tableName, fieldName, fields, types, values, _filter);
+                ResultSet rs2 = db.executeSelectQuery( tableName, fieldName, fields, types, values, filter);
                 while(rs2.next()) {
                     Content content = new Content();
                     content.setId(rs2.getInt(1));
@@ -133,7 +134,7 @@ public class Content extends ContentModel
                 content.setDescription(rs.getString(4));
                 content.setDate(Tools.getDate(rs.getInt(10)));
 
-
+                System.out.println("Content id: " + content.getId());
                 ContentCategory contentCategory  = ContentCategory.findByContentID(rs.getInt(1));
                 if(contentCategory!=null)
                 {

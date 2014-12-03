@@ -31,8 +31,16 @@
 		</li>
 		<li class="hasSub"><a href="#articles"><i class="fa fa-file-text"></i> Articles</a>
 			<ul class="nav nav-sidebar sub-nav">
-				<li><a href="#all-articles">All Articles</a></li>
-				<li><a href="#add-new-article">Add New</a></li>
+				<li><a href="all-article?type=5">All Articles</a></li>
+				<li><a href="my-article?type=5">My Articles</a></li>
+				<li><a href="new-article?type=5">Add New</a></li>
+			</ul>
+		</li>
+		<li class="hasSub"><a href="#health-tips"><i class="fa fa-file-text"></i>Health Tips</a>
+			<ul class="nav nav-sidebar sub-nav">
+				<li><a href="all-health-tips?type=6">All Health Tips</a></li>
+				<li><a href="my-health-tips?type=6">My Health Tips</a></li>
+				<li><a href="new-health-tips?type=6">Add New</a></li>
 			</ul>
 		</li>
         <li class="hasSub <% if( currentPage.equals("media-library") ) { out.print("active"); } %>"><a href="media-library"><i class="fa fa-film"></i> Media Library</a></li>
