@@ -3,6 +3,8 @@ package com.jonak.lib;
 // import defaults
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
+import org.json.simple.JSONObject;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.DateFormat;
@@ -84,7 +86,6 @@ public class Tools {
         return currentDate;
     }
 
-
     // get date
     public static Date getDate( int timeStamp ) throws Exception
     {
@@ -92,4 +93,22 @@ public class Tools {
 
         return currentDate;
     }
+
+    // parse string to int
+    public static int toInt( String strVal ) throws Exception {
+        if( strVal == null || strVal.isEmpty() )
+            return 0;
+        return Integer.parseInt( strVal );
+    }
+
+    // return ajax response
+    public static void ajaxResponse( JSONObject obj ) throws Exception
+    {
+        String jsonText = obj.toString();
+
+        Tools.response.setHeader("content-type", "application/json");
+        Tools.response.getWriter().write( jsonText );
+        Tools.response.flushBuffer();
+    }
+
 }

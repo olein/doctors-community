@@ -29,6 +29,10 @@
     <!--message start-->
     <div class="col-md-6 message-list">
         <div class="panel panel-default">
+            <%--these are hidden filed for js to use--%>
+            <%--<input type="hidden" id="fromUserName" value="<s:property value="@com.jonak.model.User@getDisplayName(dataOut[2])" />"/>
+            <input type="hidden" id="" value="<s:property value="@com.jonak.model.User@getDisplayName(dataOut[2])" />"/>--%>
+
             <div class="panel-heading clearfix">
                 <s:if test="dataOut[1].size > 0">
                 <h3 class="panel-title pull-left">Messages From: <s:property value="@com.jonak.model.User@getDisplayName(dataOut[2])" /></h3>
@@ -37,18 +41,16 @@
             </div>
             <div class="panel-body">
                 <!-- message send form -->
-                <form role="form" action="new-message" method="post">
-                    <input type="hidden" name="to_user_id" value="<s:property value="dataOut[2]" />" />
-                    <input type="hidden" name="from_user_id" value="<% out.print(SessionLib.getUserID()); %>" />
+                <form role="form" id="sendMsgForm" action="save-message" method="post">
+                    <input type="hidden" name="toUserId" id="toUserId" value="<s:property value="dataOut[2]" />" />
+                    <input type="hidden" name="fromUserId" id="fromUserId" value="<% out.print(SessionLib.getUserID()); %>" />
                     <div class="form-group">
-                        <textarea class="form-control" rows="3" name="msg"></textarea>
+                        <textarea class="form-control" rows="3" name="msg" id="msg"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send</button>
                 </form>
-            <%--</div>--%>
-            <%--<div class="panel-body">--%>
-                <!-- message list -->
-                <table class="table no-border">
+
+                <table id="messagesList" class="table no-border">
                     <s:iterator value="dataOut[1]">
                         <tr>
                             <td width="64px"><img src="http://placehold.it/64" alt="..." class="img-rounded"></td>
@@ -64,5 +66,7 @@
     </div>
     <!--message end-->
 </div>
+
+<script type="text/javascript" src="../assets/js/back/message.js"></script>
 
 <%@include file="./template/_footer.jsp" %>

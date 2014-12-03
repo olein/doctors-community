@@ -35,10 +35,6 @@
 				<li><a href="#add-new-article">Add New</a></li>
 			</ul>
 		</li>
-		<!-- <li><a href="#export">Export</a></li> -->
-	<%--</ul>--%>
-	<%--<ul class="nav nav-sidebar">--%>
-		<%--<li><a href="#notification"><i class="fa fa-bell"></i> Notifications</a></li>--%>
 		<li class="hasSub <% if( currentPage.equals("messages") ) { out.print("active"); } %>"><a href="messages"><i class="fa fa-comments"></i> Messages</a></li>
 	</ul>
 	<ul class="nav nav-sidebar">

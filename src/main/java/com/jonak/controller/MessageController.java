@@ -55,7 +55,7 @@ public class MessageController extends BaseController
 
         // prepare params
         int id = SessionLib.getUserID();
-        String _filter = " group by from_user_id order by created_at asc ";
+        String _filter = " group by from_user_id order by created_at desc ";
         ArrayList   _fields = new ArrayList(),
                     _types  = new ArrayList(),
                     _values = new ArrayList();
@@ -71,8 +71,8 @@ public class MessageController extends BaseController
 
         // if not selected current user
         // make the first inbox msg selected
-        if( fuid <= 0) {
-            Message msg = Message.class.cast(inboxMsg.get(0));
+        if( fuid <= 0 && inboxMsg.size() > 0) {
+            Message msg = Message.class.cast( inboxMsg.get(0) );
             fuid = msg.getFromUserId();
         }
 
@@ -82,7 +82,7 @@ public class MessageController extends BaseController
         _values.clear();
 
         String  where = " where ( from_user_id=? and to_user_id=? ) or ( from_user_id=? and to_user_id=? ) ",
-                filter = " order by created_at asc ";
+                filter = " order by created_at desc ";
         _values.add(fuid);
         _values.add(id);
         _values.add(id);
@@ -95,6 +95,45 @@ public class MessageController extends BaseController
         this.dataOut.add( fuid );
 
         return this.SUCCESS;
+    }
+
+    // new message OR save message
+    public void saveMessage() throws Exception
+    {
+        // get params
+        String  ajax = Tools.get("ajax"),
+                strToUserId = Tools.get("toUserId"),
+                strFromUserId = Tools.get("fromUserId"),
+                msg = Tools.get("msg");
+        System.out.println(ajax+" "+strToUserId+" "+strFromUserId+" "+msg);
+
+        // parse data
+        int toUserId = Tools.toInt( strToUserId ),
+            fromUserId = Tools.toInt( strFromUserId );
+
+        // save message
+        Message message = new Message();
+        message.setCreated_at( Tools.getTimeStamp() );
+        message.setToUserId( toUserId );
+        message.setFromUserId( fromUserId );
+        message.setMsg(msg);
+        message.save();
+
+        // return message
+        if( ajax != null && ajax.equals("1")) {
+            // ajax response
+            System.out.println(ajax);
+            JSONObject response = new JSONObject();
+            response.put("result", "ok");
+            response.put("displayname", User.getDisplayName( toUserId ) );
+            response.put("profilePic", "http://placehold.it/64");
+
+            Tools.ajaxResponse( response );
+        } else {
+            // redirect to to page
+            Tools.redirect("messages?action=view&fuid="+toUserId);
+        }
+
     }
 
     // delete a single msg
