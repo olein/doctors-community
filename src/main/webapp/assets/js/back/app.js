@@ -10,6 +10,14 @@ $(function(){
 		}
 	});
 
+    /**
+     * media uploader popup
+     */
+    $("#addMediaFile").on("click", function(e){
+        e.preventDefault();
+
+    });
+
     // profile page datepickter
     $('input#inputDateOfBirth').datepicker({dateFormat: 'dd-mm-yy'});
 
