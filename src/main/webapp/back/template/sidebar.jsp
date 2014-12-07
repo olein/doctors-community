@@ -19,6 +19,7 @@
 		<li class="hasSub"><a href="#discussion"><i class="fa fa-th-large"></i> Discussion</a>
 			<ul class="nav nav-sidebar sub-nav">
 				<li><a href="all-discussion?type=3">All discussion</a></li>
+				<li><a href="top-discussion?type=3">Top discussion</a></li>
 				<li><a href="my-discussion?type=3">My discussion</a></li>
 			</ul>
 		</li>

@@ -27,7 +27,7 @@ public class Content extends ContentModel
 
         String  _tableName = "content",
                 _fieldName = "*",
-                _filter = "";
+                _filter = " order by created_at desc ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -74,19 +74,21 @@ public class Content extends ContentModel
 
         String  tableName = "content",
                 fieldName = "*",
-                filter = "";
+                filter = " order by id asc ";
         ArrayList   fields = new ArrayList(),
                 types  = new ArrayList(),
                 values = new ArrayList();
 
         _fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
         ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter); //search experience using content id
+
         if( rs != null ) {
             dataOut.clear();
             while( rs.next() ) {
                 fields.add("id");            types.add("int");            values.add(rs.getInt(2));
+                fields.add("type");            types.add("int");            values.add(Tools.toInt(Tools.get("type")));
                 ResultSet rs2 = db.executeSelectQuery( tableName, fieldName, fields, types, values, filter);
-                while(rs2.next()) {
+                while (rs2.next()) {
                     Content content = new Content();
                     content.setId(rs2.getInt(1));
                     content.setUser_id(rs2.getInt(2));
@@ -102,6 +104,9 @@ public class Content extends ContentModel
                     }
                     dataOut.add(content); //add result to vector
                 }
+                fields.clear();
+                types.clear();
+                values.clear();
             }
         }
         return dataOut;
@@ -115,7 +120,7 @@ public class Content extends ContentModel
 
         String  _tableName  = "content",
                 _fieldName  = "*",
-                _filter     = "";
+                _filter     = " order by created_at desc ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -201,7 +206,7 @@ public class Content extends ContentModel
 
         String  _tableName  = "content",
                 _fieldName  = "*",
-                _filter     = "";
+                _filter     = " order by created_at desc ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -230,6 +235,48 @@ public class Content extends ContentModel
         return dataOut;
     }
 
+    public static Vector findAllTopContent() throws Exception
+    {
+
+        MySQLDatabase db = new MySQLDatabase();
+
+        String  _tableName  = "content",
+                _fieldName  = "*",
+                _filter     = " order by comment_counter desc ";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+
+        //_fields.add("user_id");            _types.add("int");            _values.add(SessionLib.getUserID()); //find current user
+        _fields.add("type");            _types.add("int");            _values.add(Integer.parseInt(Tools.get("type")));
+        _fields.add("privacy");            _types.add("int");            _values.add(2);
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter); //search experience using content id
+        if( rs != null ) {
+            dataOut.clear();
+            while( rs.next() ) {
+                Content content = new Content();
+                content.setId(rs.getInt(1));
+                content.setUser_id(rs.getInt(2));
+                content.setTitle(rs.getString(3));
+                content.setDescription(rs.getString(4));
+                content.setDate(Tools.getDate(rs.getInt(10)));
+
+                ContentCategory contentCategory  = ContentCategory.findByContentID(rs.getInt(1));
+                if(contentCategory!=null)
+                {
+                    content.setCategory_name(Category.getCategoryName(contentCategory.getCategory_id()));
+                }
+                else
+                {
+                    content.setCategory_name("not specified");
+                }
+                dataOut.add(content); //add result to vector
+            }
+        }
+        return dataOut;
+    }
+
+
     public static Vector findByKeyWord() throws Exception
     {
 
@@ -237,7 +284,7 @@ public class Content extends ContentModel
 
         String  _tableName = "content",
                 _fieldName = "*",
-                _filter = "";
+                _filter = " order by created_at desc ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();
@@ -279,7 +326,7 @@ public class Content extends ContentModel
 
         String  _tableName = "content",
                 _fieldName = "*",
-                _filter = "";
+                _filter = " order by created_at desc ";
         ArrayList   _fields = new ArrayList(),
                 _types  = new ArrayList(),
                 _values = new ArrayList();

@@ -61,6 +61,7 @@ public class ContentController extends BaseController
                 allowComment = Tools.get("allow_comment"),
                 categoryId = Tools.get("categoryId");
 
+        int     flag = 0;
 
         if(Integer.parseInt(SessionLib.get("id"))>0)
         {
@@ -77,8 +78,10 @@ public class ContentController extends BaseController
             contentCategory.setCategory_id(Integer.parseInt(categoryId ));
             contentCategory.save();
             SessionLib.unset("id");
+            flag = 1;
         }
-        else{
+        else
+        {
             content.setUser_id(SessionLib.getUserID());
             content.setTitle(title);
             content.setDescription(description);
@@ -97,11 +100,14 @@ public class ContentController extends BaseController
 
         if(Integer.parseInt(type)==1)
         {
-            Participant participant = new Participant();
-            participant.setContent_id(ContentCategory.getID());
-            participant.setUser_id(SessionLib.getUserID());
-            participant.setActive(1);
-            participant.save();
+            if(flag==0)
+            {
+                Participant participant = new Participant();
+                participant.setContent_id(ContentCategory.getID());
+                participant.setUser_id(SessionLib.getUserID());
+                participant.setActive(1);
+                participant.save();
+            }
             Tools.redirect("my-board?type=1");
         }
         if(Integer.parseInt(type)==2)
@@ -150,6 +156,17 @@ public class ContentController extends BaseController
         SessionLib.set("id",0);
         output = Category.findCategory();
         dataOut = Content.findAllPublicContent(); //get result using user id
+        System.out.println("size is: "+dataOut.size());
+        return this.SUCCESS;
+    }
+
+    public String viewAllTopContent() throws Exception
+    {
+        // this is how we will be using
+        // get the user with id
+        SessionLib.set("id",0);
+        output = Category.findCategory();
+        dataOut = Content.findAllTopContent(); //get result using user id
         System.out.println("size is: "+dataOut.size());
         return this.SUCCESS;
     }
