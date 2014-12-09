@@ -3,129 +3,110 @@
 <%@ page import="com.jonak.controller.UserController" %>
 <%@ include file="./template/_header.jsp" %>
 <%
-    String  update = Tools.get("update");
+    String  update = Tools.get("update"),
+            delete = Tools.get("delete"),
+            error  = Tools.get("error");
 %>
 
-<%--this is modal box--%>
-<div class="modal fade" id="uploadNewFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- upload modal -->
+<div class="modal fade" id="upload-file-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            <form action="upload" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Upload a new file</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <label>
+                            Choose a file to upload:
+                            <input type="file" name="uploadFile">
+                        </label>
+                    </p>
+                    <p class="alert alert-info">
+                        <em>File type allowed are: <b>.jpg</b>, <b>.png</b>, <b>.bmp</b>, <b>.zip</b>, <b>.pdf</b></em><br>
+                        <em>Maximum file size can be: <b>5MB</b></em>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- upload modal -->
+
+<div class="row profile">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title">Media Library
+                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#upload-file-modal"><span class="fa fa-plus"> Upload New</span></button>
+                </h3>
             </div>
-            <div class="modal-body">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="file" class="control-label">Choose a file to upload:</label>
-                        <input type="file" class="form-control" id="file" name="file">
+            <div class="panel-body">
+
+                <% if( update != null && update.equals("true") ) { %>
+                <p class="alert alert-success">Updated successfully!</p>
+                <% } %>
+                <% if( delete != null && delete.equals("true") ) { %>
+                <p class="alert alert-success">File deleted successfully!</p>
+                <% } %>
+                <% if( error != null && error.equals("true") ) { %>
+                <p class="alert alert-danger">Error! something went wrong!</p>
+                <% } %>
+
+                <!-- filter & pagination -->
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Filter by title">
+                        </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Upload</button>
+                    <div class="pull-right text-right">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                            <li class=""><a href="#">2 </a></li>
+                            <li class=""><a href="#">3 </a></li>
+                            <li class=""><a href="#">4 </a></li>
+                            <li ><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr class="alert-warning">
+                                <th width="80">Thumb</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th width="160" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <s:iterator value="dataOut">
+                            <tr>
+                                <td><a href="edit-media?action=edit&mid=<s:property value="id" />" ><img src="<s:property value="link" />" width="50" /></a></td>
+                                <td><a href="edit-media?action=edit&mid=<s:property value="id" />" ><s:property value="title" /></a></td>
+                                <td><s:property value="@com.jonak.model.User@getDisplayName(userId)" /></td>
+                                <td><s:date name="createdAt" format="yyyy-MM-dd" /></td>
+                                <td>
+                                    <a href="edit-media?action=edit&mid=<s:property value="id" />" class="btn btn-default btn-sm"><span class="fa fa-edit"> Edit</span></a>
+                                    <a href="delete-media?mid=<s:property value="id" />" onclick="return confirm('Are you sure want to delete \'<s:property value="title" />\' ?')" class="btn btn-default btn-sm"><span class="fa fa-trash"> Delete</span></a>
+                                </td>
+                            </tr>
+                        </s:iterator>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<%--modal box end--%>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-<s:iterator value="dataOut">
-
-    <div class="row profile">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Media Library</h3>
-                    <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#uploadNewFile" data-whatever="@mdo">Add Files</button>
-                </div>
-                <div class="panel-body">
-
-                    <% if( update != null && update.equals("true") ) { %>
-                    <p class="alert alert-success">Updated successfully!</p>
-                    <% } %>
-
-                    <form class="form-horizontal" role="form" method="post" action="save-profile">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-4">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" value="<s:property value="email" />">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                            <div class="col-sm-4">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputFirstname" class="col-sm-2 control-label">Firstname</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputFirstname" placeholder="Firstname" name="firstName" value="<s:property value="firstName" />">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLastname" class="col-sm-2 control-label">Lastname</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputLastname" placeholder="Lastname" name="lastName" value="<s:property value="lastName" />">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress" class="col-sm-2 control-label">Address</label>
-                            <div class="col-sm-4">
-                                <textarea class="form-control" id="inputAddress" placeholder="Address" rows="3" name="address"><s:property value="address" /></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputDistrict" class="col-sm-2 control-label">District</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputDistrict" placeholder="District" name="district" value="<s:property value="district" />">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputDateOfBirth" class="col-sm-2 control-label">Date of Birth</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputDateOfBirth" placeholder="ex: dd-mm-yyyy" name="dateOfBirth" value="<s:date name="dateOfBirth" format="dd-MM-yyyy" />">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Gender</label>
-                            <div class="col-sm-4">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="1" <s:if test="gender==1">checked</s:if> > Male
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="2" <s:if test="gender==2">checked</s:if> > Female
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Allow Message</label>
-                            <div class="col-sm-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="allowMessage" <s:if test="allowMessage==1">checked</s:if> value="allow" > Allow others to message me?
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-4">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</s:iterator>
 <%@include file="./template/_footer.jsp" %>

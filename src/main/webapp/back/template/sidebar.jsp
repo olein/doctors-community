@@ -43,7 +43,7 @@
 				<li><a href="new-health-tips?type=6">Add New</a></li>
 			</ul>
 		</li>
-        <li class="hasSub <% if( currentPage.equals("media-library") ) { out.print("active"); } %>"><a href="media-library"><i class="fa fa-film"></i> Media Library</a></li>
+        <li class="hasSub <% if( currentPage.equals("media-library") || currentPage.equals("edit-media") ) { out.print("active"); } %>"><a href="media-library"><i class="fa fa-film"></i> Media Library</a></li>
 		<li class="hasSub <% if( currentPage.equals("messages") ) { out.print("active"); } %>"><a href="messages"><i class="fa fa-comments"></i> Messages</a></li>
 	</ul>
 	<ul class="nav nav-sidebar">

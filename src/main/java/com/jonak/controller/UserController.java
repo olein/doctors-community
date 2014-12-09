@@ -25,7 +25,7 @@ public class UserController extends BaseController
     public UserController(){ super(); }
 
     // new user register
-    public String register() throws SQLException, ParseException
+    public String register() throws Exception
     {
         User nuser = new User();
         nuser.setEmail(ServletActionContext.getRequest().getParameter("email"));

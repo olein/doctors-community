@@ -58,14 +58,16 @@ public class SessionLib
     // get session data
     public static String get( String key ) throws Exception
     {
-        String result = (String) session.getAttribute( key );
-        return result;
+        if( session.getAttribute( key ) != null )
+            return (String) session.getAttribute( key );
+        else
+            return null;
     }
 
     // get user id
     public static int getUserID() throws Exception
     {
-        String result = (String) session.getAttribute( "user_id" );
+        String result = (String) SessionLib.get( "user_id" );
         if( result == null)
             return 0;
         return Integer.parseInt( result );
