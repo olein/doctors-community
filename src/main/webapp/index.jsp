@@ -14,6 +14,7 @@
                     <li><a href="./user/">User</a></li>
                     <li><a href="./register">Registration</a></li>
                     <li><a href="./user/login">Login</a></li>
+                    <li><a href="./upload.jsp">uploader</a></li>
                 </ul>
             </nav>
         </div>

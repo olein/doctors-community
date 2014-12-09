@@ -53,7 +53,7 @@ public class BaseModel {
      * @param - null
      * @return - null
      */
-    public void save() throws SQLException
+    public void save() throws Exception
     {
        // if id is given (greater than 0) that mean it is update call
         System.out.println("size: "+this.values.size());
@@ -88,7 +88,7 @@ public class BaseModel {
      * @return - null
      * @throws SQLException
      */
-    private void update() throws SQLException
+    private void update() throws Exception
     {
         this.db = new MySQLDatabase();
         System.out.println("id: "+this.id);
@@ -103,11 +103,12 @@ public class BaseModel {
      * @return - null
      * @throws SQLException
      */
-    private void add() throws SQLException
+    private void add() throws Exception
     {
         this.db = new MySQLDatabase();
 
         this.db.executeInsertQuery( this.tableName, this.fields, this.types, this.values );
+        this.setId( this.db.getLastInsertId() );
         this.db.closeConnection();
     }
 
