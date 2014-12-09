@@ -74,7 +74,7 @@ public class Content extends ContentModel
 
         String  tableName = "content",
                 fieldName = "*",
-                filter = " order by id asc ";
+                filter = " order by id desc ";
         ArrayList   fields = new ArrayList(),
                 types  = new ArrayList(),
                 values = new ArrayList();

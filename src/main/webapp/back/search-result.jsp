@@ -11,7 +11,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        Search REsult
+        Search Result
         <a href="new-patient-case" class="btn btn-default pull-right">Add New</a>
       </div>
       <div class="panel-body">
@@ -41,45 +41,13 @@
                 <td><s:property value="title"/></td>
                 <td><s:property value="description"/></td>
                 <td><s:property value="date"/></td>
+                <td>
+                  <a href="discussion-detail?type=<% out.print(Tools.get("type")); %>&id=<s:property value="id"/>" class="btn btn-default">more</a>
+                </td>
               </tr>
             </s:iterator>
           </tbod>
         </table>
-        All Comments
-        <table class="table">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Comment</th>
-            <th>Comment Date</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbod>
-            <s:iterator value="comment">
-              <tr>
-                <td><s:property value="name"/></td>
-                <td><s:property value="content"/></td>
-                <td><s:property value="date"/></td>
-                <td><a href="delete-comment?type=2&id=<s:property value="id"/>" class="btn btn-default">Delete</a></td>
-              </tr>
-            </s:iterator>
-          </tbod>
-        </table>
-
-        <s:iterator value="dataOut">
-          <form class="form-horizontal" role="form" method="post" action="add-comment?type=2&id=<s:property value="id"/>">
-          <label for="inputName" class="col-sm-2 control-label">Comment</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control" id="inputName" placeholder="Comment" name="content" >
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-4">
-              <button type="submit" class="btn btn-primary">Save Changes</button>
-            </div>
-          </div>
-          </form>
-        </s:iterator>
 
       </div>
     </div>
