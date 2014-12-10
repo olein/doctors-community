@@ -14,6 +14,8 @@
 
     <!-- jquery ui css -->
 	<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-ui/themes/redmond/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="../assets/vendor/DataTables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.bootstrap.css">
 
 	<!-- font awesome -->
 	<link rel="stylesheet" type="text/css" href="../assets/vendor/fontawesome/css/font-awesome.css">

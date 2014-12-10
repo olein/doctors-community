@@ -21,6 +21,9 @@ $(function(){
     // profile page datepickter
     $('input#inputDateOfBirth').datepicker({dateFormat: 'dd-mm-yy'});
 
+    // initiate datatable
+    $('table.table').DataTable();
+
     // ajax on message
    /* $('.inbox li.list-group-item a').on('click', function(e){
         e.preventDefault();
