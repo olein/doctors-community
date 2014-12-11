@@ -15,6 +15,7 @@
                     <li><a href="./register">Registration</a></li>
                     <li><a href="./user/login">Login</a></li>
                     <li><a href="./upload.jsp">uploader</a></li>
+                    <li><a href="./index">index</a></li>
                 </ul>
             </nav>
         </div>
