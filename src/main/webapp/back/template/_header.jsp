@@ -43,9 +43,9 @@
 				<li><a href="#">Doctors</a></li>
 				<li><a href="/">Front Page</a></li>
 			</ul>
-			<form class="navbar-form pull-left">
-				<input type="text" class="form-control" placeholder="Search...">
-			</form>
+			<%--<form class="navbar-form pull-left">--%>
+				<%--<input type="text" class="form-control" placeholder="Search...">--%>
+			<%--</form>--%>
 		</div>
 	</div>
 </nav><!-- end top navbar -->

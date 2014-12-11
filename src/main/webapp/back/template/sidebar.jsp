@@ -43,8 +43,8 @@
 				<li><a href="new-health-tips?type=6">Add New</a></li>
 			</ul>
 		</li>
-        <li class="hasSub <% if( currentPage.equals("media-library") || currentPage.equals("edit-media") ) { out.print("active"); } %>"><a href="media-library"><i class="fa fa-film"></i> Media Library</a></li>
-		<li class="hasSub <% if( currentPage.equals("messages") ) { out.print("active"); } %>"><a href="messages"><i class="fa fa-comments"></i> Messages</a></li>
+        <li class="<% if( currentPage.equals("media-library") || currentPage.equals("edit-media") ) { out.print("active"); } %>"><a href="media-library"><i class="fa fa-film"></i> Media Library</a></li>
+		<li class="<% if( currentPage.equals("messages") ) { out.print("active"); } %>"><a href="messages"><i class="fa fa-comments"></i> Messages</a></li>
 	</ul>
 	<ul class="nav nav-sidebar">
 		<li class="hasSub <% if( currentPage.equals("profile") || currentPage.equals("chambers") || currentPage.equals("new-chamber") || currentPage.equals("edit-chamber") ) { out.print("active"); } %>"><a href="#profile"><i class="fa fa-user"></i> Profile</a>
@@ -57,7 +57,7 @@
 				<li><a href="category">Category</a></li>
 			</ul>
 		</li>
-		<li><a href="#settings"><i class="fa fa-cog"></i> Settings</a></li>
+		<li class="<% if( currentPage.equals("settings") ) { out.print("active"); } %>"><a href="settings"><i class="fa fa-cog"></i> Settings</a></li>
 		<li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 	</ul>
 </div><!-- end left sidebar
