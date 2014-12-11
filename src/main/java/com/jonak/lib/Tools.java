@@ -101,6 +101,12 @@ public class Tools {
         return Integer.parseInt( strVal );
     }
 
+    // parse string to int
+    public static String toStr( int intVal ) throws Exception
+    {
+        return Integer.toString( intVal );
+    }
+
     // return ajax response
     public static void ajaxResponse( JSONObject obj ) throws Exception
     {

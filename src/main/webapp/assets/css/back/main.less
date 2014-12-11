@@ -216,3 +216,29 @@ body {
     border: 0 !important;
   }
 }
+
+/* datatable css */
+div.table-responsive {
+  .row > div {
+    margin-right: 0 !important;
+  }
+  .row {
+    .col-sm-6 {
+      &:first-child {
+        padding-right: 0 !important;
+      }
+      &:last-child {
+        padding-left: 0 !important;
+      }
+    }
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0 !important;
+    margin: 0 !important;
+    &:hover {
+      background-color: transparent !important;
+      background: transparent !important;
+      border: 0 !important;
+    }
+  }
+}

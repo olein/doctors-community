@@ -10,7 +10,7 @@
         <div class="row">
             <nav>
                 <ul>
-                    <li><a href="./">Home</a></li>
+                    <li><a href="./home">Home</a></li>
                     <li><a href="./user/">User</a></li>
                     <li><a href="./register">Registration</a></li>
                     <li><a href="./user/login">Login</a></li>

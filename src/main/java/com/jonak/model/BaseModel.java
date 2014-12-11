@@ -76,7 +76,6 @@ public class BaseModel {
     public void delete() throws Exception
     {
         this.db = new MySQLDatabase();
-        id = Integer.parseInt(Tools.get("id"));
         this.db.executeDeleteQuery( this.tableName, this.id );
         this.db.closeConnection();
     }
@@ -108,7 +107,11 @@ public class BaseModel {
         this.db = new MySQLDatabase();
 
         this.db.executeInsertQuery( this.tableName, this.fields, this.types, this.values );
+<<<<<<< HEAD
         //this.setId( this.db.getLastInsertId() );
+=======
+        this.setId( db.getLastInsertId() );
+>>>>>>> upstream/master
         this.db.closeConnection();
     }
 

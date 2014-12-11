@@ -60,23 +60,23 @@
                 <% } %>
 
                 <!-- filter & pagination -->
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Filter by title">
-                        </div>
-                    </div>
-                    <div class="pull-right text-right">
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li class=""><a href="#">2 </a></li>
-                            <li class=""><a href="#">3 </a></li>
-                            <li class=""><a href="#">4 </a></li>
-                            <li ><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-                        </ul>
-                    </div>
-                </div>
+                <%--<div class="clearfix">--%>
+                    <%--<div class="pull-left">--%>
+                        <%--<div class="form-group">--%>
+                            <%--<input type="text" class="form-control" placeholder="Filter by title">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="pull-right text-right">--%>
+                        <%--<ul class="pagination">--%>
+                            <%--<li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>--%>
+                            <%--<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>--%>
+                            <%--<li class=""><a href="#">2 </a></li>--%>
+                            <%--<li class=""><a href="#">3 </a></li>--%>
+                            <%--<li class=""><a href="#">4 </a></li>--%>
+                            <%--<li ><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>--%>
+                        <%--</ul>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>

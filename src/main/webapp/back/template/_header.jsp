@@ -14,6 +14,8 @@
 
     <!-- jquery ui css -->
 	<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-ui/themes/redmond/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="../assets/vendor/DataTables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.bootstrap.css">
 
 	<!-- font awesome -->
 	<link rel="stylesheet" type="text/css" href="../assets/vendor/fontawesome/css/font-awesome.css">
@@ -41,9 +43,9 @@
 				<li><a href="#">Doctors</a></li>
 				<li><a href="/">Front Page</a></li>
 			</ul>
-			<form class="navbar-form pull-left">
-				<input type="text" class="form-control" placeholder="Search...">
-			</form>
+			<%--<form class="navbar-form pull-left">--%>
+				<%--<input type="text" class="form-control" placeholder="Search...">--%>
+			<%--</form>--%>
 		</div>
 	</div>
 </nav><!-- end top navbar -->

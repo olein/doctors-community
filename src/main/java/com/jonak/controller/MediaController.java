@@ -20,10 +20,10 @@ public class MediaController extends BaseController
     public String viewMediaFiles() throws Exception
     {
         // offset, limit
-        String where = "", filter=" order by created_at desc limit ?, ? ";
+        String where = "", filter=" order by created_at desc ";
         ArrayList values = new ArrayList();
-        values.add( 0 );
-        values.add( 5 );
+//        values.add( 0 );
+//        values.add( 5 );
 
         this.dataOut = Media.find(where, values, filter);
 
@@ -92,7 +92,7 @@ public class MediaController extends BaseController
     public void deleteMediaFile() throws Exception
     {
         // get params
-        String  strMid = Tools.get("id");
+        String  strMid = Tools.get("mid");
 
         int mid = Tools.toInt( strMid );
 

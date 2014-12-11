@@ -72,7 +72,8 @@ public class UserController extends BaseController
 
         // if user login set session
         if( user != null ) {
-            SessionLib.set("user_id", Integer.toString( user.getId() ) );
+            SessionLib.set("user_id", Tools.toStr( user.getId() ) );
+            SessionLib.set("user_type", Tools.toStr( user.getType() ) );
             SessionLib.set("isLogin", "true" );
             // redirect to profile page
             Tools.redirect("dashboard");
@@ -88,6 +89,7 @@ public class UserController extends BaseController
         // if user login then unset session
         if( SessionLib.isLogin() ) {
             SessionLib.unset("user_id");
+            SessionLib.unset("user_type");
             SessionLib.unset("isLogin");
         }
 
