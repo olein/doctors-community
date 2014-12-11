@@ -31,7 +31,12 @@ public class UploadHandler extends ActionSupport {
         // get upload dir
 
         String  uploadDir = Configuration.get("uploadDir"),
+
                 uploadPath = Tools.request.getSession().getServletContext().getRealPath("/").concat( uploadDir );
+
+
+                uploadPath = uploadDir;
+//                uploadPath = Tools.request.getSession().getServletContext().getRealPath("/").concat( uploadDir );
 
         File destFile = null;
 
