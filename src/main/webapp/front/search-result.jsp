@@ -12,7 +12,7 @@
       </div>
       <div class="panel-body">
 
-        <table class="table">
+        <table class="table table-hover">
           <thead>
           <tr>
             <th>Email</th>
@@ -30,6 +30,9 @@
                 <td><s:property value="lastName"/></td>
                 <td><s:property value="address"/></td>
                 <td><s:property value="district"/></td>
+                <td>
+                  <a href="view-profile?id=<s:property value="id"/>" class="btn btn-default">View Profile</a>
+                </td>
               </tr>
             </s:iterator>
           </tbod>

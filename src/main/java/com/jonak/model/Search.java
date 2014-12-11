@@ -34,6 +34,7 @@ public class Search
                 if(rs.getString(4).contains( name ) || rs.getString(5).contains(name))
                 {
                     User user = new User();
+                    user.setId(rs.getInt(1));
                     user.setEmail(rs.getString(2));
                     user.setFirstName(rs.getString(4));
                     user.setLastName(rs.getString(5));
@@ -65,6 +66,7 @@ public class Search
                 if(rs.getString(6).contains(district) || rs.getString(7).contains(district))
                 {
                     User user = new User();
+                    user.setId(rs.getInt(1));
                     user.setEmail(rs.getString(2));
                     user.setFirstName(rs.getString(4));
                     user.setLastName(rs.getString(5));
@@ -97,6 +99,7 @@ public class Search
                     || rs.getString(5).contains( keyWord ))
                 {
                     User user = new User();
+                    user.setId(rs.getInt(1));
                     user.setEmail(rs.getString(2));
                     user.setFirstName(rs.getString(4));
                     user.setLastName(rs.getString(5));
@@ -133,4 +136,5 @@ public class Search
         }
         return dataOut;
     }
+
 }

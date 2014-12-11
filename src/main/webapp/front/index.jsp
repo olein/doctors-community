@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label for="">Search by Location</label><br>
                     <div class="input-group">
-                        <input type="text" class="form-control input-lg" name="district" id="" placeholder="Enter name">
+                        <input type="text" class="form-control input-lg" name="district" id="" placeholder="Enter location">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-primary btn-lg">Search</button>
                         </span>
