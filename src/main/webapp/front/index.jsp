@@ -4,7 +4,9 @@
 <div class="jumbotron text-center">
     <div class="container">
         <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p>This is community for doctors. Doctors can share their knowledge and experience by being part of this community.
+           Patients can also ask question to any doctor and doctors will answer them. It is a great place to share knowledge and
+           explore new world of adventure.</p>
         <p><a class="btn btn-success btn-lg" href="user/register" role="button">Join us NOW</a></p>
     </div>
 </div>
@@ -80,33 +82,16 @@
         <div class="col-md-12">
             <h1>Latest Tips</h1>
         </div>
+        <s:iterator value="healthTips">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                    <h2><s:property value="title"/> </h2>
+                    <p><s:property value="description"/></p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-            </div>
-        </div>
+        </s:iterator>
     </div>
 
 </div> <!-- /container -->

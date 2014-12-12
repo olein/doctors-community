@@ -20,7 +20,7 @@
 <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#"><s:property value="siteName"/></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="./index">Home <span class="sr-only">(current)</span></a></li>

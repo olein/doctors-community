@@ -14,6 +14,7 @@ import java.util.Vector;
 public class Search
 {
     public static Vector<User> dataOut = new Vector<User>();
+    public static Vector<Content> heathTips = new Vector<Content>();
 
     public static Vector findByName(String name) throws Exception
     {
@@ -137,4 +138,38 @@ public class Search
         return dataOut;
     }
 
+    public static Vector getHealthTips() throws Exception {
+        MySQLDatabase db = new MySQLDatabase();
+
+        String _tableName = "content",
+                _fieldName = "*",
+                _filter = " order by created_at desc limit 3";
+        ArrayList _fields = new ArrayList(),
+                _types = new ArrayList(),
+                _values = new ArrayList();
+
+
+        _fields.add("type");        _types.add("int");        _values.add(6);
+        ResultSet rs = db.executeSelectQuery(_tableName, _fieldName, _fields, _types, _values, _filter); //search experience using content id
+        if (rs != null) {
+            heathTips.clear();
+            while (rs.next()) {
+                Content content = new Content();
+                content.setId(rs.getInt(1));
+                content.setUser_id(rs.getInt(2));
+                content.setTitle(rs.getString(3));
+                content.setDescription(rs.getString(4));
+                content.setDate(Tools.getDate(rs.getInt(10)));
+
+                ContentCategory contentCategory = ContentCategory.findByContentID(rs.getInt(1));
+                if (contentCategory != null) {
+                    content.setCategory_name(Category.getCategoryName(contentCategory.getCategory_id()));
+                } else {
+                    content.setCategory_name("not specified");
+                }
+                heathTips.add(content); //add result to vector
+            }
+        }
+        return heathTips;
+    }
 }

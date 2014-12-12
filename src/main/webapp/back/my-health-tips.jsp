@@ -31,6 +31,7 @@
             <th>Description</th>
             <th>Creation Date</th>
             <th>Action</th>
+            <th></th>
           </tr>
           </thead>
           <tbod>
@@ -42,6 +43,8 @@
                 <td><s:property value="date"/></td>
                 <td>
                   <a href="edit-health-tips?id=<s:property value="id"/>" class="btn btn-default">Edit</a>
+                </td>
+                <td>
                   <a href="delete-health-tips?type=6&id=<s:property value="id"/>"class="btn btn-default">Delete</a>
                 </td>
               </tr>

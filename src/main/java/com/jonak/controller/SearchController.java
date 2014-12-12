@@ -1,13 +1,9 @@
 package com.jonak.controller;
 
+import com.jonak.lib.Configuration;
 import com.jonak.lib.SessionLib;
 import com.jonak.lib.Tools;
-import com.jonak.model.Search;
-import com.jonak.model.User;
-import com.jonak.model.Education;
-import com.jonak.model.Experience;
-import com.jonak.model.Speciality;
-import com.jonak.model.Chamber;
+import com.jonak.model.*;
 
 import java.util.Vector;
 
@@ -20,12 +16,23 @@ public class SearchController extends BaseController
     public static Vector<Experience> experiences = new Vector<Experience>();
     public static Vector<Chamber> chambers = new Vector<Chamber>();
     public static Vector<Speciality> specialities = new Vector<Speciality>();
+    public static Vector<Category> categoryList = new Vector<Category>();
+    public static Vector<Content> healthTips = new Vector<Content>();
+    private String siteName;
 
     public SearchController()
     {
         super();
     }
 
+    public String setIndex() throws Exception
+    {
+        SessionLib.set("id",0);
+        categoryList = Category.findCategory();
+        siteName = Configuration.get("siteTitle");
+        healthTips = Search.getHealthTips();
+        return SUCCESS;
+    }
     public String SearchByName() throws Exception
     {
         String name = Tools.get("name");
@@ -94,4 +101,27 @@ public class SearchController extends BaseController
         SearchController.specialities = specialities;
     }
 
+    public static Vector<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public static void setCategoryList(Vector<Category> categoryList) {
+        SearchController.categoryList = categoryList;
+    }
+
+    public String getSiteName() {
+        return siteName;
+    }
+
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
+
+    public static Vector<Content> getHealthTips() {
+        return healthTips;
+    }
+
+    public static void setHealthTips(Vector<Content> healthTips) {
+        SearchController.healthTips = healthTips;
+    }
 }
