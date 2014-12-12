@@ -11,7 +11,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        All Boards
+        My Boards
         <a href="new-board" class="btn btn-default pull-right">Add New</a>
       </div>
       <div class="panel-body">

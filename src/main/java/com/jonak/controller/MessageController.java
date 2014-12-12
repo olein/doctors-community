@@ -137,25 +137,27 @@ public class MessageController extends BaseController
     }
 
     // delete a single msg
-    public String delete() throws Exception
+    public void delete() throws Exception
     {
         // get params
         String  action = Tools.get("action"),
-                strFuid = Tools.get("fuid"),
-                strMid = Tools.get("mid");
+                strMid = Tools.get("id");
 
-        int mid = ( strMid != null ) ? Integer.parseInt( strMid ) : 0;
+        int strFuid=0;
+
+        int mid = ( strMid != null ) ? Tools.toInt(strMid) : 0;
 
         // if action is delete & given a valid id
         // delete it
         if( action.equals("delete") && mid > 0 ) {
             Message message = Message.findById( mid );
+            strFuid = message.getToUserId();
             message.delete(); //delete
         }
 
         // redirect to view page
         Tools.redirect("messages?action=view&fuid="+strFuid);
 
-        return this.SUCCESS;
+
     }
 }

@@ -15,64 +15,57 @@
             <h1>Doctor Search</h1>
         </div>
         <div class="col-md-6">
-            <form action="" class="form">
+            <form action="search-by-name" class="form">
                 <div class="form-group">
                     <label for="">Search by Name</label><br>
                     <div class="input-group">
-                        <input type="email" class="form-control input-lg" id="" placeholder="Enter name">
+                        <input type="text" class="form-control input-lg" name="name" id="" placeholder="Enter name">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary btn-lg">Search</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Search</button>
                         </span>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col-md-6">
-            <form action="" class="form">
+            <form action="search-by-location" class="form">
                 <div class="form-group">
                     <label for="">Search by Location</label><br>
                     <div class="input-group">
-                        <input type="email" class="form-control input-lg" id="" placeholder="Enter name">
+                        <input type="text" class="form-control input-lg" name="district" id="" placeholder="Enter location">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary btn-lg">Search</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Search</button>
                         </span>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col-md-6">
-            <form action="" class="form">
+            <form action="search-by-key-word" class="form">
                 <div class="form-group">
-                    <label for="">Search by Department</label><br>
+                    <label for="">Search</label><br>
                     <div class="input-group">
-                        <select class="form-control input-lg">
-                            <option>Select</option>
-                            <option>Select</option>
-                            <option>Select</option>
-                            <option>Select</option>
-                            <option>Select</option>
-                        </select>
+                        <input type="text" class="form-control input-lg" name="key-word" id="" placeholder="Enter search word">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary btn-lg">Search</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Search</button>
                         </span>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col-md-6">
-            <form action="" class="form">
+            <form action="search-by-speciality" class="form">
                 <div class="form-group">
                     <label for="">Search by Speciality</label><br>
                     <div class="input-group">
-                        <select class="form-control input-lg">
-                            <option>Select</option>
-                            <option>Select</option>
-                            <option>Select</option>
-                            <option>Select</option>
-                            <option>Select</option>
+                        <select class="form-control input-lg" name="speciality">
+                            <option value=0>--select option--</option>
+                            <s:iterator value="categoryList">
+                                <option value=<s:property value="id"/>><s:property value="name"/></option>
+                            </s:iterator>
                         </select>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary btn-lg">Search</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Search</button>
                         </span>
                     </div>
                 </div>

@@ -105,7 +105,6 @@ public class BaseModel {
     private void add() throws Exception
     {
         this.db = new MySQLDatabase();
-
         this.db.executeInsertQuery( this.tableName, this.fields, this.types, this.values );
         this.setId( db.getLastInsertId() );
         this.db.closeConnection();
