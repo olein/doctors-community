@@ -32,16 +32,17 @@ public class Search
         if( rs != null ) {
             dataOut.clear();
             while( rs.next() ) {
-                if(rs.getString(4).contains( name ) || rs.getString(5).contains(name))
-                {
-                    User user = new User();
-                    user.setId(rs.getInt(1));
-                    user.setEmail(rs.getString(2));
-                    user.setFirstName(rs.getString(4));
-                    user.setLastName(rs.getString(5));
-                    user.setAddress(rs.getString(6));
-                    user.setDistrict(rs.getString(7));
-                    dataOut.add(user); //add result to vector
+                if (rs.getInt("type") < 4) {
+                    if (rs.getString(4).contains(name) || rs.getString(5).contains(name)) {
+                        User user = new User();
+                        user.setId(rs.getInt(1));
+                        user.setEmail(rs.getString(2));
+                        user.setFirstName(rs.getString(4));
+                        user.setLastName(rs.getString(5));
+                        user.setAddress(rs.getString(6));
+                        user.setDistrict(rs.getString(7));
+                        dataOut.add(user); //add result to vector
+                    }
                 }
             }
         }
@@ -64,16 +65,17 @@ public class Search
         if( rs != null ) {
             dataOut.clear();
             while( rs.next() ) {
-                if(rs.getString(6).contains(district) || rs.getString(7).contains(district))
-                {
-                    User user = new User();
-                    user.setId(rs.getInt(1));
-                    user.setEmail(rs.getString(2));
-                    user.setFirstName(rs.getString(4));
-                    user.setLastName(rs.getString(5));
-                    user.setAddress(rs.getString(6));
-                    user.setDistrict(rs.getString(7));
-                    dataOut.add(user); //add result to vector
+                if (rs.getInt("type") < 4) {
+                    if (rs.getString(6).contains(district) || rs.getString(7).contains(district)) {
+                        User user = new User();
+                        user.setId(rs.getInt(1));
+                        user.setEmail(rs.getString(2));
+                        user.setFirstName(rs.getString(4));
+                        user.setLastName(rs.getString(5));
+                        user.setAddress(rs.getString(6));
+                        user.setDistrict(rs.getString(7));
+                        dataOut.add(user); //add result to vector
+                    }
                 }
             }
         }
@@ -95,18 +97,19 @@ public class Search
         if( rs != null ) {
             dataOut.clear();
             while( rs.next() ) {
-                if(rs.getString(2).contains( keyWord ) || rs.getString(4).contains( keyWord )
-                    || rs.getString(6).contains( keyWord ) || rs.getString(7).contains( keyWord )
-                    || rs.getString(5).contains( keyWord ))
-                {
-                    User user = new User();
-                    user.setId(rs.getInt(1));
-                    user.setEmail(rs.getString(2));
-                    user.setFirstName(rs.getString(4));
-                    user.setLastName(rs.getString(5));
-                    user.setAddress(rs.getString(6));
-                    user.setDistrict(rs.getString(7));
-                    dataOut.add(user); //add result to vector
+                if (rs.getInt("type") < 4) {
+                    if (rs.getString(2).contains(keyWord) || rs.getString(4).contains(keyWord)
+                            || rs.getString(6).contains(keyWord) || rs.getString(7).contains(keyWord)
+                            || rs.getString(5).contains(keyWord)) {
+                        User user = new User();
+                        user.setId(rs.getInt(1));
+                        user.setEmail(rs.getString(2));
+                        user.setFirstName(rs.getString(4));
+                        user.setLastName(rs.getString(5));
+                        user.setAddress(rs.getString(6));
+                        user.setDistrict(rs.getString(7));
+                        dataOut.add(user); //add result to vector
+                    }
                 }
             }
         }

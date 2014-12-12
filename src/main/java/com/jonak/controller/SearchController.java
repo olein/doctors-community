@@ -30,6 +30,7 @@ public class SearchController extends BaseController
         SessionLib.set("id",0);
         categoryList = Category.findCategory();
         siteName = Configuration.get("siteTitle");
+        SessionLib.set("siteTitle", siteName);
         healthTips = Search.getHealthTips();
         return SUCCESS;
     }

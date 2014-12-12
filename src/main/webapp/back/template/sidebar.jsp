@@ -8,6 +8,7 @@
 			<ul class="nav nav-sidebar sub-nav">
 				<li><a href="all-boards?type=1">All Boards</a></li>
 				<li><a href="my-board?type=1">My Boards</a></li>
+				<li><a href="published-boards?type=1">Published Boards</a></li>
 			</ul>
 		</li>
 		<li class="hasSub"><a href="#patient-case"><i class="fa fa-th-large"></i> Patient Cases</a>
