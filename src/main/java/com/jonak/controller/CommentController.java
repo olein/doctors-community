@@ -35,7 +35,7 @@ public class CommentController extends BaseController
         comment.setCreated_at(Tools.getTimeStamp());
         comment.save(); //add content
 
-        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id")));
+        Content content = Content.findByID(Integer.parseInt(Tools.get("id")));
         content.setComment_counter(content.getComment_counter()+1);
         content.save();
 
@@ -81,7 +81,7 @@ public class CommentController extends BaseController
             int contentId = comment.getContent_id();
             comment.delete(); //delete
 
-            Content content = Content.findContentByID(contentId);
+            Content content = Content.findByID(contentId);
             content.setComment_counter(content.getComment_counter()-1);
             content.save();
         }

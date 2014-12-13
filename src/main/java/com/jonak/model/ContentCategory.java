@@ -17,6 +17,15 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class ContentCategory extends ContentCategoryModel
 {
+    // set content category
+    public static void set( int content_id, int category_id  ) throws Exception
+    {
+        ContentCategory contentCategory = new ContentCategory();
+        contentCategory.setContent_id( content_id );
+        contentCategory.setCategory_id( category_id );
+        contentCategory.save();
+    }
+
     //get last content id
     public static int getID() throws SQLException
     {

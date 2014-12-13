@@ -44,92 +44,80 @@ public class ContentController extends BaseController
 
     public String setCategory() throws Exception
     {
-
         SessionLib.set("id",0);
         output = Category.findCategory(); //get category list
         return this.SUCCESS;
     }
 
-    public void saveContent() throws Exception, ParseException {
-        Content content = new Content();
-        ContentCategory contentCategory = new ContentCategory();
+    public void saveContent() throws Exception
+    {
+        Content content;
 
-        String  title = Tools.get("title"),
+        String  strId = Tools.get("id"),
+                title = Tools.get("title"),
                 description = Tools.get("description"),
-                privacy = Tools.get("privacy"),
-                type = Tools.get("type"),
-                allowComment = Tools.get("allow_comment"),
-                categoryId = Tools.get("categoryId");
+                strPrivacy = Tools.get("privacy"),
+                strType = Tools.get("type"),
+                strAllowComment = Tools.get("allow_comment"),
+                strCategoryId = Tools.get("categoryId"),
+                strUserId = Tools.get( "user_id" ),
+                strParentId = Tools.get("parent_id");
 
-        int     flag = 0;
+        int     flag = 0,
+                intId = Tools.toInt( strId ),
+                privacy = Tools.toInt(strPrivacy),
+                type = Tools.toInt( strType ),
+                allowComment = Tools.toInt( strAllowComment ),
+                categoryId = Tools.toInt( strCategoryId ),
+                userId = Tools.toInt(strUserId),
+                parentId = Tools.toInt(strParentId);
 
-        if(Integer.parseInt(SessionLib.get("id"))>0)
+        if( intId > 0 )
         {
-            content = Content.findContentByID(Integer.parseInt(SessionLib.get("id")));
-            if( ! content.getTitle().equals( title ) ) { content.setTitle(title); }
-            if( ! content.getDescription().equals(description) ) { content.setDescription(description); }
-            if(  content.getType()!=( Integer.parseInt(type) ) ) { content.setType( Integer.parseInt(type )); }
-            if(  content.getPrivacy()!=( Integer.parseInt(privacy) ) ) { content.setPrivacy(Integer.parseInt(privacy)); }
-            if(  content.getAllow_comment()!=( Integer.parseInt(allowComment) ) ) { content.setAllow_comment(Integer.parseInt(allowComment)); }
-            content.save();
+            content = Content.findByID( intId );
+            if( ! content.getTitle().equals( title ) ) {
+                content.setTitle(title);
+            }
+            if( ! content.getDescription().equals(description) ) {
+                content.setDescription(description);
+            }
+            if( content.getType() != type ) {
+                content.setType( type);
+            }
+            if( content.getPrivacy() != privacy ) {
+                content.setPrivacy( privacy );
+            }
+            if( content.getAllow_comment() != allowComment ) {
+                content.setAllow_comment( allowComment );
+            }
 
-            contentCategory = ContentCategory.findByContentID(Integer.parseInt(SessionLib.get("id")));
-            contentCategory.setContent_id(contentCategory.getContent_id());
-            contentCategory.setCategory_id(Integer.parseInt(categoryId ));
-            contentCategory.save();
-            SessionLib.unset("id");
+            content.save();
+            // set category
+            ContentCategory.set( content.getId(), categoryId );
+
             flag = 1;
         }
         else
         {
-            content.setUser_id(SessionLib.getUserID());
-            content.setTitle(title);
-            content.setDescription(description);
-            content.setType(Integer.parseInt(type));
-            content.setPrivacy(Integer.parseInt(privacy));
-            content.setAllow_comment(Integer.parseInt(allowComment));
+            content = new Content();
+
+            content.setUser_id( userId );
+            content.setTitle( title );
+            content.setDescription( description );
+            content.setType( type );
+            content.setPrivacy( privacy );
+            content.setAllow_comment( allowComment );
             content.setComment_counter(0);
-            content.setParent_id(0);
-            content.setCreated_at(Tools.getTimeStamp());
+            content.setParent_id( parentId );
+            content.setCreated_at( Tools.getTimeStamp() );
             content.save();
 
-            contentCategory.setContent_id(ContentCategory.getID());
-            contentCategory.setCategory_id(Integer.parseInt( categoryId ));
-            contentCategory.save();
+            // set category
+            ContentCategory.set( content.getId(), categoryId );
         }
 
-        if(Integer.parseInt(type)==1)
-        {
-            if(flag==0)
-            {
-                Participant participant = new Participant();
-                participant.setContent_id(ContentCategory.getID());
-                participant.setUser_id(SessionLib.getUserID());
-                participant.setActive(1);
-                participant.save();
-            }
-            Tools.redirect("my-board?type=1");
-        }
-        if(Integer.parseInt(type)==2)
-        {
-            Tools.redirect("my-patient-case?type=2");
-        }
-        if(Integer.parseInt(type)==3)
-        {
-            Tools.redirect("my-discussion?type=3");
-        }
-        if(Integer.parseInt(type)==4)
-        {
-            Tools.redirect("my-patient-question?type=4");
-        }
-        if(Integer.parseInt(type)==5)
-        {
-            Tools.redirect("my-article?type=5");
-        }
-        if(Integer.parseInt(type)==6)
-        {
-            Tools.redirect("my-health-tips?type=6");
-        }
+        // redirect
+        Tools.redirect("");
     }
 
     public String viewAllContent() throws Exception
@@ -176,7 +164,7 @@ public class ContentController extends BaseController
         // this is how we will be using
         // get the user with id 1
         SessionLib.set("id",0);
-        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id"))); //get result using user id
+        Content content = Content.findByID(Integer.parseInt(Tools.get("id"))); //get result using user id
         dataOut.add(content);
         output = Category.findCategory();
         SessionLib.set("id", content.getId());
@@ -188,7 +176,7 @@ public class ContentController extends BaseController
         // this is how we will be using
         // get the user with id 1
         SessionLib.set("id",0);
-        Content content = Content.findContentByID(Integer.parseInt(Tools.get("id"))); //get result using user id
+        Content content = Content.findByID(Integer.parseInt(Tools.get("id"))); //get result using user id
         dataOut.add(content);
         comment = Comment.find();
         SessionLib.set("id", content.getId());

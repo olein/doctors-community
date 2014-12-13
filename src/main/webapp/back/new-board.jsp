@@ -9,6 +9,7 @@
 
 <div class="row profile">
 	<form class="form" role="form" method="post" action="processboard?type=1">
+		<input type="hidden" name="id" value="<% out.print( Tools.toInt(Tools.get("id")) ); %>">
 		<input type="hidden" name="user_id" value="<% out.print( SessionLib.getUserID() ); %>">
 		<input type="hidden" name="type" value="1">
 		<input type="hidden" name="parent_id" value="0">
@@ -52,7 +53,7 @@
 					<div class="form-group">
 						<label for="inputCategory" class="col-sm-2 control-label sr-only">Category</label>
 						<select class="form-control" id="inputCategory" placeholder="Category"
-								name="categories" multiple>
+								name="categoryId" >
 							<s:iterator value="output">
 								<option value=<s:property value="id"/>><s:property value="name"/></option>
 							</s:iterator>
@@ -96,12 +97,12 @@
 						</div>
 						<div class="col-sm-3">
 							<label for="inputCommentYes">
-								<input type="radio" name="privacy" id="inputCommentYes" value="1"> Yes
+								<input type="radio" name="allowComment" id="inputCommentYes" value="1"> Yes
 							</label>
 						</div>
 						<div class="col-sm-3">
 							<label for="inputCommentNo">
-								<input type="radio" name="privacy" id="inputCommentNo" value="0"> No
+								<input type="radio" name="allowComment" id="inputCommentNo" value="0"> No
 							</label>
 						</div>
 					</div>

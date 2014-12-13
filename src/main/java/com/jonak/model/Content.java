@@ -155,7 +155,7 @@ public class Content extends ContentModel
         return dataOut;
     }
 
-    public static Content findContentByID(int id) throws Exception
+    public static Content findByID(int id) throws Exception
     {
 
         MySQLDatabase db = new MySQLDatabase();

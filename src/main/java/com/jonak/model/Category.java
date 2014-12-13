@@ -53,7 +53,8 @@ public class Category extends CategoryModel
 //    }
 
 
-    //
+    // set content category
+
 
     // get name by id
     public static String getNameById( int id ) throws Exception
