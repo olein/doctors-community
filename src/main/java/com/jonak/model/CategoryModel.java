@@ -1,5 +1,7 @@
 package com.jonak.model;
 
+import com.jonak.lib.Tools;
+
 import java.util.Date;
 
 /**
@@ -12,8 +14,6 @@ public class CategoryModel extends BaseModel
     private String detail;
     private int parentId;
     private int createdAt;
-    private Date date;
-    private String categoryName;
 
     public CategoryModel()
     {
@@ -47,13 +47,7 @@ public class CategoryModel extends BaseModel
         this.detail = detail;
         this.fields.add("detail");      this.types.add("String");     this.values.add(this.getDetail());
     }
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
     public int getParentId() {
         return parentId;
     }
@@ -63,20 +57,17 @@ public class CategoryModel extends BaseModel
         this.fields.add("parent_id");   this.types.add("int");        this.values.add(this.getParentId());
     }
 
-    public int getCreatedAt() {
+    public Date getCreatedAt() throws Exception{
+        return Tools.getDate(createdAt);
+    }
+
+    public int getCreatedAt(boolean b) {
         return createdAt;
     }
 
     public void setCreatedAt(int createdAt) {
         this.createdAt = createdAt;
-        this.fields.add("created_at");  this.types.add("int");        this.values.add(this.getCreatedAt());
+        this.fields.add("created_at");  this.types.add("int");        this.values.add(this.getCreatedAt(true));
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
 }

@@ -31,10 +31,6 @@ public class UploadHandler extends ActionSupport {
         // get upload dir
 
         String  uploadDir = Configuration.get("uploadDir"),
-
-                uploadPath = Tools.request.getSession().getServletContext().getRealPath("/").concat( uploadDir );
-
-
                 uploadPath = uploadDir;
 //                uploadPath = Tools.request.getSession().getServletContext().getRealPath("/").concat( uploadDir );
 
@@ -57,7 +53,7 @@ public class UploadHandler extends ActionSupport {
         System.out.println("file uploaded");
 
         // save it
-        String fileLink = Configuration.get("site_url") + "/" + Configuration.get("uploadDir") + "/" + this.uploadFileName;
+        String fileLink = Configuration.get("site_url") + "/" + uploadDir + "/" + this.uploadFileName;
         Media file = new Media();
         file.setUserId( SessionLib.getUserID() );
         file.setContentId( 0 );
