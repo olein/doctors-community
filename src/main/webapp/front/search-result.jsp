@@ -12,32 +12,20 @@
       </div>
       <div class="panel-body">
 
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-            <th>District</th>
-          </tr>
-          </thead>
-          <tbod>
-            <s:iterator value="dataOut">
-              <tr>
-                <td><s:property value="email"/></td>
-                <td><s:property value="firstName"/></td>
-                <td><s:property value="lastName"/></td>
-                <td><s:property value="address"/></td>
-                <td><s:property value="district"/></td>
-                <td>
-                  <a href="view-profile?id=<s:property value="id"/>" class="btn btn-default">View Profile</a>
-                </td>
-              </tr>
-            </s:iterator>
-          </tbod>
-        </table>
-
+      <s:iterator value="dataOut">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h1><s:property value="email"/></h1>
+              <b>First Name : </b><s:property value="firstName"/><br/>
+              <b>Last Name : </b><s:property value="lastName"/><br/>
+              <b>Address : </b><s:property value="address"/><br/>
+              <b>District : </b><s:property value="district"/><br/>
+              <a href="view-profile?id=<s:property value="id"/>" class="btn btn-default">View Profile</a>
+            </div>
+          </div>
+        </div>
+      </s:iterator>
       </div>
     </div>
   </div>
