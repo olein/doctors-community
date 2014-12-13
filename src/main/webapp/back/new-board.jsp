@@ -8,7 +8,8 @@
 %>
 
 <div class="row profile">
-	<form class="form" role="form" method="post" action="processboard?type=1">
+
+	<form class="form" role="form" method="post" action="processboard">
 		<input type="hidden" name="id" value="<% out.print( Tools.toInt(Tools.get("id")) ); %>">
 		<input type="hidden" name="user_id" value="<% out.print( SessionLib.getUserID() ); %>">
 		<input type="hidden" name="type" value="1">

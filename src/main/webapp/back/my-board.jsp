@@ -32,6 +32,9 @@
             <th>Description</th>
             <th>Creation Date</th>
             <th>Action</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           </thead>
           <tbod>
@@ -44,8 +47,14 @@
                 <td><s:property value="date"/></td>
                 <td>
                   <a href="participants?id=<s:property value="id"/>" class="btn btn-default">Participants</a>
+                </td>
+                <td>
                   <a href="edit-board?id=<s:property value="id"/>" class="btn btn-default">Edit</a>
+                </td>
+                <td>
                   <a href="delete-board?type=1&id=<s:property value="id"/>"class="btn btn-default">Delete</a>
+                </td>
+                <td>
                   <a href="board-detail?type=1&id=<s:property value="id"/>" class="btn btn-default">more</a>
                 </td>
               </tr>

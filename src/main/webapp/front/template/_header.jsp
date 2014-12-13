@@ -20,13 +20,11 @@
 <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#"><s:property value="siteName"/></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="./index">Home <span class="sr-only">(current)</span></a></li>
             <li><a href="all-health-tips?type=6">Health Tips</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
             <li><a href="./user/login">Login</a></li>
             <li><a href="#">Register</a></li>
         </ul>

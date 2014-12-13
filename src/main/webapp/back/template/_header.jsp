@@ -1,6 +1,7 @@
 <%@ page import="com.jonak.lib.*" %>
 <% if ( ! SessionLib.isLogin() ) { Tools.redirect("login"); } %>
-<% String currentPage = Tools.getCurrentPage(); %>
+<% String currentPage = Tools.getCurrentPage();
+String siteName = SessionLib.get("siteTitle"); %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
@@ -34,12 +35,12 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><i class="fa fa-user-md"></i>Doctor's Community</a>
+			<a class="navbar-brand" href="#"><i class="fa fa-user-md"></i><% out.print(siteName); %></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Articles</a></li>
-				<li><a href="#">Publications</a></li>
+				<li><a href="all-article?type=5">Articles</a></li>
+				<li><a href="published-boards?type=1">Publications</a></li>
 				<li><a href="#">Doctors</a></li>
 				<li><a href="/">Front Page</a></li>
 			</ul>

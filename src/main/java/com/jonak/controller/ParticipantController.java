@@ -35,9 +35,9 @@ public class ParticipantController extends BaseController
             participant.setUser_id(Integer.parseInt(data[i]));
             participant.setActive(1);
             participant.save(); //add speciality
-            String red = "participants?id="+SessionLib.get("ContentId");
-            Tools.redirect(red);
         }
+        String red = "participants?id="+SessionLib.get("ContentId");
+        Tools.redirect(red);
     }
 
     public String viewParticipant() throws Exception
