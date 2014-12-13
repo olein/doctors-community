@@ -205,7 +205,7 @@ public class ContentController extends BaseController
 
     public void deleteContent() throws Exception
     {
-        Content content = new Content();
+        Content content = Content.findContentByID(Tools.toInt(Tools.get("id")));
         content.delete(); //delete
         SessionLib.unset("id");
         int type = Integer.parseInt(Tools.get("type"));
