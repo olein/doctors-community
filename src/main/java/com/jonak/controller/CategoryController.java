@@ -110,13 +110,6 @@ public class CategoryController extends BaseController
         }
     }
 
-    public String setCategory() throws Exception
-    {
-        SessionLib.set("id",0);
-        categoryList = Category.findCategory(); //get category list
-        return this.SUCCESS;
-    }
-
     public void saveCategory() throws Exception, ParseException
     {
         Category category = new Category();

@@ -13,12 +13,52 @@ import com.jonak.lib.Tools;
 import com.jonak.model.ContentModel;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
+
+import javax.xml.transform.Result;
+
 /**
  * Created by Fahim on 14/11/2014.
  */
 public class Content extends ContentModel
 {
     public static Vector<Content> dataOut = new Vector<Content>();
+
+    public static Vector findByType( int type ) throws Exception
+    {
+        MySQLDatabase db = new MySQLDatabase();
+        Vector contents = new Vector();
+
+        String sql = " select * from content where type=? ";
+        ArrayList values = new ArrayList();
+        values.add(6);
+
+        ResultSet rs = db.executeSelectQuery( sql, values );
+
+        if( rs != null ) {
+
+            while( rs.next() ) {
+                Content content = new Content();
+                content.setId(rs.getInt(1));
+                content.setUser_id(rs.getInt(2));
+                content.setTitle(rs.getString(3));
+                content.setDescription(rs.getString(4));
+                content.setDate(Tools.getDate(rs.getInt(10)));
+
+                ContentCategory contentCategory  = ContentCategory.findByContentID(rs.getInt(1));
+                if(contentCategory!=null)
+                {
+                    content.setCategory_name(Category.getCategoryName(contentCategory.getCategory_id()));
+                }
+                else
+                {
+                    content.setCategory_name("not specified");
+                }
+                contents.add(content); //add result to vector
+            }
+        }
+
+        return contents;
+    }
 
     public static Vector findAllContent() throws Exception
     {

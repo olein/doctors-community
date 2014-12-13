@@ -3,7 +3,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron text-center">
     <div class="container">
-        <h1>Hello, world!</h1>
+        <h1>Hello Doctor's!</h1>
         <p>This is community for doctors. Doctors can share their knowledge and experience by being part of this community.
            Patients can also ask question to any doctor and doctors will answer them. It is a great place to share knowledge and
            explore new world of adventure.</p>
@@ -62,7 +62,7 @@
                     <div class="input-group">
                         <select class="form-control input-lg" name="speciality">
                             <option value=0>--select option--</option>
-                            <s:iterator value="categoryList">
+                            <s:iterator value="dataOut[0]">
                                 <option value=<s:property value="id"/>><s:property value="name"/></option>
                             </s:iterator>
                         </select>
@@ -82,12 +82,14 @@
         <div class="col-md-12">
             <h1>Latest Tips</h1>
         </div>
-        <s:iterator value="healthTips">
+        <s:iterator value="dataOut[1]">
         <div class="col-md-4">
             <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><s:property value="title"/></h3>
+				</div>
                 <div class="panel-body">
-                    <h2><s:property value="title"/> </h2>
-                    <p><s:property value="description"/></p>
+                    <s:property value="description"/>
                 </div>
             </div>
         </div>
