@@ -31,6 +31,8 @@
             <th>Description</th>
             <th>Creation Date</th>
             <th>Action</th>
+            <th></th>
+            <th></th>
           </tr>
           </thead>
           <tbod>
@@ -40,11 +42,9 @@
                 <td><s:property value="title"/></td>
                 <td><s:property value="description"/></td>
                 <td><s:property value="date"/></td>
-                <td>
-                  <a href="edit-article?id=<s:property value="id"/>" class="btn btn-default">Edit</a>
-                  <a href="delete-article?type=5&id=<s:property value="id"/>"class="btn btn-default">Delete</a>
-                  <a href="article-detail?type=5&id=<s:property value="id"/>" class="btn btn-default">more</a>
-                </td>
+                <td><a href="edit-article?id=<s:property value="id"/>" class="btn btn-default">Edit</a></td>
+                <td><a href="delete-article?type=5&id=<s:property value="id"/>"class="btn btn-default">Delete</a></td>
+                <td><a href="article-detail?type=5&id=<s:property value="id"/>" class="btn btn-default">more</a></td>
               </tr>
             </s:iterator>
 

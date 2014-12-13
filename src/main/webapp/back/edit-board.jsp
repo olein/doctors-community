@@ -46,11 +46,11 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="inputTelephone" class="col-sm-2 control-label">Privacy</label>
+              <label for="inputTelephone" class="col-sm-2 control-label">Publish Board</label>
               <div class="col-sm-4">
                 <select class="form-control" id="inputTelephone" placeholder="Privacy" name="privacy">
-                  <option value="1">Private</option>
-                  <option value="2">Public</option>
+                  <option value="1">No</option>
+                  <option value="2">Yes</option>
                 </select>
               </div>
             </div>

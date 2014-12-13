@@ -1,30 +1,6 @@
 <footer id="footer">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <address>
-                    8118 Good Luck Road<br>
-                    Lanham, Maryland 20706<br>
-                    301-552-8118<br><br>
 
-                    - See more at: http://www.dchweb.org/#sthash.Jgi3xT0U.dpuf
-                </address>
-            </div>
-            <div class="col-md-4">
-                <ul>
-                    <li><a href="#">some links</a></li>
-                    <li><a href="#">some links</a></li>
-                    <li><a href="#">some links</a></li>
-                    <li><a href="#">some links</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>a google maps</h4>
-                <div class="maps">
-                    <img src="" width="320">
-                </div>
-            </div>
-        </div>
         <hr/>
         <div class="row">
             <div class="col-md-12">
