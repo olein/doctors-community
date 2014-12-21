@@ -11,6 +11,11 @@
     <constant name="struts.multipart.maxSize" value="5242880" />
 
     <package name="front" namespace="/" extends="struts-default">
+
+        <!--ajax test-->
+        <action name="ajaxtest" class="com.jonak.AjaxTest" method="loadData">
+        </action>
+
         <!--home page start-->
         <action name="home" class="com.jonak.controller.FrontController" method="index">
             <result>/front/index.jsp</result>
@@ -297,12 +302,6 @@
         </action>
         <action name="save-settings" class="com.jonak.controller.SettingsController" method="saveSettings"></action>
         <!--settings end-->
-
-        <!--ajax test-->
-        <action name="ajaxTest" class="com.jonak.AjaxTest" method="loadData">
-            <result name="success">/01index.jsp</result>
-            <result name="ajax"></result>
-        </action>
 
         <!--article start-->
         <action name="all-article" class="com.jonak.controller.ContentController" method="viewAllPublicContent">

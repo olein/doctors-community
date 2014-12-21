@@ -8,30 +8,36 @@
     <title>Ajax Example in Struts 1e</title>
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
-        function doAjaxPost() {
-            // get the form values
-            var name = $('#name').val();
 
-            $.ajax({
-                type: "POST",
-                url: "user/ajaxTest",
-                data: "name=" + name,
-                success: function(response){
-                    // we have the response
-                    console.log(response);
-//                    console.log($.parseJSON(response));
-//                    $('#info').html(response);
-                },
-                error: function(e){
-                    alert('Error: ' + e);
-                }
-            });
-        }
+//		$("form#testForm").submit(
+			function fn() {
+
+				$.ajax({
+					type: "POST",
+					url: "ajaxtest",
+					data: {name: $("#name").val()},
+					success: function(response){
+						console.log(response);
+					},
+					error: function(e){
+						alert('Error: ' + e);
+					}
+				});
+			}
+
+//		);
     </script>
 </head>
 <body>
-Enter your name please : <input type="text" id="name"><br/>
-<input type="button" value="Say Hello" onclick="doAjaxPost()"><br/>
-<div id="info" style="color: green;"></div>
+
+<%--<form method="post" action="ajaxtest" id="testForm">--%>
+	<input name="name" id="name" value="" type="text">
+	<input type="button" value="Send" onclick="fn()">
+<%--</form>--%>
+
+<div id="response">
+
+</div>
+
 </body>
 </html>

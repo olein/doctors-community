@@ -14,39 +14,24 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class AjaxTest extends ActionSupport {
 
-    private String name = null;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String loadData() throws Exception
+    public void loadData() throws Exception
     {
-        int i=0;
+        String name = Tools.get("name");
 
-        if(i > 0) {
-            HttpServletResponse response = ServletActionContext.getResponse();
+        JSONObject obj = new JSONObject();
 
-            JSONObject obj = new JSONObject();
+        obj.put("1", "Georgia");
+        obj.put("2", "Utah");
+        obj.put("3", "Texas");
+        obj.put("4", "New Jersey");
+        obj.put("5", name);
 
-            obj.put("1", "Georgia");
-            obj.put("2", "Utah");
-            obj.put("3", "Texas");
-            obj.put("4", "New Jersey");
+//        Tools.response.setHeader("content-type", "application/json");
+//        String jsonText = obj.toString();
+//        Tools.response.getWriter().write(jsonText);
+//        Tools.response.flushBuffer();
 
-            response.setHeader("content-type", "application/json");
-            String jsonText = obj.toString();
-            response.getWriter().write(jsonText);
-            response.flushBuffer();
-            return "success";
-        }else {
-            return "success";
-        }
+        Tools.ajaxResponse( obj );
     }
-
 }
 
