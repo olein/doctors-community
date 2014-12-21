@@ -25,7 +25,7 @@ public class UserController extends BaseController
     public UserController(){ super(); }
 
     // new user register
-    public String register() throws Exception
+    public void register() throws Exception
     {
         User nuser = new User();
         nuser.setEmail(ServletActionContext.getRequest().getParameter("email"));
@@ -57,7 +57,8 @@ public class UserController extends BaseController
 
         nuser.save();
 
-        return this.SUCCESS;
+        Tools.redirect("login");
+//        return this.SUCCESS;
     }
 
     // user login

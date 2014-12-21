@@ -51,6 +51,10 @@
             <result>/back/index.jsp</result>
         </action><!--done-->
 
+        <action name="register">
+            <result>/back/register.jsp</result>
+        </action><!--done-->
+
         <!--board start-->
         <action name="all-boards" class="com.jonak.controller.ContentController" method="viewAllParticipatedContent">
             <result>/back/board.jsp</result>
@@ -277,7 +281,7 @@
         <action name="save-media" class="com.jonak.controller.MediaController" method="saveMediaFile"></action>
         <action name="delete-media" class="com.jonak.controller.MediaController" method="deleteMediaFile"></action>
         <!--media library end-->
-        
+
         <!--messages start-->
         <action name="messages" class="com.jonak.controller.MessageController" method="viewMessages">
             <!--<result type="json"></result>-->
@@ -296,9 +300,59 @@
 
         <!--ajax test-->
         <action name="ajaxTest" class="com.jonak.AjaxTest" method="loadData">
-            <result name="success">/index.jsp</result>
+            <result name="success">/01index.jsp</result>
             <result name="ajax"></result>
         </action>
+
+        <!--article start-->
+        <action name="all-article" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/article.jsp</result>
+        </action>
+        <action name="my-article" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-article.jsp</result>
+        </action>
+        <action name="new-article" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-article.jsp</result>
+        </action>
+        <action name="processarticle" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-article" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-article.jsp</result>
+        </action>
+        <action name="delete-article" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+        <action name="article-detail" class="com.jonak.controller.ContentController" method="viewDetail">
+            <result name="success">/back/article-detail.jsp</result>
+        </action>
+        <!--article end-->
+
+        <!--health-tips start-->
+        <action name="all-health-tips" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/health-tips.jsp</result>
+        </action>
+        <action name="my-health-tips" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-health-tips.jsp</result>
+        </action>
+        <action name="new-health-tips" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-health-tips.jsp</result>
+        </action>
+        <action name="processhealth-tips" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-health-tips" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-health-tips.jsp</result>
+        </action>
+        <action name="delete-health-tips" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+        <!--health end-->
+        
+        
+        
+        
+        
+        <!--later added action-->
+        <action name="registerUser" class="com.jonak.controller.UserController" method="register"></action>
 
     </package>
 

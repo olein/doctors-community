@@ -3,40 +3,42 @@
 <%@ page import="com.jonak.controller.UserController" %>
 <%@ include file="./template/_header.jsp" %>
 <%
-  String  update = Tools.get("update");
+	String update = Tools.get("update");
 %>
 
 
 <div class="row profile">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Add New Category
-      </div>
-      <div class="panel-body">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Add New Category
+			</div>
+			<div class="panel-body">
 
-        <form class="form-horizontal" role="form" method="post" action="processspeciality">
+				<form class="form-horizontal" role="form" method="post" action="processspeciality">
 
-          <div class="form-group">
-            <label for="inputParent" class="col-sm-2 control-label">Parent Category</label>
-            <div class="col-sm-4">
-              <select class="form-control" id="inputParent" placeholder="Interest" name="speciality[]" multiple="multiple">
-                <option value=0>--select option--</option>
-                <s:iterator value="categoryList">
-                  <option value=<s:property value="id"/>><s:property value="name"/></option>
-                </s:iterator>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-4">
-              <button type="submit" class="btn btn-primary">Save Changes</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+					<div class="form-group">
+						<label for="inputParent" class="col-sm-2 control-label">Parent Category</label>
+
+						<div class="col-sm-4">
+							<select class="form-control" id="inputParent" placeholder="Interest" name="speciality[]"
+									multiple="multiple">
+								<option value=0>--select option--</option>
+								<s:iterator value="categoryList">
+									<option value=<s:property value="id"/>><s:property value="name"/></option>
+								</s:iterator>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-4">
+							<button type="submit" class="btn btn-primary">Save Changes</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 <%@include file="./template/_footer.jsp" %>

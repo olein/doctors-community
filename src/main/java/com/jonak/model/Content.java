@@ -236,6 +236,7 @@ public class Content extends ContentModel
                 }
             }
         }
+
         return content;
     }
 

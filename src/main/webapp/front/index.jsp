@@ -7,7 +7,7 @@
         <p>This is community for doctors. Doctors can share their knowledge and experience by being part of this community.
            Patients can also ask question to any doctor and doctors will answer them. It is a great place to share knowledge and
            explore new world of adventure.</p>
-        <p><a class="btn btn-success btn-lg" href="user/register" role="button">Join us NOW</a></p>
+        <p><a class="btn btn-success btn-lg" href="./user/register" role="button">Join us NOW</a></p>
     </div>
 </div>
 
@@ -32,7 +32,7 @@
         <div class="col-md-6">
             <form action="search-by-location" class="form">
                 <div class="form-group">
-                    <label for="">Search by Location</label><br>
+                    <label for="">contenSearch by Location</label><br>
                     <div class="input-group">
                         <input type="text" class="form-control input-lg" name="district" id="" placeholder="Enter location">
                         <span class="input-group-btn">

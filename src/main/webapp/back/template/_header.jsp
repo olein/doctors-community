@@ -35,14 +35,14 @@ String siteName = SessionLib.get("siteTitle"); %>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><i class="fa fa-user-md"></i><% out.print(siteName); %></a>
+			<a class="navbar-brand" href="#"><i class="fa fa-user-md"></i><% out.print(Configuration.get("siteTitle")); %></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="all-article?type=5">Articles</a></li>
 				<li><a href="published-boards?type=1">Publications</a></li>
 				<li><a href="#">Doctors</a></li>
-				<li><a href="/">Front Page</a></li>
+				<li><a href="/DoctorCommunity/">Front Page</a></li>
 			</ul>
 			<%--<form class="navbar-form pull-left">--%>
 				<%--<input type="text" class="form-control" placeholder="Search...">--%>

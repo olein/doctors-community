@@ -93,6 +93,9 @@ public class ContentController extends BaseController
 
             content.save();
             // set category
+
+            System.out.println("save content:"+content.getId()+":"+categoryId);
+
             ContentCategory.set( content.getId(), categoryId );
 
             flag = 1;
@@ -111,6 +114,8 @@ public class ContentController extends BaseController
             content.setParent_id( parentId );
             content.setCreated_at( Tools.getTimeStamp() );
             content.save();
+
+            System.out.println("save content:"+content.getId()+":"+categoryId);
 
             // set category
             ContentCategory.set( content.getId(), categoryId );
@@ -199,7 +204,7 @@ public class ContentController extends BaseController
         int type = Integer.parseInt(Tools.get("type"));
         if(type==1)
         {
-            Tools.redirect("my-board?type=1");
+            Tools.redirect("my-boards?type=1");
         }
         if(type==2)
         {

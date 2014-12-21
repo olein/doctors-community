@@ -31,7 +31,7 @@
             <li class="<% if(currentPage.equals("home")){ out.print("active"); } %>"><a href="./home">Home <span class="sr-only">(current)</span></a></li>
             <li class="<% if(currentPage.equals("health-tips")){ out.print("active"); } %>"><a href="health-tips?type=6">Health Tips</a></li>
             <li><a href="./user/login">Login</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="./user/register">Register</a></li>
         </ul>
     </div>
 </nav>

@@ -54,7 +54,7 @@
 				<li><a href="experience">Experience</a></li>
 				<li><a href="education">Education</a></li>
 				<li><a href="chambers">Chambers</a></li>
-				<li><a href="category">Category</a></li>
+				<%--<li><a href="category">Category</a></li>--%>
 			</ul>
 		</li>
 		<li><a href="#settings"><i class="fa fa-cog"></i> Settings</a></li>

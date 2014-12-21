@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form action="registerUser" method="post">
+	<form action="user/registerUser" method="post">
 		Email: <input type="text" name="email"><br> 
 		Password: <input	type="password" name="password"><br /> 
 		First Name: <input	type="text" name="firstName"><br> 
