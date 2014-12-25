@@ -80,6 +80,9 @@
         <action name="board-detail" class="com.jonak.controller.ContentController" method="viewDetail">
             <result name="success">/back/board-detail.jsp</result>
         </action>
+        <action name="published-boards" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/board.jsp</result>
+        </action>
         <!--board end-->
 
         <!--participant start-->
@@ -147,6 +150,9 @@
         <action name="discussion-detail" class="com.jonak.controller.ContentController" method="viewDetail">
             <result name="success">/back/discussion-detail.jsp</result>
         </action>
+        <action name="top-discussion" class="com.jonak.controller.ContentController" method="viewAllTopContent">
+            <result>/back/discussion.jsp</result>
+        </action>
         <!--discussion end-->
 
         <!--patient-question start-->
@@ -175,6 +181,89 @@
         </action>
         <!--patient-question end-->
 
+        <!--article start-->
+        <action name="all-article" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/article.jsp</result>
+        </action>
+        <action name="my-article" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-article.jsp</result>
+        </action>
+        <action name="new-article" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-article.jsp</result>
+        </action>
+        <action name="processarticle" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-article" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-article.jsp</result>
+        </action>
+        <action name="delete-article" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+
+        <action name="article-detail" class="com.jonak.controller.ContentController" method="viewDetail">
+            <result name="success">/back/article-detail.jsp</result>
+        </action>
+        <!--article end-->
+
+        <!--health-tips start-->
+        <action name="all-health-tips" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
+            <result>/back/health-tips.jsp</result>
+        </action>
+        <action name="my-health-tips" class="com.jonak.controller.ContentController" method="viewAllContent">
+            <result>/back/my-health-tips.jsp</result>
+        </action>
+        <action name="new-health-tips" class="com.jonak.controller.ContentController" method="setCategory">
+            <result>/back/new-health-tips.jsp</result>
+        </action>
+        <action name="processhealth-tips" class="com.jonak.controller.ContentController" method="saveContent">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="edit-health-tips" class="com.jonak.controller.ContentController" method="viewContent">
+            <result name="success">/back/edit-health-tips.jsp</result>
+        </action>
+        <action name="delete-health-tips" class="com.jonak.controller.ContentController" method="deleteContent">
+        </action>
+        <!--health end-->
+
+        <!--medical-fields start-->
+        <action name="medical-fields" class="com.jonak.controller.CategoryController" method="viewMedicalFields">
+            <result>/back/medical-fields.jsp</result>
+        </action>
+        <action name="save-medical-field" class="com.jonak.controller.CategoryController" method="saveMedicalField"></action>
+        <action name="delete-medical-field" class="com.jonak.controller.CategoryController" method="deleteMedicalField"></action>
+        <!--medical-fields end-->
+
+        <!--media library start-->
+        <action name="upload" class="com.jonak.lib.UploadHandler" method="upload">
+            <!--<interceptor-ref name="basicStack"></interceptor-ref>-->
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="fileUpload">
+                <!--<param name="allowedTypes">image/x-png,image/png,image/gif,image/jpg,image/jpeg,image/pjpeg,text/plain</param>-->
+            </interceptor-ref>
+            <!--<result name="input">/upload.jsp</result>-->
+            <!--<result>/back/edit-media.jsp</result>-->
+        </action>
+        <action name="media-library" class="com.jonak.controller.MediaController" method="viewMediaFiles">
+            <result name="success">/back/media-library.jsp</result>
+        </action>
+        <action name="edit-media" class="com.jonak.controller.MediaController" method="editMediaFile">
+            <result name="success">/back/edit-media.jsp</result>
+        </action>
+        <action name="save-media" class="com.jonak.controller.MediaController" method="saveMediaFile"></action>
+        <action name="delete-media" class="com.jonak.controller.MediaController" method="deleteMediaFile"></action>
+        <!--media library end-->
+
+        <!--messages start-->
+        <action name="messages" class="com.jonak.controller.MessageController" method="viewMessages">
+            <!--<result type="json"></result>-->
+            <result name="success">/back/messages.jsp</result>
+        </action>
+        <action name="save-message" class="com.jonak.controller.MessageController" method="saveMessage">
+        </action>
+        <action name="delete-message" class="com.jonak.controller.MessageController" method="delete">
+        </action>
+        <!--messages end-->
+
         <!--search start-->
         <action name="searchByKeyWord" class="com.jonak.controller.ContentController" method="searchByKeyWord">
             <result>/back/search-result.jsp</result>
@@ -183,14 +272,6 @@
             <result>/back/search-result.jsp</result>
         </action>
         <!--search end-->
-
-        <!--medical-fields start-->
-        <action name="medical-fields" class="com.jonak.controller.CategoryController" method="viewMedicalFields">
-            <result>/back/medical-fields.jsp</result>
-        </action>
-        <action name="save-medical-field" class="com.jonak.controller.CategoryController" method="saveMedicalField"></action>
-        <action name="delete-medical-field" class="com.jonak.controller.CategoryController" method="deleteMedicalField"></action>
-        <!--interest-area end-->
 
         <!--profile start-->
         <action name="profile" class="com.jonak.controller.UserController" method="viewProfile">
@@ -202,11 +283,10 @@
         <!--profile end-->
 
         <!--interest-area start-->
-        <!--have a lot of question here-->
         <action name="interest-area" class="com.jonak.controller.CategoryController" method="viewSpeciality">
             <result>/back/interest-areas.jsp</result>
         </action>
-        <action name="new-interest-area" class="com.jonak.controller.CategoryController" method="setCategory">
+        <action name="new-interest-area" class="com.jonak.controller.CategoryController" method="viewMedicalFields">
             <result>/back/new-interest-area.jsp</result>
         </action>
         <action name="processspeciality" class="com.jonak.controller.CategoryController" method="saveSpeciality">
@@ -265,36 +345,46 @@
         <action name="processchamber" class="com.jonak.controller.ChamberController" method="saveChamber">
             <!--this will always redirec to edit-chamber page-->
         </action>
+        <action name="delete-chamber" class="com.jonak.controller.ChamberController" method="deleteChamber">
+            <result name="success">/back/chamber.jsp</result>
+        </action>
         <!--chamber end-->
 
-        <!--media library start-->
-        <action name="upload" class="com.jonak.lib.UploadHandler" method="upload">
-            <!--<interceptor-ref name="basicStack"></interceptor-ref>-->
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-            <interceptor-ref name="fileUpload">
-                <!--<param name="allowedTypes">image/x-png,image/png,image/gif,image/jpg,image/jpeg,image/pjpeg,text/plain</param>-->
-            </interceptor-ref>
-            <!--<result name="input">/upload.jsp</result>-->
-            <!--<result>/back/edit-media.jsp</result>-->
+        <!--experience start-->
+        <action name="experience" class="com.jonak.controller.ExperienceController" method="viewAllExperience">
+            <result>/back/experience.jsp</result>
         </action>
-        <action name="media-library" class="com.jonak.controller.MediaController" method="viewMediaFiles">
-            <result name="success">/back/media-library.jsp</result>
+        <action name="edit-experience" class="com.jonak.controller.ExperienceController" method="viewExperience">
+            <result name="success">/back/edit-experience.jsp</result>
         </action>
-        <action name="edit-media" class="com.jonak.controller.MediaController" method="editMediaFile">
-            <result name="success">/back/edit-media.jsp</result>
+        <action name="new-experience">
+            <result>/back/new-experience.jsp</result>
         </action>
-        <action name="save-media" class="com.jonak.controller.MediaController" method="saveMediaFile"></action>
-        <action name="delete-media" class="com.jonak.controller.MediaController" method="deleteMediaFile"></action>
-        <!--media library end-->
+        <action name="processexperience" class="com.jonak.controller.ExperienceController" method="saveExperience">
+            <!--this will always redirec to edit-experience page-->
+        </action>
+        <action name="delete-experience" class="com.jonak.controller.ExperienceController" method="deleteExperience">
+            <result name="success">/back/experience.jsp</result>
+        </action>
+        <!--experience end-->
 
-        <!--messages start-->
-        <action name="messages" class="com.jonak.controller.MessageController" method="viewMessages">
-            <!--<result type="json"></result>-->
-            <result name="success">/back/messages.jsp</result>
+        <!--education start-->
+        <action name="education" class="com.jonak.controller.EducationController" method="viewAllEducation">
+            <result>/back/education.jsp</result>
         </action>
-        <action name="save-message" class="com.jonak.controller.MessageController" method="saveMessage">
+        <action name="edit-education" class="com.jonak.controller.EducationController" method="viewEducation">
+            <result name="success">/back/edit-education.jsp</result>
         </action>
-        <!--messages end-->
+        <action name="new-education">
+            <result>/back/new-education.jsp</result>
+        </action>
+        <action name="processeducation" class="com.jonak.controller.EducationController" method="saveEducation">
+            <!--this will always redirec to edit-chamber page-->
+        </action>
+        <action name="delete-education" class="com.jonak.controller.EducationController" method="deleteEducation">
+            <result name="success">/back/education.jsp</result>
+        </action>
+        <!--education end-->
 
         <!--settings start-->
         <action name="settings">
@@ -303,68 +393,7 @@
         <action name="save-settings" class="com.jonak.controller.SettingsController" method="saveSettings"></action>
         <!--settings end-->
 
-        <!--article start-->
-        <action name="all-article" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
-            <result>/back/article.jsp</result>
-        </action>
-        <action name="my-article" class="com.jonak.controller.ContentController" method="viewAllContent">
-            <result>/back/my-article.jsp</result>
-        </action>
-        <action name="new-article" class="com.jonak.controller.ContentController" method="setCategory">
-            <result>/back/new-article.jsp</result>
-        </action>
-        <action name="processarticle" class="com.jonak.controller.ContentController" method="saveContent">
-            <!--this will always redirec to edit-chamber page-->
-        </action>
-        <action name="edit-article" class="com.jonak.controller.ContentController" method="viewContent">
-            <result name="success">/back/edit-article.jsp</result>
-        </action>
-        <action name="delete-article" class="com.jonak.controller.ContentController" method="deleteContent">
-        </action>
-        
-        <!--article start-->
-        <action name="all-article" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
-            <result>/back/article.jsp</result>
-        </action>
-        <action name="my-article" class="com.jonak.controller.ContentController" method="viewAllContent">
-            <result>/back/my-article.jsp</result>
-        </action>
-        <action name="new-article" class="com.jonak.controller.ContentController" method="setCategory">
-            <result>/back/new-article.jsp</result>
-        </action>
-        <action name="processarticle" class="com.jonak.controller.ContentController" method="saveContent">
-            <!--this will always redirec to edit-chamber page-->
-        </action>
-        <action name="edit-article" class="com.jonak.controller.ContentController" method="viewContent">
-            <result name="success">/back/edit-article.jsp</result>
-        </action>
-        <action name="delete-article" class="com.jonak.controller.ContentController" method="deleteContent">
-        </action>
 
-        <action name="article-detail" class="com.jonak.controller.ContentController" method="viewDetail">
-            <result name="success">/back/article-detail.jsp</result>
-        </action>
-        <!--article end-->
-
-        <!--health-tips start-->
-        <action name="all-health-tips" class="com.jonak.controller.ContentController" method="viewAllPublicContent">
-            <result>/back/health-tips.jsp</result>
-        </action>
-        <action name="my-health-tips" class="com.jonak.controller.ContentController" method="viewAllContent">
-            <result>/back/my-health-tips.jsp</result>
-        </action>
-        <action name="new-health-tips" class="com.jonak.controller.ContentController" method="setCategory">
-            <result>/back/new-health-tips.jsp</result>
-        </action>
-        <action name="processhealth-tips" class="com.jonak.controller.ContentController" method="saveContent">
-            <!--this will always redirec to edit-chamber page-->
-        </action>
-        <action name="edit-health-tips" class="com.jonak.controller.ContentController" method="viewContent">
-            <result name="success">/back/edit-health-tips.jsp</result>
-        </action>
-        <action name="delete-health-tips" class="com.jonak.controller.ContentController" method="deleteContent">
-        </action>
-        <!--health end-->
         
         <!--later added action-->
         <action name="registerUser" class="com.jonak.controller.UserController" method="register"></action>

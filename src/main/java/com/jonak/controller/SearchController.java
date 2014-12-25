@@ -25,15 +25,6 @@ public class SearchController extends BaseController
         super();
     }
 
-    public String setIndex() throws Exception
-    {
-        SessionLib.set("id",0);
-        categoryList = Category.findCategory();
-        siteName = Configuration.get("siteTitle");
-        SessionLib.set("siteTitle", siteName);
-        healthTips = Search.getHealthTips();
-        return SUCCESS;
-    }
     public String SearchByName() throws Exception
     {
         String name = Tools.get("name");

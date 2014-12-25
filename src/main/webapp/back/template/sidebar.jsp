@@ -59,7 +59,6 @@
 				<li><a href="experience">Experience</a></li>
 				<li><a href="education">Education</a></li>
 				<li><a href="chambers">Chambers</a></li>
-				<li><a href="category">Category</a></li>
 			</ul>
 		</li>
 		<li class="<% if( currentPage.equals("settings") ) { out.print("active"); } %>"><a href="settings"><i class="fa fa-cog"></i> Settings</a></li>

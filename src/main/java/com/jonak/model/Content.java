@@ -317,6 +317,32 @@ public class Content extends ContentModel
         return dataOut;
     }
 
+    public static int getID() throws Exception
+    {
+
+        MySQLDatabase db = new MySQLDatabase();
+        Content content = new Content();
+        String  _tableName = "content",
+                _fieldName = "id",
+                _filter = " order by id desc limit 1 ";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+
+        int id = 0;
+
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter ); //search using content id
+        if( rs != null ) {
+
+            if( rs.next() ) {
+                id = rs.getInt(1);
+                System.out.println("Content id :" + id);
+            }
+        }
+        return id;
+    }
+
+
 
     public static Vector findByKeyWord() throws Exception
     {

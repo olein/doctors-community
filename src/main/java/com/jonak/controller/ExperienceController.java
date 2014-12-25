@@ -81,7 +81,7 @@ public class ExperienceController extends BaseController
 
     public void deleteExperience() throws Exception
     {
-        Experience exp = new Experience();
+        Experience exp = Experience.findExperienceByID(Tools.toInt(Tools.get("id")));
         exp.delete();
         SessionLib.unset("id");
         Tools.redirect("experience");

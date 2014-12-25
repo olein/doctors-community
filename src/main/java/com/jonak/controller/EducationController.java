@@ -73,7 +73,7 @@ public class EducationController extends BaseController
     //delete education
     public void deleteEducation() throws Exception
     {
-        Education education = new Education();
+        Education education = Education.findEducationByID(Tools.toInt(Tools.get("id")));
         //delete
         education.delete();
         SessionLib.unset("id");

@@ -121,6 +121,15 @@ public class ContentController extends BaseController
             ContentCategory.set( content.getId(), categoryId );
         }
 
+        if(type==1)
+        {
+            Participant participant = new Participant();
+            participant.setUser_id(userId);
+            participant.setActive(1);
+            participant.setContent_id(content.getId());
+            participant.save();
+        }
+
         // redirect
         Tools.redirect("");
     }

@@ -157,7 +157,5 @@ public class MessageController extends BaseController
 
         // redirect to view page
         Tools.redirect("messages?action=view&fuid="+strFuid);
-
-
     }
 }

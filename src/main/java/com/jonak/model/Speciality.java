@@ -46,4 +46,30 @@ public class Speciality extends SpecialityModel
         }
         return specialities;
     }
+
+    public static Speciality findById(int id) throws Exception
+    {
+        MySQLDatabase db = new MySQLDatabase();
+        Category category = new Category();
+        Speciality speciality = new Speciality();
+        String  _tableName = "category_user_relation",
+                _fieldName = "*",
+                _filter = "";
+        ArrayList   _fields = new ArrayList(),
+                _types  = new ArrayList(),
+                _values = new ArrayList();
+        _fields.add("id"); _types.add("int"); _values.add(id);
+
+        ResultSet rs = db.executeSelectQuery( _tableName, _fieldName, _fields, _types, _values, _filter);
+        if( rs != null ) {
+
+            while( rs.next() ) {
+                speciality.setId(rs.getInt("id"));
+                speciality.setUserId(rs.getInt("user_id"));
+                speciality.setCategoryId(rs.getInt("category_id"));
+                speciality.setCategoryName(Category.getCategoryName(speciality.getCategoryId()));
+            }
+        }
+        return speciality;
+    }
 }

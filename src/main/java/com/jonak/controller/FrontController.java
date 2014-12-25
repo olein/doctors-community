@@ -3,6 +3,7 @@ package com.jonak.controller;
 import com.jonak.lib.SessionLib;
 import com.jonak.model.Category;
 import com.jonak.model.Content;
+import com.jonak.model.Search;
 
 import java.util.Vector;
 
@@ -17,12 +18,7 @@ public class FrontController extends BaseController {
         this.dataOut.add(Category.findCategory());
 
         // 1'th index has health tips
-        Vector healthtips = Content.findByType(6);
-        int size = healthtips.size();
-        while( size > 3 ) {
-            size--;
-            healthtips.remove(size);
-        }
+        Vector healthtips = Search.getHealthTips();
         this.dataOut.add( healthtips );
 
         return this.SUCCESS;

@@ -100,7 +100,7 @@ public class ChamberController extends BaseController
     //fix delete chamber, id needed
     public void deleteChamber() throws Exception
     {
-        Chamber chamber = new Chamber();
+        Chamber chamber = Chamber.findChamberByID(Tools.toInt(Tools.get("id")));
         //delete chamber
         chamber.delete();
         SessionLib.unset("id");

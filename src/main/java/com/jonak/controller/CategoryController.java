@@ -48,7 +48,7 @@ public class CategoryController extends BaseController
     public String viewMedicalFields() throws Exception
     {
         Vector mFields = Category.findCategory();
-        this.dataOut = mFields;
+        this.categoryList = mFields;
         return this.SUCCESS;
     }
 
@@ -191,8 +191,8 @@ public class CategoryController extends BaseController
 
     public void deleteSpeciality() throws Exception
     {
-        Speciality speciality = new Speciality();
-        speciality.delete(); //delete
+        Speciality speciality = Speciality.findById(Tools.toInt(Tools.get("id")));
+        speciality.delete();
         Tools.redirect("interest-area");
     }
     public Vector<Category> getDataOut() {
