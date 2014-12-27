@@ -121,7 +121,7 @@ public class ContentController extends BaseController
             ContentCategory.set( content.getId(), categoryId );
         }
 
-        if(type==1)
+        if(type==1 && flag == 1)
         {
             Participant participant = new Participant();
             participant.setUser_id(userId);
